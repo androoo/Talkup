@@ -355,7 +355,7 @@
 				DEVELOPMENT_TEAM = BP324SX4AT;
 				INFOPLIST_FILE = Talkup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ooo.andr.Talkup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.androoo.Talkup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -369,7 +369,7 @@
 				DEVELOPMENT_TEAM = BP324SX4AT;
 				INFOPLIST_FILE = Talkup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ooo.andr.Talkup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.androoo.Talkup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
