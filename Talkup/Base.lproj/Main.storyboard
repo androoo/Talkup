@@ -10,10 +10,31 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--New Topic-->
+        <scene sceneID="Ipp-eR-s8g">
+            <objects>
+                <viewController id="gBS-n3-RfD" customClass="NewMessageViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KeI-Zh-4Z5"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Zd-VW-Ekn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vmy-4H-cs6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Topic" id="4F1-ud-XBT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="d6r-Kk-zPG"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FAM-wZ-TMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892" y="-464"/>
+        </scene>
         <!--Talk About-->
         <scene sceneID="Os6-Ce-H71">
             <objects>
-                <tableViewController id="hYI-zh-dXR" sceneMemberID="viewController">
+                <tableViewController id="hYI-zh-dXR" customClass="ChatsListTableViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="c2L-HM-xV7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +72,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="mHL-u3-rFo">
                                                             <rect key="frame" x="0.0" y="0.0" width="52" height="13"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Qf-MS-BUB">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upArrowPicto" translatesAutoresizingMaskIntoConstraints="NO" id="9Qf-MS-BUB">
                                                                     <rect key="frame" x="0.0" y="0.0" width="13" height="13"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="13" id="Ck1-0c-GyB"/>
@@ -69,7 +90,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="eC5-7v-bQa">
                                                             <rect key="frame" x="60" y="0.0" width="52" height="13"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yyv-PI-qja">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentPicto" translatesAutoresizingMaskIntoConstraints="NO" id="yyv-PI-qja">
                                                                     <rect key="frame" x="0.0" y="0.0" width="13" height="13"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="13" id="Ias-70-uyU"/>
@@ -128,7 +149,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Talk About" id="6qb-CW-Y4p">
                         <barButtonItem key="leftBarButtonItem" title="Profile" id="bcd-rZ-6Oa"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sHw-xf-xrs"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sHw-xf-xrs">
+                            <connections>
+                                <segue destination="iuj-Yi-uUb" kind="presentation" id="OJO-k7-H2K"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5I-jx-T1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -138,7 +163,7 @@
         <!--Chat-->
         <scene sceneID="H7H-jz-EjE">
             <objects>
-                <tableViewController id="5UQ-c9-szv" sceneMemberID="viewController">
+                <tableViewController id="5UQ-c9-szv" customClass="ChatDetailTableViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="28" sectionFooterHeight="28" id="phF-6f-zcW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,11 +361,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftG-nd-bam" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="250.52473763118442"/>
+            <point key="canvasLocation" x="313" y="251"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MLO-8O-8Zs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iuj-Yi-uUb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QaF-sM-KxC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gBS-n3-RfD" kind="relationship" relationship="rootViewController" id="dCO-Pi-iuI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mmj-gM-TD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1127" y="-464"/>
         </scene>
     </scenes>
     <resources>
+        <image name="commentPicto" width="9" height="9"/>
         <image name="downVote" width="39" height="39"/>
+        <image name="upArrowPicto" width="9" height="9"/>
         <image name="upVote" width="39" height="39"/>
     </resources>
 </document>

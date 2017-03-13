@@ -13,6 +13,19 @@
 		5A35A2611E76FDC500162A20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25F1E76FDC500162A20 /* LaunchScreen.storyboard */; };
 		5A35A2741E76FFCD00162A20 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A35A2731E76FFCD00162A20 /* CloudKit.framework */; };
 		5A35A2761E77044600162A20 /* Screen Shot 2017-03-13 at 10.35.36 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A2751E77044600162A20 /* Screen Shot 2017-03-13 at 10.35.36 AM.png */; };
+		5A35A2781E772BCB00162A20 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2771E772BCB00162A20 /* User.swift */; };
+		5A35A27A1E772BD300162A20 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2791E772BD300162A20 /* Message.swift */; };
+		5A35A27C1E772BE400162A20 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A27B1E772BE400162A20 /* Chat.swift */; };
+		5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A27D1E772E1E00162A20 /* CloudKitManager.swift */; };
+		5A35A2801E772E5100162A20 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A27F1E772E5100162A20 /* CloudKitSyncable.swift */; };
+		5A35A2831E773F1500162A20 /* HelperFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2821E773F1500162A20 /* HelperFiles.swift */; };
+		5A35A2851E7752BC00162A20 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2841E7752BC00162A20 /* UserController.swift */; };
+		5A35A2871E7752CE00162A20 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2861E7752CE00162A20 /* MessageController.swift */; };
+		5A35A2891E7752DA00162A20 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2881E7752DA00162A20 /* ChatController.swift */; };
+		5A35A28B1E77530500162A20 /* ChatsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */; };
+		5A35A28D1E77531E00162A20 /* ChatDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */; };
+		5A35A28F1E77533A00162A20 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */; };
+		5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2901E77539500162A20 /* NewMessageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +38,19 @@
 		5A35A2711E76FFC500162A20 /* Talkup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Talkup.entitlements; sourceTree = "<group>"; };
 		5A35A2731E76FFCD00162A20 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5A35A2751E77044600162A20 /* Screen Shot 2017-03-13 at 10.35.36 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2017-03-13 at 10.35.36 AM.png"; sourceTree = "<group>"; };
+		5A35A2771E772BCB00162A20 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5A35A2791E772BD300162A20 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5A35A27B1E772BE400162A20 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		5A35A27D1E772E1E00162A20 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		5A35A27F1E772E5100162A20 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
+		5A35A2821E773F1500162A20 /* HelperFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFiles.swift; sourceTree = "<group>"; };
+		5A35A2841E7752BC00162A20 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		5A35A2861E7752CE00162A20 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
+		5A35A2881E7752DA00162A20 /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsListTableViewController.swift; sourceTree = "<group>"; };
+		5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailTableViewController.swift; sourceTree = "<group>"; };
+		5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		5A35A2901E77539500162A20 /* NewMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +92,11 @@
 				5A35A26C1E76FF5C00162A20 /* Model Controllers */,
 				5A35A26D1E76FF6200162A20 /* Views */,
 				5A35A26E1E76FF6800162A20 /* View Controllers */,
-				5A35A2681E76FDE300162A20 /* Storyboards */,
-				5A35A26A1E76FE1100162A20 /* Resources */,
 				5A35A26F1E76FF6E00162A20 /* Network */,
 				5A35A2701E76FF7A00162A20 /* Protocols */,
+				5A35A2811E773EF900162A20 /* Helper Files */,
+				5A35A2681E76FDE300162A20 /* Storyboards */,
+				5A35A26A1E76FE1100162A20 /* Resources */,
 			);
 			path = Talkup;
 			sourceTree = "<group>";
@@ -103,6 +130,9 @@
 		5A35A26B1E76FF5500162A20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A35A2771E772BCB00162A20 /* User.swift */,
+				5A35A27B1E772BE400162A20 /* Chat.swift */,
+				5A35A2791E772BD300162A20 /* Message.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -110,6 +140,9 @@
 		5A35A26C1E76FF5C00162A20 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A35A2841E7752BC00162A20 /* UserController.swift */,
+				5A35A2861E7752CE00162A20 /* MessageController.swift */,
+				5A35A2881E7752DA00162A20 /* ChatController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -117,6 +150,7 @@
 		5A35A26D1E76FF6200162A20 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -124,6 +158,9 @@
 		5A35A26E1E76FF6800162A20 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */,
+				5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */,
+				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -131,6 +168,7 @@
 		5A35A26F1E76FF6E00162A20 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5A35A27D1E772E1E00162A20 /* CloudKitManager.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -138,6 +176,7 @@
 		5A35A2701E76FF7A00162A20 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				5A35A27F1E772E5100162A20 /* CloudKitSyncable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -148,6 +187,14 @@
 				5A35A2731E76FFCD00162A20 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A35A2811E773EF900162A20 /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A35A2821E773F1500162A20 /* HelperFiles.swift */,
+			);
+			name = "Helper Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +279,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A35A28D1E77531E00162A20 /* ChatDetailTableViewController.swift in Sources */,
+				5A35A27A1E772BD300162A20 /* Message.swift in Sources */,
+				5A35A2871E7752CE00162A20 /* MessageController.swift in Sources */,
+				5A35A2801E772E5100162A20 /* CloudKitSyncable.swift in Sources */,
+				5A35A2891E7752DA00162A20 /* ChatController.swift in Sources */,
+				5A35A28B1E77530500162A20 /* ChatsListTableViewController.swift in Sources */,
+				5A35A2851E7752BC00162A20 /* UserController.swift in Sources */,
+				5A35A28F1E77533A00162A20 /* MessageTableViewCell.swift in Sources */,
+				5A35A2831E773F1500162A20 /* HelperFiles.swift in Sources */,
+				5A35A27C1E772BE400162A20 /* Chat.swift in Sources */,
+				5A35A2781E772BCB00162A20 /* User.swift in Sources */,
 				5A35A2571E76FDC500162A20 /* AppDelegate.swift in Sources */,
+				5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */,
+				5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
