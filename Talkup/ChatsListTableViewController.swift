@@ -9,6 +9,29 @@
 import UIKit
 
 class ChatsListTableViewController: UITableViewController {
+    
+    //MARK: - Outlets
+    
+    //MARK: - Properties
+    
+    
+    //MARK: - View lifecycle 
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //customization 
+        //fetch data
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
 
     // MARK: - Table view data source
     
@@ -31,5 +54,8 @@ class ChatsListTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        
     }
 }

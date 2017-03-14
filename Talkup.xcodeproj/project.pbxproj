@@ -26,6 +26,8 @@
 		5A35A28D1E77531E00162A20 /* ChatDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */; };
 		5A35A28F1E77533A00162A20 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */; };
 		5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2901E77539500162A20 /* NewMessageViewController.swift */; };
+		5A35A2931E78329A00162A20 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2921E78329A00162A20 /* WelcomeViewController.swift */; };
+		5A35A2951E78412A00162A20 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2941E78412A00162A20 /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailTableViewController.swift; sourceTree = "<group>"; };
 		5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		5A35A2901E77539500162A20 /* NewMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
+		5A35A2921E78329A00162A20 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		5A35A2941E78412A00162A20 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,9 +162,11 @@
 		5A35A26E1E76FF6800162A20 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A35A2941E78412A00162A20 /* LoadingViewController.swift */,
 				5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */,
 				5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */,
 				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
+				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -282,9 +288,11 @@
 				5A35A28D1E77531E00162A20 /* ChatDetailTableViewController.swift in Sources */,
 				5A35A27A1E772BD300162A20 /* Message.swift in Sources */,
 				5A35A2871E7752CE00162A20 /* MessageController.swift in Sources */,
+				5A35A2951E78412A00162A20 /* LoadingViewController.swift in Sources */,
 				5A35A2801E772E5100162A20 /* CloudKitSyncable.swift in Sources */,
 				5A35A2891E7752DA00162A20 /* ChatController.swift in Sources */,
 				5A35A28B1E77530500162A20 /* ChatsListTableViewController.swift in Sources */,
+				5A35A2931E78329A00162A20 /* WelcomeViewController.swift in Sources */,
 				5A35A2851E7752BC00162A20 /* UserController.swift in Sources */,
 				5A35A28F1E77533A00162A20 /* MessageTableViewCell.swift in Sources */,
 				5A35A2831E773F1500162A20 /* HelperFiles.swift in Sources */,

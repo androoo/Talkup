@@ -10,6 +10,19 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
 
+    //MARK: - Outlets 
+    
+    
+    //MARK: - setup Methods
+    
+    func clearCellData() {
+        
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
     
 
 }
