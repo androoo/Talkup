@@ -21,36 +21,35 @@ class Message: CloudKitSyncable {
     
     //MARK: - Properties
     
-    var owner: MessageOwner
+    var owner: MessageOwner = .receiver
     var type: MessageType
-    var content: Any
-    var timestamp: Int
+    var timestamp: Date
     var isRead: Bool
     var image: UIImage?
     var score: Int
+    let content: Any
     var chat: Chat
     private var toChatID: String?
     private var fromID: String?
     
     //MARK: - Inits
     
-    init(type: MessageType, content: Any, owner: MessageOwner, chat: Chat, timestamp: Int, isRead: Bool, score: Int = 0) {
+    init(type: MessageType = .text, owner: MessageOwner = .receiver, chat: Chat, timestamp: Date = Date(), isRead: Bool = false, content: Any, score: Int = 0) {
             self.type = type
-            self.content = content
             self.owner = owner
             self.chat = chat
             self.timestamp = timestamp
             self.isRead = isRead
+            self.content = content
+            self.score = score
     }
     
     //MARK: - CloudKitSyncable 
     
     convenience required init?(record: CKRecord) {
+        guard let timestamp = record.creationDate else { return nil }
         
-        guard let timestamp = record.creationDate,
-            let text = record[Message.typeKey] as? String else { return nil }
-        
-        self.init(type: MessageType, content: Any, owner: MessageOwner, chat: Chat, timestamp: timestamp, isRead: Bool)
+        self.init(chat: chat, timestamp: timestamp, content: content)
             cloudKitRecordID = record.recordID
     }
     var cloudKitRecordID: CKRecordID?
@@ -59,15 +58,14 @@ class Message: CloudKitSyncable {
 
 extension CKRecord {
     convenience init(_ message: Message) {
-        guard let chat = message.chat else { fatalError("Message does not have a parent chat") }
-        let userRecordID = chat.cloudKitRecordID ?? CKRecord(chat).recordID
+        let chat = message.chat
+        let chatRecordID = chat.cloudKitRecordID ?? CKRecord(chat).recordID
         let recordID = CKRecordID(recordName: UUID().uuidString)
         
         self.init(recordType: message.recordType, recordID: recordID)
         
         self[Message.timestampKey] = message.timestamp as CKRecordValue?
-        self[Message.ownerKey] = message.owner as CKRecordValue?
-        self[Message.chatKey] = CKReference(recordID: )
+        self[Message.chatKey] = CKReference(recordID: chatRecordID, action: .deleteSelf)
         
     }
 }

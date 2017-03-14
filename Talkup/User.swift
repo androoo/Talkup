@@ -72,6 +72,6 @@ extension CKRecord {
         self.init(recordType: user.recordType, recordID: recordID)
         
         self[User.photoDataKey] = CKAsset(fileURL: user.temporaryPhotoURL)
-        self[User.usernameKey] = user.username as? CKRecordValue
+        self[User.usernameKey] = user.username as CKRecordValue?
     }
 }

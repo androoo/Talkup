@@ -36,9 +36,9 @@ class Chat: CloudKitSyncable {
     //turn into asset if giving to ck
     
     convenience required init?(record: CKRecord) {
-        guard let topic = record[Chat.topicKey] as? CKAsset,
-            let users = record[Chat.usersKey] as? CKAsset,
-            let messages = record[Chat.messagesKey] as? CKAsset else { return nil }
+        guard let topic = record[Chat.topicKey] as? String,
+            let users = record[Chat.usersKey] as? [User],
+            let messages = record[Chat.messagesKey] as? [Message] else { return nil }
         
         self.init(topic: topic, users: users, messages: messages)
         cloudKitRecordID = record.recordID
