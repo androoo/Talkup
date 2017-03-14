@@ -7,27 +7,33 @@
 //
 
 import UIKit
+import CloudKit
 
 class LoadingViewController: UIViewController {
     
     //MARK: - Properties
+    let cloudKitManager = CloudKitManager()
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         get {
             return UIInterfaceOrientationMask.portrait
         }
     }
+
     
     //MARK: - Check if user is user is registered
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let userInformation = UserDefaults.standard.dictionary(forKey: "userInformation") {
-            let email = userInformation["username"] as? String
-            //User.login(withUsername: username, CloudKitId: IDK, completion)
-            // dispatch to main and pushToVC
-        } else {
-            self.pushTo(viewController: .welcome)
+        cloudKitManager.fetchLoggedInUserRecord { (recordID, error) in
+            if let userID = recordID {
+                NSLog("recieved iCLoudID \(userID)")
+                self.pushTo(viewController: .conversations)
+            } else {
+                NSLog("Fetched iCloudID was nil")
+                self.pushTo(viewController: .welcome)
+            }
         }
     }
     

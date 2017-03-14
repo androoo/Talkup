@@ -345,10 +345,10 @@
             </objects>
             <point key="canvasLocation" x="2831.1999999999998" y="250.52473763118442"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="HTM-2d-baf">
             <objects>
-                <viewController storyboardIdentifier="Welcome" id="kpo-qy-iiv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Welcome" id="kpo-qy-iiv" customClass="WelcomeViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CI8-bO-EMh"/>
                         <viewControllerLayoutGuide type="bottom" id="8ME-Fh-scc"/>
