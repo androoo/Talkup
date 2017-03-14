@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New Topic-->
+        <!--New Message-->
         <scene sceneID="Ipp-eR-s8g">
             <objects>
                 <viewController id="gBS-n3-RfD" customClass="NewMessageViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,15 +21,87 @@
                     <view key="view" contentMode="scaleToFill" id="Vmy-4H-cs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaN-MT-dL6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="48"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Topic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jU0-z3-kC8">
+                                        <rect key="frame" x="8" y="8" width="359" height="32"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="6Xd-cU-4yd"/>
+                                    <constraint firstAttribute="trailing" secondItem="jU0-z3-kC8" secondAttribute="trailing" constant="8" id="b8y-yF-knj"/>
+                                    <constraint firstItem="jU0-z3-kC8" firstAttribute="top" secondItem="iaN-MT-dL6" secondAttribute="top" constant="8" id="fQx-E5-1c3"/>
+                                    <constraint firstItem="jU0-z3-kC8" firstAttribute="leading" secondItem="iaN-MT-dL6" secondAttribute="leading" constant="8" id="oRw-8W-bBJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="jU0-z3-kC8" secondAttribute="bottom" constant="8" id="pAI-3a-EsR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03J-XH-cSp">
+                                <rect key="frame" x="0.0" y="112" width="375" height="48"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWd-iG-a8m">
+                                        <rect key="frame" x="8" y="8" width="359" height="32"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hWd-iG-a8m" firstAttribute="top" secondItem="03J-XH-cSp" secondAttribute="top" constant="8" id="5eV-B9-Nwk"/>
+                                    <constraint firstItem="hWd-iG-a8m" firstAttribute="leading" secondItem="03J-XH-cSp" secondAttribute="leading" constant="8" id="FyT-9S-kvL"/>
+                                    <constraint firstAttribute="bottom" secondItem="hWd-iG-a8m" secondAttribute="bottom" constant="8" id="OaF-vC-uJH"/>
+                                    <constraint firstAttribute="height" constant="48" id="YNp-DT-8wj"/>
+                                    <constraint firstAttribute="trailing" secondItem="hWd-iG-a8m" secondAttribute="trailing" constant="8" id="vgh-0O-xYw"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRt-HR-lzo">
+                                <rect key="frame" x="0.0" y="160" width="375" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="lnF-Vi-8Ix"/>
+                                </constraints>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendMessageButtonTapped:" destination="gBS-n3-RfD" eventType="touchUpInside" id="BDS-Z0-TGK"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lRt-HR-lzo" firstAttribute="leading" secondItem="Vmy-4H-cs6" secondAttribute="leading" id="8Ca-Uc-CTi"/>
+                            <constraint firstItem="03J-XH-cSp" firstAttribute="top" secondItem="iaN-MT-dL6" secondAttribute="bottom" id="FE5-r9-cKr"/>
+                            <constraint firstItem="iaN-MT-dL6" firstAttribute="leading" secondItem="Vmy-4H-cs6" secondAttribute="leading" id="Fiv-Vt-iIT"/>
+                            <constraint firstAttribute="trailing" secondItem="lRt-HR-lzo" secondAttribute="trailing" id="LuZ-vw-K0t"/>
+                            <constraint firstItem="iaN-MT-dL6" firstAttribute="top" secondItem="KeI-Zh-4Z5" secondAttribute="bottom" id="NAO-7a-jvU"/>
+                            <constraint firstAttribute="trailing" secondItem="03J-XH-cSp" secondAttribute="trailing" id="RJk-pk-qzF"/>
+                            <constraint firstItem="03J-XH-cSp" firstAttribute="leading" secondItem="Vmy-4H-cs6" secondAttribute="leading" id="T61-7o-eLR"/>
+                            <constraint firstItem="lRt-HR-lzo" firstAttribute="top" secondItem="03J-XH-cSp" secondAttribute="bottom" id="ZX5-Gi-3iF"/>
+                            <constraint firstAttribute="trailing" secondItem="iaN-MT-dL6" secondAttribute="trailing" id="bzW-DY-1Qb"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Topic" id="4F1-ud-XBT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="d6r-Kk-zPG"/>
+                    <navigationItem key="navigationItem" title="New Message" id="4F1-ud-XBT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="d6r-Kk-zPG">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="gBS-n3-RfD" id="FZc-92-efE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="messageTextField" destination="hWd-iG-a8m" id="F7r-1P-ZXh"/>
+                        <outlet property="topicTextField" destination="jU0-z3-kC8" id="R2R-aY-llY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAM-wZ-TMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="-464"/>
+            <point key="canvasLocation" x="2064.8000000000002" y="-465.51724137931041"/>
         </scene>
         <!--Talk About-->
         <scene sceneID="Os6-Ce-H71">
@@ -415,10 +487,10 @@
             </objects>
             <point key="canvasLocation" x="-391.19999999999999" y="250.52473763118442"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav View Controller-->
         <scene sceneID="CD4-nU-DlE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P6r-J3-GHa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="P6r-J3-GHa" customClass="NavViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="j0C-NI-Zs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -480,7 +552,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmj-gM-TD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1127" y="-464"/>
+            <point key="canvasLocation" x="1252" y="-466"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="pX1-Rp-qAi">

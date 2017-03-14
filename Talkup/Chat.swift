@@ -10,50 +10,39 @@ import Foundation
 import UIKit
 import CloudKit
 
-class Chat: CloudKitSyncable {
-    
-    //MARK: - Keys 
-    
-    static let typeKey = "Chat"
-    static let topicKey = "topic"
-    static let usersKey = "users"
-    static let messagesKey = "messages"
-    
+class Chat {
+
     //MARK: - Properties
-    let topic: String
-    let users: [User]
+    var topic: String
     let score: Int
     var messages: [Message]
+    var cloudKitRecordID: CKRecordID?
     
     //MARK: - Inits
     
-    init(topic: String, users: [User], score: Int = 0, messages: [Message]) {
+    init(topic: String, score: Int = 0, messages: [Message] = []) {
         self.topic = topic
-        self.users = users
         self.score = score
         self.messages = messages
     }
-    //turn into asset if giving to ck
     
-    convenience required init?(record: CKRecord) {
-        guard let topic = record[Chat.topicKey] as? String,
-            let users = record[Chat.usersKey] as? [User],
-            let messages = record[Chat.messagesKey] as? [Message] else { return nil }
+    init?(cloudKitRecord: CKRecord) {
+        guard let topic = cloudKitRecord[Constants.chatTopicKey] as? String,
+            let messages = cloudKitRecord[Constants.messagesKey] as? [Message],
+            let score = cloudKitRecord[Constants.scoreKey] as? Int else { return nil }
         
-        self.init(topic: topic, users: users, messages: messages)
-        cloudKitRecordID = record.recordID
+        self.topic = topic
+        self.score = score
+        self.messages = messages
+        self.cloudKitRecordID = cloudKitRecord.recordID
     }
-    
-    var recordType: String { return Chat.typeKey }
-    var cloudKitRecordID: CKRecordID?
 }
 
 //MARK: - CloudKit 
 
 extension CKRecord {
-    convenience init(_ chat: Chat) {
-        let recordID = CKRecordID(recordName: UUID().uuidString)
-        self.init(recordType: chat.recordType, recordID: recordID)
-        self[Chat.topicKey] = chat.topic as CKRecordValue?
+    convenience init(chat: Chat) {
+        self.init(recordType: "Chat")
+        self.setValue(chat.topic, forKey: Constants.chatKey)
     }
 }

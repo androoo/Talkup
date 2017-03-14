@@ -43,7 +43,7 @@ class LoadingViewController: UIViewController {
     func pushTo(viewController: ViewControllerType) {
         switch viewController {
         case .conversations:
-            guard let vc = storyboard?.instantiateViewController(withIdentifier: "Conversations") as? ChatsListTableViewController else { return }
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavViewController else { return }
             self.present(vc, animated: false, completion: nil)
         case .welcome:
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "Welcome") as? WelcomeViewController else { return }
