@@ -18,6 +18,7 @@ class Message: CloudKitSyncable {
     static let ownerKey = "owner"
     static let chatKey = "chat"
     static let timestampKey = "timestamp"
+    static let contentKey = "content"
     
     //MARK: - Properties
     
@@ -47,7 +48,9 @@ class Message: CloudKitSyncable {
     //MARK: - CloudKitSyncable 
     
     convenience required init?(record: CKRecord) {
-        guard let timestamp = record.creationDate else { return nil }
+        guard let timestamp = record.creationDate,
+            let chat = record[Message.chatKey] as? Chat,
+            let content = record[Message.contentKey] as? Any else { return nil }
         
         self.init(chat: chat, timestamp: timestamp, content: content)
             cloudKitRecordID = record.recordID

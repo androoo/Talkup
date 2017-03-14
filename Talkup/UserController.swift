@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import CloudKit
+
+class UserController {
+    
+    static let shared = UserController()
+    
+}

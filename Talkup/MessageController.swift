@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import CloudKit
+
+class MessageController {
+    
+    static let shared = MessageController()
+    
+}

@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import CloudKit
+
+class ChatController {
+    
+    static let shared = ChatController()
+    
+}
