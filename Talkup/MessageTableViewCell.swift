@@ -9,8 +9,24 @@
 import UIKit
 
 class MessageTableViewCell: UITableViewCell {
+    
+    //MARK: - Properties 
+    
+    var chat: Chat? {
+        didSet {
+            updateViews()
+        }
+    }
 
     //MARK: - Outlets 
+    
+    @IBOutlet weak var chatTopicLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var chatCountLabel: UILabel!
+    @IBOutlet weak var topicNumberLabel: UILabel!
+    @IBOutlet weak var hasReadAlertNumber: UILabel!
+    @IBOutlet weak var hasReadAlertBg: UIImageView!
+    
     
     
     //MARK: - setup Methods
@@ -24,5 +40,11 @@ class MessageTableViewCell: UITableViewCell {
         
     }
     
-
+    private func updateViews() {
+        guard let chat = chat else { return }
+        
+            chatTopicLabel.text = chat.topic
+            
+        
+    }
 }

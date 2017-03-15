@@ -14,26 +14,22 @@ class Chat {
 
     //MARK: - Properties
     var topic: String
-    let score: Int
-    var messages: [Message]
+    var score: Int?
+    var messages: [Message]?
     var cloudKitRecordID: CKRecordID?
     
     //MARK: - Inits
     
-    init(topic: String, score: Int = 0, messages: [Message] = []) {
+    init(topic: String, score: Int? = 0, messages: [Message]? = nil) {
         self.topic = topic
         self.score = score
         self.messages = messages
     }
     
     init?(cloudKitRecord: CKRecord) {
-        guard let topic = cloudKitRecord[Constants.chatTopicKey] as? String,
-            let messages = cloudKitRecord[Constants.messagesKey] as? [Message],
-            let score = cloudKitRecord[Constants.scoreKey] as? Int else { return nil }
+        guard let topic = cloudKitRecord[Constants.chatKey] as? String else { return nil }
         
         self.topic = topic
-        self.score = score
-        self.messages = messages
         self.cloudKitRecordID = cloudKitRecord.recordID
     }
 }

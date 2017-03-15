@@ -112,7 +112,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="dVp-TR-guB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="70" id="dVp-TR-guB" customClass="MessageTableViewCell" customModule="Talkup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dVp-TR-guB" id="dOx-ra-guH">
@@ -210,6 +210,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="chatCountLabel" destination="VT7-am-pz7" id="ddO-Vg-uW3"/>
+                                    <outlet property="chatTopicLabel" destination="YKI-DB-DqR" id="Z5n-zu-NND"/>
+                                    <outlet property="hasReadAlertBg" destination="boj-qh-OsA" id="0ub-Ku-yYQ"/>
+                                    <outlet property="hasReadAlertNumber" destination="g18-eh-h4y" id="i1i-nh-B72"/>
+                                    <outlet property="scoreLabel" destination="G7N-TS-wtg" id="iKH-Bm-u7y"/>
+                                    <outlet property="topicNumberLabel" destination="Oji-cS-uJY" id="APF-H5-kIX"/>
                                     <segue destination="5UQ-c9-szv" kind="show" identifier="toChat" id="TgL-fY-57K"/>
                                 </connections>
                             </tableViewCell>

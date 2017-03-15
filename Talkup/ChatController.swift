@@ -17,9 +17,15 @@ class ChatController {
     static let cloudKitManager = CloudKitManager()
     static let shared = ChatController()
     
+    static let chatsDidChangeNotification = Notification.Name("chatsDidChange")
+    
     var isSyncing: Bool = false
     
-    static var chats: [Chat] = []
+    static var chats: [Chat] = [] {
+        didSet {
+            NotificationCenter.default.post(name: chatsDidChangeNotification, object: self)
+        }
+    }
     
     static func createChatWithName(name: String) -> Chat {
         return Chat(topic: name)
@@ -36,7 +42,11 @@ class ChatController {
         let chat = createChatWithName(name: chatTopic)
         let message = createMessageWithText(owner: owner, text: firstMessage)
         
-        chat.messages.append(message)
+        if chat.messages != nil {
+            chat.messages!.append(message)
+        } else {
+            chat.messages = [message]
+        }
         
         let chatRecord = CKRecord(chat: chat)
         
@@ -46,11 +56,12 @@ class ChatController {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                guard let chatRecordID = chat.cloudKitRecordID else { return }
-                for message in chat.messages {
+                guard let chatRecordID = chat.cloudKitRecordID,
+                    let messages = chat.messages else { return }
+                for message in messages {
                     message.chatReference = CKReference(recordID: chatRecordID, action: .deleteSelf)
                 }
-                let messageRecords = chat.messages.flatMap({CKRecord(message: $0)})
+                let messageRecords = messages.flatMap({CKRecord(message: $0)})
                 let modifyOperation = CKModifyRecordsOperation(recordsToSave: messageRecords, recordIDsToDelete: nil)
                 
                 modifyOperation.completionBlock = {
@@ -61,7 +72,23 @@ class ChatController {
                 cloudKitManager.publicDatabase.add(modifyOperation)
             }
         }
+    }
     
+    static func fetchAllChats(completion: @escaping () -> Void) {
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Chat", predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                guard let records = records else { return }
+                let chats = records.flatMap({Chat(cloudKitRecord: $0)})
+                self.chats = chats
+                completion()
+            }
+        }
     }
 }
 

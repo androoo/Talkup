@@ -45,8 +45,10 @@ class NewMessageViewController: UIViewController {
        
         let chat = Chat(topic: topicText)
         ChatController.addChatToCloudKit(chatTopic: topicText, owner: "bob", firstMessage: message) { 
-
+            
+            
         }
+        dismiss(animated: true, completion: nil)
     }
 
 }
