@@ -19,52 +19,80 @@ class ChatsListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ChatController.fetchAllChats {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        
+        title = "Talkup"
+        
+        requestFullSync()
+
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
+    }
+    
+    private func requestFullSync(_ completion: (() -> Void)? = nil) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        ChatController.shared.performFullSync {
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            completion?()
         }
-        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
+    // MARK: Notifications
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func postsChanged(_ notification: Notification) {
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ChatController.chats.count
+        return ChatController.shared.chats.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? MessageTableViewCell else { return MessageTableViewCell() }
         
-        let chats = ChatController.chats
-        cell.chat = chats[indexPath.row]
         
+        
+        let chats = ChatController.shared.chats
+        cell.chat = chats[indexPath.row]
+        cell.topicNumberLabel.text = "\(indexPath.row + 1)"
+        cell.topicNumberLabel.textColor = UIColor.lightGray
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        if segue.identifier == "toChatDetail" {
+            if let detailViewController = segue.destination as? ChatDetailTableViewController,
+                let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+                
+                let chats = ChatController.shared.chats
+                detailViewController.chat = chats[selectedIndexPath.row]
+            }
+        }
         
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,35 +10,42 @@ import Foundation
 import UIKit
 import CloudKit
 
-class Chat {
+class Chat: CloudKitSyncable {
 
     //MARK: - Properties
     var topic: String
     var score: Int?
-    var messages: [Message]?
-    var cloudKitRecordID: CKRecordID?
+    var messages: [Message]
     
-    //MARK: - Inits
+    //MARK: - CloudKitSyncable
     
-    init(topic: String, score: Int? = 0, messages: [Message]? = nil) {
+    init(topic: String, score: Int? = 0, messages: [Message] = []) {
         self.topic = topic
         self.score = score
         self.messages = messages
     }
     
-    init?(cloudKitRecord: CKRecord) {
-        guard let topic = cloudKitRecord[Constants.chatKey] as? String else { return nil }
-        
-        self.topic = topic
+    convenience required init?(cloudKitRecord: CKRecord) {
+        guard let topic = cloudKitRecord[Constants.chatKey] as? String /*,
+            let messages = cloudKitRecord[Constants.messagesKey] as? [Message] */ else { return nil }
+
+        self.init(topic: topic, messages: [])
+//        self.init(topic: topic, messages: messages)
         self.cloudKitRecordID = cloudKitRecord.recordID
     }
+    
+    var recordType: String { return Constants.chatTopicKey }
+    var cloudKitRecordID: CKRecordID?
 }
 
-//MARK: - CloudKit 
+//MARK: -
 
 extension CKRecord {
     convenience init(chat: Chat) {
-        self.init(recordType: "Chat")
+        let recordID = CKRecordID(recordName: UUID().uuidString)
+        self.init(recordType: Constants.chattypeKey, recordID: recordID)
+        
         self.setValue(chat.topic, forKey: Constants.chatKey)
     }
 }
+

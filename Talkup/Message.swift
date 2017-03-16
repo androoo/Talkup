@@ -10,7 +10,7 @@ import Foundation
 import CloudKit
 import UIKit
 
-class Message {
+class Message: CloudKitSyncable {
     
     //MARK: - Properties
     
@@ -20,35 +20,35 @@ class Message {
     var isRead: Bool
     var score: Int
     var chatReference: CKReference?
-    
+    var chat: Chat?
     
     //MARK: - Inits
     
-    init(owner: String, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0) {
-
-            self.owner = owner
-            self.text = text
-            self.timestamp = timestamp
-            self.isRead = isRead
-            self.score = score
+    init(owner: String, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat? = nil) {
+        
+        self.owner = owner
+        self.text = text
+        self.timestamp = timestamp
+        self.isRead = isRead
+        self.score = score
+        self.chat = chat
     }
     
-    //MARK: - CloudKitSyncable 
+    //MARK: - CloudKitSyncable
     
-    init?(cloudKitRecord: CKRecord) {
+    convenience required init?(cloudKitRecord: CKRecord) {
         guard let owner = cloudKitRecord[Constants.usernameKey] as? String,
             let text = cloudKitRecord[Constants.textKey] as? String,
             let timestamp = cloudKitRecord.creationDate,
             let isRead = cloudKitRecord[Constants.hasReadKey] as? Bool,
             let score = cloudKitRecord[Constants.scoreKey] as? Int else { return nil }
         
-        self.owner = owner
-        self.text = text
-        self.timestamp = timestamp
-        self.isRead = isRead
-        self.score = score 
+        self.init(owner: owner, text: text, timestamp: timestamp, isRead: isRead, score: score)
         self.chatReference = cloudKitRecord[Constants.chatReferenceKey] as? CKReference
     }
+    var creatorUserRecordID: CKRecordID?
+    var cloudKitRecordID: CKRecordID?
+    var recordType: String { return Constants.messagetypeKey }
 }
 
 extension CKRecord {
@@ -59,6 +59,8 @@ extension CKRecord {
         self.setValue(message.timestamp, forKey: Constants.timestampKey)
         self.setValue(message.isRead, forKey: Constants.hasReadKey)
         self.setValue(message.score, forKey: Constants.scoreKey)
+        let reference = CKReference(recordID: message.chat!.cloudKitRecordID!, action: .deleteSelf)
+        self.setValue(reference, forKey: Constants.chatReferenceKey)
         
     }
 }

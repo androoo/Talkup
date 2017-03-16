@@ -143,8 +143,8 @@
 		5A35A26C1E76FF5C00162A20 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5A35A2861E7752CE00162A20 /* MessageController.swift */,
 				5A35A2881E7752DA00162A20 /* ChatController.swift */,
+				5A35A2861E7752CE00162A20 /* MessageController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -466,6 +466,7 @@
 				5A35A2671E76FDC500162A20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

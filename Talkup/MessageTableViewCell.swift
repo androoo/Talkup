@@ -26,6 +26,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var topicNumberLabel: UILabel!
     @IBOutlet weak var hasReadAlertNumber: UILabel!
     @IBOutlet weak var hasReadAlertBg: UIImageView!
+    @IBOutlet weak var chatMessageLabel: UITextView!
     
     
     
