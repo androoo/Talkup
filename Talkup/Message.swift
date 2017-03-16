@@ -19,12 +19,11 @@ class Message: CloudKitSyncable {
     var timestamp: Date
     var isRead: Bool
     var score: Int
-    var chatReference: CKReference?
     var chat: Chat?
     
     //MARK: - Inits
     
-    init(owner: String, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat? = nil) {
+    init(owner: String, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat?) {
         
         self.owner = owner
         self.text = text
@@ -37,30 +36,36 @@ class Message: CloudKitSyncable {
     //MARK: - CloudKitSyncable
     
     convenience required init?(cloudKitRecord: CKRecord) {
-        guard let owner = cloudKitRecord[Constants.usernameKey] as? String,
+        guard let owner = cloudKitRecord[Constants.ownerKey] as? String,
             let text = cloudKitRecord[Constants.textKey] as? String,
             let timestamp = cloudKitRecord.creationDate,
             let isRead = cloudKitRecord[Constants.hasReadKey] as? Bool,
             let score = cloudKitRecord[Constants.scoreKey] as? Int else { return nil }
         
-        self.init(owner: owner, text: text, timestamp: timestamp, isRead: isRead, score: score)
-        self.chatReference = cloudKitRecord[Constants.chatReferenceKey] as? CKReference
+        self.init(owner: owner, text: text, timestamp: timestamp, isRead: isRead, score: score, chat: nil)
     }
-    var creatorUserRecordID: CKRecordID?
+//    var creatorUserRecordID: CKRecordID?
+    
     var cloudKitRecordID: CKRecordID?
     var recordType: String { return Constants.messagetypeKey }
 }
 
 extension CKRecord {
     convenience init(message: Message) {
-        self.init(recordType: "Message")
-        self.setValue(message.owner, forKey: Constants.ownerKey)
-        self.setValue(message.text, forKey: Constants.textKey)
-        self.setValue(message.timestamp, forKey: Constants.timestampKey)
-        self.setValue(message.isRead, forKey: Constants.hasReadKey)
-        self.setValue(message.score, forKey: Constants.scoreKey)
-        let reference = CKReference(recordID: message.chat!.cloudKitRecordID!, action: .deleteSelf)
-        self.setValue(reference, forKey: Constants.chatReferenceKey)
+        
+        guard let chat = message.chat else { fatalError("Message does not have a Chat relationship") }
+        
+        let chatRecordID = chat.cloudKitRecordID ?? CKRecord(chat: chat).recordID
+        let recordID = CKRecordID(recordName: UUID().uuidString)
+        
+        self.init(recordType: message.recordType, recordID: recordID)
+        
+        self[Constants.ownerKey] = message.owner as CKRecordValue?
+        self[Constants.textKey] = message.text as CKRecordValue?
+        self[Constants.timestampKey] = message.timestamp as CKRecordValue?
+        self[Constants.hasReadKey] = message.isRead as CKRecordValue?
+        self[Constants.scoreKey] = message.score as CKRecordValue?
+        self[Constants.chatKey] = CKReference(recordID: chatRecordID, action: .deleteSelf)
         
     }
 }

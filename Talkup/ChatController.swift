@@ -55,7 +55,8 @@ class ChatController {
         
         let chat = Chat(topic: chatTopic)
         chats.append(chat)
-        let message = Message(owner: owner, text: firstMessage)
+        let message = Message(owner: owner, text: firstMessage, chat: chat)
+        chat.messages.append(message)
         
         cloudKitManager.saveRecord(CKRecord(chat: chat)) { (record, error) in
             guard let record = record else {
@@ -88,7 +89,7 @@ class ChatController {
     
     @discardableResult func addMessage(toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {
         
-        let message = Message(owner: "bob", text: messageText)
+        let message = Message(owner: "bob", text: messageText, chat: chat)
         chat.messages.append(message)
         
         cloudKitManager.saveRecord(CKRecord(message: message)) { (record, error) in
@@ -115,7 +116,7 @@ class ChatController {
         
         let predicate = NSPredicate(format: "chat == %@", argumentArray: [recordID])
         
-        cloudKitManager.subscribe(Constants.messagetypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: [Constants.messagetypeKey, Constants.messagesKey], options: .firesOnRecordCreation) { (subscription, error) in
+        cloudKitManager.subscribe(Constants.messagetypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: [Constants.textKey], options: .firesOnRecordCreation) { (subscription, error) in
             
             let success = subscription != nil
             completion(success, error)
@@ -166,7 +167,7 @@ class ChatController {
         guard let subscriptionID = chat.cloudKitRecordID?.recordName else { completion(false)
             return
         }
-        self.cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
             let subscribed = subscription != nil
             completion(subscribed)
         }
@@ -216,6 +217,7 @@ class ChatController {
                     let message = Message(cloudKitRecord: record) else { return }
                 let chat = self.chats[chatIndex]
                 chat.messages.append(message)
+                message.chat = chat
                 
             default:
                 return

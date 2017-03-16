@@ -12,6 +12,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate 
     
     //MARK: - Properties
     
+    
     var chat: Chat? {
         didSet {
             updateViews()
@@ -21,6 +22,8 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate 
     private func updateViews() {
         //do stuff to stuff
         guard let chat = chat, isViewLoaded else { return }
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         tableView.reloadData()
         
@@ -33,15 +36,18 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchMessages()
         
         updateViews()
+        customize()
         
         guard let chat = chat, isViewLoaded else { return }
         title = "\(chat.topic)"
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(chatMessagesChanged(_:)), name: ChatController.ChatMessagesChangedNotification, object: nil)
+        
+        tableView.estimatedRowHeight = 86
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     // MARK: Notifications
@@ -54,9 +60,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate 
     
     func fetchMessages() {
         guard let currentChat = chat else { return }
-        MessageController.fetchMessagesFor(chat: currentChat) {
-            
-        }
+
     }
 
     // MARK: - Table view data source
@@ -76,12 +80,31 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+//        let frame = tableView.rectForRow(at: indexPath)
+//        let size = frame.size.height
+        
+        
+        return 86
+        
+    }
+    
+    //MARK: - Customize Appearance 
+    
+    func customize() {
+        self.tableView.estimatedRowHeight = self.barHeight
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.contentInset.bottom = self.barHeight
+        self.tableView.scrollIndicatorInsets.bottom = self.barHeight
+        
+    }
     
     //MARK: - Chat Input 
     
     @IBAction func sendChatMessageButtonTapped(_ sender: Any) {
-        //let message == textinput init Message 
-        //message.send 
+        guard let messageText = inputTextField.text, let chat = self.chat else { return }
+        ChatController.shared.addMessage(toChat: chat, messageText: messageText)
     }
     
 

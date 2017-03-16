@@ -31,10 +31,10 @@ class Chat: CloudKitSyncable {
 
         self.init(topic: topic, messages: [])
 //        self.init(topic: topic, messages: messages)
-        self.cloudKitRecordID = cloudKitRecord.recordID
+        cloudKitRecordID = cloudKitRecord.recordID
     }
     
-    var recordType: String { return Constants.chatTopicKey }
+    var recordType: String { return Constants.chattypeKey }
     var cloudKitRecordID: CKRecordID?
 }
 
@@ -43,9 +43,9 @@ class Chat: CloudKitSyncable {
 extension CKRecord {
     convenience init(chat: Chat) {
         let recordID = CKRecordID(recordName: UUID().uuidString)
-        self.init(recordType: Constants.chattypeKey, recordID: recordID)
+        self.init(recordType: chat.recordType, recordID: recordID)
         
-        self.setValue(chat.topic, forKey: Constants.chatKey)
+        self[Constants.chatKey] = chat.topic as CKRecordValue?
     }
 }
 

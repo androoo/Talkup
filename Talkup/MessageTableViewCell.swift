@@ -10,15 +10,15 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
     
-    //MARK: - Properties 
+    //MARK: - Properties
     
     var chat: Chat? {
         didSet {
             updateViews()
         }
     }
-
-    //MARK: - Outlets 
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var chatTopicLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -27,25 +27,39 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var hasReadAlertNumber: UILabel!
     @IBOutlet weak var hasReadAlertBg: UIImageView!
     @IBOutlet weak var chatMessageLabel: UITextView!
+    @IBOutlet weak var messageBackground: UIImageView!
+    @IBOutlet weak var voteButton: UIButton!
     
+    
+    @IBAction func voteButtonTapped(_ sender: Any) {
+    }
     
     
     //MARK: - setup Methods
     
     func clearCellData() {
-        
+        self.chatMessageLabel.text = nil
+        self.chatMessageLabel.isHidden = false
+        self.messageBackground.image = nil
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        guard let messageToCustomize = chatMessageLabel, let messageBg = messageBackground else { return }
+        
+        self.selectionStyle = .none
+        
+        messageToCustomize.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
+        messageBg.layer.cornerRadius = 15
+        messageBg.clipsToBounds = true
+        
     }
     
     private func updateViews() {
         guard let chat = chat else { return }
-        
-            chatTopicLabel.text = chat.topic
-            
+        chatTopicLabel.text = chat.topic
+        scoreLabel.text = "\(chat.score)"
         
     }
 }

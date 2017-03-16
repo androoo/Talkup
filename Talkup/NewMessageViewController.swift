@@ -13,6 +13,7 @@ class NewMessageViewController: UIViewController {
     //MARK: - Properties
     
     
+    
     //MARK: - Outlets
     
     @IBOutlet var inputbar: UIView!
@@ -57,9 +58,7 @@ class NewMessageViewController: UIViewController {
     
     func createChat() {
         guard let topicText = topicTextField.text,
-            let message = messageTextField.text else { return }
-       
-        let chat = Chat(topic: topicText)
+            let message = messageTextField.text else { return }       
 
         ChatController.shared.createChatWith(chatTopic: topicText, owner: "phil", firstMessage: message) { (_) in
             self.dismiss(animated: true, completion: nil)

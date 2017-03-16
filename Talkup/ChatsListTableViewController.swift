@@ -26,6 +26,8 @@ class ChatsListTableViewController: UITableViewController {
 
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
+        
+        
     }
     
     private func requestFullSync(_ completion: (() -> Void)? = nil) {
@@ -55,8 +57,6 @@ class ChatsListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? MessageTableViewCell else { return MessageTableViewCell() }
-        
-        
         
         let chats = ChatController.shared.chats
         cell.chat = chats[indexPath.row]
