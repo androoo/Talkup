@@ -43,6 +43,7 @@ class Message: CloudKitSyncable {
             let score = cloudKitRecord[Constants.scoreKey] as? Int else { return nil }
         
         self.init(owner: owner, text: text, timestamp: timestamp, isRead: isRead, score: score, chat: nil)
+        cloudKitRecordID = cloudKitRecord.recordID
     }
 //    var creatorUserRecordID: CKRecordID?
     

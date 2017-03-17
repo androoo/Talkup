@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate {
+class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate, MessageVoteButtonDelegate {
     
     //MARK: - Properties
     
@@ -30,8 +30,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate 
         ChatController.shared.checkSubscriptionTo(messagesForChat: chat) { (subscribed) in
             
         }
-    }
-    
+    }   
     //MARK: - View lifecycle
     
     override func viewDidLoad() {
@@ -74,8 +73,10 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate 
         
         guard let chat = chat else { return cell }
         let message = chat.messages[indexPath.row]
+        cell.delegate = self
+        cell.message = message
+//        cell.chatMessageLabel.text = message.text
         
-        cell.chatMessageLabel.text = message.text
         
         return cell
     }
@@ -124,5 +125,40 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate 
     }
     
     let barHeight: CGFloat = 50
-
+    
+    //MARK: - Message Cell Delegate 
+    
+    func toggleVoteCount(_ sender: MessageTableViewCell) {
+        guard let message = sender.message,
+            let index = tableView.indexPath(for: sender) else { return }
+        
+        
+        
+        MessageController.shared.toggleVoteCountFor(messageNamed: message) { (_, _) in
+            
+            DispatchQueue.main.async {
+                
+                self.updateViews()
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

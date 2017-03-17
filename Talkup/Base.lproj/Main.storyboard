@@ -138,7 +138,7 @@
             </objects>
             <point key="canvasLocation" x="2066" y="-466"/>
         </scene>
-        <!--Talk About-->
+        <!--Supertalk-->
         <scene sceneID="Os6-Ce-H71">
             <objects>
                 <tableViewController storyboardIdentifier="Conversations" id="hYI-zh-dXR" customClass="ChatsListTableViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
@@ -147,7 +147,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="81" id="dVp-TR-guB" customClass="MessageTableViewCell" customModule="Talkup" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="81" id="dVp-TR-guB" customClass="ChatTableViewCell" customModule="Talkup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dVp-TR-guB" id="dOx-ra-guH">
@@ -251,12 +251,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="chatCountLabel" destination="VT7-am-pz7" id="ddO-Vg-uW3"/>
-                                    <outlet property="chatTopicLabel" destination="YKI-DB-DqR" id="Z5n-zu-NND"/>
-                                    <outlet property="hasReadAlertBg" destination="boj-qh-OsA" id="0ub-Ku-yYQ"/>
-                                    <outlet property="hasReadAlertNumber" destination="g18-eh-h4y" id="i1i-nh-B72"/>
-                                    <outlet property="scoreLabel" destination="G7N-TS-wtg" id="iKH-Bm-u7y"/>
-                                    <outlet property="topicNumberLabel" destination="Oji-cS-uJY" id="APF-H5-kIX"/>
+                                    <outlet property="chatMessagesLabel" destination="VT7-am-pz7" id="Ap4-w9-4hq"/>
+                                    <outlet property="chatRankLabel" destination="Oji-cS-uJY" id="td0-WU-AYO"/>
+                                    <outlet property="chatTopicLabel" destination="YKI-DB-DqR" id="oxZ-WH-Ycp"/>
+                                    <outlet property="chatVoteCountLabel" destination="G7N-TS-wtg" id="oyj-kY-BKT"/>
+                                    <outlet property="hasReadBadgeBackgroundImageView" destination="boj-qh-OsA" id="P2P-mu-s5G"/>
+                                    <outlet property="hasReadBadgeNumberLabel" destination="g18-eh-h4y" id="S9n-H8-g6u"/>
                                     <segue destination="5UQ-c9-szv" kind="show" identifier="toChatDetail" id="TgL-fY-57K"/>
                                 </connections>
                             </tableViewCell>
@@ -266,8 +266,9 @@
                             <outlet property="delegate" destination="hYI-zh-dXR" id="FTf-ez-SsE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Talk About" id="6qb-CW-Y4p">
+                    <navigationItem key="navigationItem" title="Supertalk" id="6qb-CW-Y4p">
                         <barButtonItem key="rightBarButtonItem" image="addChat" id="sHw-xf-xrs">
+                            <color key="tintColor" red="0.090196078431372548" green="0.792156862745098" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="iuj-Yi-uUb" kind="presentation" id="OJO-k7-H2K"/>
                             </connections>
@@ -287,7 +288,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recieverCell" rowHeight="94" id="7y8-RH-gXg" customClass="MessageTableViewCell" customModule="Talkup" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recieverCell" rowHeight="94" id="7y8-RH-gXg" customClass="MessageTableViewCell" customModule="Talkup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="94"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7y8-RH-gXg" id="eBb-rf-BIO">
@@ -346,7 +347,7 @@
                                             </constraints>
                                             <state key="normal" image="upVote"/>
                                             <connections>
-                                                <action selector="voteButtonTapped:" destination="7y8-RH-gXg" eventType="touchUpInside" id="0NU-Zq-MIs"/>
+                                                <action selector="recievedMessageCellVoteButtonTapped:" destination="7y8-RH-gXg" eventType="touchUpInside" id="8al-A7-PeD"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -366,7 +367,10 @@
                                 <connections>
                                     <outlet property="chatMessageLabel" destination="8pw-Xd-t3j" id="0T7-Os-DHT"/>
                                     <outlet property="messageBackground" destination="e4z-ed-zHQ" id="x0K-um-Ch9"/>
-                                    <outlet property="voteButton" destination="koC-H4-Ih0" id="oPr-ZU-i9R"/>
+                                    <outlet property="messageDateLabel" destination="lhH-wd-e26" id="0BU-ZL-FEr"/>
+                                    <outlet property="messageUsernameLabel" destination="2U1-tv-86f" id="LNC-0T-qoa"/>
+                                    <outlet property="messageVoteCountLabel" destination="hWA-0d-TUX" id="6dC-eM-NQg"/>
+                                    <outlet property="voteButton" destination="koC-H4-Ih0" id="rmD-F3-GZ4"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="senderCell" rowHeight="73" id="Vqi-WR-5ca">
@@ -476,7 +480,7 @@
                                         <constraint firstAttribute="height" constant="32" id="HMP-nb-m2Y"/>
                                         <constraint firstAttribute="width" constant="32" id="jxa-fV-1W9"/>
                                     </constraints>
-                                    <state key="normal" image="upVote" backgroundImage="send"/>
+                                    <state key="normal" image="upVote"/>
                                     <connections>
                                         <action selector="sendChatMessageButtonTapped:" destination="5UQ-c9-szv" eventType="touchUpInside" id="1br-s8-f48"/>
                                     </connections>
@@ -597,7 +601,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="j0C-NI-Zs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.2922873882" green="0.00038407375630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

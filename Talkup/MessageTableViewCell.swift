@@ -8,30 +8,41 @@
 
 import UIKit
 
+//MARK: - Protocol
+
+protocol MessageVoteButtonDelegate: class {
+    func toggleVoteCount(_ sender: MessageTableViewCell)
+}
+
 class MessageTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var chat: Chat? {
+    var message: Message? {
         didSet {
             updateViews()
         }
     }
     
+    //MARK: - Delegate
+    
+    weak var delegate: MessageVoteButtonDelegate?
+    
     //MARK: - Outlets
     
-    @IBOutlet weak var chatTopicLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var chatCountLabel: UILabel!
-    @IBOutlet weak var topicNumberLabel: UILabel!
-    @IBOutlet weak var hasReadAlertNumber: UILabel!
-    @IBOutlet weak var hasReadAlertBg: UIImageView!
     @IBOutlet weak var chatMessageLabel: UITextView!
     @IBOutlet weak var messageBackground: UIImageView!
     @IBOutlet weak var voteButton: UIButton!
     
+    @IBOutlet weak var messageVoteCountLabel: UILabel!
+    @IBOutlet weak var messageUsernameLabel: UILabel!
+    @IBOutlet weak var messageDateLabel: UILabel!
     
-    @IBAction func voteButtonTapped(_ sender: Any) {
+    
+    
+    @IBAction func recievedMessageCellVoteButtonTapped(_ sender: Any) {
+        delegate?.toggleVoteCount(self)
+        print("vote button tapped. Message score: \(message?.score)")
     }
     
     
@@ -57,9 +68,10 @@ class MessageTableViewCell: UITableViewCell {
     }
     
     private func updateViews() {
-        guard let chat = chat else { return }
-        chatTopicLabel.text = chat.topic
-        scoreLabel.text = "\(chat.score)"
-        
+        guard let message = message else { return }
+        chatMessageLabel.text = message.text
+        messageVoteCountLabel.text = "\(message.score)"
+        messageUsernameLabel.text = message.owner
+        messageDateLabel.text = "\(message.timestamp)"
     }
 }

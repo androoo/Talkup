@@ -6,16 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/NewMessageViewController.swift"
-            timestampString = "511395803.977689"
+            filePath = "Talkup/ChatDetailTableViewController.swift"
+            timestampString = "511470703.074367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "createChat()"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "toggleVoteCount(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/ChatDetailTableViewController.swift"
+            timestampString = "511466598.153166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "toggleVoteCount(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +41,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatController.swift"
-            timestampString = "511383493.530746"
+            filePath = "Talkup/MessageController.swift"
+            timestampString = "511470426.60261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "createChatWith(chatTopic:owner:firstMessage:completion:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "increaseScoreForMessage(messageNamed:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/MessageController.swift"
+            timestampString = "511466646.331388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "increaseScoreForMessage(messageNamed:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,43 +73,59 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatController.swift"
-            timestampString = "511383493.530746"
+            filePath = "Talkup/MessageController.swift"
+            timestampString = "511470426.60261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "createChatWith(chatTopic:owner:firstMessage:completion:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "reduceScoreForMessage(messageNamed:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/MessageController.swift"
+            timestampString = "511470426.60261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "toggleVoteCountFor(messageNamed:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Talkup.ChatController.(createChatWith (chatTopic : Swift.String, owner : Swift.String, firstMessage : Swift.String, completion : Swift.Optional&lt;(Talkup.Chat) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  symbolName = "Talkup.MessageController.toggleVoteCountFor (messageNamed : Talkup.Message, completion : (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatController.swift"
-                  timestampString = "511389909.98315"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/MessageController.swift"
+                  timestampString = "511468298.260495"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "216">
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "745">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Talkup.ChatController.(createChatWith (chatTopic : Swift.String, owner : Swift.String, firstMessage : Swift.String, completion : Swift.Optional&lt;(Talkup.Chat) -&gt; ()&gt;) -&gt; ()).(closure #1).(closure #1)"
+                  symbolName = "Talkup.MessageController.(toggleVoteCountFor (messageNamed : Talkup.Message, completion : (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatController.swift"
-                  timestampString = "511389909.98481"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/MessageController.swift"
+                  timestampString = "511468298.263074"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
                   offsetFromSymbolStart = "35">
                </Location>
             </Locations>
@@ -89,92 +137,91 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "Talkup/MessageController.swift"
+            timestampString = "511470426.60261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "toggleVoteCountFor(messageNamed:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/MessageController.swift"
+            timestampString = "511470426.60261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "toggleVoteCountFor(messageNamed:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "Talkup/Message.swift"
-            timestampString = "511383011.033262"
+            timestampString = "511467874.550931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "init(message:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatController.swift"
-            timestampString = "511383493.530746"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "createChatWith(chatTopic:owner:firstMessage:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/Message.swift"
-            timestampString = "511383297.828885"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "init(message:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatController.swift"
-            timestampString = "511383493.530746"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "createChatWith(chatTopic:owner:firstMessage:completion:)"
-            landmarkType = "7">
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "Message"
+            landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Talkup.ChatController.(createChatWith (chatTopic : Swift.String, owner : Swift.String, firstMessage : Swift.String, completion : Swift.Optional&lt;(Talkup.Chat) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  symbolName = "Talkup.Message.init (owner : Swift.String, text : Swift.String, timestamp : Foundation.Date, isRead : Swift.Bool, score : Swift.Int, chat : Swift.Optional&lt;Talkup.Chat&gt;) -&gt; Talkup.Message"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatController.swift"
-                  timestampString = "511389909.998521"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/Message.swift"
+                  timestampString = "511467608.387697"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "545">
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "107">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Talkup.ChatController.(createChatWith (chatTopic : Swift.String, owner : Swift.String, firstMessage : Swift.String, completion : Swift.Optional&lt;(Talkup.Chat) -&gt; ()&gt;) -&gt; ()).(closure #1).(closure #2)"
+                  symbolName = "Talkup.Message.cloudKitRecordID.getter : Swift.Optional&lt;__ObjC.CKRecordID&gt;"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatController.swift"
-                  timestampString = "511389910.000177"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/Message.swift"
+                  timestampString = "511467608.389343"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.Message.cloudKitRecordID.setter : Swift.Optional&lt;__ObjC.CKRecordID&gt;"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/Message.swift"
+                  timestampString = "511467608.390975"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "54">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -182,81 +229,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/NewMessageViewController.swift"
-            timestampString = "511395803.977689"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "createChat()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatController.swift"
-            timestampString = "511383641.277129"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "addSubscriptionTo(messagesForChat:alertBody:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatController.swift"
-            timestampString = "511383688.6736"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "addSubscriptionTo(messagesForChat:alertBody:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatDetailTableViewController.swift"
-            timestampString = "511398210.585837"
+            filePath = "Talkup/Chat.swift"
+            timestampString = "511467789.51574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "init(cloudKitRecord:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatDetailTableViewController.swift"
-            timestampString = "511398210.585837"
+            filePath = "Talkup/MessageController.swift"
+            timestampString = "511470426.60261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "toggleVoteCountFor(messageNamed:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.MessageController.(toggleVoteCountFor (messageNamed : Talkup.Message, completion : (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/MessageController.swift"
+                  timestampString = "511468316.607826"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "274">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.MessageController.(toggleVoteCountFor (messageNamed : Talkup.Message, completion : (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #2)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/MessageController.swift"
+                  timestampString = "511468316.610315"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

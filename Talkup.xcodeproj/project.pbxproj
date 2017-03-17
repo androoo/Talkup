@@ -28,6 +28,7 @@
 		5A35A2951E78412A00162A20 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2941E78412A00162A20 /* LoadingViewController.swift */; };
 		5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2981E786E1600162A20 /* NavViewController.swift */; };
 		5A35A29B1E78989000162A20 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A29A1E78989000162A20 /* Constants.swift */; };
+		5A8F7AAB1E7C504200C4E566 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F7AAA1E7C504200C4E566 /* ChatTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		5A35A2941E78412A00162A20 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		5A35A2981E786E1600162A20 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		5A35A29A1E78989000162A20 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5A8F7AAA1E7C504200C4E566 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		5A35A26D1E76FF6200162A20 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A8F7AAA1E7C504200C4E566 /* ChatTableViewCell.swift */,
 				5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */,
 			);
 			name = Views;
@@ -297,6 +300,7 @@
 				5A35A28F1E77533A00162A20 /* MessageTableViewCell.swift in Sources */,
 				5A35A2831E773F1500162A20 /* HelperFiles.swift in Sources */,
 				5A35A27C1E772BE400162A20 /* Chat.swift in Sources */,
+				5A8F7AAB1E7C504200C4E566 /* ChatTableViewCell.swift in Sources */,
 				5A35A2571E76FDC500162A20 /* AppDelegate.swift in Sources */,
 				5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */,
 				5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */,

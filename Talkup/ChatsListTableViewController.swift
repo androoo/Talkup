@@ -56,12 +56,12 @@ class ChatsListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? MessageTableViewCell else { return MessageTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
         
         let chats = ChatController.shared.chats
         cell.chat = chats[indexPath.row]
-        cell.topicNumberLabel.text = "\(indexPath.row + 1)"
-        cell.topicNumberLabel.textColor = UIColor.lightGray
+        cell.chatRankLabel.text = "\(indexPath.row + 1)"
+        cell.chatRankLabel.textColor = UIColor.black
         
         return cell
     }
@@ -72,6 +72,10 @@ class ChatsListTableViewController: UITableViewController {
         if segue.identifier == "toChatDetail" {
             if let detailViewController = segue.destination as? ChatDetailTableViewController,
                 let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+                
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
                 
                 let chats = ChatController.shared.chats
                 detailViewController.chat = chats[selectedIndexPath.row]

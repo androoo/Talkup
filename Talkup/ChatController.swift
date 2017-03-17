@@ -146,7 +146,31 @@ class ChatController {
     
     
     func pushChangesToCloudKit(completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
-        completion(false, nil)
+        
+        let unsavedChats = unsyncedRecordsOf(type: Constants.chattypeKey) as? [Chat] ?? []
+        let unsavedMessages = unsyncedRecordsOf(type: Constants.messagetypeKey) as? [Message] ?? []
+        var unsavedObjectsByRecord = [CKRecord: CloudKitSyncable]()
+        for chat in unsavedChats {
+            let record = CKRecord(chat: chat)
+            unsavedObjectsByRecord[record] = chat
+        }
+        for message in unsavedMessages {
+            let record = CKRecord(message: message)
+            unsavedObjectsByRecord[record] = message
+        }
+        
+        let unsavedRecords = Array(unsavedObjectsByRecord.keys)
+        
+        cloudKitManager.saveRecords(unsavedRecords, perRecordCompletion: { (record, error) in
+            
+            guard let record = record else { return }
+            unsavedObjectsByRecord[record]?.cloudKitRecordID = record.recordID
+            
+        }) { (records, error) in
+            
+            let success = records != nil
+            completion(success, error)
+        }
     }
     
     //MARK: - Subscriptions
