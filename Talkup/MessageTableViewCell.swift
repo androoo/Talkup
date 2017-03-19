@@ -41,8 +41,11 @@ class MessageTableViewCell: UITableViewCell {
     
     
     @IBAction func recievedMessageCellVoteButtonTapped(_ sender: Any) {
-        delegate?.toggleVoteCount(self)
-        print("vote button tapped. Message score: \(message?.score)")
+        guard let message = message else { return }
+//        delegate?.toggleVoteCount(self)
+        MessageController.shared.toggleSubscriptionTo(messageNamed: message) { (_, _, _) in
+            self.updateViews()
+        }
     }
     
     
@@ -73,5 +76,15 @@ class MessageTableViewCell: UITableViewCell {
         messageVoteCountLabel.text = "\(message.score)"
         messageUsernameLabel.text = message.owner
         messageDateLabel.text = "\(message.timestamp)"
+        
+        MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscribed) in
+           
+            let checkImage = subscribed ? #imageLiteral(resourceName: "downVote") : #imageLiteral(resourceName: "upVote")
+            DispatchQueue.main.async {
+                self.voteButton.setImage(checkImage, for: .normal)
+            }
+            
+        }
+        
     }
 }

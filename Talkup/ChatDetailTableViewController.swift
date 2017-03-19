@@ -25,10 +25,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         tableView.reloadData()
-        
-        ChatController.shared.checkSubscriptionTo(messagesForChat: chat) { (subscribed) in
-            
-        }
+
     }   
     //MARK: - View lifecycle
     
@@ -67,6 +64,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         
         guard let chat = chat else { return cell }
         let message = chat.messages[indexPath.row]
+        
         cell.delegate = self
         cell.message = message
         
@@ -118,13 +116,13 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     func toggleVoteCount(_ sender: MessageTableViewCell) {
         guard let message = sender.message else { return }
         
-        MessageController.shared.toggleVoteCountFor(messageNamed: message) { (_, _, _) in
-            
-            DispatchQueue.main.async {
-                
-                self.updateViews()
-            }
-        }
+//        MessageController.shared.toggleVoteCountFor(messageNamed: message) { (_, _, _) in
+//            
+//            DispatchQueue.main.async {
+//                
+//                self.updateViews()
+//            }
+//        }
     }
 }
 
