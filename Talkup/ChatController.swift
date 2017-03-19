@@ -38,6 +38,10 @@ class ChatController {
         return chats.flatMap { $0.messages }
     }
     
+    var sortedMessages: [Message] {
+        return messages.sorted { return $0.score < $1.score }
+    }
+    
     init() {
         self.cloudKitManager = CloudKitManager()
         performFullSync()
@@ -89,7 +93,7 @@ class ChatController {
     
     @discardableResult func addMessage(toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {
         
-        let message = Message(owner: "bob", text: messageText, chat: chat)
+        let message = Message(owner: "Barry Bomb", text: messageText, chat: chat)
         chat.messages.append(message)
         
         cloudKitManager.saveRecord(CKRecord(message: message)) { (record, error) in

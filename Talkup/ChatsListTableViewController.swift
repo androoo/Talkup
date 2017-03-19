@@ -20,13 +20,14 @@ class ChatsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Talkup"
+        title = "Supertalk"
         
         requestFullSync()
 
+        
+        
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
-        
         
     }
     
@@ -61,7 +62,7 @@ class ChatsListTableViewController: UITableViewController {
         let chats = ChatController.shared.chats
         cell.chat = chats[indexPath.row]
         cell.chatRankLabel.text = "\(indexPath.row + 1)"
-        cell.chatRankLabel.textColor = UIColor.black
+        cell.chatRankLabel.textColor = UIColor.white
         
         return cell
     }

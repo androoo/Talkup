@@ -12,7 +12,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     //MARK: - Properties
     
-    
     var chat: Chat? {
         didSet {
             updateViews()
@@ -45,7 +44,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(chatMessagesChanged(_:)), name: ChatController.ChatMessagesChangedNotification, object: nil)
         
-        tableView.estimatedRowHeight = 86
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -55,11 +54,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         guard let notificationChat = notification.object as? Chat,
             let chat = chat, notificationChat === chat else { return } // Not our post
         updateViews()
-    }
-    
-    func fetchMessages() {
-        guard let currentChat = chat else { return }
-
     }
 
     // MARK: - Table view data source
@@ -75,20 +69,13 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         let message = chat.messages[indexPath.row]
         cell.delegate = self
         cell.message = message
-//        cell.chatMessageLabel.text = message.text
-        
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-//        let frame = tableView.rectForRow(at: indexPath)
-//        let size = frame.size.height
-        
-        
         return 86
-        
     }
     
     //MARK: - Customize Appearance 
@@ -98,7 +85,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
-        
     }
     
     //MARK: - Chat Input 
@@ -106,6 +92,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     @IBAction func sendChatMessageButtonTapped(_ sender: Any) {
         guard let messageText = inputTextField.text, let chat = self.chat else { return }
         ChatController.shared.addMessage(toChat: chat, messageText: messageText)
+        dismiss(animated: true, completion: nil)
     }
     
 
@@ -129,12 +116,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     //MARK: - Message Cell Delegate 
     
     func toggleVoteCount(_ sender: MessageTableViewCell) {
-        guard let message = sender.message,
-            let index = tableView.indexPath(for: sender) else { return }
+        guard let message = sender.message else { return }
         
-        
-        
-        MessageController.shared.toggleVoteCountFor(messageNamed: message) { (_, _) in
+        MessageController.shared.toggleVoteCountFor(messageNamed: message) { (_, _, _) in
             
             DispatchQueue.main.async {
                 

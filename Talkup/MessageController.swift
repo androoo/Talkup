@@ -16,9 +16,7 @@ class MessageController {
     //MARK: - Properties
     
     let cloudKitManager: CloudKitManager
-    
-    
-    
+
     static let shared = MessageController()
     
     //MARK: - Initializers
@@ -40,11 +38,9 @@ class MessageController {
             completion(success, error)
         }
         
-        
         message.score += 1
         
         ChatController.shared.pushChangesToCloudKit()
-        
         
     }
     
@@ -67,14 +63,13 @@ class MessageController {
             
             ChatController.shared.pushChangesToCloudKit()
         }
-        
     }
     
     
-    func toggleVoteCountFor(messageNamed message: Message, completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
+    func toggleVoteCountFor(messageNamed message: Message, completion: @escaping ((_ success: Bool, _ isSubscribed: Bool, _ error: Error?) -> Void) = { _, _, _ in }) {
         
         guard let messageID = message.cloudKitRecordID?.recordName else {
-            completion(false, nil)
+            completion(false, false, nil)
             return
         }
         
@@ -85,20 +80,16 @@ class MessageController {
             if subscription != nil {
                 self.reduceScoreForMessage(messageNamed: message) { (success, error) in
                     print("subsribed message, so decrease and unsub")
-                    completion(success, error)
+                    completion(success, false, error)
                 }
             } else {
                 self.increaseScoreForMessage(messageNamed: message) { (success, error) in
                     print("unsubscribed, so increase and subscribe")
-                    completion(success, error)
+                    completion(success, true, error)
                 }
             }
         }
     }
-    
-    //MARK: - Subscriptions 
-    
-
 }
 
 

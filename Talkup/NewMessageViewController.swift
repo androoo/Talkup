@@ -40,6 +40,7 @@ class NewMessageViewController: UIViewController {
     
     @IBAction func newChatButtonTapped(_ sender: Any) {
         createChat()
+        
     }
 
     

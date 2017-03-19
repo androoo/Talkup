@@ -29,13 +29,14 @@ class ChatTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        chatRankLabel.layer.cornerRadius = chatRankLabel.frame.width/2
+
     }
     
     private func updateViews() {
         guard let chat = chat else { return }
         chatTopicLabel.text = chat.topic
         chatRankLabel.text = "\(chat.score)"
-        
+        chatRankLabel.layer.cornerRadius = chatRankLabel.frame.width/2
     }
 }
