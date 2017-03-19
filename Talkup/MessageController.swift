@@ -104,7 +104,7 @@ class MessageController {
         
         let predicate = NSPredicate(format: "message == %@", argumentArray: [recordID])
         
-        cloudKitManager.subscribe(Constants.messagetypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: [Constants.textKey], options: .firesOnRecordCreation) { (subscription, error) in
+        cloudKitManager.subscribe(Constants.messagetypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: [Constants.textKey, Constants.chatKey], options: .firesOnRecordCreation) { (subscription, error) in
             
             let success = subscription != nil
             completion(success, error)

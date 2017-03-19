@@ -27,6 +27,7 @@ struct Constants {
     //MARK: - Message Keys
     
     static let messagetypeKey = "Message"
+    static let messageReferenceKey = "message"
     static let ownerKey = "owner"
     static let chatKey = "chat"
     static let timestampKey = "timestamp"

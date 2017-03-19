@@ -21,6 +21,8 @@ class Message: CloudKitSyncable {
     var score: Int
     var chat: Chat?
     
+    var cloudKitRecordID: CKRecordID?
+    
     //MARK: - Inits
     
     init(owner: String, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat?) {
@@ -31,6 +33,7 @@ class Message: CloudKitSyncable {
         self.isRead = isRead
         self.score = score
         self.chat = chat
+       
     }
     
     //MARK: - CloudKitSyncable
@@ -43,11 +46,11 @@ class Message: CloudKitSyncable {
             let score = cloudKitRecord[Constants.scoreKey] as? Int else { return nil }
         
         self.init(owner: owner, text: text, timestamp: timestamp, isRead: isRead, score: score, chat: nil)
-        cloudKitRecordID = cloudKitRecord.recordID
+        
+        self.cloudKitRecordID = cloudKitRecord.recordID
     }
 //    var creatorUserRecordID: CKRecordID?
-    
-    var cloudKitRecordID: CKRecordID?
+
     var recordType: String { return Constants.messagetypeKey }
 }
 
@@ -67,7 +70,6 @@ extension CKRecord {
         self[Constants.hasReadKey] = message.isRead as CKRecordValue?
         self[Constants.scoreKey] = message.score as CKRecordValue?
         self[Constants.chatKey] = CKReference(recordID: chatRecordID, action: .deleteSelf)
-        
     }
 }
 
