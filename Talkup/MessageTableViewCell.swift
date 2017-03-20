@@ -42,9 +42,12 @@ class MessageTableViewCell: UITableViewCell {
     
     @IBAction func recievedMessageCellVoteButtonTapped(_ sender: Any) {
         guard let message = message else { return }
-//        delegate?.toggleVoteCount(self)
+        //        delegate?.toggleVoteCount(self)
         MessageController.shared.toggleSubscriptionTo(messageNamed: message) { (_, _, _) in
-            self.updateViews()
+            DispatchQueue.main.async {
+                self.updateViews()
+                
+            }
         }
     }
     
@@ -78,7 +81,7 @@ class MessageTableViewCell: UITableViewCell {
         messageDateLabel.text = "\(message.timestamp)"
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscribed) in
-           
+            
             let checkImage = subscribed ? #imageLiteral(resourceName: "downVote") : #imageLiteral(resourceName: "upVote")
             DispatchQueue.main.async {
                 self.voteButton.setImage(checkImage, for: .normal)

@@ -115,7 +115,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     func toggleVoteCount(_ sender: MessageTableViewCell) {
         guard let message = sender.message else { return }
-        
+                
 //        MessageController.shared.toggleVoteCountFor(messageNamed: message) { (_, _, _) in
 //            
 //            DispatchQueue.main.async {

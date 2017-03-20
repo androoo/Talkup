@@ -139,10 +139,12 @@ class MessageController {
             
             if subscription != nil {
                 self.removeSubscriptionTo(messageNamed: message) { (success, error) in
+                    message.score -= 1
                     completion(success, false, error)
                 }
             } else {
                 self.addSubscriptionTo(messageNamed: message, alertBody: "Someone commented on a message you voted for! 👍") { (success, error) in
+                    message.score += 1
                     completion(success, true, error)
                 }
             }
