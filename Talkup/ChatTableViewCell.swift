@@ -14,8 +14,6 @@ class ChatTableViewCell: UITableViewCell {
     
     @IBOutlet weak var chatRankLabel: UILabel!
     @IBOutlet weak var chatTopicLabel: UILabel!
-    @IBOutlet weak var chatVoteCountLabel: UILabel!
-    @IBOutlet weak var chatMessagesLabel: UILabel!
     @IBOutlet weak var hasReadBadgeBackgroundImageView: UIImageView!
     @IBOutlet weak var hasReadBadgeNumberLabel: UILabel!
     
@@ -30,7 +28,8 @@ class ChatTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         chatRankLabel.layer.cornerRadius = chatRankLabel.frame.width/2
-
+        
+        hasReadBadgeBackgroundImageView.isHidden = true
     }
     
     private func updateViews() {

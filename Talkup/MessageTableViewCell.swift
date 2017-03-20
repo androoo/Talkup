@@ -30,6 +30,7 @@ class MessageTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
     
+    
     @IBOutlet weak var chatMessageLabel: UITextView!
     @IBOutlet weak var messageBackground: UIImageView!
     @IBOutlet weak var voteButton: UIButton!

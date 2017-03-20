@@ -95,7 +95,7 @@
                                         <constraint firstAttribute="width" constant="32" id="CZK-al-dty"/>
                                         <constraint firstAttribute="height" constant="32" id="LRz-yq-Cl9"/>
                                     </constraints>
-                                    <state key="normal" image="upVoteGreen" backgroundImage="send"/>
+                                    <state key="normal" image="talkup" backgroundImage="send"/>
                                     <connections>
                                         <action selector="newChatButtonTapped:" destination="gBS-n3-RfD" eventType="touchUpInside" id="gaa-gO-2ea"/>
                                     </connections>
@@ -251,25 +251,42 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-1q-xXD">
-                                    <rect key="frame" x="0.0" y="0.0" width="197" height="49"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="Live">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-1q-xXD">
+                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="49"/>
+                                    <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="49" id="Kex-d9-Wcs"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                    <state key="normal" title="LIVE">
                                         <color key="titleColor" red="0.99607843137254903" green="0.30980392156862746" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="liveButtonTapped:" destination="5UQ-c9-szv" eventType="touchUpInside" id="1v0-zR-2I9"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48U-Hw-utv">
-                                    <rect key="frame" x="197" y="0.0" width="264" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="Top">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48U-Hw-utv">
+                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="49"/>
+                                    <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="TOP">
                                         <color key="titleColor" red="0.83921568627450982" green="0.85882352941176465" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="topButtonTapped:" destination="5UQ-c9-szv" eventType="touchUpInside" id="ve9-mR-A1m"/>
+                                    </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.99607843137254903" green="0.30980392156862746" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.83921568627450982" green="0.85882352941176465" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="48U-Hw-utv" firstAttribute="height" secondItem="GgL-1q-xXD" secondAttribute="height" id="Fbb-By-hr3"/>
+                                <constraint firstAttribute="trailing" secondItem="48U-Hw-utv" secondAttribute="trailing" id="Fn2-sY-g2W"/>
+                                <constraint firstItem="48U-Hw-utv" firstAttribute="width" secondItem="GgL-1q-xXD" secondAttribute="width" id="OPo-dL-SHo"/>
+                                <constraint firstItem="GgL-1q-xXD" firstAttribute="leading" secondItem="LDk-Zj-okt" secondAttribute="leading" id="QQL-oe-F1s"/>
+                                <constraint firstItem="GgL-1q-xXD" firstAttribute="top" secondItem="LDk-Zj-okt" secondAttribute="top" id="chw-SU-XBb"/>
+                                <constraint firstItem="48U-Hw-utv" firstAttribute="leading" secondItem="GgL-1q-xXD" secondAttribute="trailing" id="mUg-ey-37S"/>
+                                <constraint firstItem="48U-Hw-utv" firstAttribute="top" secondItem="LDk-Zj-okt" secondAttribute="top" id="sZr-uD-VRL"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recieverCell" rowHeight="94" id="7y8-RH-gXg" customClass="MessageTableViewCell" customModule="Talkup" customModuleProvider="target">
@@ -445,6 +462,8 @@
                         <outlet property="bottomConstraint" destination="Hzx-2Y-IdY" id="GLu-6N-9X0"/>
                         <outlet property="inputBar" destination="zMe-jh-Mnp" id="Ggb-EB-HXq"/>
                         <outlet property="inputTextField" destination="dgF-nc-P49" id="gbv-fA-saq"/>
+                        <outlet property="liveButton" destination="GgL-1q-xXD" id="WUy-EF-S22"/>
+                        <outlet property="topButton" destination="48U-Hw-utv" id="sIX-sG-Ajy"/>
                     </connections>
                 </tableViewController>
                 <view contentMode="scaleToFill" id="zMe-jh-Mnp">
@@ -478,7 +497,7 @@
                                         <constraint firstAttribute="height" constant="32" id="HMP-nb-m2Y"/>
                                         <constraint firstAttribute="width" constant="32" id="jxa-fV-1W9"/>
                                     </constraints>
-                                    <state key="normal" image="upVoteGreen"/>
+                                    <state key="normal" image="talkup"/>
                                     <connections>
                                         <action selector="sendChatMessageButtonTapped:" destination="5UQ-c9-szv" eventType="touchUpInside" id="1br-s8-f48"/>
                                     </connections>
@@ -597,7 +616,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="P6r-J3-GHa" customClass="NavViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="j0C-NI-Zs6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="back" id="j0C-NI-Zs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
@@ -738,9 +757,11 @@
     </scenes>
     <resources>
         <image name="addChat" width="36" height="34"/>
+        <image name="back" width="22" height="21"/>
         <image name="downVote" width="39" height="39"/>
         <image name="send" width="16" height="16"/>
         <image name="talkUpLoadingIcon" width="219" height="219"/>
+        <image name="talkup" width="32" height="32"/>
         <image name="tumblr_mm1yov63xO1rz1ki7o1_500" width="500" height="375"/>
         <image name="upVoteGreen" width="117" height="117"/>
     </resources>

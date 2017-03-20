@@ -38,10 +38,6 @@ class ChatController {
         return chats.flatMap { $0.messages }
     }
     
-    var sortedMessages: [Message] {
-        return messages.sorted { return $0.score < $1.score }
-    }
-    
     init() {
         self.cloudKitManager = CloudKitManager()
         performFullSync()

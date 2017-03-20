@@ -49,4 +49,9 @@ enum MessageOwner {
     case receiver 
 }
 
+enum MessageSort {
+    case live
+    case top
+}
+
 

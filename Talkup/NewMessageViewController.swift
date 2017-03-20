@@ -9,11 +9,7 @@
 import UIKit
 
 class NewMessageViewController: UIViewController {
-    
-    //MARK: - Properties
-    
-    
-    
+
     //MARK: - Outlets
     
     @IBOutlet var inputbar: UIView!
@@ -40,7 +36,6 @@ class NewMessageViewController: UIViewController {
     
     @IBAction func newChatButtonTapped(_ sender: Any) {
         createChat()
-        
     }
 
     

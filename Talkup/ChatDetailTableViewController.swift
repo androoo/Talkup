@@ -10,12 +10,50 @@ import UIKit
 
 class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate, MessageVoteButtonDelegate {
     
+    //MARK: - Outlets
+    
+    @IBOutlet weak var liveButton: UIButton!
+    @IBOutlet weak var topButton: UIButton!
+    
+    
     //MARK: - Properties
     
     var chat: Chat? {
         didSet {
             updateViews()
         }
+    }
+    
+    var messageSortSelection: MessageSort = .live
+    
+    //MARK: - UIActions
+    
+    @IBAction func liveButtonTapped(_ sender: Any) {
+        
+        liveButton.tintColor = UIColor.red
+        topButton.tintColor = UIColor.lightGray
+        print("live button tapped")
+        messageSortSelection = .live
+        
+    }
+    
+    @IBAction func topButtonTapped(_ sender: Any) {
+        
+        topButton.tintColor = UIColor.red
+        liveButton.tintColor = UIColor.lightGray
+        print("top button tapped")
+        messageSortSelection = .top
+        
+    }
+    
+    
+    
+    var sortedMessagesByTimestamp: [Message] {
+        return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
+    }
+    
+    var sortedMessagesByScore: [Message] {
+        return chat!.messages.sorted { return $0.score > $1.score }
     }
     
     private func updateViews() {
@@ -36,7 +74,8 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         customize()
         
         guard let chat = chat, isViewLoaded else { return }
-        title = "\(chat.topic)"
+//        title = "\(chat.topic)"
+        self.navigationItem.titleView = setTitle(title: "\(chat.topic)", subtitle: "45 people")
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(chatMessagesChanged(_:)), name: ChatController.ChatMessagesChangedNotification, object: nil)
@@ -63,7 +102,16 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? MessageTableViewCell else { return MessageTableViewCell() }
         
         guard let chat = chat else { return cell }
-        let message = chat.messages[indexPath.row]
+        
+        
+//        switch messageSortSelection {
+//        case .live:
+//            
+//        case .top:
+//            
+//        }
+        
+        let message = sortedMessagesByScore[indexPath.row]
         
         cell.delegate = self
         cell.message = message
@@ -111,19 +159,48 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     let barHeight: CGFloat = 50
     
+    //MARK: - Helper Methods 
+    
+    func setTitle(title:String, subtitle:String) -> UIView {
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: -2, width: 0, height: 0))
+        
+        titleLabel.backgroundColor = UIColor.clear
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        titleLabel.text = title
+        titleLabel.sizeToFit()
+        
+        let subtitleLabel = UILabel(frame: CGRect(x: 0, y: 18, width: 0, height: 0))
+        subtitleLabel.backgroundColor = UIColor.clear
+        subtitleLabel.textColor = UIColor.lightGray
+        subtitleLabel.font = UIFont.systemFont(ofSize: 12)
+        subtitleLabel.text = subtitle
+        subtitleLabel.sizeToFit()
+        
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: max(titleLabel.frame.size.width, subtitleLabel.frame.size.width), height: 30))
+        titleView.addSubview(titleLabel)
+        titleView.addSubview(subtitleLabel)
+        
+        let widthDiff = subtitleLabel.frame.size.width - titleLabel.frame.size.width
+        
+        if widthDiff < 0 {
+            let newX = widthDiff / 2
+            subtitleLabel.frame.origin.x = abs(newX)
+        } else {
+            let newX = widthDiff / 2
+            titleLabel.frame.origin.x = newX
+        }
+        
+        return titleView
+    }
+    
     //MARK: - Message Cell Delegate 
     
     func toggleVoteCount(_ sender: MessageTableViewCell) {
-        guard let message = sender.message else { return }
-                
-//        MessageController.shared.toggleVoteCountFor(messageNamed: message) { (_, _, _) in
-//            
-//            DispatchQueue.main.async {
-//                
-//                self.updateViews()
-//            }
-//        }
+
     }
+    
+    
 }
 
 
