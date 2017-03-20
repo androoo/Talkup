@@ -102,7 +102,7 @@ class MessageController {
         
         guard let recordID = message.cloudKitRecordID else { fatalError("unable to create reference for subscription") }
         
-        let predicate = NSPredicate(format: "message == %@", argumentArray: [recordID])
+        let predicate = NSPredicate(format: "recordID == %@", argumentArray: [recordID])
         
         cloudKitManager.subscribe(Constants.messagetypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: [Constants.textKey, Constants.chatKey], options: .firesOnRecordCreation) { (subscription, error) in
             
