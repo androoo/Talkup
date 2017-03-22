@@ -78,7 +78,7 @@ class RecieverTableViewCell: UITableViewCell {
         guard let message = message else { return }
         chatMessageLabel.text = message.text
         messageVoteCountLabel.text = "\(message.score)"
-        messageUsernameLabel.text = message.owner
+        messageUsernameLabel.text = message.owner?.userName
         messageDateLabel.text = "\(message.timestamp)"
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscribed) in

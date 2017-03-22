@@ -10,4 +10,6 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
+    //welcome message and place to do animation or some shit
+    
 }

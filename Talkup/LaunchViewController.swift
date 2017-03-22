@@ -24,13 +24,17 @@ class LaunchViewController: UIViewController {
     //MARK: - Check if user is user is registered
     
     //MARK: - TODO - check that use userID is associated with a username and email
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         cloudKitManager.fetchLoggedInUserRecord { (recordID, error) in
-            guard let userID = recordID,
+            
+            // need to check that the user has a recordID, username, and email
+            
+            guard let userID = recordID /*,
                 let email = recordID?[Constants.userEmailKey],
-                let username = recordID?[Constants.usernameKey] else {
+                let username = recordID?[Constants.usernameKey] */ else {
                     
                     NSLog("Fetched iCloudID was nil")
                     self.pushTo(viewController: .welcome)

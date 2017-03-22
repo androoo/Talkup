@@ -51,7 +51,7 @@ class ChatController {
     
     //MARK: - CK Methods
     
-    func createChatWith(chatTopic: String, owner: String, firstMessage: String, completion: ((Chat) -> Void)?) {
+    func createChatWith(chatTopic: String, owner: User, firstMessage: String, completion: ((Chat) -> Void)?) {
         
         let chat = Chat(topic: chatTopic)
         chats.append(chat)
@@ -87,9 +87,9 @@ class ChatController {
         }
     }
     
-    @discardableResult func addMessage(toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {
+    @discardableResult func addMessage(byUser owner: User, toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {
         
-        let message = Message(owner: "Barry Bomb", text: messageText, chat: chat)
+        let message = Message(owner: owner, text: messageText, chat: chat)
         chat.messages.append(message)
         
         cloudKitManager.saveRecord(CKRecord(message: message)) { (record, error) in

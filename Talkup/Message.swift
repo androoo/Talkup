@@ -14,7 +14,7 @@ class Message: CloudKitSyncable {
     
     //MARK: - Properties
     
-    var owner: String
+    var owner: User?
     var text: String
     var timestamp: Date
     var isRead: Bool
@@ -25,7 +25,7 @@ class Message: CloudKitSyncable {
     
     //MARK: - Inits
     
-    init(owner: String, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat?) {
+    init(owner: User, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat?) {
         
         self.owner = owner
         self.text = text
@@ -39,7 +39,7 @@ class Message: CloudKitSyncable {
     //MARK: - CloudKitSyncable
     
     convenience required init?(cloudKitRecord: CKRecord) {
-        guard let owner = cloudKitRecord[Constants.ownerKey] as? String,
+        guard let owner = cloudKitRecord[Constants.ownerKey] as? User,
             let text = cloudKitRecord[Constants.textKey] as? String,
             let timestamp = cloudKitRecord.creationDate,
             let isRead = cloudKitRecord[Constants.hasReadKey] as? Bool,
@@ -57,14 +57,16 @@ class Message: CloudKitSyncable {
 extension CKRecord {
     convenience init(message: Message) {
         
-        guard let chat = message.chat else { fatalError("Message does not have a Chat relationship") }
+        guard let chat = message.chat,
+            let user = message.owner else { fatalError("Message does not have a Chat relationship") }
         
+        let ownerRecordID = user.cloudKitRecordID ?? CKRecord(user: user).recordID
         let chatRecordID = chat.cloudKitRecordID ?? CKRecord(chat: chat).recordID
         let recordID = CKRecordID(recordName: UUID().uuidString)
         
         self.init(recordType: message.recordType, recordID: recordID)
         
-        self[Constants.ownerKey] = message.owner as CKRecordValue?
+        self[Constants.ownerKey] = CKReference(recordID: ownerRecordID, action: .deleteSelf)
         self[Constants.textKey] = message.text as CKRecordValue?
         self[Constants.timestampKey] = message.timestamp as CKRecordValue?
         self[Constants.hasReadKey] = message.isRead as CKRecordValue?

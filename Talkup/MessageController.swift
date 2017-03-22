@@ -33,27 +33,7 @@ class MessageController {
 //        ChatController.shared.pushChangesToCloudKit()
         
     }
-    
-    
-    func reduceScoreForMessage(messageNamed message: Message,
-                               completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
 
-//        if message.score > 0 {
-//            message.score -= 1
-//            
-//            guard let subscriptionID = message.cloudKitRecordID?.recordName else {
-//                completion(true, nil)
-//                return
-//            }
-//            
-//            cloudKitManager.unsubscribe(subscriptionID) { (subscriptionID, error) in
-//                let success = subscriptionID != nil && error == nil
-//                completion(success, error)
-//            }
-//            
-//            ChatController.shared.pushChangesToCloudKit()
-//        }
-    }
     
     
     func toggleVoteCountFor(messageNamed message: Message, completion: @escaping ((_ success: Bool, _ isSubscribed: Bool, _ error: Error?) -> Void) = { _, _, _ in }) {

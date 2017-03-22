@@ -10,7 +10,7 @@ import UIKit
 
 class NewUserViewController: UIViewController {
     
-    //MARK: - Properties 
+    //MARK: - Properties
     
     var image: UIImage?
     
@@ -20,7 +20,9 @@ class NewUserViewController: UIViewController {
     //MARK: - UI Actions
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
-        // check that username and email havent been used already 
+        
+        // check that username and email havent been used already
+        // iterated through all usernames and emails and check that they dont exist
         
         if let image = image,
             let username = usernameTextField.text,
@@ -28,8 +30,11 @@ class NewUserViewController: UIViewController {
             
             UserController.shared.createUserWith(username: username, email: email, image: image, completion: { (_) in
                 
-                // with completion you want to go to convo TV
-                self.dismiss(animated: true, completion: nil)
+                //if the user is successfully created, send them to the NavViewController which sends them to ChatsListTableViewController
+                
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavViewController else { return }
+                self.present(vc, animated: false, completion: nil)
+                
             })
             
         } else {
@@ -46,7 +51,7 @@ class NewUserViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - Navigation 
+    //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "embedPhotoSelect" {

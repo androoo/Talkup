@@ -139,6 +139,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     @IBAction func sendChatMessageButtonTapped(_ sender: Any) {
         guard let messageText = inputTextField.text, let chat = self.chat else { return }
+        
+        // need to update the addMessage init to User as owner param
+        
         ChatController.shared.addMessage(toChat: chat, messageText: messageText)
         dismiss(animated: true, completion: nil)
     }

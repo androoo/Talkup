@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CloudKit
 
 class NewMessageViewController: UIViewController {
 
+    //MARK: - Properties 
+
+    
     //MARK: - Outlets
     
     @IBOutlet var inputbar: UIView!
@@ -43,20 +47,17 @@ class NewMessageViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    //MARK: - View lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     //MARK: - Methods 
     
     func createChat() {
         guard let topicText = topicTextField.text,
-            let message = messageTextField.text else { return }       
+            let message = messageTextField.text,
+        
+            // need to set owner = the User.username of the person entering the chat
+        
+            let owner = CKReference  else { return }
 
-        ChatController.shared.createChatWith(chatTopic: topicText, owner: "phil", firstMessage: message) { (_) in
+        ChatController.shared.createChatWith(chatTopic: topicText, owner: owner, firstMessage: message) { (_) in
             self.dismiss(animated: true, completion: nil)
         }
     }
