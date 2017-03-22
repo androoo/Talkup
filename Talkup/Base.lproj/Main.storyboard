@@ -268,7 +268,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48U-Hw-utv">
                                     <rect key="frame" x="187.5" y="0.0" width="187.5" height="49"/>
                                     <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <state key="normal" title="TOP">
                                         <color key="titleColor" red="0.83921568627450982" green="0.85882352941176465" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -492,7 +492,7 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kh-FU-T3o">
-                                    <rect key="frame" x="332" y="9.5" width="32" height="32"/>
+                                    <rect key="frame" x="332" y="10" width="32" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="HMP-nb-m2Y"/>
                                         <constraint firstAttribute="width" constant="32" id="jxa-fV-1W9"/>
@@ -539,7 +539,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRd-7T-v2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2837.5999999999999" y="250.52473763118442"/>
+            <point key="canvasLocation" x="3532" y="251"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="HTM-2d-baf">

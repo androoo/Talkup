@@ -27,6 +27,8 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     var messageSortSelection: MessageSort = .live
     
     //MARK: - UIActions
+   
+    
     
     @IBAction func liveButtonTapped(_ sender: Any) {
         
