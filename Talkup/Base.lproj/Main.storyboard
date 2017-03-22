@@ -649,10 +649,10 @@
             </objects>
             <point key="canvasLocation" x="1252" y="250.52473763118442"/>
         </scene>
-        <!--Loading View Controller-->
+        <!--Launch View Controller-->
         <scene sceneID="ItS-kr-MTe">
             <objects>
-                <viewController id="eRb-d7-ZgQ" customClass="LoadingViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eRb-d7-ZgQ" customClass="LaunchViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ww1-fU-49j"/>
                         <viewControllerLayoutGuide type="bottom" id="AYP-Sn-BWk"/>
@@ -722,9 +722,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="NcD-Be-jce"/>
                                 </constraints>
-                                <state key="normal" title="Continue">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signUpButtonTapped:" destination="81b-KC-9So" eventType="touchUpInside" id="N77-av-Zja"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-9i-zhN">
                                 <rect key="frame" x="46" y="276" width="283" height="48"/>
@@ -774,7 +777,17 @@
                             <constraint firstItem="oJF-9i-zhN" firstAttribute="leading" secondItem="E5h-QD-xkG" secondAttribute="leadingMargin" constant="30" id="p5F-UH-4Zx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign Up" id="ywQ-Id-0qt"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="ywQ-Id-0qt">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qX5-jU-zTp">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="81b-KC-9So" id="unR-iH-CXQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="dAj-tj-3Wi" id="R9o-qN-7pN"/>
+                        <outlet property="usernameTextField" destination="oJF-9i-zhN" id="ERF-5p-ij9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asf-jS-csl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

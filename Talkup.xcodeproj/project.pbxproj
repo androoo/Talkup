@@ -30,7 +30,7 @@
 		5A35A28F1E77533A00162A20 /* RecieverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28E1E77533A00162A20 /* RecieverTableViewCell.swift */; };
 		5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2901E77539500162A20 /* NewMessageViewController.swift */; };
 		5A35A2931E78329A00162A20 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2921E78329A00162A20 /* WelcomeViewController.swift */; };
-		5A35A2951E78412A00162A20 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2941E78412A00162A20 /* LoadingViewController.swift */; };
+		5A35A2951E78412A00162A20 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2941E78412A00162A20 /* LaunchViewController.swift */; };
 		5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2981E786E1600162A20 /* NavViewController.swift */; };
 		5A35A29B1E78989000162A20 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A29A1E78989000162A20 /* Constants.swift */; };
 		5A8F7AAB1E7C504200C4E566 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F7AAA1E7C504200C4E566 /* ChatTableViewCell.swift */; };
@@ -63,7 +63,7 @@
 		5A35A28E1E77533A00162A20 /* RecieverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecieverTableViewCell.swift; sourceTree = "<group>"; };
 		5A35A2901E77539500162A20 /* NewMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 		5A35A2921E78329A00162A20 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		5A35A2941E78412A00162A20 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		5A35A2941E78412A00162A20 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		5A35A2981E786E1600162A20 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		5A35A29A1E78989000162A20 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5A8F7AAA1E7C504200C4E566 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		5A35A26E1E76FF6800162A20 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5A35A2941E78412A00162A20 /* LoadingViewController.swift */,
+				5A35A2941E78412A00162A20 /* LaunchViewController.swift */,
 				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
 				5A35A2981E786E1600162A20 /* NavViewController.swift */,
 				5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */,
@@ -307,7 +307,7 @@
 				5A35A27A1E772BD300162A20 /* Message.swift in Sources */,
 				5A14676C1E82237900F7E3EA /* UserController.swift in Sources */,
 				5A35A2871E7752CE00162A20 /* MessageController.swift in Sources */,
-				5A35A2951E78412A00162A20 /* LoadingViewController.swift in Sources */,
+				5A35A2951E78412A00162A20 /* LaunchViewController.swift in Sources */,
 				5A35A2801E772E5100162A20 /* CloudKitSyncable.swift in Sources */,
 				5A35A2891E7752DA00162A20 /* ChatController.swift in Sources */,
 				5A35A28B1E77530500162A20 /* ChatsListTableViewController.swift in Sources */,

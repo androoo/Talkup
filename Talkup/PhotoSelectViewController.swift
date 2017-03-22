@@ -61,10 +61,4 @@ class PhotoSelectViewController: UIViewController, UIImagePickerControllerDelega
             imageView.image = image
         }
     }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
 }

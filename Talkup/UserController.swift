@@ -22,8 +22,31 @@ class UserController {
     
     //MARK: - CloudKit Helpers
     
+    func createUserWith(username: String, email: String, image: UIImage, completion: ((User) -> Void)?) {
+        
+        guard let data = UIImageJPEGRepresentation(image, 0.8) else { return }
+        
+        let user = User(userName: username, email: email, photoData: data)
+        
+        cloudKitManager.saveRecord(CKRecord(user: user)) { (record, error) in
+            guard let record = record else {
+            
+                if let error = error {
+                    NSLog("Error saving new user: \(error)")
+                    return
+                }
+            
+                completion?(user)
+                return
+            }
+            user.cloudKitRecordID = record.recordID
+        }
+        
+    }
     
-    // createUserWith
+    
+    
+    
     
     // blockUserWith
     

@@ -1,5 +1,5 @@
 //
-//  LoadingViewController.swift
+//  LaunchViewController.swift
 //  Talkup
 //
 //  Created by Andrew Ervin Gierke on 3/14/17.
@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class LoadingViewController: UIViewController {
+class LaunchViewController: UIViewController {
     
     //MARK: - Properties
     let cloudKitManager = CloudKitManager()
