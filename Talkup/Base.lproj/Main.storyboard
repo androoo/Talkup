@@ -571,55 +571,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFF-xS-Lgx">
-                                <rect key="frame" x="108" y="624" width="158" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I already have an account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFF-xS-Lgx">
+                                <rect key="frame" x="90" y="624" width="194.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmk-sC-h0A">
                                 <rect key="frame" x="46" y="541" width="283" height="48"/>
-                                <color key="backgroundColor" red="0.99607843137254903" green="0.30980392156862746" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0417553009171866" green="0.4956542886036327" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Tg4-GP-d1r"/>
                                 </constraints>
-                                <state key="normal" title="Sign in">
+                                <state key="normal" title="Sign up">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer." value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="81b-KC-9So" kind="show" id="5ay-dl-Vad"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Talkup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co7-j6-wUW">
-                                <rect key="frame" x="46" y="264" width="283" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <rect key="frame" x="46" y="313" width="283" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What everyone is talking about" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOV-QM-RqP">
-                                <rect key="frame" x="69" y="301" width="236" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="69" y="350" width="236" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkUpLogo" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
+                                <rect key="frame" x="144.5" y="206" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="Jy6-cN-7L6"/>
+                                    <constraint firstAttribute="width" constant="85" id="XTd-v4-5lN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="co7-j6-wUW" firstAttribute="top" secondItem="PsK-Ps-E1C" secondAttribute="bottom" constant="22" id="0Qz-hg-K6J"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="top" secondItem="co7-j6-wUW" secondAttribute="bottom" constant="8" id="3dN-Qg-xFJ"/>
-                            <constraint firstItem="co7-j6-wUW" firstAttribute="top" secondItem="CI8-bO-EMh" secondAttribute="bottom" constant="200" id="DjX-RG-hqh"/>
                             <constraint firstItem="bFF-xS-Lgx" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="Iqp-Df-0F2"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="J0l-tD-oTn"/>
+                            <constraint firstItem="PsK-Ps-E1C" firstAttribute="centerY" secondItem="i7k-Sw-oOe" secondAttribute="centerY" constant="-85" id="KIo-ee-AJh"/>
                             <constraint firstItem="jmk-sC-h0A" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="30" id="KeY-ig-iV3"/>
                             <constraint firstItem="8ME-Fh-scc" firstAttribute="top" secondItem="bFF-xS-Lgx" secondAttribute="bottom" constant="22" id="L5a-c8-5vA"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="53" id="LYv-wA-boR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jmk-sC-h0A" secondAttribute="trailing" constant="30" id="XTa-8f-5HN"/>
                             <constraint firstItem="bFF-xS-Lgx" firstAttribute="top" secondItem="jmk-sC-h0A" secondAttribute="bottom" constant="35" id="ZHN-ME-rUC"/>
-                            <constraint firstItem="co7-j6-wUW" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="aPe-CJ-C7S"/>
                             <constraint firstItem="co7-j6-wUW" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="30" id="giU-zz-hkZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="co7-j6-wUW" secondAttribute="trailing" constant="30" id="hpE-Oa-uO3"/>
+                            <constraint firstItem="PsK-Ps-E1C" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="rha-Mf-hur"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hOV-QM-RqP" secondAttribute="trailing" constant="54" id="t0f-DT-9KL"/>
                         </constraints>
                     </view>
@@ -718,13 +729,19 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-QV-vaA">
                                 <rect key="frame" x="46" y="402" width="283" height="48"/>
-                                <color key="backgroundColor" red="0.99607843139999996" green="0.30980392159999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.041755300920000002" green="0.49565428859999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="NcD-Be-jce"/>
                                 </constraints>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpButtonTapped:" destination="81b-KC-9So" eventType="touchUpInside" id="N77-av-Zja"/>
                                 </connections>
@@ -755,8 +772,14 @@
                                     <constraint firstAttribute="width" constant="126" id="ALG-eR-ZYm"/>
                                     <constraint firstAttribute="height" constant="126" id="bl8-1c-SIL"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="U9W-Hj-Lsm" kind="embed" id="f3l-Qg-LEv"/>
+                                    <segue destination="U9W-Hj-Lsm" kind="embed" identifier="embedPhotoSelect" id="f3l-Qg-LEv"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -809,7 +832,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBg-Pg-0I9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1330.4000000000001" y="250.52473763118442"/>
+            <point key="canvasLocation" x="-1178" y="251"/>
         </scene>
         <!--Photo Select View Controller-->
         <scene sceneID="cAP-5o-gXx">
@@ -856,6 +879,7 @@
         <image name="back" width="22" height="21"/>
         <image name="send" width="16" height="16"/>
         <image name="talkUpLoadingIcon" width="219" height="219"/>
+        <image name="talkUpLogo" width="98" height="95"/>
         <image name="talkup" width="32" height="32"/>
         <image name="tumblr_mm1yov63xO1rz1ki7o1_500" width="500" height="375"/>
         <image name="upVoteGreen" width="117" height="117"/>

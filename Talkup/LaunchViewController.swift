@@ -19,7 +19,7 @@ class LaunchViewController: UIViewController {
             return UIInterfaceOrientationMask.portrait
         }
     }
-
+    
     
     //MARK: - Check if user is user is registered
     
@@ -28,15 +28,23 @@ class LaunchViewController: UIViewController {
         super.viewDidAppear(animated)
         
         cloudKitManager.fetchLoggedInUserRecord { (recordID, error) in
-            if let userID = recordID {
-                NSLog("recieved iCLoudID \(userID)")
-                self.pushTo(viewController: .conversations)
-            } else {
-                NSLog("Fetched iCloudID was nil")
-                self.pushTo(viewController: .welcome)
+            guard let userID = recordID,
+                let email = recordID?[Constants.userEmailKey],
+                let username = recordID?[Constants.usernameKey] else {
+                    
+                    NSLog("Fetched iCloudID was nil")
+                    self.pushTo(viewController: .welcome)
+                    return
+                    
             }
+            
+            NSLog("recieved iCLoudID \(userID)")
+            self.pushTo(viewController: .conversations)
+            
         }
     }
+    
+    
     
     
     //MARK: - Push to relevant ViewController

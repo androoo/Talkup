@@ -20,6 +20,7 @@ class NewUserViewController: UIViewController {
     //MARK: - UI Actions
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        // check that username and email havent been used already 
         
         if let image = image,
             let username = usernameTextField.text,
@@ -45,7 +46,14 @@ class NewUserViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //Navigate or segue to conversations TVC is successfull
+    //MARK: - Navigation 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "embedPhotoSelect" {
+            let embedViewController = segue.destination as? PhotoSelectViewController
+            embedViewController?.delegate = self
+        }
+    }
     
 }
 

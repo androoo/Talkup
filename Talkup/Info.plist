@@ -47,5 +47,7 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App accesses your photos to use on your profile only</string>
 </dict>
 </plist>

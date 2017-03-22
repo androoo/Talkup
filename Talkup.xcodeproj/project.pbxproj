@@ -178,11 +178,11 @@
 			children = (
 				5A35A2941E78412A00162A20 /* LaunchViewController.swift */,
 				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
+				5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */,
 				5A35A2981E786E1600162A20 /* NavViewController.swift */,
 				5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */,
 				5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */,
 				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
-				5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */,
 				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
 			);
 			name = "View Controllers";
