@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1467671E82021100F7E3EA /* SenderTableViewCell.swift */; };
 		5A14676A1E8205AA00F7E3EA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1467691E8205AA00F7E3EA /* User.swift */; };
+		5A14676C1E82237900F7E3EA /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A14676B1E82237900F7E3EA /* UserController.swift */; };
+		5A14676E1E82DF8200F7E3EA /* PhotoSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */; };
+		5A1467701E82E00200F7E3EA /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */; };
 		5A35A2571E76FDC500162A20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2561E76FDC500162A20 /* AppDelegate.swift */; };
 		5A35A25C1E76FDC500162A20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25A1E76FDC500162A20 /* Main.storyboard */; };
 		5A35A25E1E76FDC500162A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25D1E76FDC500162A20 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 /* Begin PBXFileReference section */
 		5A1467671E82021100F7E3EA /* SenderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenderTableViewCell.swift; sourceTree = "<group>"; };
 		5A1467691E8205AA00F7E3EA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5A14676B1E82237900F7E3EA /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectViewController.swift; sourceTree = "<group>"; };
+		5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		5A35A2531E76FDC500162A20 /* Talkup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talkup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A35A2561E76FDC500162A20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A35A25B1E76FDC500162A20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 			children = (
 				5A35A2881E7752DA00162A20 /* ChatController.swift */,
 				5A35A2861E7752CE00162A20 /* MessageController.swift */,
+				5A14676B1E82237900F7E3EA /* UserController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -170,11 +177,13 @@
 			isa = PBXGroup;
 			children = (
 				5A35A2941E78412A00162A20 /* LoadingViewController.swift */,
+				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
 				5A35A2981E786E1600162A20 /* NavViewController.swift */,
 				5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */,
 				5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */,
 				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
-				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
+				5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */,
+				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -296,11 +305,14 @@
 			files = (
 				5A35A28D1E77531E00162A20 /* ChatDetailTableViewController.swift in Sources */,
 				5A35A27A1E772BD300162A20 /* Message.swift in Sources */,
+				5A14676C1E82237900F7E3EA /* UserController.swift in Sources */,
 				5A35A2871E7752CE00162A20 /* MessageController.swift in Sources */,
 				5A35A2951E78412A00162A20 /* LoadingViewController.swift in Sources */,
 				5A35A2801E772E5100162A20 /* CloudKitSyncable.swift in Sources */,
 				5A35A2891E7752DA00162A20 /* ChatController.swift in Sources */,
 				5A35A28B1E77530500162A20 /* ChatsListTableViewController.swift in Sources */,
+				5A1467701E82E00200F7E3EA /* NewUserViewController.swift in Sources */,
+				5A14676E1E82DF8200F7E3EA /* PhotoSelectViewController.swift in Sources */,
 				5A35A2931E78329A00162A20 /* WelcomeViewController.swift in Sources */,
 				5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */,
 				5A35A28F1E77533A00162A20 /* RecieverTableViewCell.swift in Sources */,

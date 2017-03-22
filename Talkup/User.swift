@@ -25,14 +25,15 @@ class User: CloudKitSyncable {
     
     var chats: [Chat]
     var messages: [Message]
+    var blocked: [User]
     
-    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = []) {
+    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], blocked: [User] = []) {
         self.userName = userName
         self.email = email
         self.photoData = photoData
         self.chats = chats
         self.messages = messages
-        
+        self.blocked = blocked
     }
     
     //MARK: - CloudKitSyncable 
@@ -62,3 +63,30 @@ class User: CloudKitSyncable {
     var cloudKitRecordID: CKRecordID?
 
 }
+
+extension CKRecord {
+    convenience init(user: User) {
+        let recordID = CKRecordID(recordName: UUID().uuidString)
+        self.init(recordType: user.recordType, recordID: recordID)
+        //might be something messed up here TODO bitch
+        self[Constants.usernameKey] = user.userName as CKRecordValue?
+        self[Constants.userEmailKey] = user.email as CKRecordValue?
+        self[Constants.photoDataKey] = CKAsset(fileURL: user.temporaryPhotoURL)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

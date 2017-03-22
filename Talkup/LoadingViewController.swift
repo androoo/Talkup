@@ -23,6 +23,7 @@ class LoadingViewController: UIViewController {
     
     //MARK: - Check if user is user is registered
     
+    //MARK: - TODO - check that use userID is associated with a username and email
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
