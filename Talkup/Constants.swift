@@ -9,12 +9,13 @@
 import Foundation
 
 struct Constants {
-    
+        
     //MARK: - User Keys
     
     static let usertypeKey = "User"
     static let photoDataKey = "photoData"
     static let usernameKey = "username"
+    static let userEmailKey = "email"
     
     
     //MARK: - Chat Keys

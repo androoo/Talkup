@@ -101,7 +101,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? MessageTableViewCell else { return MessageTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
         
         guard let chat = chat else { return cell }
         
@@ -198,7 +198,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     //MARK: - Message Cell Delegate 
     
-    func toggleVoteCount(_ sender: MessageTableViewCell) {
+    func toggleVoteCount(_ sender: RecieverTableViewCell) {
 
     }
     

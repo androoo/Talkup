@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1467671E82021100F7E3EA /* SenderTableViewCell.swift */; };
+		5A14676A1E8205AA00F7E3EA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1467691E8205AA00F7E3EA /* User.swift */; };
 		5A35A2571E76FDC500162A20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2561E76FDC500162A20 /* AppDelegate.swift */; };
 		5A35A25C1E76FDC500162A20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25A1E76FDC500162A20 /* Main.storyboard */; };
 		5A35A25E1E76FDC500162A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25D1E76FDC500162A20 /* Assets.xcassets */; };
@@ -22,7 +24,7 @@
 		5A35A2891E7752DA00162A20 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2881E7752DA00162A20 /* ChatController.swift */; };
 		5A35A28B1E77530500162A20 /* ChatsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */; };
 		5A35A28D1E77531E00162A20 /* ChatDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */; };
-		5A35A28F1E77533A00162A20 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */; };
+		5A35A28F1E77533A00162A20 /* RecieverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A28E1E77533A00162A20 /* RecieverTableViewCell.swift */; };
 		5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2901E77539500162A20 /* NewMessageViewController.swift */; };
 		5A35A2931E78329A00162A20 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2921E78329A00162A20 /* WelcomeViewController.swift */; };
 		5A35A2951E78412A00162A20 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2941E78412A00162A20 /* LoadingViewController.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A1467671E82021100F7E3EA /* SenderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenderTableViewCell.swift; sourceTree = "<group>"; };
+		5A1467691E8205AA00F7E3EA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5A35A2531E76FDC500162A20 /* Talkup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talkup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A35A2561E76FDC500162A20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A35A25B1E76FDC500162A20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +54,7 @@
 		5A35A2881E7752DA00162A20 /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		5A35A28A1E77530500162A20 /* ChatsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsListTableViewController.swift; sourceTree = "<group>"; };
 		5A35A28C1E77531E00162A20 /* ChatDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailTableViewController.swift; sourceTree = "<group>"; };
-		5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		5A35A28E1E77533A00162A20 /* RecieverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecieverTableViewCell.swift; sourceTree = "<group>"; };
 		5A35A2901E77539500162A20 /* NewMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 		5A35A2921E78329A00162A20 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		5A35A2941E78412A00162A20 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		5A35A26B1E76FF5500162A20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A1467691E8205AA00F7E3EA /* User.swift */,
 				5A35A27B1E772BE400162A20 /* Chat.swift */,
 				5A35A2791E772BD300162A20 /* Message.swift */,
 			);
@@ -155,7 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				5A8F7AAA1E7C504200C4E566 /* ChatTableViewCell.swift */,
-				5A35A28E1E77533A00162A20 /* MessageTableViewCell.swift */,
+				5A35A28E1E77533A00162A20 /* RecieverTableViewCell.swift */,
+				5A1467671E82021100F7E3EA /* SenderTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -297,14 +303,16 @@
 				5A35A28B1E77530500162A20 /* ChatsListTableViewController.swift in Sources */,
 				5A35A2931E78329A00162A20 /* WelcomeViewController.swift in Sources */,
 				5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */,
-				5A35A28F1E77533A00162A20 /* MessageTableViewCell.swift in Sources */,
+				5A35A28F1E77533A00162A20 /* RecieverTableViewCell.swift in Sources */,
 				5A35A2831E773F1500162A20 /* HelperFiles.swift in Sources */,
 				5A35A27C1E772BE400162A20 /* Chat.swift in Sources */,
+				5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */,
 				5A8F7AAB1E7C504200C4E566 /* ChatTableViewCell.swift in Sources */,
 				5A35A2571E76FDC500162A20 /* AppDelegate.swift in Sources */,
 				5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */,
 				5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */,
 				5A35A29B1E78989000162A20 /* Constants.swift in Sources */,
+				5A14676A1E8205AA00F7E3EA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

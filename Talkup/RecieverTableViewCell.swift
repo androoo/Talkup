@@ -1,5 +1,5 @@
 //
-//  MessageTableViewCell.swift
+//  RecieverTableViewCell.swift
 //  Talkup
 //
 //  Created by Andrew Ervin Gierke on 3/13/17.
@@ -11,10 +11,10 @@ import UIKit
 //MARK: - Protocol
 
 protocol MessageVoteButtonDelegate: class {
-    func toggleVoteCount(_ sender: MessageTableViewCell)
+    func toggleVoteCount(_ sender: RecieverTableViewCell)
 }
 
-class MessageTableViewCell: UITableViewCell {
+class RecieverTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
