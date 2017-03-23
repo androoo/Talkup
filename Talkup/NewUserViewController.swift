@@ -21,34 +21,27 @@ class NewUserViewController: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
-        // check that username and email havent been used already
-        // iterated through all usernames and emails and check that they dont exist
+        guard let username = usernameTextField.text,
+            let email = emailTextField.text,
+            let image = image else { emptyFieldsAlert(); return }
         
-        if let image = image,
-            let username = usernameTextField.text,
-            let email = emailTextField.text  {
+        UserController.shared.createUserWith(username: username, email: email, image: image) { (user) in
             
-            UserController.shared.createUserWith(username: username, email: email, image: image, completion: { (_) in
-                
-                //if the user is successfully created, send them to the NavViewController which sends them to ChatsListTableViewController
-                
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavViewController else { return }
-                self.present(vc, animated: false, completion: nil)
-                
-            })
-            
-        } else {
-            
-            let alertController = UIAlertController(title: "Information Missing", message: "Check that you've filled out your email and username and try again", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            present(alertController, animated: true, completion: nil)
+            //send to convo TVC 
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavViewController else { return }
+            self.present(vc, animated: false, completion: nil)
             
         }
-        
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func emptyFieldsAlert() {
+        let alertController = UIAlertController(title: "Information Missing", message: "Check that you've filled out your email and username and try again", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - Navigation

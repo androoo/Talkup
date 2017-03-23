@@ -16,12 +16,28 @@ class UserController {
     
     var defaultUserRecordID: CKRecordID?
     
-    var currentUser: User?
+    let currentUserWasSetNotification = Notification.Name("currentUserWasSet")
+    
+    var currentUser: User? {
+        didSet {
+            NotificationCenter.default.post(name: currentUserWasSetNotification, object: nil)
+        }
+    }
     
     let cloudKitManager: CloudKitManager
     
     init() {
         self.cloudKitManager = CloudKitManager()
+        
+        CKContainer.default().fetchUserRecordID { (recordID, error) in
+            guard let recordID = recordID else { return }
+            
+            self.defaultUserRecordID = recordID
+        }
+        
+        cloudKitManager.fetchCurrentUser { (currentUser) in
+            self.currentUser = currentUser
+        }
         
     }
     
@@ -29,8 +45,9 @@ class UserController {
     
     func createUserWith(username: String, email: String, image: UIImage, completion: @escaping (User?) -> Void) {
         
-        guard let data = UIImageJPEGRepresentation(image, 0.8),
-            let defaultUserRecordID = defaultUserRecordID else { return }
+        guard let data = UIImageJPEGRepresentation(image, 0.8) else { return }
+        
+        guard let defaultUserRecordID = defaultUserRecordID else { completion(nil); return }
         
         let defaultUserRef = CKReference(recordID: defaultUserRecordID, action: .deleteSelf)
         
@@ -50,7 +67,7 @@ class UserController {
         
     }
     
-    
+    // check if user info already exists
     
     
     

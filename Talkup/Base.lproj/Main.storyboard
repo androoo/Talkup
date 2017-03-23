@@ -510,7 +510,7 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kh-FU-T3o">
-                                    <rect key="frame" x="332" y="10" width="32" height="32"/>
+                                    <rect key="frame" x="332" y="9" width="32" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="HMP-nb-m2Y"/>
                                         <constraint firstAttribute="width" constant="32" id="jxa-fV-1W9"/>
@@ -571,12 +571,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I already have an account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFF-xS-Lgx">
-                                <rect key="frame" x="105" y="628" width="164.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmk-sC-h0A">
                                 <rect key="frame" x="46" y="545" width="283" height="48"/>
                                 <color key="backgroundColor" red="0.043137254901960784" green="0.38039215686274508" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
@@ -588,7 +582,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -620,14 +614,12 @@
                         <constraints>
                             <constraint firstItem="co7-j6-wUW" firstAttribute="top" secondItem="PsK-Ps-E1C" secondAttribute="bottom" constant="22" id="0Qz-hg-K6J"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="top" secondItem="co7-j6-wUW" secondAttribute="bottom" constant="8" id="3dN-Qg-xFJ"/>
-                            <constraint firstItem="bFF-xS-Lgx" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="Iqp-Df-0F2"/>
+                            <constraint firstItem="8ME-Fh-scc" firstAttribute="top" secondItem="jmk-sC-h0A" secondAttribute="bottom" constant="74" id="F37-72-OBO"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="J0l-tD-oTn"/>
                             <constraint firstItem="PsK-Ps-E1C" firstAttribute="centerY" secondItem="i7k-Sw-oOe" secondAttribute="centerY" constant="-85" id="KIo-ee-AJh"/>
                             <constraint firstItem="jmk-sC-h0A" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="30" id="KeY-ig-iV3"/>
-                            <constraint firstItem="8ME-Fh-scc" firstAttribute="top" secondItem="bFF-xS-Lgx" secondAttribute="bottom" constant="22" id="L5a-c8-5vA"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="53" id="LYv-wA-boR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jmk-sC-h0A" secondAttribute="trailing" constant="30" id="XTa-8f-5HN"/>
-                            <constraint firstItem="bFF-xS-Lgx" firstAttribute="top" secondItem="jmk-sC-h0A" secondAttribute="bottom" constant="35" id="ZHN-ME-rUC"/>
                             <constraint firstItem="co7-j6-wUW" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="30" id="giU-zz-hkZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="co7-j6-wUW" secondAttribute="trailing" constant="30" id="hpE-Oa-uO3"/>
                             <constraint firstItem="PsK-Ps-E1C" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="rha-Mf-hur"/>
@@ -645,7 +637,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="P6r-J3-GHa" customClass="NavViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="back" id="j0C-NI-Zs6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back" id="j0C-NI-Zs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
@@ -721,12 +713,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDS-bF-8OT">
-                                <rect key="frame" x="108" y="624" width="158" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-QV-vaA">
                                 <rect key="frame" x="46" y="402" width="283" height="48"/>
                                 <color key="backgroundColor" red="0.4392156862745098" green="0.015686274509803921" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
@@ -738,7 +724,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -788,8 +774,6 @@
                             <constraint firstItem="dAj-tj-3Wi" firstAttribute="trailing" secondItem="oJF-9i-zhN" secondAttribute="trailing" id="5IG-k0-zCg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PRa-QV-vaA" secondAttribute="trailing" constant="30" id="9Cr-x3-OLn"/>
                             <constraint firstItem="PRa-QV-vaA" firstAttribute="top" secondItem="dAj-tj-3Wi" secondAttribute="bottom" constant="22" id="B1P-7g-ZrA"/>
-                            <constraint firstItem="8IM-x4-D2D" firstAttribute="top" secondItem="rDS-bF-8OT" secondAttribute="bottom" constant="22" id="ElT-m9-6DB"/>
-                            <constraint firstItem="rDS-bF-8OT" firstAttribute="centerX" secondItem="E5h-QD-xkG" secondAttribute="centerX" id="Hhz-O3-FRk"/>
                             <constraint firstItem="vnb-hY-aMO" firstAttribute="top" secondItem="E7h-NT-pYK" secondAttribute="bottom" constant="64" id="U2x-zn-Uig"/>
                             <constraint firstItem="vnb-hY-aMO" firstAttribute="centerX" secondItem="E5h-QD-xkG" secondAttribute="centerX" id="VEA-94-X1y"/>
                             <constraint firstItem="dAj-tj-3Wi" firstAttribute="top" secondItem="oJF-9i-zhN" secondAttribute="bottom" constant="8" id="W1m-gg-AGu"/>
@@ -838,16 +822,29 @@
         <scene sceneID="cAP-5o-gXx">
             <objects>
                 <viewController id="U9W-Hj-Lsm" customClass="PhotoSelectViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="20p-7y-hVf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uhj-ne-p5L"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kp1-cX-IAg">
                         <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-tL-Au3">
                                 <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="63"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TT7-fx-naK">
                                 <rect key="frame" x="16" y="0.0" width="94" height="126"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Add Photo">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="selectPhotoButtonTapped:" destination="U9W-Hj-Lsm" eventType="touchUpInside" id="vUF-Qv-noe"/>
                                 </connections>

@@ -29,6 +29,7 @@ class CloudKitManager {
     func fetchCurrentUser(completion: @escaping (User?) -> Void) {
         
         CKContainer.default().fetchUserRecordID { (defaultUsersRecordID, error) in
+            
             if let error = error { print(error.localizedDescription) }
             
             guard let defaultUsersRecordID = defaultUsersRecordID else { return }
@@ -43,9 +44,7 @@ class CloudKitManager {
                 
                 let currentUser = User(cloudKitRecord: currentUserRecord)
                 completion(currentUser)
-                
             })
-            
         }
     }
     
