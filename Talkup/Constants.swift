@@ -16,7 +16,7 @@ struct Constants {
     static let photoDataKey = "photoData"
     static let usernameKey = "username"
     static let userEmailKey = "email"
-    
+    static let userReferenceKey = "userReference"
     
     //MARK: - Chat Keys
     
@@ -35,5 +35,6 @@ struct Constants {
     static let textKey = "text"
     static let hasReadKey = "read"
     static let scoreKey = "score"
+    
 //    static let chatReferenceKey = "chatReference"
 }

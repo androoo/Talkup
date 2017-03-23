@@ -14,32 +14,38 @@ class UserController {
     
     static let shared = UserController()
     
+    var defaultUserRecordID: CKRecordID?
+    
+    var currentUser: User?
+    
     let cloudKitManager: CloudKitManager
     
     init() {
         self.cloudKitManager = CloudKitManager()
+        
     }
     
     //MARK: - CloudKit Helpers
     
-    func createUserWith(username: String, email: String, image: UIImage, completion: ((User) -> Void)?) {
+    func createUserWith(username: String, email: String, image: UIImage, completion: @escaping (User?) -> Void) {
         
-        guard let data = UIImageJPEGRepresentation(image, 0.8) else { return }
+        guard let data = UIImageJPEGRepresentation(image, 0.8),
+            let defaultUserRecordID = defaultUserRecordID else { return }
         
-        let user = User(userName: username, email: email, photoData: data)
+        let defaultUserRef = CKReference(recordID: defaultUserRecordID, action: .deleteSelf)
         
-        cloudKitManager.saveRecord(CKRecord(user: user)) { (record, error) in
-            guard let record = record else {
+        let user = User(userName: username, email: email, photoData: data, defaultUserReference: defaultUserRef)
+        
+        let userRecord = CKRecord(user: user)
+
+        CKContainer.default().publicCloudDatabase.save(userRecord) { (record, error) in
+            if let error = error { print(error.localizedDescription) }
             
-                if let error = error {
-                    NSLog("Error saving new user: \(error)")
-                    return
-                }
+            guard let record = record,
+                let currentUser = User(cloudKitRecord: record) else { completion(nil); return }
             
-                completion?(user)
-                return
-            }
-            user.cloudKitRecordID = record.recordID
+            self.currentUser = currentUser
+            completion(currentUser)
         }
         
     }

@@ -28,24 +28,15 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        cloudKitManager.fetchLoggedInUserRecord { (recordID, error) in
-            
-            // need to check that the user has a recordID, username, and email
-            
-            guard let userID = recordID /*,
-                let email = recordID?[Constants.userEmailKey],
-                let username = recordID?[Constants.usernameKey] */ else {
-                    
-                    NSLog("Fetched iCloudID was nil")
-                    self.pushTo(viewController: .welcome)
-                    return
-                    
-            }
-            
-            NSLog("recieved iCLoudID \(userID)")
+   
+        if UserController.shared.currentUser == nil {
+            NSLog("current user fetch was nil")
+            self.pushTo(viewController: .welcome)
+        } else {
+            NSLog(" got a user")
             self.pushTo(viewController: .conversations)
-            
         }
+
     }
     
     

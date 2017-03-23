@@ -26,6 +26,30 @@ class CloudKitManager {
     
     // MARK: - User Info Discovery
     
+    func fetchCurrentUser(completion: @escaping (User?) -> Void) {
+        
+        CKContainer.default().fetchUserRecordID { (defaultUsersRecordID, error) in
+            if let error = error { print(error.localizedDescription) }
+            
+            guard let defaultUsersRecordID = defaultUsersRecordID else { return }
+            
+            let defaultUsersReference = CKReference(recordID: defaultUsersRecordID, action: .deleteSelf)
+            
+            let predicate = NSPredicate(format: "%@ == %@", Constants.userReferenceKey, defaultUsersReference)
+            
+            self.fetchRecordsWithType(Constants.usertypeKey, predicate: predicate, recordFetchedBlock: nil, completion: { (records, error) in
+                
+                guard let currentUserRecord = records?.first else { return }
+                
+                let currentUser = User(cloudKitRecord: currentUserRecord)
+                completion(currentUser)
+                
+            })
+            
+        }
+    }
+    
+    
     func fetchLoggedInUserRecord(_ completion: ((_ record: CKRecord?, _ error: Error? ) -> Void)?) {
         
         CKContainer.default().fetchUserRecordID { (recordID, error) in
@@ -42,6 +66,7 @@ class CloudKitManager {
             }
         }
     }
+
     
     func fetchUsername(for recordID: CKRecordID,
                        completion: @escaping ((_ givenName: String?, _ familyName: String?) -> Void) = { _,_ in }) {

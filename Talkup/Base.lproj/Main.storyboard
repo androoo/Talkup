@@ -572,19 +572,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I already have an account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFF-xS-Lgx">
-                                <rect key="frame" x="90" y="624" width="194.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="105" y="628" width="164.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmk-sC-h0A">
-                                <rect key="frame" x="46" y="541" width="283" height="48"/>
-                                <color key="backgroundColor" red="0.0417553009171866" green="0.4956542886036327" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="46" y="545" width="283" height="48"/>
+                                <color key="backgroundColor" red="0.043137254901960784" green="0.38039215686274508" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Tg4-GP-d1r"/>
                                 </constraints>
-                                <state key="normal" title="Sign up">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Create account">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -599,16 +599,16 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Talkup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co7-j6-wUW">
                                 <rect key="frame" x="46" y="313" width="283" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What everyone is talking about" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOV-QM-RqP">
-                                <rect key="frame" x="69" y="350" width="236" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's everyone saying?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOV-QM-RqP">
+                                <rect key="frame" x="69" y="350" width="236" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkUpLogo" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TalkupBlue" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
                                 <rect key="frame" x="144.5" y="206" width="85" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="Jy6-cN-7L6"/>
@@ -672,7 +672,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkUpLoadingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TalkupClear" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
                                 <rect key="frame" x="149.5" y="295.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="OqF-0u-IyL"/>
@@ -680,7 +680,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.043137254901960784" green="0.38039215686274508" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="eqW-nr-Sed" firstAttribute="centerX" secondItem="CST-84-yQl" secondAttribute="centerX" id="ee0-lN-2VE"/>
                             <constraint firstItem="eqW-nr-Sed" firstAttribute="centerY" secondItem="CST-84-yQl" secondAttribute="centerY" id="sRf-HF-ilc"/>
@@ -729,7 +729,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-QV-vaA">
                                 <rect key="frame" x="46" y="402" width="283" height="48"/>
-                                <color key="backgroundColor" red="0.041755300920000002" green="0.49565428859999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.4392156862745098" green="0.015686274509803921" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="NcD-Be-jce"/>
                                 </constraints>
@@ -876,10 +876,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TalkupBlue" width="450" height="450"/>
+        <image name="TalkupClear" width="426" height="426"/>
         <image name="back" width="22" height="21"/>
         <image name="send" width="16" height="16"/>
-        <image name="talkUpLoadingIcon" width="219" height="219"/>
-        <image name="talkUpLogo" width="98" height="95"/>
         <image name="talkup" width="32" height="32"/>
         <image name="tumblr_mm1yov63xO1rz1ki7o1_500" width="500" height="375"/>
         <image name="upVoteGreen" width="117" height="117"/>

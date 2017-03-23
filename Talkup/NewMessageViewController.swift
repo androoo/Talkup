@@ -10,9 +10,9 @@ import UIKit
 import CloudKit
 
 class NewMessageViewController: UIViewController {
-
-    //MARK: - Properties 
-
+    
+    //MARK: - Properties
+    
     
     //MARK: - Outlets
     
@@ -41,22 +41,22 @@ class NewMessageViewController: UIViewController {
     @IBAction func newChatButtonTapped(_ sender: Any) {
         createChat()
     }
-
+    
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - Methods 
+    //MARK: - Methods
     
     func createChat() {
         guard let topicText = topicTextField.text,
             let message = messageTextField.text,
-        
+            
             // need to set owner = the User.username of the person entering the chat
+            
+            let owner = UserController.shared.currentUser  else { return }
         
-            let owner = CKReference  else { return }
-
         ChatController.shared.createChatWith(chatTopic: topicText, owner: owner, firstMessage: message) { (_) in
             self.dismiss(animated: true, completion: nil)
         }
