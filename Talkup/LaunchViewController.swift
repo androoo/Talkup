@@ -19,16 +19,10 @@ class LaunchViewController: UIViewController {
             return UIInterfaceOrientationMask.portrait
         }
     }
-    
-    
-    //MARK: - Check if user is user is registered
-    
-    //MARK: - TODO - check that use userID is associated with a username and email
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-   
         if UserController.shared.currentUser == nil {
             NSLog("current user fetch was nil")
             self.pushTo(viewController: .welcome)
@@ -36,11 +30,7 @@ class LaunchViewController: UIViewController {
             NSLog(" got a user")
             self.pushTo(viewController: .conversations)
         }
-
     }
-    
-    
-    
     
     //MARK: - Push to relevant ViewController
     

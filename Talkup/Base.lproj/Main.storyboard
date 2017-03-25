@@ -152,7 +152,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dVp-TR-guB" id="dOx-ra-guH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oji-cS-uJY">
@@ -293,7 +293,7 @@
                                 <rect key="frame" x="0.0" y="78" width="375" height="94"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7y8-RH-gXg" id="eBb-rf-BIO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="93.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Esf-XB-2oB">
@@ -391,7 +391,7 @@
                                 <rect key="frame" x="0.0" y="172" width="375" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vqi-WR-5ca" id="I7W-yb-q75">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Iim-nO-dWg">
@@ -572,7 +572,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmk-sC-h0A">
-                                <rect key="frame" x="46" y="545" width="283" height="48"/>
+                                <rect key="frame" x="36" y="583" width="303" height="48"/>
                                 <color key="backgroundColor" red="0.043137254901960784" green="0.38039215686274508" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Tg4-GP-d1r"/>
@@ -597,8 +597,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's everyone saying?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOV-QM-RqP">
-                                <rect key="frame" x="69" y="350" width="236" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="69" y="350" width="236" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -614,12 +614,12 @@
                         <constraints>
                             <constraint firstItem="co7-j6-wUW" firstAttribute="top" secondItem="PsK-Ps-E1C" secondAttribute="bottom" constant="22" id="0Qz-hg-K6J"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="top" secondItem="co7-j6-wUW" secondAttribute="bottom" constant="8" id="3dN-Qg-xFJ"/>
-                            <constraint firstItem="8ME-Fh-scc" firstAttribute="top" secondItem="jmk-sC-h0A" secondAttribute="bottom" constant="74" id="F37-72-OBO"/>
+                            <constraint firstItem="8ME-Fh-scc" firstAttribute="top" secondItem="jmk-sC-h0A" secondAttribute="bottom" constant="36" id="F37-72-OBO"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="J0l-tD-oTn"/>
                             <constraint firstItem="PsK-Ps-E1C" firstAttribute="centerY" secondItem="i7k-Sw-oOe" secondAttribute="centerY" constant="-85" id="KIo-ee-AJh"/>
-                            <constraint firstItem="jmk-sC-h0A" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="30" id="KeY-ig-iV3"/>
+                            <constraint firstItem="jmk-sC-h0A" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leading" constant="36" id="KeY-ig-iV3"/>
                             <constraint firstItem="hOV-QM-RqP" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="53" id="LYv-wA-boR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jmk-sC-h0A" secondAttribute="trailing" constant="30" id="XTa-8f-5HN"/>
+                            <constraint firstAttribute="trailing" secondItem="jmk-sC-h0A" secondAttribute="trailing" constant="36" id="XTa-8f-5HN"/>
                             <constraint firstItem="co7-j6-wUW" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="30" id="giU-zz-hkZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="co7-j6-wUW" secondAttribute="trailing" constant="30" id="hpE-Oa-uO3"/>
                             <constraint firstItem="PsK-Ps-E1C" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="rha-Mf-hur"/>
@@ -637,7 +637,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="P6r-J3-GHa" customClass="NavViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back" id="j0C-NI-Zs6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="back" backIndicatorTransitionMaskImage="back" id="j0C-NI-Zs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
@@ -681,7 +681,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQn-RX-gXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-391" y="-430"/>
+            <point key="canvasLocation" x="-391" y="-517"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MLO-8O-8Zs">
@@ -869,7 +869,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuS-t6-X2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="810"/>
+            <point key="canvasLocation" x="312" y="746"/>
         </scene>
     </scenes>
     <resources>

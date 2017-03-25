@@ -14,31 +14,33 @@ class UserController {
     
     static let shared = UserController()
     
-    var defaultUserRecordID: CKRecordID?
+    let cloudKitManager = CloudKitManager()
     
     let currentUserWasSetNotification = Notification.Name("currentUserWasSet")
     
-    var currentUser: User? {
+    var defaultUserRecordID: CKRecordID? {
         didSet {
-            NotificationCenter.default.post(name: currentUserWasSetNotification, object: nil)
+            cloudKitManager.fetchCurrentUser { (currentUser) in
+                self.currentUser = currentUser
+            }
         }
     }
     
-    let cloudKitManager: CloudKitManager
+    var currentUser: User? {
+        didSet {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: self.currentUserWasSetNotification, object: self)
+            }
+        }
+    }
     
     init() {
-        self.cloudKitManager = CloudKitManager()
         
         CKContainer.default().fetchUserRecordID { (recordID, error) in
             guard let recordID = recordID else { return }
             
             self.defaultUserRecordID = recordID
         }
-        
-        cloudKitManager.fetchCurrentUser { (currentUser) in
-            self.currentUser = currentUser
-        }
-        
     }
     
     //MARK: - CloudKit Helpers
@@ -54,7 +56,7 @@ class UserController {
         let user = User(userName: username, email: email, photoData: data, defaultUserReference: defaultUserRef)
         
         let userRecord = CKRecord(user: user)
-
+        
         CKContainer.default().publicCloudDatabase.save(userRecord) { (record, error) in
             if let error = error { print(error.localizedDescription) }
             
@@ -67,12 +69,10 @@ class UserController {
         
     }
     
+    // update user info
+    
     // check if user info already exists
     
-    
-    
     // blockUserWith
-    
-    
     
 }

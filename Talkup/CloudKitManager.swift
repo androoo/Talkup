@@ -36,9 +36,11 @@ class CloudKitManager {
             
             let defaultUsersReference = CKReference(recordID: defaultUsersRecordID, action: .deleteSelf)
             
-            let predicate = NSPredicate(format: "%@ == %@", Constants.userReferenceKey, defaultUsersReference)
+            let predicate = NSPredicate(format: "userReference == %@", defaultUsersReference)
             
             self.fetchRecordsWithType(Constants.usertypeKey, predicate: predicate, recordFetchedBlock: nil, completion: { (records, error) in
+                
+                if let error = error { NSLog("couldn't fetch records with that predicate: \(error)") }
                 
                 guard let currentUserRecord = records?.first else { return }
                 

@@ -17,7 +17,6 @@
 		5A35A25E1E76FDC500162A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25D1E76FDC500162A20 /* Assets.xcassets */; };
 		5A35A2611E76FDC500162A20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25F1E76FDC500162A20 /* LaunchScreen.storyboard */; };
 		5A35A2741E76FFCD00162A20 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A35A2731E76FFCD00162A20 /* CloudKit.framework */; };
-		5A35A2761E77044600162A20 /* Screen Shot 2017-03-13 at 10.35.36 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A2751E77044600162A20 /* Screen Shot 2017-03-13 at 10.35.36 AM.png */; };
 		5A35A27A1E772BD300162A20 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2791E772BD300162A20 /* Message.swift */; };
 		5A35A27C1E772BE400162A20 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A27B1E772BE400162A20 /* Chat.swift */; };
 		5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A27D1E772E1E00162A20 /* CloudKitManager.swift */; };
@@ -50,7 +49,6 @@
 		5A35A2621E76FDC500162A20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A35A2711E76FFC500162A20 /* Talkup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Talkup.entitlements; sourceTree = "<group>"; };
 		5A35A2731E76FFCD00162A20 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		5A35A2751E77044600162A20 /* Screen Shot 2017-03-13 at 10.35.36 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2017-03-13 at 10.35.36 AM.png"; sourceTree = "<group>"; };
 		5A35A2791E772BD300162A20 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		5A35A27B1E772BE400162A20 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		5A35A27D1E772E1E00162A20 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 			children = (
 				5A35A2551E76FDC500162A20 /* Talkup */,
 				5A35A2541E76FDC500162A20 /* Products */,
-				5A35A2751E77044600162A20 /* Screen Shot 2017-03-13 at 10.35.36 AM.png */,
 				5A35A2721E76FFCD00162A20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -291,7 +288,6 @@
 			files = (
 				5A35A2611E76FDC500162A20 /* LaunchScreen.storyboard in Resources */,
 				5A35A25E1E76FDC500162A20 /* Assets.xcassets in Resources */,
-				5A35A2761E77044600162A20 /* Screen Shot 2017-03-13 at 10.35.36 AM.png in Resources */,
 				5A35A25C1E76FDC500162A20 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,7 +447,7 @@
 				DEVELOPMENT_TEAM = BP324SX4AT;
 				INFOPLIST_FILE = Talkup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.androoo.Talkup;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.and.Talkup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -465,7 +461,7 @@
 				DEVELOPMENT_TEAM = BP324SX4AT;
 				INFOPLIST_FILE = Talkup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.androoo.Talkup;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.and.Talkup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
