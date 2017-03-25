@@ -12,6 +12,8 @@ import UIKit
 
 class UserController {
     
+    //MARK: - Properties
+    
     static let shared = UserController()
     
     let cloudKitManager = CloudKitManager()
@@ -33,6 +35,8 @@ class UserController {
             }
         }
     }
+    
+    //MARK: - View lifecycle
     
     init() {
         
