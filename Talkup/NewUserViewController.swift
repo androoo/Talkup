@@ -27,9 +27,12 @@ class NewUserViewController: UIViewController {
         
         UserController.shared.createUserWith(username: username, email: email, image: image) { (user) in
             
-            //send to convo TVC 
+            //send to convo TVC
+            DispatchQueue.main.async {
+                
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavViewController else { return }
             self.present(vc, animated: false, completion: nil)
+            }
             
         }
     }

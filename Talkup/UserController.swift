@@ -20,13 +20,7 @@ class UserController {
     
     let currentUserWasSetNotification = Notification.Name("currentUserWasSet")
     
-    var defaultUserRecordID: CKRecordID? {
-        didSet {
-            cloudKitManager.fetchCurrentUser { (currentUser) in
-                self.currentUser = currentUser
-            }
-        }
-    }
+    var defaultUserRecordID: CKRecordID?
     
     var currentUser: User? {
         didSet {
@@ -39,6 +33,8 @@ class UserController {
     //MARK: - View lifecycle
     
     init() {
+        
+        
         
         CKContainer.default().fetchUserRecordID { (recordID, error) in
             guard let recordID = recordID else { return }

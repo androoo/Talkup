@@ -20,12 +20,10 @@ class ChatsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Supertalk"
+        title = "Talkup"
         
         requestFullSync()
 
-        
-        
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         

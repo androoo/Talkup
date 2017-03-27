@@ -19,16 +19,20 @@ class LaunchViewController: UIViewController {
             return UIInterfaceOrientationMask.portrait
         }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if UserController.shared.currentUser == nil {
-            NSLog("current user fetch was nil")
-            self.pushTo(viewController: .welcome)
-        } else {
-            NSLog(" got a user")
-            self.pushTo(viewController: .conversations)
+        cloudKitManager.fetchCurrentUser { (user) in
+            UserController.shared.currentUser = user
+            
+            if user == nil {
+                NSLog("current user fetch was nil")
+                self.pushTo(viewController: .welcome)
+            } else {
+                NSLog("got a user")
+                self.pushTo(viewController: .conversations)
+            }
         }
     }
     

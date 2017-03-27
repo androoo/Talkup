@@ -139,7 +139,7 @@
             </objects>
             <point key="canvasLocation" x="2066" y="-466"/>
         </scene>
-        <!--Talk Chart-->
+        <!--Talkup-->
         <scene sceneID="Os6-Ce-H71">
             <objects>
                 <tableViewController storyboardIdentifier="Conversations" id="hYI-zh-dXR" customClass="ChatsListTableViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
@@ -226,7 +226,7 @@
                             <outlet property="delegate" destination="hYI-zh-dXR" id="FTf-ez-SsE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Talk Chart" id="6qb-CW-Y4p">
+                    <navigationItem key="navigationItem" title="Talkup" id="6qb-CW-Y4p">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sHw-xf-xrs">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -597,13 +597,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's everyone saying?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOV-QM-RqP">
-                                <rect key="frame" x="69" y="350" width="236" height="19.5"/>
+                                <rect key="frame" x="69" y="350" width="236" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TalkupBlue" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
-                                <rect key="frame" x="144.5" y="206" width="85" height="85"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TalkupBlue-1" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
+                                <rect key="frame" x="145" y="206" width="85" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="Jy6-cN-7L6"/>
                                     <constraint firstAttribute="width" constant="85" id="XTd-v4-5lN"/>
@@ -613,17 +613,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="co7-j6-wUW" firstAttribute="top" secondItem="PsK-Ps-E1C" secondAttribute="bottom" constant="22" id="0Qz-hg-K6J"/>
-                            <constraint firstItem="hOV-QM-RqP" firstAttribute="top" secondItem="co7-j6-wUW" secondAttribute="bottom" constant="8" id="3dN-Qg-xFJ"/>
                             <constraint firstItem="8ME-Fh-scc" firstAttribute="top" secondItem="jmk-sC-h0A" secondAttribute="bottom" constant="36" id="F37-72-OBO"/>
-                            <constraint firstItem="hOV-QM-RqP" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="J0l-tD-oTn"/>
                             <constraint firstItem="PsK-Ps-E1C" firstAttribute="centerY" secondItem="i7k-Sw-oOe" secondAttribute="centerY" constant="-85" id="KIo-ee-AJh"/>
                             <constraint firstItem="jmk-sC-h0A" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leading" constant="36" id="KeY-ig-iV3"/>
-                            <constraint firstItem="hOV-QM-RqP" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="53" id="LYv-wA-boR"/>
+                            <constraint firstItem="hOV-QM-RqP" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="53" id="W60-A0-Geg"/>
                             <constraint firstAttribute="trailing" secondItem="jmk-sC-h0A" secondAttribute="trailing" constant="36" id="XTa-8f-5HN"/>
+                            <constraint firstItem="hOV-QM-RqP" firstAttribute="top" secondItem="co7-j6-wUW" secondAttribute="bottom" constant="8" symbolic="YES" id="ZEb-tD-szZ"/>
                             <constraint firstItem="co7-j6-wUW" firstAttribute="leading" secondItem="i7k-Sw-oOe" secondAttribute="leadingMargin" constant="30" id="giU-zz-hkZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="co7-j6-wUW" secondAttribute="trailing" constant="30" id="hpE-Oa-uO3"/>
                             <constraint firstItem="PsK-Ps-E1C" firstAttribute="centerX" secondItem="i7k-Sw-oOe" secondAttribute="centerX" id="rha-Mf-hur"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hOV-QM-RqP" secondAttribute="trailing" constant="54" id="t0f-DT-9KL"/>
+                            <constraint firstItem="hOV-QM-RqP" firstAttribute="centerX" secondItem="co7-j6-wUW" secondAttribute="centerX" id="zVT-4p-5A0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="grZ-39-sz6"/>
@@ -873,7 +872,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TalkupBlue" width="450" height="450"/>
+        <image name="TalkupBlue-1" width="663" height="663"/>
         <image name="TalkupClear" width="426" height="426"/>
         <image name="back" width="22" height="21"/>
         <image name="send" width="16" height="16"/>
