@@ -38,6 +38,7 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var messageVoteCountLabel: UILabel!
     @IBOutlet weak var messageUsernameLabel: UILabel!
     @IBOutlet weak var messageDateLabel: UILabel!
+    @IBOutlet weak var userAvatarImageView: UIImageView!
     
     
     
@@ -80,6 +81,7 @@ class RecieverTableViewCell: UITableViewCell {
         messageVoteCountLabel.text = "\(message.score)"
         messageUsernameLabel.text = message.owner?.userName
         messageDateLabel.text = "\(message.timestamp)"
+        userAvatarImageView.image = message.owner?.photo
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscribed) in
             

@@ -384,6 +384,7 @@
                                     <outlet property="messageDateLabel" destination="lhH-wd-e26" id="0BU-ZL-FEr"/>
                                     <outlet property="messageUsernameLabel" destination="2U1-tv-86f" id="LNC-0T-qoa"/>
                                     <outlet property="messageVoteCountLabel" destination="hWA-0d-TUX" id="6dC-eM-NQg"/>
+                                    <outlet property="userAvatarImageView" destination="Rsi-ia-j35" id="NvF-4o-Z3O"/>
                                     <outlet property="voteButton" destination="koC-H4-Ih0" id="rmD-F3-GZ4"/>
                                 </connections>
                             </tableViewCell>

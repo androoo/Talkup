@@ -15,6 +15,7 @@ class Message: CloudKitSyncable {
     //MARK: - Properties
     
     var owner: User?
+    var ownerReference: CKReference
     var text: String
     var timestamp: Date
     var isRead: Bool
@@ -25,9 +26,10 @@ class Message: CloudKitSyncable {
     
     //MARK: - Inits
     
-    init(owner: User, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat?) {
+    init(owner: User? = nil, ownerReference: CKReference, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat?) {
         
         self.owner = owner
+        self.ownerReference = ownerReference
         self.text = text
         self.timestamp = timestamp
         self.isRead = isRead
@@ -39,13 +41,15 @@ class Message: CloudKitSyncable {
     //MARK: - CloudKitSyncable
     
     convenience required init?(cloudKitRecord: CKRecord) {
-        guard let owner = cloudKitRecord[Constants.ownerKey] as? User,
+        guard let ownerReference = cloudKitRecord[Constants.ownerKey] as? CKReference,
             let text = cloudKitRecord[Constants.textKey] as? String,
             let timestamp = cloudKitRecord.creationDate,
             let isRead = cloudKitRecord[Constants.hasReadKey] as? Bool,
-            let score = cloudKitRecord[Constants.scoreKey] as? Int else { return nil }
+            let score = cloudKitRecord[Constants.scoreKey] as? Int else {
+                return nil
+        }
         
-        self.init(owner: owner, text: text, timestamp: timestamp, isRead: isRead, score: score, chat: nil)
+        self.init(ownerReference: ownerReference, text: text, timestamp: timestamp, isRead: isRead, score: score, chat: nil)
         
         self.cloudKitRecordID = cloudKitRecord.recordID
     }
@@ -57,12 +61,11 @@ class Message: CloudKitSyncable {
 extension CKRecord {
     convenience init(message: Message) {
         
-        guard let chat = message.chat,
-            let user = message.owner else { fatalError("Message does not have a Chat relationship") }
+        guard let chat = message.chat else { fatalError("Message does not have a Chat relationship") }
         
-        let ownerRecordID = user.cloudKitRecordID ?? CKRecord(user: user).recordID
+        let ownerRecordID = message.ownerReference.recordID
         let chatRecordID = chat.cloudKitRecordID ?? CKRecord(chat: chat).recordID
-        let recordID = CKRecordID(recordName: UUID().uuidString)
+        let recordID = message.cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
         self.init(recordType: message.recordType, recordID: recordID)
         

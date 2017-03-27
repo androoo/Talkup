@@ -55,7 +55,10 @@ class ChatController {
         
         let chat = Chat(topic: chatTopic)
         chats.append(chat)
-        let message = Message(owner: owner, text: firstMessage, chat: chat)
+        
+        guard let ownerReference = owner.cloudKitReference else { return }
+        
+        let message = Message(ownerReference: ownerReference, text: firstMessage, chat: chat)
         chat.messages.append(message)
         
         cloudKitManager.saveRecord(CKRecord(chat: chat)) { (record, error) in
@@ -89,7 +92,9 @@ class ChatController {
     
     @discardableResult func addMessage(byUser owner: User, toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {
         
-        let message = Message(owner: owner, text: messageText, chat: chat)
+        let ownerReference = owner.cloudKitReference
+        
+        let message = Message(ownerReference: ownerReference!, text: messageText, chat: chat)
         chat.messages.append(message)
         
         cloudKitManager.saveRecord(CKRecord(message: message)) { (record, error) in
@@ -209,10 +214,10 @@ class ChatController {
         
         pushChangesToCloudKit { (success) in
             self.fetchNewRecordsOf(type: Constants.chattypeKey) {
-                self.fetchNewRecordsOf(type: Constants.messagetypeKey) {
+                
                     self.isSyncing = false
                     completion()
-                }
+                
             }
         }
     }

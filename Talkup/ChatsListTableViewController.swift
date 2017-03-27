@@ -77,6 +77,7 @@ class ChatsListTableViewController: UITableViewController {
                 navigationItem.backBarButtonItem = backItem
                 
                 let chats = ChatController.shared.chats
+                
                 detailViewController.chat = chats[selectedIndexPath.row]
             }
         }

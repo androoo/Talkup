@@ -24,6 +24,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         }
     }
     
+    var message: Message? {
+        didSet {
+            
+        }
+    }
+    
     var messageSortSelection: MessageSort = .live
     
     //MARK: - UIActions
@@ -62,9 +68,15 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         //do stuff to stuff
         guard let chat = chat, isViewLoaded else { return }
         
+        MessageController.shared.fetchMessagesIn(chat: chat) { 
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        tableView.reloadData()
+//        tableView.reloadData()
 
     }   
     //MARK: - View lifecycle
@@ -101,17 +113,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
-        
-        guard let chat = chat else { return cell }
-        
-        
-//        switch messageSortSelection {
-//        case .live:
-//            
-//        case .top:
-//            
-//        }
+
         
         let message = sortedMessagesByScore[indexPath.row]
         

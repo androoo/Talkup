@@ -24,15 +24,20 @@ class LaunchViewController: UIViewController {
         super.viewDidAppear(animated)
         
         cloudKitManager.fetchCurrentUser { (user) in
+            
             UserController.shared.currentUser = user
             
-            if user == nil {
+        
+        
+            if UserController.shared.currentUser == nil {
                 NSLog("current user fetch was nil")
                 self.pushTo(viewController: .welcome)
             } else {
                 NSLog("got a user")
                 self.pushTo(viewController: .conversations)
             }
+        
+            
         }
     }
     

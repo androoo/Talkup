@@ -25,6 +25,49 @@ class MessageController {
         self.cloudKitManager = CloudKitManager()
     }
     
+    //MARK: - Fetch Messages 
+    
+    func fetchMessagesIn(chat: Chat, completion: @escaping () -> Void) {
+        guard let chatRecordID = chat.cloudKitRecordID else { return }
+        
+        let predicate = NSPredicate(format: "chat == %@", chatRecordID)
+        
+        let query = CKQuery(recordType: Constants.messagetypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                guard let records = records else { return }
+                
+                let messages = records.flatMap({Message(cloudKitRecord: $0)})
+                
+                // Get the owner for each message
+                
+                chat.messages = messages
+                completion()
+                
+            }
+        }
+    }
+    
+    func fetchMessageOwnersFor(messages: [Message], completion: (User) -> Void) {
+        let ownerReferences = messages.flatMap({$0.ownerReference})
+        
+        let predicate = NSPredicate(format: "recordID IN %@", ownerReferences)
+        
+        let query = CKQuery(recordType: Constants.usertypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            
+            //flat map user 
+            //check if the message matches owner 
+            //set the owner to message owner
+            
+        }
+        
+    }
+    
     func increaseScoreForMessage(messageNamed message: Message,
                                  completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
 

@@ -21,7 +21,7 @@ class User: CloudKitSyncable {
     var blocked: [User]
     var defaultUserReference: CKReference
     var cloudKitRecordID: CKRecordID?
-    
+    var users: [User]
     let photoData: Data?
     var photo: UIImage? {
         guard let photoData = self.photoData else { return nil }
@@ -29,14 +29,16 @@ class User: CloudKitSyncable {
     }
     
     
-    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], blocked: [User] = [], defaultUserReference: CKReference) {
+    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], blocked: [User] = [], users: [User] = [],defaultUserReference: CKReference) {
         self.userName = userName
         self.email = email
         self.photoData = photoData
         self.chats = chats
         self.messages = messages
         self.blocked = blocked
+        self.users = users
         self.defaultUserReference = defaultUserReference
+        
     }
     
     //MARK: - CloudKitSyncable 
@@ -75,6 +77,7 @@ extension CKRecord {
         self.init(recordType: user.recordType, recordID: recordID)
         
         //might be something messed up here TODO bitch
+        
         self[Constants.usernameKey] = user.userName as CKRecordValue?
         self[Constants.userEmailKey] = user.email as CKRecordValue?
         self[Constants.photoDataKey] = CKAsset(fileURL: user.temporaryPhotoURL)
