@@ -69,10 +69,14 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         guard let chat = chat, isViewLoaded else { return }
         
         MessageController.shared.fetchMessagesIn(chat: chat) { 
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) { 
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
+
         }
+        
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
