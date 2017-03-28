@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New Message-->
+        <!--New Topic-->
         <scene sceneID="Ipp-eR-s8g">
             <objects>
                 <viewController id="gBS-n3-RfD" customClass="NewMessageViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,7 +29,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Talk about..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jU0-z3-kC8">
                                         <rect key="frame" x="16" y="0.0" width="343" height="65"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -50,7 +50,7 @@
                             <constraint firstAttribute="trailing" secondItem="iaN-MT-dL6" secondAttribute="trailing" id="bzW-DY-1Qb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Message" id="4F1-ud-XBT">
+                    <navigationItem key="navigationItem" title="New Topic" id="4F1-ud-XBT">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="d6r-Kk-zPG">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="gBS-n3-RfD" id="FZc-92-efE"/>
@@ -227,7 +227,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Talkup" id="6qb-CW-Y4p">
-                        <barButtonItem key="rightBarButtonItem" image="TalkupBlackOutline" id="sHw-xf-xrs">
+                        <barButtonItem key="rightBarButtonItem" image="TalkupBlackSolid1x" id="sHw-xf-xrs">
                             <color key="tintColor" red="0.43921568630000002" green="0.015686274510000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="iuj-Yi-uUb" kind="presentation" id="OJO-k7-H2K"/>
@@ -652,18 +652,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47Q-qr-tuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-391.19999999999999" y="250.52473763118442"/>
+            <point key="canvasLocation" x="2066" y="1042"/>
         </scene>
         <!--Nav View Controller-->
         <scene sceneID="CD4-nU-DlE">
             <objects>
                 <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="P6r-J3-GHa" customClass="NavViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="navbarBackArrowPurple" backIndicatorTransitionMaskImage="navbarBackArrowPurple" id="j0C-NI-Zs6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="navbarBackArrowPurple" backIndicatorTransitionMaskImage="navbarBackArrowPurple" id="j0C-NI-Zs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.43921568630000002" green="0.015686274510000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="1" green="1" blue="1" alpha="0.15013830741626794" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -700,10 +699,14 @@
                             <constraint firstItem="eqW-nr-Sed" firstAttribute="centerY" secondItem="CST-84-yQl" secondAttribute="centerY" id="sRf-HF-ilc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="P6r-J3-GHa" kind="show" identifier="toChats" id="NIl-ha-Kkd"/>
+                        <segue destination="oPH-d2-Dag" kind="show" identifier="toWelcome" id="V3O-4F-poT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQn-RX-gXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-391" y="-517"/>
+            <point key="canvasLocation" x="348" y="251"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MLO-8O-8Zs">
@@ -713,6 +716,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QaF-sM-KxC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.4392156862745098" green="0.015686274509803921" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -820,7 +824,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asf-jS-csl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312.80000000000001" y="250.52473763118442"/>
+            <point key="canvasLocation" x="2953" y="1043"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kf9-ak-96e">
@@ -838,7 +842,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBg-Pg-0I9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1178" y="251"/>
+            <point key="canvasLocation" x="1252" y="1042"/>
         </scene>
         <!--Photo Select View Controller-->
         <scene sceneID="cAP-5o-gXx">
@@ -891,11 +895,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuS-t6-X2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="746"/>
+            <point key="canvasLocation" x="2987" y="1631"/>
         </scene>
     </scenes>
     <resources>
-        <image name="TalkupBlackOutline" width="21" height="20"/>
+        <image name="TalkupBlackSolid1x" width="23" height="22"/>
         <image name="TalkupBlue-1" width="663" height="663"/>
         <image name="TalkupClear" width="426" height="426"/>
         <image name="navbarBackArrowPurple" width="22" height="22"/>

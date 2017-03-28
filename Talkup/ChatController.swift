@@ -60,9 +60,10 @@ class ChatController {
         let chat = Chat(topic: chatTopic)
         chats.append(chat)
         
-        guard let ownerReference = owner.cloudKitReference else { return }
+        guard let ownerReference = owner.cloudKitReference,
+            let chatReference = chat.cloudKitReference else { return }
         
-        let message = Message(ownerReference: ownerReference, text: firstMessage, chat: chat)
+        let message = Message(ownerReference: ownerReference, text: firstMessage, chatReference: chatReference)
         chat.messages.append(message)
         
         cloudKitManager.saveRecord(CKRecord(chat: chat)) { (record, error) in
@@ -97,8 +98,11 @@ class ChatController {
     @discardableResult func addMessage(byUser owner: User, toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {
         
         let ownerReference = owner.cloudKitReference
+        let chatReference = chat.cloudKitReference
         
-        let message = Message(ownerReference: ownerReference!, text: messageText, chat: chat)
+        // TODO: - don't force unwrap this you idiot
+        
+        let message = Message(ownerReference: ownerReference!, text: messageText, chatReference: chatReference!)
         chat.messages.append(message)
         
         cloudKitManager.saveRecord(CKRecord(message: message)) { (record, error) in

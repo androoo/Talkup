@@ -25,19 +25,13 @@ class LaunchViewController: UIViewController {
         
         cloudKitManager.fetchCurrentUser { (user) in
             
-            UserController.shared.currentUser = user
-            
-        
-        
-            if UserController.shared.currentUser == nil {
-                NSLog("current user fetch was nil")
-                self.pushTo(viewController: .welcome)
+            if let currentUser = user {
+                UserController.shared.currentUser = currentUser
+                self.performSegue(withIdentifier: Constants.toChats, sender: self)
             } else {
-                NSLog("got a user")
-                self.pushTo(viewController: .conversations)
+                self.performSegue(withIdentifier: Constants.toWelcome, sender: self)
             }
         
-            
         }
     }
     

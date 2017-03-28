@@ -40,9 +40,10 @@ class CloudKitManager {
             
             self.fetchRecordsWithType(Constants.usertypeKey, predicate: predicate, recordFetchedBlock: nil, completion: { (records, error) in
                 
-                if let error = error { NSLog("couldn't fetch records with that predicate: \(error)") }
+                if let error = error { NSLog("couldn't fetch records with that predicate: \(error)"); completion(nil); return }
                 
-                guard let currentUserRecord = records?.first else { return }
+                
+                guard let currentUserRecord = records?.first else { completion(nil); return }
                 
                 let currentUser = User(cloudKitRecord: currentUserRecord)
                 completion(currentUser)

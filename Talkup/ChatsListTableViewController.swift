@@ -9,12 +9,7 @@
 import UIKit
 
 class ChatsListTableViewController: UITableViewController {
-    
-    //MARK: - Outlets
-    
-    //MARK: - Properties
-    
-    
+
     //MARK: - View lifecycle 
     
     override func viewDidLoad() {
@@ -22,12 +17,27 @@ class ChatsListTableViewController: UITableViewController {
         
         title = "Talkup"
         
+        
         requestFullSync()
 
+        customize()
+        
+        /*
+        let newChatButton = UIButton(frame: CGRect(origin: CGPoint(x: self.view.frame.width - 75, y: self.view.frame.height - 75), size: CGSize(width: 50, height: 50)))
+        
+        newChatButton.backgroundColor = Colors.purple
+        newChatButton.layer.cornerRadius = 25
+        newChatButton.clipsToBounds = true
+        
+        self.navigationController?.view.addSubview(newChatButton)
+            
+        */
+ 
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
-        
+ 
     }
+
     
     private func requestFullSync(_ completion: (() -> Void)? = nil) {
         
@@ -81,6 +91,22 @@ class ChatsListTableViewController: UITableViewController {
                 detailViewController.chat = chats[selectedIndexPath.row]
             }
         }
+        
+    }
+    
+    //MARK: - Appearance Helpers
+    
+    func customize() {
+        view.backgroundColor = Colors.gray
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        tableView.layer.cornerRadius = 0
+        tableView.layer.masksToBounds = true
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
         
     }
 }

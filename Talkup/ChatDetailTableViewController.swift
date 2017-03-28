@@ -61,18 +61,18 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     }
     
     var messages: [Message] {
-
-            switch messageSortSelection {
-            case .live:
-
-                return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedDescending}
-            case .top:
-
-                return chat!.messages.sorted { return $0.score > $1.score }
-           
+        
+        switch messageSortSelection {
+        case .live:
+            
+            return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedDescending}
+        case .top:
+            
+            return chat!.messages.sorted { return $0.score > $1.score }
+            
         }
     }
-
+    
     
     private func updateViews() {
         //do stuff to stuff
@@ -132,7 +132,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         
         // switch on the message's owner. If the owner ID = current user ID then cell type is sender.
         let currentUser = UserController.shared.currentUser
-    
+        
         let message = messages[indexPath.row]
         
         if message.owner?.cloudKitRecordID == currentUser?.cloudKitRecordID {
@@ -157,6 +157,10 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         return 86
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
+    }
+    
     //MARK: - Customize Appearance
     
     func customize() {
@@ -175,7 +179,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         guard let owner = UserController.shared.currentUser else { return }
         
         ChatController.shared.addMessage(byUser: owner ,toChat: chat, messageText: messageText)
-        dismiss(animated: true, completion: nil)
+        inputTextField.resignFirstResponder()
     }
     
     
@@ -235,9 +239,18 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     func toggleVoteCount(_ sender: RecieverTableViewCell) {
         
+        guard let message = sender.message else { return }
+        
+        MessageController.shared.toggleSubscriptionTo(messageNamed: message) { (_, _, _) in
+            MessageController.shared.updateMessageScore(forMessage: message) {
+                
+                DispatchQueue.main.async {
+                    self.updateViews()
+                    
+                }
+            }
+        }
     }
-    
-    
 }
 
 

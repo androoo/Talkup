@@ -82,40 +82,51 @@ class MessageController {
         }
     }
     
-    func increaseScoreForMessage(messageNamed message: Message,
-                                 completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
-
-//        message.score += 1
-//        
-//        ChatController.shared.pushChangesToCloudKit()
-        
-    }
-
+    // Set Message's Chat
     
-    func toggleVoteCountFor(messageNamed message: Message, completion: @escaping ((_ success: Bool, _ isSubscribed: Bool, _ error: Error?) -> Void) = { _, _, _ in }) {
+    func fetchMessageChatFor(messages: [Message], completion: @escaping () -> Void) {
         
-//        guard let messageID = message.cloudKitRecordID?.recordName else {
-//            completion(false, false, nil)
-//            return
-//        }
-//        
-//        print("attempting to toggle score for \(message.text)")
-//        
-//        cloudKitManager.fetchSubscription(messageID) { (subscription, error) in
-//            
-//            if subscription != nil {
-//                self.reduceScoreForMessage(messageNamed: message) { (success, error) in
-//                    print("subsribed message, so decrease and unsub")
-//                    completion(success, false, error)
-//                }
-//            } else {
-//                self.increaseScoreForMessage(messageNamed: message) { (success, error) in
-//                    print("unsubscribed, so increase and subscribe")
-//                    completion(success, true, error)
-//                }
-//            }
-//        }
+        let chatReferences = messages.flatMap({$0.chatReference})
+        
+        let predicate = NSPredicate(format: "recordID IN %@", chatReferences)
+        
+        let query = CKQuery(recordType: Constants.chattypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                completion()
+            } else {
+                guard let records = records else { completion(); return }
+                let chats = records.flatMap({Chat(cloudKitRecord: $0)})
+                
+                for message in messages {
+                    if let chat = chats.filter({$0.cloudKitRecordID == message.chatReference.recordID}).first {
+                        message.chat = chat
+                    }
+                }
+                completion() 
+            }
+        }
+        
     }
+    
+    
+    func updateMessageScore(forMessage message: Message, completion: @escaping () -> Void) {
+
+        let record = CKRecord(message: message)
+        
+        
+            cloudKitManager.modifyRecords([record], perRecordCompletion: nil) { (records, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                completion()
+        }
+    }
+
+
     
     //MARK: - Message Subscriptions 
     

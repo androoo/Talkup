@@ -44,13 +44,7 @@ class RecieverTableViewCell: UITableViewCell {
     
     @IBAction func recievedMessageCellVoteButtonTapped(_ sender: Any) {
         guard let message = message else { return }
-        //        delegate?.toggleVoteCount(self)
-        MessageController.shared.toggleSubscriptionTo(messageNamed: message) { (_, _, _) in
-            DispatchQueue.main.async {
-                self.updateViews()
-                
-            }
-        }
+        delegate?.toggleVoteCount(self)
     }
     
     
@@ -77,10 +71,13 @@ class RecieverTableViewCell: UITableViewCell {
     
     private func updateViews() {
         guard let message = message else { return }
+        
+        let time = message.timeSinceCreation(from: message.timestamp, to: Date())
+        
         chatMessageLabel.text = message.text
         messageVoteCountLabel.text = "\(message.score)"
         messageUsernameLabel.text = message.owner?.userName
-        messageDateLabel.text = "\(message.timestamp)"
+        messageDateLabel.text = "\(time)"
         userAvatarImageView.image = message.owner?.photo
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscribed) in

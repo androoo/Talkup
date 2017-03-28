@@ -9,6 +9,11 @@
 import Foundation
 
 struct Constants {
+    
+    //MARK: - Segues 
+    
+    static let toChats = "toChats"
+    static let toWelcome = "toWelcome"
         
     //MARK: - User Keys
     
