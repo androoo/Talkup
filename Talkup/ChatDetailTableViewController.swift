@@ -15,6 +15,8 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     @IBOutlet weak var liveButton: UIButton!
     @IBOutlet weak var topButton: UIButton!
     
+    @IBOutlet weak var liveButtonBottomBorder: UIImageView!
+    @IBOutlet weak var topButtonBottomBorder: UIImageView!
     
     //MARK: - Properties
     
@@ -38,31 +40,39 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     @IBAction func liveButtonTapped(_ sender: Any) {
         
-        liveButton.tintColor = UIColor.red
-        topButton.tintColor = UIColor.lightGray
-        print("live button tapped")
+        liveButton.setTitleColor(Colors.rose, for: .normal)
+        topButton.setTitleColor(.lightGray, for: .normal)
+        liveButtonBottomBorder.isHidden = false
+        liveButtonBottomBorder.backgroundColor = Colors.rose
+        topButtonBottomBorder.isHidden = true
         messageSortSelection = .live
-        
+        updateViews()
     }
     
     @IBAction func topButtonTapped(_ sender: Any) {
         
-        topButton.tintColor = UIColor.red
-        liveButton.tintColor = UIColor.lightGray
-        print("top button tapped")
+        liveButton.setTitleColor(.lightGray, for: .normal)
+        topButton.setTitleColor(Colors.rose, for: .normal)
+        liveButtonBottomBorder.isHidden = true
+        topButtonBottomBorder.backgroundColor = Colors.rose
+        topButtonBottomBorder.isHidden = false
         messageSortSelection = .top
-        
+        updateViews()
     }
     
-    
-    
-    var sortedMessagesByTimestamp: [Message] {
-        return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
+    var messages: [Message] {
+
+            switch messageSortSelection {
+            case .live:
+
+                return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
+            case .top:
+
+                return chat!.messages.sorted { return $0.score > $1.score }
+           
+        }
     }
-    
-    var sortedMessagesByScore: [Message] {
-        return chat!.messages.sorted { return $0.score > $1.score }
-    }
+
     
     private func updateViews() {
         //do stuff to stuff
@@ -74,13 +84,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
                     self.tableView.reloadData()
                 }
             }
-            
         }
         
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        //        tableView.reloadData()
+        tableView.reloadData()
         
     }
     //MARK: - View lifecycle
@@ -90,6 +99,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         
         updateViews()
         customize()
+        
+        
+        liveButtonBottomBorder.isHidden = false
         
         guard let chat = chat, isViewLoaded else { return }
         //        title = "\(chat.topic)"
@@ -120,7 +132,8 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         
         // switch on the message's owner. If the owner ID = current user ID then cell type is sender.
         let currentUser = UserController.shared.currentUser
-        let message = sortedMessagesByScore[indexPath.row]
+    
+        let message = messages[indexPath.row]
         
         if message.owner?.cloudKitRecordID == currentUser?.cloudKitRecordID {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }

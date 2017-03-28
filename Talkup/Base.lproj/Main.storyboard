@@ -265,6 +265,12 @@
                                         <action selector="liveButtonTapped:" destination="5UQ-c9-szv" eventType="touchUpInside" id="1v0-zR-2I9"/>
                                     </connections>
                                 </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eTU-Cf-gUl">
+                                    <rect key="frame" x="0.0" y="48" width="187.5" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="fVd-Ka-qjo"/>
+                                    </constraints>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48U-Hw-utv">
                                     <rect key="frame" x="187.5" y="0.0" width="187.5" height="49"/>
                                     <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
@@ -276,16 +282,28 @@
                                         <action selector="topButtonTapped:" destination="5UQ-c9-szv" eventType="touchUpInside" id="ve9-mR-A1m"/>
                                     </connections>
                                 </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hur-c3-2fo">
+                                    <rect key="frame" x="187.5" y="48" width="187.5" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="Mol-z3-0eI"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.83921568627450982" green="0.85882352941176465" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="hur-c3-2fo" firstAttribute="width" secondItem="48U-Hw-utv" secondAttribute="width" id="3Jd-wj-VaV"/>
                                 <constraint firstItem="48U-Hw-utv" firstAttribute="height" secondItem="GgL-1q-xXD" secondAttribute="height" id="Fbb-By-hr3"/>
                                 <constraint firstAttribute="trailing" secondItem="48U-Hw-utv" secondAttribute="trailing" id="Fn2-sY-g2W"/>
+                                <constraint firstItem="hur-c3-2fo" firstAttribute="bottom" secondItem="48U-Hw-utv" secondAttribute="bottom" id="JQs-St-5Ng"/>
                                 <constraint firstItem="48U-Hw-utv" firstAttribute="width" secondItem="GgL-1q-xXD" secondAttribute="width" id="OPo-dL-SHo"/>
+                                <constraint firstItem="eTU-Cf-gUl" firstAttribute="centerX" secondItem="GgL-1q-xXD" secondAttribute="centerX" id="PvD-nP-uet"/>
                                 <constraint firstItem="GgL-1q-xXD" firstAttribute="leading" secondItem="LDk-Zj-okt" secondAttribute="leading" id="QQL-oe-F1s"/>
+                                <constraint firstItem="eTU-Cf-gUl" firstAttribute="bottom" secondItem="GgL-1q-xXD" secondAttribute="bottom" id="WQk-F1-Y7e"/>
+                                <constraint firstItem="hur-c3-2fo" firstAttribute="centerX" secondItem="48U-Hw-utv" secondAttribute="centerX" id="ZFO-ES-dyN"/>
                                 <constraint firstItem="GgL-1q-xXD" firstAttribute="top" secondItem="LDk-Zj-okt" secondAttribute="top" id="chw-SU-XBb"/>
                                 <constraint firstItem="48U-Hw-utv" firstAttribute="leading" secondItem="GgL-1q-xXD" secondAttribute="trailing" id="mUg-ey-37S"/>
                                 <constraint firstItem="48U-Hw-utv" firstAttribute="top" secondItem="LDk-Zj-okt" secondAttribute="top" id="sZr-uD-VRL"/>
+                                <constraint firstItem="eTU-Cf-gUl" firstAttribute="width" secondItem="GgL-1q-xXD" secondAttribute="width" id="uaM-aC-UwP"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -484,7 +502,9 @@
                         <outlet property="inputBar" destination="zMe-jh-Mnp" id="Ggb-EB-HXq"/>
                         <outlet property="inputTextField" destination="dgF-nc-P49" id="gbv-fA-saq"/>
                         <outlet property="liveButton" destination="GgL-1q-xXD" id="WUy-EF-S22"/>
+                        <outlet property="liveButtonBottomBorder" destination="eTU-Cf-gUl" id="roz-Wh-y4U"/>
                         <outlet property="topButton" destination="48U-Hw-utv" id="sIX-sG-Ajy"/>
+                        <outlet property="topButtonBottomBorder" destination="hur-c3-2fo" id="0a8-FW-XPQ"/>
                     </connections>
                 </tableViewController>
                 <view contentMode="scaleToFill" id="zMe-jh-Mnp">

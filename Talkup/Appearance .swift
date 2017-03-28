@@ -13,8 +13,9 @@ import UIKit
 
 //MARK: - Global Colors
 
-struct GlobalVariables {
+struct Colors {
     static let blue = UIColor.init(red: 129/255.0, green: 144/255.0, blue: 255/255.0, alpha: 1)
+    static let rose = UIColor.init(red: 254/255.0, green: 79/255.0, blue: 114/255.0, alpha: 1)
 }
 
 //MARK: - UI Details
