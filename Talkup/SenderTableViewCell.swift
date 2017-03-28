@@ -9,6 +9,14 @@
 import UIKit
 
 class SenderTableViewCell: UITableViewCell {
+    
+    //MARK: - Properties 
+    
+    var message: Message? {
+        didSet {
+            updateViews()
+        }
+    }
 
     //MARK: - Outlets
     
@@ -18,5 +26,36 @@ class SenderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var chatTextView: UITextView!
     @IBOutlet weak var chatBubbleBackgroundImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        guard let messageToCustomize = chatTextView, let messageBg = chatBubbleBackgroundImageView else { return }
+        self.selectionStyle = .none
+        
+        messageToCustomize.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
+        messageBg.layer.cornerRadius = 15
+        messageBg.clipsToBounds = true
+        
+    }
+    
+    private func updateViews() {
+        guard let message = message else { return }
+        chatTextView.text = message.text
+        chatCountLabel.text = "\(message.score)"
+        ownerAvatarImageView.image = message.owner?.photo
+        timestampLabel.text = "\(message.timestamp)"
+    
+    }
 
 }
+
+
+
+
+
+
+
+
+
+

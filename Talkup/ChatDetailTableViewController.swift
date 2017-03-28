@@ -33,7 +33,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     var messageSortSelection: MessageSort = .live
     
     //MARK: - UIActions
-   
+    
     
     
     @IBAction func liveButtonTapped(_ sender: Any) {
@@ -68,21 +68,21 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         //do stuff to stuff
         guard let chat = chat, isViewLoaded else { return }
         
-        MessageController.shared.fetchMessagesIn(chat: chat) { 
-            MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) { 
+        MessageController.shared.fetchMessagesIn(chat: chat) {
+            MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             }
-
+            
         }
         
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-//        tableView.reloadData()
-
-    }   
+        //        tableView.reloadData()
+        
+    }
     //MARK: - View lifecycle
     
     override func viewDidLoad() {
@@ -92,7 +92,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         customize()
         
         guard let chat = chat, isViewLoaded else { return }
-//        title = "\(chat.topic)"
+        //        title = "\(chat.topic)"
         self.navigationItem.titleView = setTitle(title: "\(chat.topic)", subtitle: "45 people")
         
         let nc = NotificationCenter.default
@@ -109,7 +109,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             let chat = chat, notificationChat === chat else { return } // Not our post
         updateViews()
     }
-
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,23 +118,33 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
-
-        
+        // switch on the message's owner. If the owner ID = current user ID then cell type is sender.
+        let currentUser = UserController.shared.currentUser
         let message = sortedMessagesByScore[indexPath.row]
         
-        cell.delegate = self
-        cell.message = message
-        
-        return cell
+        if message.owner?.cloudKitRecordID == currentUser?.cloudKitRecordID {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
+            
+            cell.message = message
+            return cell
+            
+        } else {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
+            
+            cell.delegate = self
+            cell.message = message
+            
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        
         return 86
     }
     
-    //MARK: - Customize Appearance 
+    //MARK: - Customize Appearance
     
     func customize() {
         self.tableView.estimatedRowHeight = self.barHeight
@@ -143,7 +153,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
     }
     
-    //MARK: - Chat Input 
+    //MARK: - Chat Input
     
     @IBAction func sendChatMessageButtonTapped(_ sender: Any) {
         guard let messageText = inputTextField.text, let chat = self.chat else { return }
@@ -155,7 +165,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         dismiss(animated: true, completion: nil)
     }
     
-
+    
     @IBOutlet var inputBar: UIView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -173,7 +183,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     let barHeight: CGFloat = 50
     
-    //MARK: - Helper Methods 
+    //MARK: - Helper Methods
     
     func setTitle(title:String, subtitle:String) -> UIView {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: -2, width: 0, height: 0))
@@ -208,10 +218,10 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         return titleView
     }
     
-    //MARK: - Message Cell Delegate 
+    //MARK: - Message Cell Delegate
     
     func toggleVoteCount(_ sender: RecieverTableViewCell) {
-
+        
     }
     
     

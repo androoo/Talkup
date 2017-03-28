@@ -78,11 +78,6 @@ class MessageController {
                 }
                 completion()
             }
-            // if Message's ownerRef matches 
-            
-            //flat map user 
-            //check if the message matches owner 
-            //set the owner to message owner
         }
     }
     
@@ -95,7 +90,6 @@ class MessageController {
         
     }
 
-    
     
     func toggleVoteCountFor(messageNamed message: Message, completion: @escaping ((_ success: Bool, _ isSubscribed: Bool, _ error: Error?) -> Void) = { _, _, _ in }) {
         
