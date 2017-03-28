@@ -49,6 +49,10 @@ class ChatController {
         }
     }
     
+    //MARK: - Date Helper
+    
+    
+    
     //MARK: - CK Methods
     
     func createChatWith(chatTopic: String, owner: User, firstMessage: String, completion: ((Chat) -> Void)?) {

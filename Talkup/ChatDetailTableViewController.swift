@@ -65,7 +65,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             switch messageSortSelection {
             case .live:
 
-                return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
+                return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedDescending}
             case .top:
 
                 return chat!.messages.sorted { return $0.score > $1.score }

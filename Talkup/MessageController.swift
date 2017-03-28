@@ -24,6 +24,7 @@ class MessageController {
     init() {
         self.cloudKitManager = CloudKitManager()
     }
+
     
     //MARK: - Fetch Messages 
     

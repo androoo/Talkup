@@ -35,8 +35,38 @@ class Message: CloudKitSyncable {
         self.isRead = isRead
         self.score = score
         self.chat = chat
-       
+        
     }
+    
+    //MARK: - Date Helper
+    
+
+    func timeSinceCreation(from: Date, to: Date) -> String {
+        
+        let date = timestamp
+        let calendar = NSCalendar.current
+        
+        let day = calendar.component(.day, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+        
+        
+        if hour > 24 {
+            return "\(day)d"
+        } else if hour >= 0 && minutes >= 0 && seconds >= 0 {
+            return "\(hour)h"
+        } else if hour <= 0 && minutes >= 0 && seconds >= 0 {
+            return "\(minutes)m"
+        } else {
+            return "\(seconds)s"
+        
+        }
+    }
+    
+    
+    
+    
     
     //MARK: - CloudKitSyncable
     
@@ -53,8 +83,8 @@ class Message: CloudKitSyncable {
         
         self.cloudKitRecordID = cloudKitRecord.recordID
     }
-//    var creatorUserRecordID: CKRecordID?
-
+    //    var creatorUserRecordID: CKRecordID?
+    
     var recordType: String { return Constants.messagetypeKey }
 }
 
