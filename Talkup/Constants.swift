@@ -29,6 +29,7 @@ struct Constants {
     static let chatTopicKey = "topic"
     static let usersKey = "users"
     static let messagesKey = "messages"
+    static let chatReferenceKey = "chatReference"
     
     //MARK: - Message Keys
     
@@ -41,5 +42,6 @@ struct Constants {
     static let hasReadKey = "read"
     static let scoreKey = "score"
     
-//    static let chatReferenceKey = "chatReference"
+    
+   
 }

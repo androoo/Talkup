@@ -65,10 +65,6 @@ class Message: CloudKitSyncable {
         }
     }
     
-    
-    
-    
-    
     //MARK: - CloudKitSyncable
     
     convenience required init?(cloudKitRecord: CKRecord) {

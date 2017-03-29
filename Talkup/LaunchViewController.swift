@@ -25,11 +25,15 @@ class LaunchViewController: UIViewController {
         
         cloudKitManager.fetchCurrentUser { (user) in
             
-            if let currentUser = user {
-                UserController.shared.currentUser = currentUser
-                self.performSegue(withIdentifier: Constants.toChats, sender: self)
-            } else {
-                self.performSegue(withIdentifier: Constants.toWelcome, sender: self)
+            DispatchQueue.main.async {
+                
+                if let currentUser = user {
+                    UserController.shared.currentUser = currentUser
+                    self.performSegue(withIdentifier: Constants.toChats, sender: self)
+                } else {
+                    self.performSegue(withIdentifier: Constants.toWelcome, sender: self)
+                }
+                
             }
         
         }

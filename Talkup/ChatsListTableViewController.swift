@@ -70,7 +70,7 @@ class ChatsListTableViewController: UITableViewController {
         let chats = ChatController.shared.chats
         cell.chat = chats[indexPath.row]
         cell.chatRankLabel.text = "\(indexPath.row + 1)"
-        cell.chatRankLabel.textColor = UIColor.white
+
         
         return cell
     }

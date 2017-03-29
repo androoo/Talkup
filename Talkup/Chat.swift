@@ -16,6 +16,12 @@ class Chat: CloudKitSyncable {
     var topic: String
     var score: Int?
     var messages: [Message]
+    var cloudKitRecordID: CKRecordID?
+    
+    var chatReference: CKReference? {
+        guard let cloudKitRecordID = cloudKitRecordID else { return nil }
+        return CKReference(recordID: cloudKitRecordID, action: .deleteSelf)
+    }
     
     //MARK: - CloudKitSyncable
     
@@ -25,17 +31,16 @@ class Chat: CloudKitSyncable {
         self.messages = messages
     }
     
-    convenience required init?(cloudKitRecord: CKRecord) {
+    required init?(cloudKitRecord: CKRecord) {
         guard let topic = cloudKitRecord[Constants.chatKey] as? String /*,
             let messages = cloudKitRecord[Constants.messagesKey] as? [Message] */ else { return nil }
 
-        self.init(topic: topic, messages: [])
-//        self.init(topic: topic, messages: messages)
-        cloudKitRecordID = cloudKitRecord.recordID
+        self.topic = topic
+        self.cloudKitRecordID = cloudKitRecord.recordID
+        self.messages = []
     }
     
     var recordType: String { return Constants.chattypeKey }
-    var cloudKitRecordID: CKRecordID?
 }
 
 //MARK: -
@@ -46,6 +51,7 @@ extension CKRecord {
         self.init(recordType: chat.recordType, recordID: recordID)
         
         self[Constants.chatKey] = chat.topic as CKRecordValue?
+        self[Constants.chatReferenceKey] = chat.chatReference
     }
 }
 

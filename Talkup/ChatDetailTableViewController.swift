@@ -154,18 +154,22 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 86
+        return UITableViewAutomaticDimension > 86 ? UITableViewAutomaticDimension : 86
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
     }
     
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 86
+    }
+    
     //MARK: - Customize Appearance
     
     func customize() {
-        self.tableView.estimatedRowHeight = self.barHeight
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+//        self.tableView.estimatedRowHeight = self.barHeight
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
     }

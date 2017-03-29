@@ -57,16 +57,24 @@ class ChatController {
     
     func createChatWith(chatTopic: String, owner: User, firstMessage: String, completion: ((Chat) -> Void)?) {
         
+        
         let chat = Chat(topic: chatTopic)
+        
         chats.append(chat)
         
+        let chatRecord = CKRecord(chat: chat)
+        
+        chat.cloudKitRecordID = chatRecord.recordID
+
         guard let ownerReference = owner.cloudKitReference,
             let chatReference = chat.cloudKitReference else { return }
+        
+        //ok failing here ^
         
         let message = Message(ownerReference: ownerReference, text: firstMessage, chatReference: chatReference)
         chat.messages.append(message)
         
-        cloudKitManager.saveRecord(CKRecord(chat: chat)) { (record, error) in
+        cloudKitManager.saveRecord(chatRecord) { (record, error) in
             guard let record = record else {
                 if let error = error {
                     NSLog("Error saving new post to CloudKit: \(error)")
@@ -77,7 +85,8 @@ class ChatController {
             }
             chat.cloudKitRecordID = record.recordID
             
-            // Save message record
+            // And Save message record
+            
             self.cloudKitManager.saveRecord(CKRecord(message: message)) { (record, error) in
                 if let error = error {
                     NSLog("Error saving new comment to CloudKit: \(error)")
