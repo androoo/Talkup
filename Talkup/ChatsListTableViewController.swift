@@ -17,6 +17,7 @@ class ChatsListTableViewController: UITableViewController {
         
         title = "Talkup"
         
+        updateViews()
         
         requestFullSync()
 
@@ -35,7 +36,7 @@ class ChatsListTableViewController: UITableViewController {
  
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
- 
+        nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
     }
 
     
@@ -92,6 +93,12 @@ class ChatsListTableViewController: UITableViewController {
             }
         }
         
+    }
+    
+    func updateViews() {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+        }
     }
     
     //MARK: - Appearance Helpers

@@ -28,14 +28,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     var message: Message? {
         didSet {
-            
         }
     }
     
     var messageSortSelection: MessageSort = .live
     
     //MARK: - UIActions
-    
     
     
     @IBAction func liveButtonTapped(_ sender: Any) {
@@ -75,7 +73,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         }
     }
     
-    
     private func updateViews() {
         guard let chat = chat, isViewLoaded else { return }
 
@@ -85,21 +82,16 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         MessageController.shared.fetchMessagesIn(chat: chat) {
             group.enter()
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
-                
-                
                 group.leave()
             }
             group.leave()
         }
-        
         
         group.notify(queue: DispatchQueue.main) { 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
-        
-        
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
@@ -161,8 +153,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             return cell
             
         } else {
-            
-            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
             
             cell.delegate = self

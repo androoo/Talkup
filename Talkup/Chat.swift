@@ -13,6 +13,9 @@ import CloudKit
 class Chat: CloudKitSyncable {
 
     //MARK: - Properties
+    
+    var creator: User?
+    var creatorReference: CKReference
     var topic: String
     var score: Int?
     var messages: [Message]
@@ -25,16 +28,19 @@ class Chat: CloudKitSyncable {
     
     //MARK: - CloudKitSyncable
     
-    init(topic: String, score: Int? = 0, messages: [Message] = []) {
+    init(creator: User? = nil, creatorReference: CKReference, topic: String, score: Int? = 0, messages: [Message] = []) {
+        self.creator = creator
+        self.creatorReference = creatorReference
         self.topic = topic
         self.score = score
         self.messages = messages
     }
     
     required init?(cloudKitRecord: CKRecord) {
-        guard let topic = cloudKitRecord[Constants.chatKey] as? String /*,
-            let messages = cloudKitRecord[Constants.messagesKey] as? [Message] */ else { return nil }
+        guard let creatorReference = cloudKitRecord[Constants.chatCreatorKey] as? CKReference,
+            let topic = cloudKitRecord[Constants.chatKey] as? String else { return nil }
 
+        self.creatorReference = creatorReference
         self.topic = topic
         self.cloudKitRecordID = cloudKitRecord.recordID
         self.messages = []
@@ -52,6 +58,7 @@ extension CKRecord {
         
         self[Constants.chatKey] = chat.topic as CKRecordValue?
         self[Constants.chatReferenceKey] = chat.chatReference
+        self[Constants.chatCreatorKey] = chat.creatorReference
     }
 }
 

@@ -30,6 +30,7 @@ struct Constants {
     static let usersKey = "users"
     static let messagesKey = "messages"
     static let chatReferenceKey = "chatReference"
+    static let chatCreatorKey = "creator"
     
     //MARK: - Message Keys
     

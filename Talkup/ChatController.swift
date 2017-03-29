@@ -49,16 +49,44 @@ class ChatController {
         }
     }
     
-    //MARK: - Date Helper
+    //MARK: - Set Chat's Creator
     
+    func fetchChatOwnersFor(chats: [Chat], completion: @escaping () -> Void) {
+        
+        let creatorReferences = chats.flatMap({$0.creatorReference})
+        
+        let predicate = NSPredicate(format: "recordID IN %@", creatorReferences)
+        let query = CKQuery(recordType: Constants.usertypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion()
+            } else {
+                guard let records = records else { completion(); return }
+                
+                let creators = records.flatMap({User(cloudKitRecord: $0)})
+                
+                for chat in chats {
+                    if let creator = creators.filter({$0.cloudKitRecordID == chat.creatorReference.recordID}).first {
+                        chat.creator = creator
+                    }
+                }
+                
+                completion()
+            }
+            
+        }
+    }
     
     
     //MARK: - CK Methods
     
     func createChatWith(chatTopic: String, owner: User, firstMessage: String, completion: ((Chat) -> Void)?) {
         
+        guard let creatorRef = UserController.shared.currentUser?.cloudKitReference else { return }
         
-        let chat = Chat(topic: chatTopic)
+        let chat = Chat(creatorReference: creatorRef, topic: chatTopic)
         
         chats.append(chat)
         
@@ -68,8 +96,6 @@ class ChatController {
         
         guard let ownerReference = owner.cloudKitReference,
             let chatReference = chat.cloudKitReference else { return }
-        
-        //ok failing here ^
         
         let message = Message(ownerReference: ownerReference, text: firstMessage, chatReference: chatReference)
         chat.messages.append(message)
@@ -234,9 +260,12 @@ class ChatController {
         
         pushChangesToCloudKit { (success) in
             self.fetchNewRecordsOf(type: Constants.chattypeKey) {
-                
-                self.isSyncing = false
-                completion()
+                self.fetchChatOwnersFor(chats: self.chats, completion: { 
+                    
+                    self.isSyncing = false
+                    NotificationCenter.default.post(name: Notification.Name("syncingComplete"), object: nil)
+                    completion()
+                })
                 
             }
         }
