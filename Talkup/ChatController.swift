@@ -17,7 +17,7 @@ extension ChatController {
 
 class ChatController {
     
-    //MARK: - Properties 
+    //MARK: - Properties
     
     static let shared = ChatController()
     
@@ -33,7 +33,7 @@ class ChatController {
             }
         }
     }
-
+    
     var messages: [Message] {
         return chats.flatMap { $0.messages }
     }
@@ -65,7 +65,7 @@ class ChatController {
         let chatRecord = CKRecord(chat: chat)
         
         chat.cloudKitRecordID = chatRecord.recordID
-
+        
         guard let ownerReference = owner.cloudKitReference,
             let chatReference = chat.cloudKitReference else { return }
         
@@ -120,12 +120,15 @@ class ChatController {
                 return
             }
             message.cloudKitRecordID = record?.recordID
+            
+            DispatchQueue.main.async {
+                let nc = NotificationCenter.default
+                nc.post(name: ChatController.ChatMessagesChangedNotification, object: chat)
+            }
+            
+            message.owner = owner
+            
             completion(message)
-        }
-        
-        DispatchQueue.main.async {
-            let nc = NotificationCenter.default
-            nc.post(name: ChatController.ChatMessagesChangedNotification, object: chat)
         }
         return message
     }
@@ -232,8 +235,8 @@ class ChatController {
         pushChangesToCloudKit { (success) in
             self.fetchNewRecordsOf(type: Constants.chattypeKey) {
                 
-                    self.isSyncing = false
-                    completion()
+                self.isSyncing = false
+                completion()
                 
             }
         }

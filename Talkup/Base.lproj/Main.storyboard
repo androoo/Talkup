@@ -431,37 +431,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Iim-nO-dWg">
-                                            <rect key="frame" x="212" y="8" width="155" height="14"/>
+                                            <rect key="frame" x="359.5" y="8" width="7.5" height="14"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tumblr_mm1yov63xO1rz1ki7o1_500" translatesAutoresizingMaskIntoConstraints="NO" id="Lxo-NS-0dz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="14" id="EbU-3v-wVk"/>
-                                                        <constraint firstAttribute="width" constant="14" id="biA-gY-fTc"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="7"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today 11:32 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzP-L9-MaN">
-                                                    <rect key="frame" x="22" y="0.0" width="95.5" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upArrowPicto" translatesAutoresizingMaskIntoConstraints="NO" id="VBU-Xu-lJA">
-                                                    <rect key="frame" x="125.5" y="0.0" width="13" height="14"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="13" id="lb0-0k-t5n"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ga-tx-nVq">
-                                                    <rect key="frame" x="146.5" y="0.0" width="8.5" height="14"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="7.5" height="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -502,8 +477,6 @@
                                     <outlet property="chatBubbleBackgroundImageView" destination="lN1-66-Z7t" id="cHw-ml-Ewc"/>
                                     <outlet property="chatCountLabel" destination="8Ga-tx-nVq" id="zjM-t1-5jC"/>
                                     <outlet property="chatTextView" destination="brr-aG-6KI" id="uTs-ff-26W"/>
-                                    <outlet property="ownerAvatarImageView" destination="Lxo-NS-0dz" id="rfF-pN-VjP"/>
-                                    <outlet property="timestampLabel" destination="qzP-L9-MaN" id="Pki-uE-9FR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -703,7 +676,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TalkupWhiteStencil" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Talkup-1" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
                                 <rect key="frame" x="149.5" y="295.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="OqF-0u-IyL"/>
@@ -917,14 +890,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Talkup-1" width="923" height="923"/>
         <image name="TalkupBlackSolid1x" width="23" height="22"/>
         <image name="TalkupBlue-1" width="663" height="663"/>
-        <image name="TalkupWhiteStencil" width="639" height="639"/>
         <image name="navbarBackArrowPurple" width="22" height="22"/>
         <image name="send" width="16" height="16"/>
         <image name="talkup" width="32" height="32"/>
         <image name="tumblr_mm1yov63xO1rz1ki7o1_500" width="500" height="375"/>
-        <image name="upArrowPicto" width="9" height="9"/>
         <image name="upVoteGreen" width="117" height="117"/>
     </resources>
 </document>

@@ -45,9 +45,9 @@ class SenderTableViewCell: UITableViewCell {
         let time = message.timeSinceCreation(from: message.timestamp, to: Date())
         
         chatTextView.text = message.text
-        chatCountLabel.text = "\(message.score)"
-        ownerAvatarImageView.image = message.owner?.photo
-        timestampLabel.text = "\(time)"
+        chatCountLabel.text = "\(message.score) up"
+//        ownerAvatarImageView.image = message.owner?.photo
+//        timestampLabel.text = "\(time)"
     
     }
 

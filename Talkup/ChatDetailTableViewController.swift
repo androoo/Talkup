@@ -40,6 +40,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     @IBAction func liveButtonTapped(_ sender: Any) {
         
+        
         liveButton.setTitleColor(Colors.rose, for: .normal)
         topButton.setTitleColor(.lightGray, for: .normal)
         liveButtonBottomBorder.isHidden = false
@@ -47,6 +48,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         topButtonBottomBorder.isHidden = true
         messageSortSelection = .live
         updateViews()
+        
     }
     
     @IBAction func topButtonTapped(_ sender: Any) {
@@ -65,7 +67,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         switch messageSortSelection {
         case .live:
             
-            return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedDescending}
+            return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
         case .top:
             
             return chat!.messages.sorted { return $0.score > $1.score }
@@ -75,24 +77,39 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     
     private func updateViews() {
-        //do stuff to stuff
         guard let chat = chat, isViewLoaded else { return }
+
+        let group = DispatchGroup()
         
+        group.enter()
         MessageController.shared.fetchMessagesIn(chat: chat) {
+            group.enter()
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                
+                
+                group.leave()
+            }
+            group.leave()
+        }
+        
+        
+        group.notify(queue: DispatchQueue.main) { 
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
         
         
+        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
-        tableView.reloadData()
-        
     }
+    
     //MARK: - View lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateViews()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,12 +117,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         updateViews()
         customize()
         
-        
         liveButtonBottomBorder.isHidden = false
         
         guard let chat = chat, isViewLoaded else { return }
-        //        title = "\(chat.topic)"
-        self.navigationItem.titleView = setTitle(title: "\(chat.topic)", subtitle: "45 people")
+                title = "\(chat.topic)"
+        
+//        self.navigationItem.titleView = setTitle(title: "\(chat.topic)", subtitle: "45 people")
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(chatMessagesChanged(_:)), name: ChatController.ChatMessagesChangedNotification, object: nil)
@@ -117,9 +134,10 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     // MARK: Notifications
     
     func chatMessagesChanged(_ notification: Notification) {
-        guard let notificationChat = notification.object as? Chat,
-            let chat = chat, notificationChat === chat else { return } // Not our post
-        updateViews()
+//        guard let notificationChat = notification.object as? Chat,
+//            let chat = chat, notificationChat === chat else { return } // Not our post
+//        updateViews()
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -131,17 +149,19 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // switch on the message's owner. If the owner ID = current user ID then cell type is sender.
-        let currentUser = UserController.shared.currentUser
         
         let message = messages[indexPath.row]
         
-        if message.owner?.cloudKitRecordID == currentUser?.cloudKitRecordID {
+        guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
+        
+        if owner.cloudKitRecordID == currentUser.cloudKitRecordID {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
             
             cell.message = message
             return cell
             
         } else {
+            
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
             
@@ -151,20 +171,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             return cell
         }
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return UITableViewAutomaticDimension > 86 ? UITableViewAutomaticDimension : 86
-    }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
     }
     
-    
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 86
-    }
+
     
     //MARK: - Customize Appearance
     
@@ -179,10 +191,15 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     @IBAction func sendChatMessageButtonTapped(_ sender: Any) {
         guard let messageText = inputTextField.text, let chat = self.chat else { return }
         
-        // need to update the addMessage init to User as owner param
         guard let owner = UserController.shared.currentUser else { return }
         
-        ChatController.shared.addMessage(byUser: owner ,toChat: chat, messageText: messageText)
+        ChatController.shared.addMessage(byUser: owner, toChat: chat, messageText: messageText) { (_) in
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
+        }
+        inputTextField.text = nil
         inputTextField.resignFirstResponder()
     }
     

@@ -27,7 +27,7 @@ class Message: CloudKitSyncable {
     
     //MARK: - Inits
     
-    init(owner: User? = nil, ownerReference: CKReference, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 0, chat: Chat? = nil, chatReference: CKReference) {
+    init(owner: User? = nil, ownerReference: CKReference, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 1, chat: Chat? = nil, chatReference: CKReference) {
         
         self.owner = owner
         self.ownerReference = ownerReference
