@@ -591,7 +591,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Tg4-GP-d1r"/>
                                 </constraints>
-                                <state key="normal" title="Create account">
+                                <state key="normal" title="Sign up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -616,7 +616,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TalkupBlue-1" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkupPinkBlack" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
                                 <rect key="frame" x="145" y="206" width="85" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="Jy6-cN-7L6"/>
@@ -676,7 +676,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Talkup-1" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkupPinkBlack" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
                                 <rect key="frame" x="149.5" y="295.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="OqF-0u-IyL"/>
@@ -684,7 +684,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.43921568630000002" green="0.015686274510000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eqW-nr-Sed" firstAttribute="centerX" secondItem="CST-84-yQl" secondAttribute="centerX" id="ee0-lN-2VE"/>
                             <constraint firstItem="eqW-nr-Sed" firstAttribute="centerY" secondItem="CST-84-yQl" secondAttribute="centerY" id="sRf-HF-ilc"/>
@@ -736,7 +736,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="NcD-Be-jce"/>
                                 </constraints>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Create account">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -822,9 +822,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oPH-d2-Dag" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BBS-T1-jYZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BBS-T1-jYZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.4392156862745098" green="0.015686274509803921" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -847,7 +848,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-tL-Au3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-tL-Au3">
                                 <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -890,12 +891,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Talkup-1" width="923" height="923"/>
         <image name="TalkupBlackSolid1x" width="23" height="22"/>
-        <image name="TalkupBlue-1" width="663" height="663"/>
         <image name="navbarBackArrowPurple" width="22" height="22"/>
         <image name="send" width="16" height="16"/>
         <image name="talkup" width="32" height="32"/>
+        <image name="talkupPinkBlack" width="923" height="923"/>
         <image name="tumblr_mm1yov63xO1rz1ki7o1_500" width="500" height="375"/>
         <image name="upVoteGreen" width="117" height="117"/>
     </resources>

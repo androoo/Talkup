@@ -9,7 +9,13 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
-    //welcome message and place to do animation or some shit
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
     
 }
