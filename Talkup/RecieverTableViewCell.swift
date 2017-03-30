@@ -21,8 +21,11 @@ class RecieverTableViewCell: UITableViewCell {
     var message: Message? {
         didSet {
             updateViews()
+            
         }
     }
+    
+    var voteButtonState: VoteButtonState?
     
     //MARK: - Delegate
     
@@ -47,11 +50,52 @@ class RecieverTableViewCell: UITableViewCell {
     @IBAction func recievedMessageCellVoteButtonTapped(_ sender: UIButton) {
         guard let message = message else { return }
         
-
+        // switch local appearance
+        voteButtonAppearance()
+        
+        //disable
+        voteButton.isEnabled = false
+        
+        //update subscription and score to cloud
         delegate?.toggleVoteCount(self)
+        
+        
     }
     
-
+    func voteButtonAppearance() {
+        
+        //toggle vote button appearance
+        
+        if voteButtonState == .yesVote {
+            
+            voteButton.backgroundColor = Colors.greenBlue
+            voteButton.layer.cornerRadius = voteButton.frame.width/2
+            voteButton.layer.borderWidth = 1
+            voteButton.layer.borderColor = Colors.greenBlue.cgColor
+            
+            buttonVoteCountLabel.textColor = .white
+            buttonVoteArrow.image = UIImage(named: "upVoteWhite")
+            
+            message?.score -= 1
+            
+            voteButtonState = .noVote
+            
+            
+        } else {
+            
+            voteButton.backgroundColor = .clear
+            voteButton.layer.cornerRadius = voteButton.frame.width/2
+            voteButton.layer.borderWidth = 1
+            voteButton.layer.borderColor = Colors.buttonBorderGray.cgColor
+            
+            buttonVoteArrow.image = UIImage(named: "upVoteBlack")
+            buttonVoteCountLabel.textColor = .lightGray
+            
+            message?.score += 1
+            
+            voteButtonState = .yesVote
+        }
+    }
     
     
     //MARK: - setup Methods
@@ -76,6 +120,7 @@ class RecieverTableViewCell: UITableViewCell {
     }
     
     private func updateViews() {
+        
         guard let message = message else { return }
         
         let time = message.timeSinceCreation(from: message.timestamp, to: Date())
@@ -88,19 +133,24 @@ class RecieverTableViewCell: UITableViewCell {
         
         userAvatarImageView.image = message.owner?.photo
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2
-        userAvatarImageView.clipsToBounds = true 
+        userAvatarImageView.clipsToBounds = true
         
-        voteButton.backgroundColor = .clear
-        voteButton.layer.cornerRadius = voteButton.frame.width/2
-        voteButton.layer.borderWidth = 1
-        voteButton.layer.borderColor = Colors.buttonBorderGray.cgColor
-        buttonVoteCountLabel.textColor = .lightGray
         
-        MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscribed) in
+        
+        MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscription) in
             
-            //can do stuff here that changes appearance states depending on if the user is subscribed to the vote button or note
+            if subscription {
+                self.voteButtonState = .yesVote
+                
+            } else {
+                self.voteButtonState = .noVote
+            }
             
+            DispatchQueue.main.async {
+                self.voteButtonAppearance()
+                print(subscription)
+                
+            }
         }
-        
     }
 }

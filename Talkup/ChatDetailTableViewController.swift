@@ -86,12 +86,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             }
             group.leave()
         }
-        
         group.notify(queue: DispatchQueue.main) { 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
@@ -263,12 +263,14 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         
         guard let message = sender.message else { return }
         
+        // update subscription and score
+        
         MessageController.shared.toggleSubscriptionTo(messageNamed: message) { (_, _, _) in
             MessageController.shared.updateMessageScore(forMessage: message) {
                 
                 DispatchQueue.main.async {
                     self.updateViews()
-                    
+                    sender.voteButton.isEnabled = true
                 }
             }
         }

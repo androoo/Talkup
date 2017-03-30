@@ -22,6 +22,11 @@ enum PhotoSource {
     case camera
 }
 
+enum VoteButtonState {
+    case noVote
+    case yesVote
+}
+
 enum MessageType {
     case photo
     case text

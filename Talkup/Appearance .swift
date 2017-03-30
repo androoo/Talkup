@@ -20,6 +20,9 @@ struct Colors {
     static let greenBlue = UIColor.init(red: 56/255.0, green: 197/255.0, blue: 221/255.0, alpha: 1)
     static let gray = UIColor.init(red: 251/255.0, green: 251/255.0, blue: 251/255.0, alpha: 1)
     static let buttonBorderGray = UIColor.init(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
+    static let designBlue = UIColor.init(red: 45/255.0, green: 114/255.0, blue: 217/255.0, alpha: 1)
+    static let hotRed = UIColor.init(red: 255/255.0, green: 45/255.0, blue: 85/255.0, alpha: 1)
+    
 }
 
 //MARK: - UI Details
