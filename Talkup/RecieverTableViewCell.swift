@@ -33,19 +33,25 @@ class RecieverTableViewCell: UITableViewCell {
     
     @IBOutlet weak var chatMessageLabel: UITextView!
     @IBOutlet weak var messageBackground: UIImageView!
-    @IBOutlet weak var voteButton: UIButton!
     
-    @IBOutlet weak var messageVoteCountLabel: UILabel!
-    @IBOutlet weak var messageUsernameLabel: UILabel!
-    @IBOutlet weak var messageDateLabel: UILabel!
+    @IBOutlet weak var messageScoreLabel: UILabel!
     @IBOutlet weak var userAvatarImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
+
+    @IBOutlet weak var voteButton: UIButton!
+    @IBOutlet weak var buttonVoteCountLabel: UILabel!
+    @IBOutlet weak var buttonVoteArrow: UIImageView!
     
     
-    
-    @IBAction func recievedMessageCellVoteButtonTapped(_ sender: Any) {
+    @IBAction func recievedMessageCellVoteButtonTapped(_ sender: UIButton) {
         guard let message = message else { return }
+        
+
         delegate?.toggleVoteCount(self)
     }
+    
+
     
     
     //MARK: - setup Methods
@@ -74,18 +80,25 @@ class RecieverTableViewCell: UITableViewCell {
         
         let time = message.timeSinceCreation(from: message.timestamp, to: Date())
         
+        messageScoreLabel.text = ""
         chatMessageLabel.text = message.text
-        messageVoteCountLabel.text = "\(message.score)"
-        messageUsernameLabel.text = message.owner?.userName
-        messageDateLabel.text = "\(time)"
+        buttonVoteCountLabel.text = "\(message.score)"
+        usernameLabel.text = message.owner?.userName
+        timestampLabel.text = "\(time)"
+        
         userAvatarImageView.image = message.owner?.photo
+        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2
+        userAvatarImageView.clipsToBounds = true 
+        
+        voteButton.backgroundColor = .clear
+        voteButton.layer.cornerRadius = voteButton.frame.width/2
+        voteButton.layer.borderWidth = 1
+        voteButton.layer.borderColor = Colors.buttonBorderGray.cgColor
+        buttonVoteCountLabel.textColor = .lightGray
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscribed) in
             
-            let checkImage = subscribed ? #imageLiteral(resourceName: "downVote") : #imageLiteral(resourceName: "upVote")
-            DispatchQueue.main.async {
-                self.voteButton.setImage(checkImage, for: .normal)
-            }
+            //can do stuff here that changes appearance states depending on if the user is subscribed to the vote button or note
             
         }
         

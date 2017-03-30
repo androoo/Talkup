@@ -119,7 +119,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(chatMessagesChanged(_:)), name: ChatController.ChatMessagesChangedNotification, object: nil)
         
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -136,6 +136,15 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chat?.messages.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if tableView.isDragging {
+            cell.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
+            UIView.animate(withDuration: 0.3, animations: {
+                cell.transform = CGAffineTransform.identity
+            })
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -161,6 +170,8 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             return cell
         }
     }
+    
+    
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
