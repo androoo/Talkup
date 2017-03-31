@@ -42,7 +42,7 @@ class NewUserViewController: UIViewController {
     }
     
     func emptyFieldsAlert() {
-        let alertController = UIAlertController(title: "Information Missing", message: "Check that you've filled out your email and username and try again", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Information Missing", message: "Check that you've added a profile image, filled out your email + username and try again", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }

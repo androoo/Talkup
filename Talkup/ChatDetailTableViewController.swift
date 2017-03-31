@@ -18,6 +18,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     @IBOutlet weak var liveButtonBottomBorder: UIImageView!
     @IBOutlet weak var topButtonBottomBorder: UIImageView!
     
+    @IBOutlet weak var sendMessageButtonTapped: UIButton!
+    
+    
     //MARK: - Properties
     
     var chat: Chat? {
@@ -37,7 +40,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     
     @IBAction func liveButtonTapped(_ sender: Any) {
-        
         
         liveButton.setTitleColor(Colors.hotRed, for: .normal)
         topButton.setTitleColor(.lightGray, for: .normal)
@@ -60,6 +62,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         updateViews()
     }
     
+    @IBAction func typeMessageTextFieldEditingChanged(_ sender: Any) {
+        guard inputTextField.text != "" else { sendMessageButtonTapped.isEnabled = false; return }
+        sendMessageButtonTapped.isEnabled = true
+    }
+    
+    
     var messages: [Message] {
         
         switch messageSortSelection {
@@ -75,7 +83,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     private func updateViews() {
         guard let chat = chat, isViewLoaded else { return }
-
+        
         let group = DispatchGroup()
         
         group.enter()
@@ -86,12 +94,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             }
             group.leave()
         }
-        group.notify(queue: DispatchQueue.main) { 
+        group.notify(queue: DispatchQueue.main) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
-
+        
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
@@ -103,8 +111,14 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         updateViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        sendMessageButtonTapped.isEnabled = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        inputTextField.delegate = self
+        
         
         updateViews()
         customize()
@@ -112,9 +126,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         liveButtonBottomBorder.isHidden = false
         
         guard let chat = chat, isViewLoaded else { return }
-                title = "\(chat.topic)"
+        title = "\(chat.topic)"
         
-//        self.navigationItem.titleView = setTitle(title: "\(chat.topic)", subtitle: "45 people")
+        //        self.navigationItem.titleView = setTitle(title: "\(chat.topic)", subtitle: "45 people")
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(chatMessagesChanged(_:)), name: ChatController.ChatMessagesChangedNotification, object: nil)
@@ -126,9 +140,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     // MARK: Notifications
     
     func chatMessagesChanged(_ notification: Notification) {
-//        guard let notificationChat = notification.object as? Chat,
-//            let chat = chat, notificationChat === chat else { return } // Not our post
-//        updateViews()
+        //        guard let notificationChat = notification.object as? Chat,
+        //            let chat = chat, notificationChat === chat else { return } // Not our post
+        //        updateViews()
         tableView.reloadData()
     }
     
@@ -172,17 +186,17 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     }
     
     
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
     }
     
-
+    
     
     //MARK: - Customize Appearance
     
     func customize() {
-//        self.tableView.estimatedRowHeight = self.barHeight
+        //        self.tableView.estimatedRowHeight = self.barHeight
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
     }

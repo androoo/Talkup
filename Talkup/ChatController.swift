@@ -98,7 +98,6 @@ class ChatController {
             let chatReference = chat.cloudKitReference else { return }
         
         let message = Message(ownerReference: ownerReference, text: firstMessage, chatReference: chatReference)
-        chat.messages.append(message)
         
         cloudKitManager.saveRecord(chatRecord) { (record, error) in
             guard let record = record else {
@@ -119,14 +118,18 @@ class ChatController {
                     return
                 }
                 message.cloudKitRecordID = record?.recordID
-                completion?(chat)
+                
+                self.addSubscriptionTo(messagesForChat: chat, alertBody: "new comment on a chat! 👍") { (success, error) in
+                    if let error = error {
+                        NSLog("Unable to save comment subscription: \(error)")
+                    }
+                    chat.messages.append(message)
+                    completion?(chat)
+                }
+
             }
             
-            self.addSubscriptionTo(messagesForChat: chat, alertBody: "new comment on a chat! 👍") { (success, error) in
-                if let error = error {
-                    NSLog("Unable to save comment subscription: \(error)")
-                }
-            }
+            
         }
     }
     

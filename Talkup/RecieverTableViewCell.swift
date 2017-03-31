@@ -46,6 +46,12 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonVoteCountLabel: UILabel!
     @IBOutlet weak var buttonVoteArrow: UIImageView!
     
+    @IBOutlet weak var userActionsButton: UIButton!
+
+    @IBAction func userActionsButtonTapped(_ sender: Any) {
+    }
+    
+    
     
     @IBAction func recievedMessageCellVoteButtonTapped(_ sender: UIButton) {
         guard let message = message else { return }
@@ -148,8 +154,6 @@ class RecieverTableViewCell: UITableViewCell {
             
             DispatchQueue.main.async {
                 self.voteButtonAppearance()
-                print(subscription)
-                
             }
         }
     }

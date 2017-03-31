@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class NewMessageViewController: UIViewController {
+class NewMessageViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties
     
@@ -34,6 +34,11 @@ class NewMessageViewController: UIViewController {
         return true
     }
     
+    override func viewDidLoad() {
+        messageTextField.delegate = self
+        sendMessageButton.isEnabled = false
+    }
+    
     var barHeight: CGFloat = 50
     
     //MARK: - UI Actions
@@ -46,16 +51,19 @@ class NewMessageViewController: UIViewController {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+    @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
+        guard messageTextField.text != "" && topicTextField.text != "" else { sendMessageButton.isEnabled = false; return }
+        sendMessageButton.isEnabled = true
+    }
     //MARK: - Methods
     
     func createChat() {
         guard let topicText = topicTextField.text,
             let message = messageTextField.text,
-            
-            // need to set owner = the User.username of the person entering the chat
-            
-            let owner = UserController.shared.currentUser  else { return }
+            !topicText.isEmpty,
+            message != "",
+            let owner = UserController.shared.currentUser
+            else { return }
         
         ChatController.shared.createChatWith(chatTopic: topicText, owner: owner, firstMessage: message) { (_) in
             self.dismiss(animated: true, completion: nil)

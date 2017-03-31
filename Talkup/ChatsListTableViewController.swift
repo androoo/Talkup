@@ -38,6 +38,10 @@ class ChatsListTableViewController: UITableViewController {
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateViews()
+    }
 
     
     private func requestFullSync(_ completion: (() -> Void)? = nil) {

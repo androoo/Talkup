@@ -33,12 +33,8 @@ class UserController {
     //MARK: - View lifecycle
     
     init() {
-        
-        
-        
         CKContainer.default().fetchUserRecordID { (recordID, error) in
             guard let recordID = recordID else { return }
-            
             self.defaultUserRecordID = recordID
         }
     }
