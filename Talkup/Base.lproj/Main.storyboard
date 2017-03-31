@@ -723,7 +723,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkupPinkBlack" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkUpLogo10" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
                                 <rect key="frame" x="149.5" y="295.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="OqF-0u-IyL"/>
@@ -942,6 +942,7 @@
         <image name="dot" width="4" height="4"/>
         <image name="navbarBackChevron" width="12" height="22"/>
         <image name="send" width="16" height="16"/>
+        <image name="talkUpLogo10" width="924" height="924"/>
         <image name="talkup" width="32" height="32"/>
         <image name="talkupPinkBlack" width="923" height="923"/>
         <image name="toUserArrow" width="8" height="12"/>
