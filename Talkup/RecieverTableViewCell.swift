@@ -147,9 +147,9 @@ class RecieverTableViewCell: UITableViewCell {
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2
         userAvatarImageView.clipsToBounds = true
         
-        messageBackground.backgroundColor = Colors.bubbleGray
+        messageBackground.backgroundColor = Colors.purple
         messageBackground.layer.cornerRadius = 18
-        chatMessageLabel.textColor = Colors.recievedMessagePrimary
+        chatMessageLabel.textColor = .white
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscription) in
             
