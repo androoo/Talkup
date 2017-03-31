@@ -41,10 +41,10 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     @IBAction func liveButtonTapped(_ sender: Any) {
         
-        liveButton.setTitleColor(Colors.hotRed, for: .normal)
+        liveButton.setTitleColor(Colors.magenta, for: .normal)
         topButton.setTitleColor(.lightGray, for: .normal)
         liveButtonBottomBorder.isHidden = false
-        liveButtonBottomBorder.backgroundColor = Colors.hotRed
+        liveButtonBottomBorder.backgroundColor = Colors.magenta
         topButtonBottomBorder.isHidden = true
         messageSortSelection = .live
         updateViews()
@@ -54,9 +54,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     @IBAction func topButtonTapped(_ sender: Any) {
         
         liveButton.setTitleColor(.lightGray, for: .normal)
-        topButton.setTitleColor(Colors.hotRed, for: .normal)
+        topButton.setTitleColor(Colors.magenta, for: .normal)
         liveButtonBottomBorder.isHidden = true
-        topButtonBottomBorder.backgroundColor = Colors.hotRed
+        topButtonBottomBorder.backgroundColor = Colors.magenta
         topButtonBottomBorder.isHidden = false
         messageSortSelection = .top
         updateViews()
@@ -110,8 +110,8 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         super.viewWillAppear(animated)
         
         liveButtonBottomBorder.isHidden = false
-        liveButton.setTitleColor(Colors.hotRed, for: .normal)
-        liveButtonBottomBorder.backgroundColor = Colors.hotRed
+        liveButton.setTitleColor(Colors.magenta, for: .normal)
+        liveButtonBottomBorder.backgroundColor = Colors.magenta
         
         updateViews()
     }

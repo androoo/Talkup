@@ -77,11 +77,11 @@ class RecieverTableViewCell: UITableViewCell {
         
         if voteButtonState == .yesVote {
             
-            voteButton.backgroundColor = Colors.darkGreenBlue
+            voteButton.backgroundColor = Colors.highlightGreenBlue
             
             voteButton.layer.cornerRadius = voteButton.frame.width/2
             voteButton.layer.borderWidth = 1
-            voteButton.layer.borderColor = Colors.darkGreenBlue.cgColor
+            voteButton.layer.borderColor = Colors.highlightGreenBlue.cgColor
             
             buttonVoteCountLabel.textColor = .white
             buttonVoteArrow.image = UIImage(named: "upVoteWhite")
@@ -148,6 +148,7 @@ class RecieverTableViewCell: UITableViewCell {
         userAvatarImageView.clipsToBounds = true
         
         messageBackground.backgroundColor = Colors.bubbleGray
+        messageBackground.layer.cornerRadius = 18
         chatMessageLabel.textColor = Colors.recievedMessagePrimary
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscription) in

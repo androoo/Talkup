@@ -25,6 +25,12 @@ struct Colors {
     static let designBlue = UIColor.init(red: 45/255.0, green: 114/255.0, blue: 217/255.0, alpha: 1)
     static let hotRed = UIColor.init(red: 255/255.0, green: 45/255.0, blue: 85/255.0, alpha: 1)
     
+    static let pureBlue = UIColor.init(red: 0/255.0, green: 101/255.0, blue: 255.0, alpha: 1)
+    static let magenta = UIColor.init(red: 238/255.0, green: 29/255.0, blue: 176/255.0, alpha: 1)
+    static let emeraldGreen = UIColor.init(red: 135/255.0, green: 228/255.0, blue: 18/255.0, alpha: 1)
+    static let alertOrange = UIColor.init(red: 254/255.0, green: 188/255.0, blue: 70/255.0, alpha: 1)
+    static let highlightGreenBlue = UIColor.init(red: 14/255.0, green: 194/255.0, blue: 243/255.0, alpha: 1)
+    
     //gradient colors 
     
     static let blueTop = UIColor.init(red: 107/255.0, green: 151/255.0, blue: 252/255.0, alpha: 1)
