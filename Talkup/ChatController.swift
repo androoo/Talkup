@@ -119,7 +119,7 @@ class ChatController {
                 }
                 message.cloudKitRecordID = record?.recordID
                 
-                self.addSubscriptionTo(messagesForChat: chat, alertBody: "new comment on a chat! 👍") { (success, error) in
+                self.addSubscriptionTo(messagesForChat: chat, alertBody: "New 💬 on a chat! 🙏 ") { (success, error) in
                     if let error = error {
                         NSLog("Unable to save comment subscription: \(error)")
                     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate, MessageVoteButtonDelegate {
+class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate, RecieverTableViewCellDelegate {
     
     //MARK: - Outlets
     
@@ -278,18 +278,43 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     //MARK: - Message Cell Delegate
     
+    func reportAbuse(_ sender: RecieverTableViewCell) {
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let reportAbuse = UIAlertAction(title: "Report", style: .default) { (action) in
+            print("report abuse")
+        }
+        
+        let blockUser = UIAlertAction(title: "Block", style: .default) { (action) in
+            print("Block User")
+        }
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(reportAbuse)
+        alertController.addAction(blockUser)
+        alertController.addAction(cancelButton)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
     func toggleVoteCount(_ sender: RecieverTableViewCell) {
         
         guard let message = sender.message else { return }
         
         // update subscription and score
         
-        MessageController.shared.toggleSubscriptionTo(messageNamed: message) { (_, _, _) in
-            MessageController.shared.updateMessageScore(forMessage: message) {
-                
-                DispatchQueue.main.async {
-                    self.updateViews()
-                    sender.voteButton.isEnabled = true
+        if !tableView.isDragging {
+            
+            MessageController.shared.toggleSubscriptionTo(messageNamed: message) { (_, _, _) in
+                MessageController.shared.updateMessageScore(forMessage: message) {
+                    
+                    DispatchQueue.main.async {
+                        self.updateViews()
+                        sender.voteButton.isEnabled = true
+                    }
                 }
             }
         }

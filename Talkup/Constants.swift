@@ -22,6 +22,7 @@ struct Constants {
     static let usernameKey = "username"
     static let userEmailKey = "email"
     static let userReferenceKey = "userReference"
+    static let blockedReferenceKey = "blockedReference"
     
     //MARK: - Chat Keys
     

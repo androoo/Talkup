@@ -10,8 +10,10 @@ import UIKit
 
 //MARK: - Protocol
 
-protocol MessageVoteButtonDelegate: class {
+
+protocol RecieverTableViewCellDelegate {
     func toggleVoteCount(_ sender: RecieverTableViewCell)
+    func reportAbuse(_ sender: RecieverTableViewCell)
 }
 
 class RecieverTableViewCell: UITableViewCell {
@@ -29,7 +31,7 @@ class RecieverTableViewCell: UITableViewCell {
     
     //MARK: - Delegate
     
-    weak var delegate: MessageVoteButtonDelegate?
+    var delegate: RecieverTableViewCellDelegate?
     
     //MARK: - Outlets
     
@@ -42,6 +44,7 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     
+    @IBOutlet weak var flagIcon: UIButton!
     
     @IBOutlet weak var voteButtonView: UIView!
 
@@ -52,9 +55,10 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var userActionsButton: UIButton!
 
     @IBAction func userActionsButtonTapped(_ sender: Any) {
+        delegate?.reportAbuse(self)
     }
     
-    
+
     
     @IBAction func recievedMessageCellVoteButtonTapped(_ sender: UIButton) {
         guard let message = message else { return }
@@ -148,7 +152,7 @@ class RecieverTableViewCell: UITableViewCell {
         userAvatarImageView.clipsToBounds = true
         
         messageBackground.backgroundColor = Colors.purple
-        messageBackground.layer.cornerRadius = 18
+        messageBackground.layer.cornerRadius = 20
         chatMessageLabel.textColor = .white
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscription) in
