@@ -108,6 +108,11 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        liveButtonBottomBorder.isHidden = false
+        liveButton.setTitleColor(Colors.hotRed, for: .normal)
+        liveButtonBottomBorder.backgroundColor = Colors.hotRed
+        
         updateViews()
     }
     

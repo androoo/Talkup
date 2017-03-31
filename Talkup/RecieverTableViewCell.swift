@@ -41,6 +41,9 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var userAvatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
+    
+    
+    @IBOutlet weak var voteButtonView: UIView!
 
     @IBOutlet weak var voteButton: UIButton!
     @IBOutlet weak var buttonVoteCountLabel: UILabel!
@@ -74,10 +77,11 @@ class RecieverTableViewCell: UITableViewCell {
         
         if voteButtonState == .yesVote {
             
-            voteButton.backgroundColor = Colors.greenBlue
+            voteButton.backgroundColor = Colors.darkGreenBlue
+            
             voteButton.layer.cornerRadius = voteButton.frame.width/2
             voteButton.layer.borderWidth = 1
-            voteButton.layer.borderColor = Colors.greenBlue.cgColor
+            voteButton.layer.borderColor = Colors.darkGreenBlue.cgColor
             
             buttonVoteCountLabel.textColor = .white
             buttonVoteArrow.image = UIImage(named: "upVoteWhite")
@@ -127,6 +131,8 @@ class RecieverTableViewCell: UITableViewCell {
     
     private func updateViews() {
         
+        
+        
         guard let message = message else { return }
         
         let time = message.timeSinceCreation(from: message.timestamp, to: Date())
@@ -141,7 +147,8 @@ class RecieverTableViewCell: UITableViewCell {
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2
         userAvatarImageView.clipsToBounds = true
         
-        
+        messageBackground.backgroundColor = Colors.bubbleGray
+        chatMessageLabel.textColor = Colors.recievedMessagePrimary
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscription) in
             

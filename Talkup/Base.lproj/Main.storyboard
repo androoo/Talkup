@@ -387,7 +387,7 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EtK-fO-xaz">
-                                            <rect key="frame" x="16" y="61.5" width="173" height="22"/>
+                                            <rect key="frame" x="16" y="62" width="185" height="22"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyj-0u-bfg">
                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="22"/>
@@ -411,14 +411,20 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot" translatesAutoresizingMaskIntoConstraints="NO" id="eNY-Q5-DXI">
+                                                    <rect key="frame" x="121.5" y="0.0" width="4" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="4" id="xAa-dK-zgj"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZr-w8-FBK">
-                                                    <rect key="frame" x="121.5" y="0.0" width="35.5" height="22"/>
+                                                    <rect key="frame" x="133.5" y="0.0" width="35.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fQ-uZ-x2P">
-                                                    <rect key="frame" x="165" y="0.0" width="8" height="22"/>
+                                                    <rect key="frame" x="177" y="0.0" width="8" height="22"/>
                                                     <state key="normal" image="toUserArrow"/>
                                                     <connections>
                                                         <action selector="userActionsButtonTapped:" destination="7y8-RH-gXg" eventType="touchUpInside" id="t21-2A-3j7"/>
@@ -452,6 +458,7 @@
                                     <outlet property="userAvatarImageView" destination="89c-cP-yDN" id="ae0-5t-ZoM"/>
                                     <outlet property="usernameLabel" destination="zAG-Oy-g2q" id="CiR-ul-BBQ"/>
                                     <outlet property="voteButton" destination="xlL-Ry-rGr" id="L9q-Gp-1pn"/>
+                                    <outlet property="voteButtonView" destination="7N7-5K-FNy" id="663-ah-ae8"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="senderCell" rowHeight="83" id="Vqi-WR-5ca" customClass="SenderTableViewCell" customModule="Talkup" customModuleProvider="target">
@@ -682,7 +689,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="P6r-J3-GHa" customClass="NavViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="navbarBackArrowPurple" backIndicatorTransitionMaskImage="navbarBackArrowPurple" id="j0C-NI-Zs6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="navbarBackChevron" backIndicatorTransitionMaskImage="navbarBackChevron" id="j0C-NI-Zs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.43921568630000002" green="0.015686274510000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -932,7 +939,8 @@
     </scenes>
     <resources>
         <image name="TalkupBlackSolid1x" width="23" height="22"/>
-        <image name="navbarBackArrowPurple" width="22" height="22"/>
+        <image name="dot" width="4" height="4"/>
+        <image name="navbarBackChevron" width="12" height="22"/>
         <image name="send" width="16" height="16"/>
         <image name="talkup" width="32" height="32"/>
         <image name="talkupPinkBlack" width="923" height="923"/>

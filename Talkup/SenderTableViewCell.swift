@@ -46,6 +46,10 @@ class SenderTableViewCell: UITableViewCell {
         
         chatTextView.text = message.text
         chatCountLabel.text = "\(message.score) up"
+        
+        chatBubbleBackgroundImageView.backgroundColor = Colors.purple
+        chatTextView.textColor = .white
+        
 //        ownerAvatarImageView.image = message.owner?.photo
 //        timestampLabel.text = "\(time)"
     
