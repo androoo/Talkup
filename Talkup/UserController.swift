@@ -65,10 +65,79 @@ class UserController {
         
     }
     
+    // Add blocked users
+    
+    func addBlockedUser(Foruser user: User, blockedUser: User, completion: @escaping () -> Void = {_ in}) {
+        
+        guard let userID = user.cloudKitRecordID,
+            let blockedUser = user.cloudKitRecordID else { return }
+        
+        cloudKitManager.fetchRecord(withID: userID) { (record, error) in
+            if let error = error {
+                print("\(error)")
+                completion()
+            } else if let record = record {
+                
+                let reference = CKReference(recordID: blockedUser, action: .none)                
+
+                if user.blocked == nil {
+                    user.blocked = [reference]
+                } else {
+                    user.blocked?.append(reference)
+                }
+                
+                guard let blockedUserReferences = user.blocked else { return }
+                record.setValue(blockedUserReferences, forKey: Constants.blockedReferenceKey)
+                self.cloudKitManager.saveRecord(record, completion: { (_, error) in
+                    if let error = error {
+                        print("\(error)")
+                        completion()
+                    } else {
+                        print("saving blocked users success")
+                        completion()
+                    }
+                })
+            }
+        }
+    }
+
+
+    // delete below 
+    
+    @discardableResult func addMessage(byUser owner: User, toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {
+        
+        let ownerReference = owner.cloudKitReference
+        let chatReference = chat.cloudKitReference
+        
+        // TODO: - don't force unwrap this you idiot
+        
+        let message = Message(ownerReference: ownerReference!, text: messageText, chatReference: chatReference!)
+        chat.messages.append(message)
+        
+        cloudKitManager.saveRecord(CKRecord(message: message)) { (record, error) in
+            if let error = error {
+                NSLog("Error saving new comment to CloudKit: \(error)")
+                return
+            }
+            message.cloudKitRecordID = record?.recordID
+            
+            DispatchQueue.main.async {
+                let nc = NotificationCenter.default
+                nc.post(name: ChatController.ChatMessagesChangedNotification, object: chat)
+            }
+            
+            message.owner = owner
+            
+            completion(message)
+        }
+        return message
+    }
+    
+    
     // update user info
     
     // check if user info already exists
     
-    // blockUserWith
+
     
 }

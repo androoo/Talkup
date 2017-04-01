@@ -100,7 +100,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             }
         }
         
-        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
@@ -123,8 +122,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         super.viewDidLoad()
         
         inputTextField.delegate = self
-        
-        
         
         updateViews()
         customize()
@@ -191,12 +188,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         }
     }
     
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
     }
-    
     
     
     //MARK: - Customize Appearance
@@ -278,10 +272,31 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         return titleView
     }
     
+    
+    // Confirm Alert 
+    
+    func confirmBlockAlert() {
+        let confirmAlertController = UIAlertController(title: "Block User?", message: "Are you suer you want to block this user?", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (action) in
+            // block action here
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        confirmAlertController.addAction(confirmAction)
+        confirmAlertController.addAction(cancelAction)
+        present(confirmAlertController, animated: true, completion: nil)
+    }
+    
     //MARK: - Message Cell Delegate
     
     func reportAbuse(_ sender: RecieverTableViewCell) {
         
+        guard let indexPath = self.tableView.indexPath(for: sender),
+            let message = chat?.messages[indexPath.row],
+            let owner = message.owner,
+            let user = UserController.shared.currentUser else { return }
+
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let reportAbuse = UIAlertAction(title: "Report", style: .default) { (action) in
@@ -289,7 +304,23 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         }
         
         let blockUser = UIAlertAction(title: "Block", style: .default) { (action) in
-            print("Block User")
+            
+            guard let userName = message.owner?.userName else { return }
+            
+            let confirmAlertController = UIAlertController(title: "Block User?", message: "Are you suer you want to block \(userName)?", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "Block", style: .default) { (action) in
+                UserController.shared.addBlockedUser(Foruser: user, blockedUser: owner, completion: {
+                    // remove blockd user's content from users feed
+                })
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            confirmAlertController.addAction(confirmAction)
+            confirmAlertController.addAction(cancelAction)
+            self.present(confirmAlertController, animated: true, completion: nil)
+
+            
         }
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

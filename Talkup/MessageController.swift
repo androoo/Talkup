@@ -28,6 +28,8 @@ class MessageController {
     
     //MARK: - Fetch Messages 
     
+    // all messages in chat
+    
     func fetchMessagesIn(chat: Chat, completion: @escaping () -> Void) {
         guard let chatRecordID = chat.cloudKitRecordID else { return }
         
@@ -43,12 +45,41 @@ class MessageController {
                 
                 let messages = records.flatMap({Message(cloudKitRecord: $0)})
                 
-                // Get the owner for each message
+                // filter blocked messages
                 
                 chat.messages = messages
                 completion()
                 
             }
+        }
+    }
+    
+    // Fetch messages by blocked users and add the to an array of messages
+    // if current user's blocked array has anything, find messages by those owners
+    // so if messages.owners.ID's match currentUsers.blocked.users.id's -- then add them to the array
+    // complete with array
+    
+    func fetchBlockedMessages(byUsers users: [User], inMessages messages: [Message], completion: @escaping () -> Void) {
+        let ownerReferences = messages.flatMap({$0.ownerReference})
+        let blockdUserReferences = users.flatMap({$0.blocked})
+        
+        let predicate = NSPredicate(format: "recordID IN %@", blockdUserReferences)
+        
+        let query = CKQuery(recordType: Constants.messagetypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion()
+            }
+            guard let records = records else { completion(); return }
+            
+            let messages = records.flatMap({Message(cloudKitRecord: $0)})
+            
+            for message in messages {
+                
+            }
+            
         }
     }
     
