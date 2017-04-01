@@ -72,8 +72,8 @@ class ChatsListTableViewController: UITableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
         
-        let chats = ChatController.shared.chats
-        cell.chat = chats[indexPath.row]
+        let chat = ChatController.shared.chats[indexPath.row]
+        cell.chat = chat
         cell.chatRankLabel.text = "\(indexPath.row + 1)"
     
         

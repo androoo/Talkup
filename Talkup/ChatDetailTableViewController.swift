@@ -125,6 +125,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         inputTextField.delegate = self
         
         
+        
         updateViews()
         customize()
         
@@ -201,6 +202,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     //MARK: - Customize Appearance
     
     func customize() {
+        
         //        self.tableView.estimatedRowHeight = self.barHeight
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight

@@ -22,7 +22,7 @@ class ChatController {
     static let shared = ChatController()
     
     let cloudKitManager: CloudKitManager
-    
+    var currentUser: User?
     var isSyncing: Bool = false
     
     var chats = [Chat]() {
@@ -87,7 +87,7 @@ class ChatController {
         guard let creatorRef = UserController.shared.currentUser?.cloudKitReference else { return }
         
         let chat = Chat(creatorReference: creatorRef, topic: chatTopic)
-        
+        chat.creator = owner
         chats.append(chat)
         
         let chatRecord = CKRecord(chat: chat)

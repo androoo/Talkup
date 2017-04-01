@@ -184,6 +184,7 @@ class MessageController {
         
         cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
             
+            
             if subscription != nil {
                 self.removeSubscriptionTo(messageNamed: message) { (success, error) in
                     message.score -= 1
