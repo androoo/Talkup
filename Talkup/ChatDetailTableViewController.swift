@@ -91,7 +91,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             group.enter()
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
                 
-//                self.removeBlockedMessages()
+                self.hideBlockedMessages()
                 
                 group.leave()
             }
@@ -196,6 +196,15 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     }
     
     
+    
+    // try doing a terrenary to hide individual cells
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+//        return cell == blockedMessage ? 0 : super.tableView(tableView, heightForRowAt: indexPath)
+//    }
+    
+    
     //MARK: - Customize Appearance
     
     func customize() {
@@ -277,13 +286,25 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     // Remove Blocked Message 
     
-    func removeBlockedMessages() {
+    func hideBlockedMessages() {
         
         guard let messages = chat?.messages else { return }
         
         guard let blockedUsers = UserController.shared.currentUser?.blocked else { return }
         
-        chat?.messages = messages.filter{blockedUsers.contains($0.ownerReference)}
+        //if message owner ref == blocked owner ref then message is hidden
+        
+        for message in messages {
+            if blockedUsers.contains(message.ownerReference) {
+                print("\(message) is hidden")
+                //set message to hidden so we can set heightForRowAt to zero for that one
+            }
+        }
+        
+        
+        // old bad way that removed everything
+        
+//        chat?.messages = messages.filter{blockedUsers.contains($0.ownerReference)}
         
     }
     
@@ -326,7 +347,13 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             
             let confirmAction = UIAlertAction(title: "Block", style: .default) { (action) in
                 UserController.shared.addBlockedUser(Foruser: user, blockedUser: owner, completion: {
-                    // remove blockd user's content from users feed
+                    
+                    //remove blocked content is in update views
+                    //set cell to hidden 
+                    
+                    
+                    self.updateViews()
+                    
                 })
             }
             
