@@ -90,6 +90,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         MessageController.shared.fetchMessagesIn(chat: chat) {
             group.enter()
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
+                
+//                self.removeBlockedMessages()
+                
                 group.leave()
             }
             group.leave()
@@ -272,8 +275,20 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         return titleView
     }
     
+    // Remove Blocked Message 
     
-    // Confirm Alert 
+    func removeBlockedMessages() {
+        
+        guard let messages = chat?.messages else { return }
+        
+        guard let blockedUsers = UserController.shared.currentUser?.blocked else { return }
+        
+        chat?.messages = messages.filter{blockedUsers.contains($0.ownerReference)}
+        
+    }
+    
+    
+    // Confirm Alert
     
     func confirmBlockAlert() {
         let confirmAlertController = UIAlertController(title: "Block User?", message: "Are you suer you want to block this user?", preferredStyle: .alert)
