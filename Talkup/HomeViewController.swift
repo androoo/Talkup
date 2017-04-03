@@ -8,11 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     //MARK: - Properties
-    
+
     @IBOutlet var tableView: UITableView!
+
     
     //MARK: - View lifecycle
     
@@ -27,8 +28,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         customize()
         
-        /*
-         let newChatButton = UIButton(frame: CGRect(origin: CGPoint(x: self.view.frame.width - 75, y: self.view.frame.height - 75), size: CGSize(width: 50, height: 50)))
+        
+        /* - floating new chat button at bottom 
+         
+         let newChatButton = UIButton(frame: CGRect(origin: CGPoint(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 75), size: CGSize(width: 50, height: 50)))
          
          newChatButton.backgroundColor = Colors.purple
          newChatButton.layer.cornerRadius = 25
@@ -36,12 +39,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
          
          self.navigationController?.view.addSubview(newChatButton)
          
-         */
+        */
+ 
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         updateViews()
@@ -120,7 +125,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.layer.masksToBounds = true
         
         tableView.layer.cornerRadius = 12
-        view.backgroundColor = Colors.designBlue
+        view.backgroundColor = .clear
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

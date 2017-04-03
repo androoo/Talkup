@@ -73,10 +73,10 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         switch messageSortSelection {
         case .live:
             
-            return chat!.messages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
+            return chat!.filteredMessages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
         case .top:
             
-            return chat!.messages.sorted { return $0.score > $1.score }
+            return chat!.filteredMessages.sorted { return $0.score > $1.score }
             
         }
     }
@@ -156,7 +156,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chat?.messages.count ?? 0
+        return chat?.filteredMessages.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -195,26 +195,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
     }
-    
-    
-    
-    // try doing a terrenary to hide individual cells
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        
-//        let message = messages[indexPath.row]
-//        
-//        for blockedMessage in messages {
-//            if blockedMessage.cloudKitRecordID == message.cloudKitRecordID {
-//                message.isRead = true
-//            }
-//        }
-//        
-//        //using the message property 'isRead' as a 'Blocked' Bool as I never use isRead for anything else -> will change
-//        let height = message.isRead ? 0 : super.tableView(tableView, heightForRowAt: indexPath)
-//        
-//        return height
-//    }
     
     
     //MARK: - Customize Appearance
@@ -314,18 +294,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
                 print("\(id) is hidden")
                 
                 for message in messages {
-                    if message.cloudKitRecordID?.recordName == id {
+                    if message.ownerReference.recordID.recordName == id {
                         message.isRead = true
                     }
                 }
             }
         }
-        
-        
-        // old bad way that removed everything
-        
-//        chat?.messages = messages.filter{blockedUsers.contains($0.ownerReference)}
-        
     }
     
     
@@ -370,7 +344,6 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
                     
                     //remove blocked content is in update views
                     //set cell to hidden 
-                    
                     
                     self.updateViews()
                     

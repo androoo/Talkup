@@ -35,8 +35,10 @@ class ChatController {
     }
     
     var messages: [Message] {
-        return chats.flatMap { $0.messages }
+       return chats.flatMap { $0.messages }
     }
+    
+    
     
     init() {
         self.cloudKitManager = CloudKitManager()

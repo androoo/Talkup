@@ -23,8 +23,14 @@ class ProfileViewController: UIViewController {
         guard let user = UserController.shared.currentUser else { return }
         let name = user.userName
         
+        view.backgroundColor = .clear
+        
         avatarImageView.image = user.photo
         nameLabel.text = "\(name)"
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     //Profile CRUD stuff

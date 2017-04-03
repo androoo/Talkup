@@ -70,6 +70,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     }
 
     override func viewDidLoad() {
+
+        
         super.viewDidLoad()
         dataSource = self
         self.delegate = self
@@ -78,6 +80,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         let homeNav = self.newViewController(view: "Home")
         
         orderedViewControllers = [profileNav, homeNav]
+        
+        view.backgroundColor = .blue
         
 //        if orderedViewControllers.count == 2 {
 //            setViewControllers([orderedViewControllers[0]], direction: .forward, animated: true, completion: nil)

@@ -30,7 +30,7 @@ class NewUserViewController: UIViewController {
             //send to convo TVC
             DispatchQueue.main.async {
                 
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavViewController else { return }
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNavigation") as? PageViewController else { return }
             self.present(vc, animated: false, completion: nil)
             }
             

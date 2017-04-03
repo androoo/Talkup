@@ -19,6 +19,11 @@ class Chat: CloudKitSyncable {
     var topic: String
     var score: Int?
     var messages: [Message]
+    
+    var filteredMessages: [Message] {
+        return messages.filter({$0.isRead != true})
+    }
+    
     var cloudKitRecordID: CKRecordID?
     
     var chatReference: CKReference? {
