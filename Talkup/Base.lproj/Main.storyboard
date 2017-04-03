@@ -270,7 +270,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-1q-xXD">
                                     <rect key="frame" x="0.0" y="0.0" width="187.5" height="49"/>
-                                    <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="49" id="Kex-d9-Wcs"/>
                                     </constraints>
@@ -290,7 +290,7 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48U-Hw-utv">
                                     <rect key="frame" x="187.5" y="0.0" width="187.5" height="49"/>
-                                    <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <state key="normal" title="TOP">
                                         <color key="titleColor" red="0.83921568627450982" green="0.85882352941176465" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -627,7 +627,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmk-sC-h0A">
                                 <rect key="frame" x="36" y="583" width="303" height="48"/>
-                                <color key="backgroundColor" red="0.043137254901960784" green="0.38039215686274508" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.14901960784313725" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Tg4-GP-d1r"/>
                                 </constraints>
@@ -656,7 +656,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkUpLogo10" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkupLogo5" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-Ps-E1C">
                                 <rect key="frame" x="145" y="206" width="85" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="Jy6-cN-7L6"/>
@@ -690,7 +690,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="P6r-J3-GHa" customClass="NavViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="navbarBackChevron" backIndicatorTransitionMaskImage="navbarBackChevron" id="j0C-NI-Zs6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="navbarBackChevron" backIndicatorTransitionMaskImage="navbarBackChevron" id="j0C-NI-Zs6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.43921568630000002" green="0.015686274510000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -727,7 +727,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkUpLogo10" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talkupLogo5" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-nr-Sed">
                                 <rect key="frame" x="149.5" y="295.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="OqF-0u-IyL"/>
@@ -783,7 +783,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-QV-vaA">
                                 <rect key="frame" x="46" y="402" width="283" height="48"/>
-                                <color key="backgroundColor" red="0.4392156862745098" green="0.015686274509803921" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.71764705882352942" green="0.0" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="NcD-Be-jce"/>
                                 </constraints>
@@ -947,8 +947,8 @@
         <image name="flagIcon" width="11" height="13"/>
         <image name="navbarBackChevron" width="12" height="22"/>
         <image name="send" width="16" height="16"/>
-        <image name="talkUpLogo10" width="924" height="924"/>
         <image name="talkup" width="32" height="32"/>
+        <image name="talkupLogo5" width="450" height="450"/>
         <image name="tumblr_mm1yov63xO1rz1ki7o1_500" width="500" height="375"/>
         <image name="upVoteArrow" width="11" height="12"/>
     </resources>

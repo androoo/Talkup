@@ -91,6 +91,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             group.enter()
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
                 
+                //check to see if any messages need to be hidden
                 self.hideBlockedMessages()
                 
                 group.leave()
@@ -200,8 +201,19 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     // try doing a terrenary to hide individual cells
     
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-//        return cell == blockedMessage ? 0 : super.tableView(tableView, heightForRowAt: indexPath)
+//        
+//        let message = messages[indexPath.row]
+//        
+//        for blockedMessage in messages {
+//            if blockedMessage.cloudKitRecordID == message.cloudKitRecordID {
+//                message.isRead = true
+//            }
+//        }
+//        
+//        //using the message property 'isRead' as a 'Blocked' Bool as I never use isRead for anything else -> will change
+//        let height = message.isRead ? 0 : super.tableView(tableView, heightForRowAt: indexPath)
+//        
+//        return height
 //    }
     
     
@@ -292,12 +304,20 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         
         guard let blockedUsers = UserController.shared.currentUser?.blocked else { return }
         
+        // the recordNames of the blocked users and owner refs are what will match
+        let blockedRecordNames = blockedUsers.flatMap({$0.recordID.recordName})
         //if message owner ref == blocked owner ref then message is hidden
+        let messageRecordNames = messages.flatMap({$0.ownerReference.recordID.recordName})
         
-        for message in messages {
-            if blockedUsers.contains(message.ownerReference) {
-                print("\(message) is hidden")
-                //set message to hidden so we can set heightForRowAt to zero for that one
+        for id in messageRecordNames {
+            if blockedRecordNames.contains(id) {
+                print("\(id) is hidden")
+                
+                for message in messages {
+                    if message.cloudKitRecordID?.recordName == id {
+                        message.isRead = true
+                    }
+                }
             }
         }
         
