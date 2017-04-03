@@ -18,8 +18,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     //MARK: - Page ViewController Datasource 
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let pageContentViewController = pageViewController.viewControllers![0]
-        self.pageControl.currentPage = orderedViewControllers.index(of: pageContentViewController)!
+//        let pageContentViewController = pageViewController.viewControllers?[0] as? ProfileViewController
+//        self.pageControl.currentPage = orderedViewControllers.index(of: pageContentViewController)
     }
     
     
@@ -74,12 +74,19 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         dataSource = self
         self.delegate = self
         
-        orderedViewControllers = [self.newViewController(view: "Profile"), self.newViewController(view: "Home")]
+        let profileNav = self.newViewController(view: "Profile")
+        let homeNav = self.newViewController(view: "Home")
         
-        if orderedViewControllers.count == 2 {
-            setViewControllers([orderedViewControllers[1]], direction: .forward, animated: true, completion: nil)
+        orderedViewControllers = [profileNav, homeNav]
+        
+//        if orderedViewControllers.count == 2 {
+//            setViewControllers([orderedViewControllers[0]], direction: .forward, animated: true, completion: nil)
+//            setViewControllers([orderedViewControllers[1]], direction: .forward, animated: true, completion: nil)
+//        }
+        
+        setViewControllers([orderedViewControllers[1]], direction: .forward, animated: true) { (_) in
+            
         }
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {

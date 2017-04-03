@@ -10,10 +10,10 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //MARK: - Properties 
+    //MARK: - Properties
     
     @IBOutlet var tableView: UITableView!
-
+    
     //MARK: - View lifecycle
     
     override func viewDidLoad() {
@@ -119,10 +119,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.layer.cornerRadius = 0
         tableView.layer.masksToBounds = true
         
-        //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        //        self.navigationController?.navigationBar.shadowImage = UIImage()
-        //        self.navigationController?.navigationBar.isTranslucent = true
+        tableView.layer.cornerRadius = 12
+        view.backgroundColor = Colors.designBlue
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
         
     }
-
+    
 }

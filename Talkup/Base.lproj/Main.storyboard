@@ -138,7 +138,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAM-wZ-TMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="-1249"/>
+            <point key="canvasLocation" x="1852" y="-1249"/>
         </scene>
         <!--Chat-->
         <scene sceneID="H7H-jz-EjE">
@@ -495,7 +495,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRd-7T-v2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2478" y="-568"/>
+            <point key="canvasLocation" x="4356" y="-568.06596701649175"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="V8O-33-OqJ">
@@ -506,34 +506,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVc-zS-YXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1570" y="-568"/>
-        </scene>
-        <!--Profile View Controller-->
-        <scene sceneID="SlF-hb-Phu">
-            <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="bS6-Yg-FQ0" customClass="ProfileViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ewj-m4-w3I"/>
-                        <viewControllerLayoutGuide type="bottom" id="aKY-jp-DEh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="q8b-Lu-NPC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqj-XA-ima">
-                                <rect key="frame" x="163" y="121" width="49" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="WdZ-fD-ktK"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tIY-WU-mbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="49" y="-568"/>
         </scene>
         <!--Talkup-->
         <scene sceneID="5G9-er-5fu">
@@ -667,7 +639,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEP-fZ-2Ie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="-568"/>
+            <point key="canvasLocation" x="3580" y="-568.06596701649175"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="HTM-2d-baf">
@@ -793,7 +765,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmj-gM-TD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="-1249"/>
+            <point key="canvasLocation" x="988" y="-1249"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="pX1-Rp-qAi">
@@ -966,14 +938,65 @@
             </objects>
             <point key="canvasLocation" x="-715" y="1500"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="873-00-rRA">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" id="742-Se-eJJ" customClass="ProfileViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ulj-JZ-BGf"/>
+                        <viewControllerLayoutGuide type="bottom" id="5gh-qD-jye"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AAo-AR-V5i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tumblr_mm1yov63xO1rz1ki7o1_500" translatesAutoresizingMaskIntoConstraints="NO" id="bDo-SF-rbb">
+                                <rect key="frame" x="124.5" y="109" width="126" height="126"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="126" id="NA0-id-hZM"/>
+                                    <constraint firstAttribute="height" constant="126" id="VlF-3J-2Hb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="63"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVB-HA-wXw">
+                                <rect key="frame" x="160" y="243" width="54" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MVB-HA-wXw" firstAttribute="centerX" secondItem="AAo-AR-V5i" secondAttribute="centerX" id="USH-2u-eQ1"/>
+                            <constraint firstItem="bDo-SF-rbb" firstAttribute="centerX" secondItem="AAo-AR-V5i" secondAttribute="centerX" id="YDd-Ql-vdZ"/>
+                            <constraint firstItem="bDo-SF-rbb" firstAttribute="top" secondItem="Ulj-JZ-BGf" secondAttribute="bottom" constant="45" id="jWv-LZ-PVy"/>
+                            <constraint firstItem="MVB-HA-wXw" firstAttribute="top" secondItem="bDo-SF-rbb" secondAttribute="bottom" constant="8" id="tgV-j1-Lw6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="oGk-c4-fqY"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="bDo-SF-rbb" id="aLE-m7-s8i"/>
+                        <outlet property="nameLabel" destination="MVB-HA-wXw" id="USx-nK-ecm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uMG-QA-rbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1748" y="-533.88305847076469"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="aco-CU-x2e">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8Vi-JL-ZbB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kIF-xr-d1E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="navbarBackChevron" backIndicatorTransitionMaskImage="navbarBackChevron" id="kIF-xr-d1E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -982,31 +1005,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRv-Gs-gRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="-568"/>
+            <point key="canvasLocation" x="2791.1999999999998" y="-568.06596701649175"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="8T0-Yj-2jS">
+        <scene sceneID="2fD-8L-AMp">
             <objects>
-                <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="6wE-TU-01Y" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3t-Yc-rke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="s0K-kU-zWd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qIW-H2-C3C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n9z-Xw-XhV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bS6-Yg-FQ0" kind="relationship" relationship="rootViewController" id="AaC-uv-OB7"/>
+                        <segue destination="742-Se-eJJ" kind="relationship" relationship="rootViewController" id="Oqe-pg-4MO"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2px-KA-yZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-714" y="-568"/>
+            <point key="canvasLocation" x="808.79999999999995" y="-534.78260869565224"/>
         </scene>
     </scenes>
     <resources>
         <image name="TalkupBlackSolid1x" width="23" height="22"/>
         <image name="dot" width="4" height="4"/>
         <image name="flagIcon" width="11" height="13"/>
+        <image name="navbarBackChevron" width="12" height="22"/>
         <image name="send" width="16" height="16"/>
         <image name="talkup" width="32" height="32"/>
         <image name="talkupLogo5" width="450" height="450"/>
