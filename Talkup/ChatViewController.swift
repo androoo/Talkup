@@ -223,8 +223,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func backNavButtonTapped(_ sender: Any) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "MainNavigation") as? PageViewController else { return }
-        self.present(vc, animated: false, completion: nil)
+//        guard let vc = storyboard?.instantiateViewController(withIdentifier: "MainNavigation") as? PageViewController else { return }
+//        self.present(vc, animated: false, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
     

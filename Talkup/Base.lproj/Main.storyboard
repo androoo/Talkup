@@ -328,7 +328,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7E19DE67-7E8B-4965-B2C1-F7E6C5A37529" translatesAutoresizingMaskIntoConstraints="NO" id="5fU-F6-tPU">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="584FFF5F-B7A6-4800-8524-9A4667E14D63" translatesAutoresizingMaskIntoConstraints="NO" id="5fU-F6-tPU">
                                                             <rect key="frame" x="48" y="0.0" width="22" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="Pq6-QI-hHE"/>
@@ -731,6 +731,7 @@
                         <barButtonItem key="rightBarButtonItem" image="TalkupBlackSolid1x" id="1xS-5y-76K"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="navbarBackgroundUIView" destination="arJ-xE-dEm" id="sV1-vK-bbb"/>
                         <outlet property="tableView" destination="nyw-UT-Cw1" id="RkY-mE-cq0"/>
                         <outlet property="tableViewBG" destination="fH8-mv-QcO" id="6EY-wF-nve"/>
                         <outlet property="tableViewTopContraint" destination="pWB-uX-TWV" id="x68-rV-VaQ"/>
@@ -1155,7 +1156,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7E19DE67-7E8B-4965-B2C1-F7E6C5A37529" width="500" height="375">
+        <image name="584FFF5F-B7A6-4800-8524-9A4667E14D63" width="500" height="375">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

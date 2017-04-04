@@ -40,7 +40,7 @@ struct Colors {
     
     //text colors 
     static let recievedMessagePrimary = UIColor.init(red: 14/255.0, green: 15/255.0, blue: 15/255.0, alpha: 1)
-    
+    static let clearBlack = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.25)
     
 }
 
@@ -58,6 +58,20 @@ extension UIView {
         
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1)
+        
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func applyNavGradient(colours: [UIColor]) -> Void {
+        self.applyNavGradient(colours: colours, locations: nil)
+    }
+    
+    func applyNavGradient(colours: [UIColor], locations: [NSNumber]?) -> Void {
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
         
         gradient.frame = self.bounds
         gradient.colors = colours.map { $0.cgColor }

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+
+
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, PageViewControllerScrollDelegate {
     
     //MARK: - Properties
     
@@ -16,6 +18,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableViewTopContraint: NSLayoutConstraint!
     @IBOutlet var tableViewBG: UIView!
+    
+    @IBOutlet weak var navbarBackgroundUIView: UIView!
+    
+    
+    //MARK: - status bar 
+    
+
+    
     
     //MARK: - View lifecycle
     
@@ -51,6 +61,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
         
         
+        navbarBackgroundUIView.applyNavGradient(colours: [Colors.clearBlack, .clear])
+        navbarBackgroundUIView.applyNavGradient(colours: [Colors.clearBlack, .clear], locations: [0.0, 1.0])
+        
         
     }
     
@@ -66,10 +79,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - TableView detect scrolling 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        print(scrollView.contentOffset)
-        
         if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 100 {
             tableViewTopContraint.constant -= scrollView.contentOffset.y
+
+            
         }
         
         if scrollView.contentOffset.y < 0 && scrollView.contentOffset.y > -64 {
@@ -157,6 +170,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         
+        
+        
+    }
+    
+    func fadeColor(_ sender: PageViewController) {
+        view.backgroundColor = UIColor.black
     }
     
 }
