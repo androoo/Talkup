@@ -16,6 +16,7 @@ struct Constants {
     static let toWelcome = "toWelcome"
     static let toHome = "toHome"
     static let toProfile = "toProfile"
+    static let toChatDetail = "toChatDetail"
         
     //MARK: - User Keys
     

@@ -1,15 +1,15 @@
 //
-//  ChatDetailTableViewController.swift
+//  ChatViewController.swift
 //  Talkup
 //
-//  Created by Andrew Ervin Gierke on 3/13/17.
+//  Created by Andrew Ervin Gierke on 4/3/17.
 //  Copyright © 2017 Androoo. All rights reserved.
 //
 
 import UIKit
 
-class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate, RecieverTableViewCellDelegate {
-    
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate {
+
     //MARK: - Outlets
     
     @IBOutlet weak var liveButton: UIButton!
@@ -17,11 +17,14 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     @IBOutlet weak var liveButtonBottomBorder: UIImageView!
     @IBOutlet weak var topButtonBottomBorder: UIImageView!
+    @IBOutlet weak var navBarBottomBorderImageView: UIImageView!
     
     @IBOutlet weak var sendMessageButtonTapped: UIButton!
     
+    @IBOutlet weak var chatTitleLabel: UILabel!
     
     //MARK: - Properties
+    @IBOutlet var tableView: UITableView!
     
     var chat: Chat? {
         didSet {
@@ -38,33 +41,28 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     //MARK: - UIActions
     
-    
-    @IBAction func liveButtonTapped(_ sender: Any) {
-        
+    @IBAction func liveButton(_ sender: Any) {
         liveButton.setTitleColor(Colors.magenta, for: .normal)
         topButton.setTitleColor(.lightGray, for: .normal)
-        liveButtonBottomBorder.isHidden = false
         liveButtonBottomBorder.backgroundColor = Colors.magenta
-        topButtonBottomBorder.isHidden = true
+        topButtonBottomBorder.backgroundColor = Colors.bubbleGray
         messageSortSelection = .live
         updateViews()
-        
     }
-    
-    @IBAction func topButtonTapped(_ sender: Any) {
-        
+
+    @IBAction func topButton(_ sender: Any) {
         liveButton.setTitleColor(.lightGray, for: .normal)
         topButton.setTitleColor(Colors.magenta, for: .normal)
-        liveButtonBottomBorder.isHidden = true
         topButtonBottomBorder.backgroundColor = Colors.magenta
-        topButtonBottomBorder.isHidden = false
+        liveButtonBottomBorder.backgroundColor = Colors.bubbleGray
         messageSortSelection = .top
         updateViews()
     }
-    
-    @IBAction func typeMessageTextFieldEditingChanged(_ sender: Any) {
+
+    @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
         guard inputTextField.text != "" else { sendMessageButtonTapped.isEnabled = false; return }
         sendMessageButtonTapped.isEnabled = true
+        
     }
     
     
@@ -112,9 +110,9 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        liveButtonBottomBorder.isHidden = false
         liveButton.setTitleColor(Colors.magenta, for: .normal)
         liveButtonBottomBorder.backgroundColor = Colors.magenta
+        topButtonBottomBorder.backgroundColor = Colors.bubbleGray
         
         updateViews()
     }
@@ -124,12 +122,12 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        guard let name = chat?.topic else { return }
         inputTextField.delegate = self
-        
+        chatTitleLabel.text = "\(name)"
         updateViews()
         customize()
-        
+        navBarBottomBorderImageView.backgroundColor = Colors.bubbleGray
         liveButtonBottomBorder.isHidden = false
         
         guard let chat = chat, isViewLoaded else { return }
@@ -155,11 +153,11 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chat?.filteredMessages.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if tableView.isDragging {
             cell.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
             UIView.animate(withDuration: 0.3, animations: {
@@ -168,7 +166,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // switch on the message's owner. If the owner ID = current user ID then cell type is sender.
         
@@ -192,7 +190,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
     }
     
@@ -208,7 +206,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
     
     //MARK: - Chat Input
     
-    @IBAction func sendChatMessageButtonTapped(_ sender: Any) {
+    @IBAction func submitChatMessageButtonTapped(_ sender: Any) {
         guard let messageText = inputTextField.text, let chat = self.chat else { return }
         
         guard let owner = UserController.shared.currentUser else { return }
@@ -222,6 +220,13 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         inputTextField.text = nil
         inputTextField.resignFirstResponder()
     }
+    
+    
+    @IBAction func backNavButtonTapped(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "MainNavigation") as? PageViewController else { return }
+        self.present(vc, animated: false, completion: nil)
+    }
+
     
     
     @IBOutlet var inputBar: UIView!
@@ -276,7 +281,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         return titleView
     }
     
-    // Remove Blocked Message 
+    // Remove Blocked Message
     
     func hideBlockedMessages() {
         
@@ -326,7 +331,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             let message = chat?.messages[indexPath.row],
             let owner = message.owner,
             let user = UserController.shared.currentUser else { return }
-
+        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let reportAbuse = UIAlertAction(title: "Report", style: .default) { (action) in
@@ -343,7 +348,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
                 UserController.shared.addBlockedUser(Foruser: user, blockedUser: owner, completion: {
                     
                     //remove blocked content is in update views
-                    //set cell to hidden 
+                    //set cell to hidden
                     
                     self.updateViews()
                     
@@ -354,7 +359,7 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
             confirmAlertController.addAction(confirmAction)
             confirmAlertController.addAction(cancelAction)
             self.present(confirmAlertController, animated: true, completion: nil)
-
+            
             
         }
         
@@ -388,22 +393,4 @@ class ChatDetailTableViewController: UITableViewController, UITextFieldDelegate,
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -11,9 +11,11 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     //MARK: - Properties
-
+    
     @IBOutlet var tableView: UITableView!
-
+    
+    @IBOutlet weak var tableViewTopContraint: NSLayoutConstraint!
+    @IBOutlet var tableViewBG: UIView!
     
     //MARK: - View lifecycle
     
@@ -29,27 +31,51 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         customize()
         
         
-        /* - floating new chat button at bottom 
-         
-         let newChatButton = UIButton(frame: CGRect(origin: CGPoint(x: self.view.frame.width / 2 - 25, y: self.view.frame.height - 75), size: CGSize(width: 50, height: 50)))
-         
-         newChatButton.backgroundColor = Colors.purple
-         newChatButton.layer.cornerRadius = 25
-         newChatButton.clipsToBounds = true
-         
-         self.navigationController?.view.addSubview(newChatButton)
-         
+        /*
+        let addImage = UIImage(named: "addChatButton")
+        
+        let newChatButton = UIButton(frame: CGRect(origin: CGPoint(x: self.view.frame.width / 2 - 44, y: self.view.frame.height - 100), size: CGSize(width: 88, height: 88)))
+        newChatButton.setImage(addImage, for: .normal)
+        newChatButton.addTarget(self, action: #selector(addChat(button:)), for: .touchUpInside)
+        newChatButton.layer.cornerRadius = 25
+        newChatButton.clipsToBounds = true
+        
+        self.view.addSubview(newChatButton)
         */
- 
+        
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
+        
+        
+        
     }
     
+    func addChat(button: UIButton) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "newChatNav") as? NavViewController else { return }
+        self.present(vc, animated: false, completion: nil)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         updateViews()
+    }
+    
+    //MARK: - TableView detect scrolling 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        print(scrollView.contentOffset)
+        
+        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 100 {
+            tableViewTopContraint.constant -= scrollView.contentOffset.y
+        }
+        
+        if scrollView.contentOffset.y < 0 && scrollView.contentOffset.y > -64 {
+            tableViewTopContraint.constant -= scrollView.contentOffset.y
+        }
+        
     }
     
     
@@ -93,7 +119,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toChatDetail" {
-            if let detailViewController = segue.destination as? ChatDetailTableViewController,
+            if let detailViewController = segue.destination as? ChatViewController,
                 let selectedIndexPath = self.tableView.indexPathForSelectedRow {
                 
                 let backItem = UIBarButtonItem()

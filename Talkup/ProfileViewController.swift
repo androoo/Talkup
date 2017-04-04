@@ -18,12 +18,10 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("profile scrolled")
         
         guard let user = UserController.shared.currentUser else { return }
         let name = user.userName
         
-        view.backgroundColor = .clear
         
         avatarImageView.image = user.photo
         nameLabel.text = "\(name)"
@@ -31,6 +29,8 @@ class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        
+        view.backgroundColor = .clear
     }
     
     //Profile CRUD stuff

@@ -35,10 +35,13 @@ struct Colors {
     
     static let blueTop = UIColor.init(red: 107/255.0, green: 151/255.0, blue: 252/255.0, alpha: 1)
     static let blueBottom = UIColor.init(red: 87/255.0, green: 130/255.0, blue: 252/255.0, alpha: 1)
+    static let gradientBlue = UIColor.init(red: 82/255.0, green: 84/255.0, blue: 232/255.0, alpha: 1)
+    static let gradientPurple = UIColor.init(red: 146/255.0, green: 97/255.0, blue: 234/255.0, alpha: 1)
     
     //text colors 
     static let recievedMessagePrimary = UIColor.init(red: 14/255.0, green: 15/255.0, blue: 15/255.0, alpha: 1)
-
+    
+    
 }
 
 //MARK: - Gradients 
@@ -50,7 +53,12 @@ extension UIView {
     }
     
     func applyGradient(colours: [UIColor], locations: [NSNumber]?) -> Void {
+        
         let gradient: CAGradientLayer = CAGradientLayer()
+        
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        
         gradient.frame = self.bounds
         gradient.colors = colours.map { $0.cgColor }
         gradient.locations = locations
