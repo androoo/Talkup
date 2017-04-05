@@ -33,22 +33,7 @@ class LaunchViewController: UIViewController {
                 } else {
                     self.performSegue(withIdentifier: Constants.toWelcome, sender: self)
                 }
-                
             }
-        
-        }
-    }
-    
-    //MARK: - Push to relevant ViewController
-    
-    func pushTo(viewController: ViewControllerType) {
-        switch viewController {
-        case .conversations:
-            guard let vc = storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavViewController else { return }
-            self.present(vc, animated: false, completion: nil)
-        case .welcome:
-            guard let vc = storyboard?.instantiateViewController(withIdentifier: "Welcome") as? WelcomeViewController else { return }
-            self.present(vc, animated: false, completion: nil)
         }
     }
 }

@@ -10,22 +10,18 @@ import UIKit
 
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, PageViewControllerScrollDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
-    //MARK: - Properties
+    //MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
     
     @IBOutlet weak var tableViewTopContraint: NSLayoutConstraint!
+    
     @IBOutlet var tableViewBG: UIView!
     
     @IBOutlet weak var navbarBackgroundUIView: UIView!
-    
-    
-    //MARK: - status bar 
-    
 
-    
     
     //MARK: - View lifecycle
     
@@ -40,31 +36,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         customize()
         
-        
-        /*
-        let addImage = UIImage(named: "addChatButton")
-        
-        let newChatButton = UIButton(frame: CGRect(origin: CGPoint(x: self.view.frame.width / 2 - 44, y: self.view.frame.height - 100), size: CGSize(width: 88, height: 88)))
-        newChatButton.setImage(addImage, for: .normal)
-        newChatButton.addTarget(self, action: #selector(addChat(button:)), for: .touchUpInside)
-        newChatButton.layer.cornerRadius = 25
-        newChatButton.clipsToBounds = true
-        
-        self.view.addSubview(newChatButton)
-        */
-        
-        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
-        
-        
-        navbarBackgroundUIView.applyNavGradient(colours: [Colors.clearBlack, .clear])
-        navbarBackgroundUIView.applyNavGradient(colours: [Colors.clearBlack, .clear], locations: [0.0, 1.0])
-        
-        
     }
     
     func addChat(button: UIButton) {
@@ -74,23 +48,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(_ animated: Bool) {
         updateViews()
+        
+        tableView.setNeedsLayout()
     }
     
-    //MARK: - TableView detect scrolling 
+    
+    //MARK: - TableView Scroll feature
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        print(scrollView.contentOffset)
         
         if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 100 {
             tableViewTopContraint.constant -= scrollView.contentOffset.y
-
             
         }
         
-        if scrollView.contentOffset.y < 0 && scrollView.contentOffset.y > -64 {
-            tableViewTopContraint.constant -= scrollView.contentOffset.y
+        if tableViewTopContraint.constant <= 54 {
+            if scrollView.contentOffset.y < 0 && scrollView.contentOffset.y > -64 {
+                tableViewTopContraint.constant -= scrollView.contentOffset.y
+            }
         }
-        
     }
     
+    
+    //MARK: - Sync data
     
     private func requestFullSync(_ completion: (() -> Void)? = nil) {
         
@@ -104,11 +86,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
     // MARK: Notifications
     
     func postsChanged(_ notification: Notification) {
         tableView.reloadData()
     }
+    
     
     // MARK: - Table view data source
     
@@ -123,7 +107,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let chat = ChatController.shared.chats[indexPath.row]
         cell.chat = chat
         cell.chatRankLabel.text = "\(indexPath.row + 1)"
-        
         
         return cell
     }
@@ -144,8 +127,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 detailViewController.chat = chats[selectedIndexPath.row]
             }
         }
-        
     }
+    
     
     func updateViews() {
         DispatchQueue.main.async {
@@ -156,26 +139,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Appearance Helpers
     
     func customize() {
-        view.backgroundColor = Colors.gray
         
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
-        tableView.layer.cornerRadius = 0
-        tableView.layer.masksToBounds = true
-        
+//        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 84, bottom: 0, right: 0)
+
         tableView.layer.cornerRadius = 12
+        
         view.backgroundColor = .clear
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        
-        
-        
     }
-    
-    func fadeColor(_ sender: PageViewController) {
-        view.backgroundColor = UIColor.black
-    }
-    
 }
