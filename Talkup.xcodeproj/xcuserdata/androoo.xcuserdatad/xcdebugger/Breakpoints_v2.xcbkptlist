@@ -38,7 +38,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/PageViewController.swift"
@@ -57,38 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/PageViewController.swift"
-            timestampString = "513031864.732805"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "newViewController(view:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/PageViewController.swift"
-            timestampString = "513031926.840508"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Talkup/HomeViewController.swift"
             timestampString = "513032107.307982"
             startingColumnNumber = "9223372036854775807"
@@ -99,14 +67,14 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Talkup.HomeViewController.tableView.getter : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITableView&gt;"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
-                  timestampString = "513032207.843595"
+                  timestampString = "513046123.973102"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -114,14 +82,14 @@
                   offsetFromSymbolStart = "35">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Talkup.HomeViewController.tableView.setter : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITableView&gt;"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
-                  timestampString = "513032207.845181"
+                  timestampString = "513046123.974888"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -129,34 +97,19 @@
                   offsetFromSymbolStart = "65">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Talkup.HomeViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Talkup.HomeViewController"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
-                  timestampString = "513032207.846821"
+                  timestampString = "513046123.976654"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
                   endingLineNumber = "17"
                   offsetFromSymbolStart = "70">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Talkup.HomeViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Talkup.HomeViewController&gt;"
-                  moduleName = "Talkup"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
-                  timestampString = "513032207.848448"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "31">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -180,7 +133,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/HomeViewController.swift"
@@ -193,14 +146,14 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Talkup.HomeViewController.navbarBackgroundUIView.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIView&gt;"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
-                  timestampString = "513032516.256481"
+                  timestampString = "513046123.985364"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -208,14 +161,14 @@
                   offsetFromSymbolStart = "27">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Talkup.HomeViewController.navbarBackgroundUIView.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIView&gt;"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
-                  timestampString = "513032516.258128"
+                  timestampString = "513046123.986954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -223,14 +176,14 @@
                   offsetFromSymbolStart = "42">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Talkup.HomeViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Talkup.HomeViewController"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
-                  timestampString = "513032516.259743"
+                  timestampString = "513046123.988527"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -238,14 +191,14 @@
                   offsetFromSymbolStart = "212">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Talkup.HomeViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Talkup.HomeViewController&gt;"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
-                  timestampString = "513032516.261336"
+                  timestampString = "513046123.990095"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -278,11 +231,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/HomeViewController.swift"
-            timestampString = "513033326.194669"
+            timestampString = "513087873.75853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "requestFullSync(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -294,11 +247,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/HomeViewController.swift"
-            timestampString = "513033326.194669"
+            timestampString = "513087873.75853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -310,11 +263,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/HomeViewController.swift"
-            timestampString = "513033326.194669"
+            timestampString = "513087873.75853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -342,13 +295,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/HomeViewController.swift"
-            timestampString = "513033326.194669"
+            timestampString = "513087873.75853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/HomeViewController.swift"
+            timestampString = "513046110.226734"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.HomeViewController.tableViewBG.getter : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIView&gt;"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
+                  timestampString = "513046124.005807"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.HomeViewController.tableViewBG.setter : Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIView&gt;"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
+                  timestampString = "513046124.007497"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.HomeViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Talkup.HomeViewController"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
+                  timestampString = "513046124.009128"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "182">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.HomeViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Talkup.HomeViewController&gt;"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/HomeViewController.swift"
+                  timestampString = "513046124.010718"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "111">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

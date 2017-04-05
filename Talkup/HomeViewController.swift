@@ -57,12 +57,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        print(scrollView.contentOffset)
-        
-        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 100 {
-            tableViewTopContraint.constant -= scrollView.contentOffset.y
-            
+        if tableViewTopContraint.constant >= -30 {
+            if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 100 {
+                tableViewTopContraint.constant -= scrollView.contentOffset.y
+            }
         }
+        
+        
         
         if tableViewTopContraint.constant <= 54 {
             if scrollView.contentOffset.y < 0 && scrollView.contentOffset.y > -64 {
