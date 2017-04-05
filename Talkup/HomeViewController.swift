@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableViewBG: UIView!
     
     @IBOutlet weak var navbarBackgroundUIView: UIView!
-
+    
     
     //MARK: - View lifecycle
     
@@ -30,11 +30,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         title = "Talkup"
         
+        tableView.backgroundColor = .clear
+        
+        tableView.contentInset = UIEdgeInsets(top: 76, left: 0, bottom: 0, right: 0)
+        
         updateViews()
         
         requestFullSync()
         
         customize()
+        
+        
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
@@ -52,25 +58,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.setNeedsLayout()
     }
     
-    
-    //MARK: - TableView Scroll feature
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        if tableViewTopContraint.constant >= -30 {
-            if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 100 {
-                tableViewTopContraint.constant -= scrollView.contentOffset.y
-            }
-        }
-        
-        
-        
-        if tableViewTopContraint.constant <= 54 {
-            if scrollView.contentOffset.y < 0 && scrollView.contentOffset.y > -64 {
-                tableViewTopContraint.constant -= scrollView.contentOffset.y
-            }
-        }
-    }
     
     
     //MARK: - Sync data
@@ -97,19 +84,94 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Table view data source
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ChatController.shared.chats.count
+        
+        switch section {
+        case 0 : return 1
+        case 1: return 1
+        case 2: return 1
+        case 3: return ChatController.shared.chats.count
+        default: return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! HeaderTableViewCell
+            
+            cell.separatorInset.left = 1000.0
+            
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
+            
+            cell.separatorInset.left = 0
+            cell.separatorInset.right = 0
+            
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
+            
+            cell.separatorInset.left = 86.0
+            
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+            
+            let chat = ChatController.shared.chats[indexPath.row]
+            cell.chat = chat
+            cell.chatRankLabel.text = "\(indexPath.row + 1)"
+            
+            cell.separatorInset.left = 86.0
+
+            
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath) as! UITableViewCell
+            return cell
+        }
         
-        let chat = ChatController.shared.chats[indexPath.row]
-        cell.chat = chat
-        cell.chatRankLabel.text = "\(indexPath.row + 1)"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0: return UITableViewAutomaticDimension
+        case 1: return 86
+        case 2: return UITableViewAutomaticDimension
+        case 3: return 86
+        default: return 86
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        return cell
+        let maskPathTop = UIBezierPath(roundedRect: cell.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 13.0, height: 13.0))
+        let shapeLayerTop = CAShapeLayer()
+        shapeLayerTop.frame = cell.bounds
+        shapeLayerTop.path = maskPathTop.cgPath
+
+//        cell.separatorInset.left = 1000.0
+        
+        
+        switch indexPath.section {
+
+        case 1:
+            return cell.layer.mask = shapeLayerTop
+        default:
+            break
+        }
+        
+
     }
     
     // MARK: - Navigation
@@ -141,10 +203,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func customize() {
         
-//        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 84, bottom: 0, right: 0)
-
-        tableView.layer.cornerRadius = 12
+        //        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+//        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 84, bottom: 0, right: 0)
+        
+//        tableView.layer.cornerRadius = 12
         
         view.backgroundColor = .clear
     }

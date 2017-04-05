@@ -72,10 +72,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         dataSource = self
         self.delegate = self
         
-        let profileNav = self.newViewController(view: "Profile")
         let homeNav = self.newViewController(view: "Home")
+        let profileNav = self.newViewController(view: "Profile")
         
-        orderedViewControllers = [profileNav, homeNav]
+        orderedViewControllers = [homeNav, profileNav]
         
         self.view.backgroundColor = UIColor.white
         self.view.applyGradient(colours: [Colors.purple, Colors.gradientBlue])
@@ -83,7 +83,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         
         navigationController?.navigationBar.isHidden = true
         
-        setViewControllers([orderedViewControllers[1]], direction: .forward, animated: true) { (_) in
+        setViewControllers([orderedViewControllers[0]], direction: .forward, animated: true) { (_) in
             
         }
         
