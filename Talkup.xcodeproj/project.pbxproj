@@ -39,6 +39,7 @@
 		5AAC94AF1E95274D009155FE /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94AE1E95274D009155FE /* HeaderTableViewCell.swift */; };
 		5AAC94B11E95275C009155FE /* FirstChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B01E95275C009155FE /* FirstChatTableViewCell.swift */; };
 		5AAC94B31E9547BD009155FE /* FilterChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B21E9547BD009155FE /* FilterChatTableViewCell.swift */; };
+		5AAC94B51E955DCF009155FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B41E955DCF009155FE /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		5AAC94AE1E95274D009155FE /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5AAC94B01E95275C009155FE /* FirstChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstChatTableViewCell.swift; sourceTree = "<group>"; };
 		5AAC94B21E9547BD009155FE /* FilterChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChatTableViewCell.swift; sourceTree = "<group>"; };
+		5AAC94B41E955DCF009155FE /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				5A0347B91E86D4BE0080CAD9 /* Appearance .swift */,
 				5A35A2821E773F1500162A20 /* HelperFiles.swift */,
 				5A35A29A1E78989000162A20 /* Constants.swift */,
+				5AAC94B41E955DCF009155FE /* Notifications.swift */,
 			);
 			name = "Helper Files";
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			files = (
 				5A35A27A1E772BD300162A20 /* Message.swift in Sources */,
 				5A14676C1E82237900F7E3EA /* UserController.swift in Sources */,
+				5AAC94B51E955DCF009155FE /* Notifications.swift in Sources */,
 				5A35A2871E7752CE00162A20 /* MessageController.swift in Sources */,
 				5A35A2951E78412A00162A20 /* LaunchViewController.swift in Sources */,
 				5A35A2801E772E5100162A20 /* CloudKitSyncable.swift in Sources */,

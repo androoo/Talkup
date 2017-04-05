@@ -87,5 +87,26 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
             
         }
         
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(toProfilePageTapped(_:)), name: Notifications.ProfileButtonTappedNotification, object: nil)
+        
+    }
+    
+    func toProfilePageTapped(_ notification: Notification) {
+        
+        // set index to 1
+        
+        setViewControllers([orderedViewControllers[1]], direction: .forward, animated: true) { (_) in
+            
+        }
+        
     }
 }
+
+
+
+
+
+
+
+

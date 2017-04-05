@@ -18,9 +18,15 @@ class HeaderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var toProfileButton: UIButton!
     
-    @IBAction func toProfileButtonTapped(_ sender: Any) {
+    @IBAction func profileButtonTapped(_ sender: Any) {
+        
+        print("profile button tapped")
+        
+        let nc = NotificationCenter.default
+        nc.post(name: Notifications.ProfileButtonTappedNotification, object: self)
         
     }
+
     
 
     override func awakeFromNib() {

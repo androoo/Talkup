@@ -328,7 +328,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D91E9699-6B14-474D-BFDA-E45592DE2740" translatesAutoresizingMaskIntoConstraints="NO" id="5fU-F6-tPU">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EBBEFBFF-074A-47A0-AE8A-F2E00765509C" translatesAutoresizingMaskIntoConstraints="NO" id="5fU-F6-tPU">
                                                             <rect key="frame" x="48" y="0.0" width="22" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="Pq6-QI-hHE"/>
@@ -580,7 +580,7 @@
                                 <rect key="frame" x="0.0" y="-2" width="375" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="112" id="X9b-mi-sk4" customClass="HeaderTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="112" id="X9b-mi-sk4" customClass="HeaderTableViewCell" customModule="Talkup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X9b-mi-sk4" id="V3A-AO-xRt">
@@ -588,45 +588,44 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conversations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2i-YA-40e">
-                                                    <rect key="frame" x="16" y="8" width="289" height="87.5"/>
+                                                    <rect key="frame" x="16" y="16" width="289" height="81.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tumblr_mm1yov63xO1rz1ki7o1_500" translatesAutoresizingMaskIntoConstraints="NO" id="bic-Ta-fG7">
-                                                    <rect key="frame" x="313" y="49.5" width="46" height="46"/>
+                                                    <rect key="frame" x="313" y="33" width="46" height="46"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="46" id="6Nt-3X-et5"/>
                                                         <constraint firstAttribute="width" constant="46" id="ad5-rH-QPJ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZS-Ja-9JF">
-                                                    <rect key="frame" x="313" y="76" width="46" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdG-RT-ApR">
+                                                    <rect key="frame" x="313" y="41.5" width="46" height="46"/>
                                                     <connections>
-                                                        <action selector="toProfileButtonTapped:" destination="X9b-mi-sk4" eventType="touchUpInside" id="v2d-r4-3lk"/>
-                                                        <segue destination="s0K-kU-zWd" kind="show" id="P1c-0J-XGt"/>
+                                                        <action selector="profileButtonTapped:" destination="X9b-mi-sk4" eventType="touchUpInside" id="9Ys-ml-t5Z"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="bic-Ta-fG7" secondAttribute="bottom" constant="16" id="2cR-nd-Rxr"/>
-                                                <constraint firstItem="L2i-YA-40e" firstAttribute="top" secondItem="V3A-AO-xRt" secondAttribute="top" constant="8" id="3aZ-zB-xbc"/>
-                                                <constraint firstItem="OZS-Ja-9JF" firstAttribute="centerX" secondItem="V3A-AO-xRt" secondAttribute="centerX" constant="148.5" id="9Qh-jl-LeY"/>
-                                                <constraint firstItem="OZS-Ja-9JF" firstAttribute="height" secondItem="bic-Ta-fG7" secondAttribute="height" constant="-16" id="AeF-Ud-Py2"/>
+                                                <constraint firstItem="L2i-YA-40e" firstAttribute="top" secondItem="V3A-AO-xRt" secondAttribute="top" constant="16" id="3aZ-zB-xbc"/>
+                                                <constraint firstItem="XdG-RT-ApR" firstAttribute="height" secondItem="bic-Ta-fG7" secondAttribute="height" id="9re-nk-jiR"/>
+                                                <constraint firstItem="XdG-RT-ApR" firstAttribute="bottom" secondItem="bic-Ta-fG7" secondAttribute="bottom" id="C7O-fb-BDi"/>
                                                 <constraint firstItem="L2i-YA-40e" firstAttribute="leading" secondItem="V3A-AO-xRt" secondAttribute="leading" constant="16" id="KFb-By-Fh1"/>
+                                                <constraint firstItem="XdG-RT-ApR" firstAttribute="width" secondItem="bic-Ta-fG7" secondAttribute="width" id="YDn-i6-9NE"/>
                                                 <constraint firstAttribute="trailing" secondItem="bic-Ta-fG7" secondAttribute="trailing" constant="16" id="eav-ZR-eg1"/>
-                                                <constraint firstItem="OZS-Ja-9JF" firstAttribute="width" secondItem="bic-Ta-fG7" secondAttribute="width" id="plG-xO-cq2"/>
-                                                <constraint firstItem="OZS-Ja-9JF" firstAttribute="centerY" secondItem="V3A-AO-xRt" secondAttribute="centerY" constant="35" id="ply-Uf-AUk"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="L2i-YA-40e" secondAttribute="bottom" constant="8" id="rl7-zB-7Bn"/>
+                                                <constraint firstItem="bic-Ta-fG7" firstAttribute="centerY" secondItem="V3A-AO-xRt" secondAttribute="centerY" id="py8-Em-nET"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="L2i-YA-40e" secondAttribute="bottom" constant="6" id="rl7-zB-7Bn"/>
+                                                <constraint firstItem="XdG-RT-ApR" firstAttribute="leading" secondItem="bic-Ta-fG7" secondAttribute="leading" id="x6x-kq-s1g"/>
                                                 <constraint firstItem="L2i-YA-40e" firstAttribute="trailing" secondItem="bic-Ta-fG7" secondAttribute="leading" constant="-8" id="zj5-hh-ph9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImageView" destination="bic-Ta-fG7" id="B8y-lU-GAk"/>
-                                            <outlet property="toProfileButton" destination="OZS-Ja-9JF" id="KjV-70-Qox"/>
+                                            <outlet property="toProfileButton" destination="XdG-RT-ApR" id="mHo-NN-ZZw"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="firstCell" rowHeight="81" id="YSy-9P-paH" customClass="FirstChatTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="firstCell" rowHeight="81" id="YSy-9P-paH" customClass="FirstChatTableViewCell" customModule="Talkup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="140" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YSy-9P-paH" id="OgO-lE-LBG">
@@ -673,7 +672,7 @@
                                             <segue destination="iuj-Yi-uUb" kind="presentation" id="rUr-Vk-0Hb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="76" id="Zzq-GL-AVo" customClass="FilterTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="76" id="Zzq-GL-AVo" customClass="FilterTableViewCell" customModule="Talkup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="221" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zzq-GL-AVo" id="S8M-Bq-BBB">
@@ -681,8 +680,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzJ-ub-6MN">
-                                                    <rect key="frame" x="24" y="24" width="89.5" height="35.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                                    <rect key="frame" x="24" y="24" width="106.5" height="35.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1244,7 +1243,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D91E9699-6B14-474D-BFDA-E45592DE2740" width="500" height="375">
+        <image name="EBBEFBFF-074A-47A0-AE8A-F2E00765509C" width="500" height="375">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
