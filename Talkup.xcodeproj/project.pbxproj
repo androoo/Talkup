@@ -40,6 +40,8 @@
 		5AAC94B11E95275C009155FE /* FirstChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B01E95275C009155FE /* FirstChatTableViewCell.swift */; };
 		5AAC94B31E9547BD009155FE /* FilterChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B21E9547BD009155FE /* FilterChatTableViewCell.swift */; };
 		5AAC94B51E955DCF009155FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B41E955DCF009155FE /* Notifications.swift */; };
+		5AAC94B71E959FCB009155FE /* LastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B61E959FCB009155FE /* LastTableViewCell.swift */; };
+		5AAC94B91E95B67B009155FE /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B81E95B67B009155FE /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +81,8 @@
 		5AAC94B01E95275C009155FE /* FirstChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstChatTableViewCell.swift; sourceTree = "<group>"; };
 		5AAC94B21E9547BD009155FE /* FilterChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChatTableViewCell.swift; sourceTree = "<group>"; };
 		5AAC94B41E955DCF009155FE /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		5AAC94B61E959FCB009155FE /* LastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTableViewCell.swift; sourceTree = "<group>"; };
+		5AAC94B81E95B67B009155FE /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 				5A35A28E1E77533A00162A20 /* RecieverTableViewCell.swift */,
 				5A1467671E82021100F7E3EA /* SenderTableViewCell.swift */,
 				5AAC94B21E9547BD009155FE /* FilterChatTableViewCell.swift */,
+				5AAC94B61E959FCB009155FE /* LastTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				5A8D59111E9289AE007F107A /* ProfileViewController.swift */,
 				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
 				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
+				5AAC94B81E95B67B009155FE /* UserViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -335,10 +341,12 @@
 				5A8D590E1E928057007F107A /* HomeViewController.swift in Sources */,
 				5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */,
 				5A35A28F1E77533A00162A20 /* RecieverTableViewCell.swift in Sources */,
+				5AAC94B91E95B67B009155FE /* UserViewController.swift in Sources */,
 				5A35A2831E773F1500162A20 /* HelperFiles.swift in Sources */,
 				5A35A27C1E772BE400162A20 /* Chat.swift in Sources */,
 				5A0347BA1E86D4BE0080CAD9 /* Appearance .swift in Sources */,
 				5AAC94B11E95275C009155FE /* FirstChatTableViewCell.swift in Sources */,
+				5AAC94B71E959FCB009155FE /* LastTableViewCell.swift in Sources */,
 				5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */,
 				5A8F7AAB1E7C504200C4E566 /* ChatTableViewCell.swift in Sources */,
 				5A35A2571E76FDC500162A20 /* AppDelegate.swift in Sources */,

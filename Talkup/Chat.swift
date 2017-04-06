@@ -21,7 +21,7 @@ class Chat: CloudKitSyncable {
     var messages: [Message]
     
     var filteredMessages: [Message] {
-        return messages.filter({$0.isRead != true})
+        return messages.filter({$0.blocked == false})
     }
     
     var cloudKitRecordID: CKRecordID?

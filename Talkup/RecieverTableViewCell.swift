@@ -14,6 +14,7 @@ import UIKit
 protocol RecieverTableViewCellDelegate {
     func toggleVoteCount(_ sender: RecieverTableViewCell)
     func reportAbuse(_ sender: RecieverTableViewCell)
+    func usernameClicked(user: User)
 }
 
 class RecieverTableViewCell: UITableViewCell {
@@ -43,6 +44,7 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var userAvatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var usernameButton: UIButton!
     
     @IBOutlet weak var flagIcon: UIButton!
     
@@ -58,8 +60,6 @@ class RecieverTableViewCell: UITableViewCell {
         delegate?.reportAbuse(self)
     }
     
-
-    
     @IBAction func recievedMessageCellVoteButtonTapped(_ sender: UIButton) {
         guard let message = message else { return }
         
@@ -74,6 +74,15 @@ class RecieverTableViewCell: UITableViewCell {
         
         
     }
+    
+    @IBAction func usernameButton(_ sender: Any) {
+        
+        guard let user = message?.owner else { return }
+
+        delegate?.usernameClicked(user: user)
+        
+    }
+    
     
     func voteButtonAppearance() {
         
@@ -135,17 +144,18 @@ class RecieverTableViewCell: UITableViewCell {
     
     private func updateViews() {
         
-        
-        
-        guard let message = message else { return }
+        guard let message = message,
+            let username = message.owner?.userName else { return }
         
         let time = message.timeSinceCreation(from: message.timestamp, to: Date())
+      
         
         messageScoreLabel.text = ""
         chatMessageLabel.text = message.text
         buttonVoteCountLabel.text = "\(message.score)"
-        usernameLabel.text = message.owner?.userName
         timestampLabel.text = "\(time)"
+        usernameButton.tintColor = Colors.designBlue
+        usernameButton.setTitle("\(username)", for: .normal)
         
         userAvatarImageView.image = message.owner?.photo
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2

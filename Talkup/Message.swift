@@ -18,7 +18,7 @@ class Message: CloudKitSyncable {
     var ownerReference: CKReference
     var text: String
     var timestamp: Date
-    var isRead: Bool
+    var blocked: Bool
     var score: Int
     var chat: Chat?
     var chatReference: CKReference
@@ -27,13 +27,13 @@ class Message: CloudKitSyncable {
     
     //MARK: - Inits
     
-    init(owner: User? = nil, ownerReference: CKReference, text: String, timestamp: Date = Date(), isRead: Bool = false, score: Int = 1, chat: Chat? = nil, chatReference: CKReference) {
+    init(owner: User? = nil, ownerReference: CKReference, text: String, timestamp: Date = Date(), blocked: Bool = false, score: Int = 1, chat: Chat? = nil, chatReference: CKReference) {
         
         self.owner = owner
         self.ownerReference = ownerReference
         self.text = text
         self.timestamp = timestamp
-        self.isRead = isRead
+        self.blocked = blocked
         self.score = score
         self.chat = chat
         self.chatReference = chatReference
@@ -71,13 +71,13 @@ class Message: CloudKitSyncable {
         guard let ownerReference = cloudKitRecord[Constants.ownerKey] as? CKReference,
             let text = cloudKitRecord[Constants.textKey] as? String,
             let timestamp = cloudKitRecord.creationDate,
-            let isRead = cloudKitRecord[Constants.hasReadKey] as? Bool,
+            let blocked = cloudKitRecord[Constants.blockedKey] as? Bool,
             let score = cloudKitRecord[Constants.scoreKey] as? Int,
             let chatReference = cloudKitRecord[Constants.chatKey] as? CKReference else {
                 return nil
         }
         
-        self.init(ownerReference: ownerReference, text: text, timestamp: timestamp, isRead: isRead, score: score, chatReference: chatReference)
+        self.init(ownerReference: ownerReference, text: text, timestamp: timestamp, blocked: blocked, score: score, chatReference: chatReference)
         
         self.cloudKitRecordID = cloudKitRecord.recordID
     }
@@ -98,7 +98,7 @@ extension CKRecord {
         self[Constants.ownerKey] = CKReference(recordID: ownerRecordID, action: .deleteSelf)
         self[Constants.textKey] = message.text as CKRecordValue?
         self[Constants.timestampKey] = message.timestamp as CKRecordValue?
-        self[Constants.hasReadKey] = message.isRead as CKRecordValue?
+        self[Constants.blockedKey] = message.blocked as CKRecordValue?
         self[Constants.scoreKey] = message.score as CKRecordValue?
         self[Constants.chatKey] = CKReference(recordID: chatRecordID, action: .deleteSelf)
     }

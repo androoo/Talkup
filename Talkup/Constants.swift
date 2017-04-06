@@ -26,6 +26,7 @@ struct Constants {
     static let userEmailKey = "email"
     static let userReferenceKey = "userReference"
     static let blockedReferenceKey = "blockedReference"
+    static let unreadKey = "unread"
     
     //MARK: - Chat Keys
     
@@ -35,6 +36,7 @@ struct Constants {
     static let messagesKey = "messages"
     static let chatReferenceKey = "chatReference"
     static let chatCreatorKey = "creator"
+    static let unreadMessages = "unreadChat"
     
     //MARK: - Message Keys
     
@@ -44,7 +46,7 @@ struct Constants {
     static let chatKey = "chat"
     static let timestampKey = "timestamp"
     static let textKey = "text"
-    static let hasReadKey = "read"
+    static let blockedKey = "blocked"
     static let scoreKey = "score"
     
     

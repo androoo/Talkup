@@ -140,8 +140,6 @@ class ChatController {
         let ownerReference = owner.cloudKitReference
         let chatReference = chat.cloudKitReference
         
-        // TODO: - don't force unwrap this you idiot
-        
         let message = Message(ownerReference: ownerReference!, text: messageText, chatReference: chatReference!)
         chat.messages.append(message)
         
@@ -163,6 +161,7 @@ class ChatController {
         }
         return message
     }
+    
     
     func addSubscriptionTo(messagesForChat chat: Chat,
                            alertBody: String?,

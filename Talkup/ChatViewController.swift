@@ -146,9 +146,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: Notifications
     
     func chatMessagesChanged(_ notification: Notification) {
-        //        guard let notificationChat = notification.object as? Chat,
-        //            let chat = chat, notificationChat === chat else { return } // Not our post
-        //        updateViews()
+
         tableView.reloadData()
     }
     
@@ -224,13 +222,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func backNavButtonTapped(_ sender: Any) {
-//        guard let vc = storyboard?.instantiateViewController(withIdentifier: "MainNavigation") as? PageViewController else { return }
-//        self.present(vc, animated: true, completion: nil)
-//        self.dismiss(animated: true, completion: nil)
         _ = navigationController?.popViewController(animated: true)
         inputBar.isHidden = true 
     }
-
     
     
     @IBOutlet var inputBar: UIView!
@@ -273,7 +267,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 for message in messages {
                     if message.ownerReference.recordID.recordName == id {
-                        message.isRead = true
+                        message.blocked = true
                     }
                 }
             }
@@ -296,7 +290,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         present(confirmAlertController, animated: true, completion: nil)
     }
     
-    //MARK: - Message Cell Delegate
+    //MARK: - Message Recieved Cell Delegate
     
     func reportAbuse(_ sender: RecieverTableViewCell) {
         
@@ -311,7 +305,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("report abuse")
         }
         
-        let blockUser = UIAlertAction(title: "Block", style: .default) { (action) in
+        let blockUser = UIAlertAction(title: "Block", style: .destructive) { (action) in
             
             guard let userName = message.owner?.userName else { return }
             
@@ -364,6 +358,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
+    }
+    
+    func usernameClicked(user: User) {
+        
+        self.performSegue(withIdentifier: "toUserDetail", sender: user)
+    
     }
 }
 

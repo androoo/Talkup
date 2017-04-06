@@ -29,7 +29,7 @@ class User: CloudKitSyncable {
     }
     
     
-    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], blocked: [CKReference] = [], users: [User] = [],defaultUserReference: CKReference) {
+    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], blocked: [CKReference] = [], users: [User] = [], defaultUserReference: CKReference) {
         self.userName = userName
         self.email = email
         self.photoData = photoData

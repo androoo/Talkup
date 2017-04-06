@@ -14,6 +14,8 @@ class HeaderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    
+    
     //MARK: - Actions
     
     @IBOutlet weak var toProfileButton: UIButton!
@@ -35,6 +37,8 @@ class HeaderTableViewCell: UITableViewCell {
         avatarImageView.image = UserController.shared.currentUser?.photo
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         avatarImageView.clipsToBounds = true
+        
+        
     }
 
 }

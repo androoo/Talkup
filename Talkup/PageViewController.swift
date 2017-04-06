@@ -78,8 +78,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         orderedViewControllers = [homeNav, profileNav]
         
         self.view.backgroundColor = UIColor.white
-        self.view.applyGradient(colours: [Colors.purple, Colors.gradientBlue])
-        self.view.applyGradient(colours: [Colors.purple, Colors.blueBottom], locations: [0.0, 1.0])
+        self.view.applyGradient(colours: [Colors.greenBlue, Colors.pureBlue])
+        self.view.applyGradient(colours: [Colors.purple, Colors.alertOrange], locations: [0.0, 1.0])
         
         navigationController?.navigationBar.isHidden = true
         

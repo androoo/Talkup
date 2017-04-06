@@ -14,6 +14,10 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    @IBOutlet weak var usernamtTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    
     @IBOutlet weak var nameLabel: UILabel!
 
     override func viewDidLoad() {
@@ -25,6 +29,9 @@ class ProfileViewController: UIViewController {
         
         avatarImageView.image = user.photo
         nameLabel.text = "\(name)"
+        
+        usernamtTextField.text = UserController.shared.currentUser?.userName
+        emailTextField.text = UserController.shared.currentUser?.email
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

@@ -32,15 +32,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.backgroundColor = .clear
         
-        tableView.contentInset = UIEdgeInsets(top: 36, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
         
         updateViews()
+        
         
         requestFullSync()
         
         customize()
-        
-        
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
@@ -85,7 +84,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,6 +94,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 1: return 1
         case 2: return 1
         case 3: return ChatController.shared.chats.count
+        case 4: return 1
         default: return 1
         }
     }
@@ -130,8 +130,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.separatorInset.left = 86.0
 
-            
             return cell
+            
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
+            return cell
+            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath) as! UITableViewCell
             return cell
@@ -144,7 +148,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0: return UITableViewAutomaticDimension
         case 1: return 86
         case 2: return UITableViewAutomaticDimension
-        case 3: return 86
+        case 3: return 75
+        case 4: return 0
         default: return 86
         }
     }
