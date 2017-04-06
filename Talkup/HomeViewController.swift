@@ -49,13 +49,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillAppear(animated)
         self.headerHeightConstraint.constant = maxHeaderHeight
         updateHeader()
+        
+        
+//        self.topNavBarBackgroundView.applyGradient(colours: [Colors.clearBlack, .clear])
+        
     }
     
     //navbar actions
     
     @IBAction func profileButtonTapped(_ sender: Any) {
-        let nc = NotificationCenter.default
-        nc.post(name: Notifications.ProfileButtonTappedNotification, object: self)
+        
     }
     
     
@@ -64,7 +67,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         title = "Talkup"
         
+        self.navigationController?.navigationBar.isHidden = true 
+        
         tableView.backgroundColor = .clear
+        
+        self.view.applyGradient(colours: [Colors.gradientBlue, Colors.gradientPurple])
+        self.view.applyGradient(colours: [Colors.purple, Colors.alertOrange], locations: [0.0, 1.0])
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
@@ -314,6 +322,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.headerBackgroundView.alpha = percentage
         self.topNavBarTitleConstraint.constant = -openAmount + 32
+        
         
     }
 
