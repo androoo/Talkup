@@ -36,10 +36,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableViewBG: UIView!
     
     @IBOutlet weak var navbarBackgroundUIView: UIView!
+    @IBOutlet weak var topNavBarBackgroundView: UIView!
     
+    @IBOutlet weak var bigNavbarTitle: UILabel!
     @IBOutlet weak var smallNavbarTitle: UILabel!
     @IBOutlet weak var userIconSmall: UIImageView!
     
+    @IBOutlet weak var topNavBarTitleConstraint: NSLayoutConstraint!
     //MARK: - View lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +50,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.headerHeightConstraint.constant = maxHeaderHeight
         updateHeader()
     }
+    
+    //navbar actions
+    
+    @IBAction func profileButtonTapped(_ sender: Any) {
+        let nc = NotificationCenter.default
+        nc.post(name: Notifications.ProfileButtonTappedNotification, object: self)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -301,8 +312,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
         let percentage = openAmount / range
         
-        self.userIconTopConstraint.constant = -openAmount + 10
         self.headerBackgroundView.alpha = percentage
+        self.topNavBarTitleConstraint.constant = -openAmount + 32
         
     }
 

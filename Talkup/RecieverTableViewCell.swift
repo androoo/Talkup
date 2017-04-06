@@ -79,7 +79,6 @@ class RecieverTableViewCell: UITableViewCell {
         
         guard let user = message?.owner else { return }
 
-        delegate?.usernameClicked(user: user)
         
     }
     
