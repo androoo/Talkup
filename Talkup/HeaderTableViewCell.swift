@@ -8,13 +8,17 @@
 
 import UIKit
 
+protocol UserHeaderTableViewCellDelegate {
+    func didSelectUserHeaderTableViewCell(Selected: Bool, UserHeader: HeaderTableViewCell)
+}
+
 class HeaderTableViewCell: UITableViewCell {
     
     //MARK: - Properties 
     
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    
+    var delegate: UserHeaderTableViewCellDelegate?
     
     //MARK: - Actions
     
@@ -38,7 +42,13 @@ class HeaderTableViewCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         avatarImageView.clipsToBounds = true
         
-        
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        // configure view for selected state here
+    }
+    
+    
 
 }
