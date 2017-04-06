@@ -18,6 +18,7 @@ struct Colors {
     static let rose = UIColor.init(red: 254/255.0, green: 79/255.0, blue: 114/255.0, alpha: 1)
     static let purple = UIColor.init(red: 132/255.0, green: 66/255.0, blue: 249/255.0, alpha: 1)
     static let greenBlue = UIColor.init(red: 56/255.0, green: 197/255.0, blue: 221/255.0, alpha: 1)
+    static let greenBlueLight = UIColor.init(red: 56/255.0, green: 197/255.0, blue: 221/255.0, alpha: 0.15)
     static let darkGreenBlue = UIColor.init(red: 25/255.0, green: 177/255.0, blue: 241/255.0, alpha: 1)
     static let gray = UIColor.init(red: 251/255.0, green: 251/255.0, blue: 251/255.0, alpha: 1)
     static let bubbleGray = UIColor.init(red: 242/255.0, green: 244/255.0, blue: 246/255.0, alpha: 1)
@@ -29,7 +30,10 @@ struct Colors {
     static let magenta = UIColor.init(red: 238/255.0, green: 29/255.0, blue: 176/255.0, alpha: 1)
     static let emeraldGreen = UIColor.init(red: 135/255.0, green: 228/255.0, blue: 18/255.0, alpha: 1)
     static let alertOrange = UIColor.init(red: 254/255.0, green: 188/255.0, blue: 70/255.0, alpha: 1)
+    static let alertOrangeLight = UIColor.init(red: 255/255.0, green: 245/255.0, blue: 228/255.0, alpha: 1)
     static let highlightGreenBlue = UIColor.init(red: 14/255.0, green: 194/255.0, blue: 243/255.0, alpha: 1)
+    
+    static let lightblue = UIColor.init(red: 242/255.0, green: 250/255.0, blue: 252/255.0, alpha: 1)
     
     //gradient colors 
     
@@ -41,6 +45,7 @@ struct Colors {
     //text colors 
     static let recievedMessagePrimary = UIColor.init(red: 14/255.0, green: 15/255.0, blue: 15/255.0, alpha: 1)
     static let clearBlack = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.25)
+    static let addBlue = UIColor.init(red: 39/255.0, green: 150/255.0, blue: 252/255.0, alpha: 1)
     
 }
 

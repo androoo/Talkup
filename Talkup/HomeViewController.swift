@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     let maxHeaderHeight: CGFloat = 150
-    let minHeaderHeight: CGFloat = 64
+    let minHeaderHeight: CGFloat = 74
     
     var previousScrollOffset: CGFloat = 0
     
@@ -38,6 +38,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var navbarBackgroundUIView: UIView!
     @IBOutlet weak var topNavBarBackgroundView: UIView!
     
+    @IBOutlet weak var backgroundNavbarTitleLabel: UILabel!
     @IBOutlet weak var bigNavbarTitle: UILabel!
     @IBOutlet weak var smallNavbarTitle: UILabel!
     @IBOutlet weak var userIconSmall: UIImageView!
@@ -47,9 +48,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard let username = UserController.shared.currentUser?.userName else { return }
+        
         self.headerHeightConstraint.constant = maxHeaderHeight
         updateHeader()
-        
+        backgroundNavbarTitleLabel.text = "\(username)"
         
 //        self.topNavBarBackgroundView.applyGradient(colours: [Colors.clearBlack, .clear])
         
@@ -147,6 +151,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
             
+            cell.backgroundColor = .white
+            
             cell.separatorInset.left = 0
             cell.separatorInset.right = 0
             
@@ -154,7 +160,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
             
-            cell.separatorInset.left = 86.0
+            cell.separatorInset.left = 22.0
             
             return cell
         case 2:
@@ -321,7 +327,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let percentage = openAmount / range
         
         self.headerBackgroundView.alpha = percentage
-        self.topNavBarTitleConstraint.constant = -openAmount + 32
+        self.topNavBarTitleConstraint.constant = -openAmount + 36
         
         
     }

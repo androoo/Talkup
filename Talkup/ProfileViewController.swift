@@ -23,22 +23,37 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = false 
+        
         guard let user = UserController.shared.currentUser else { return }
         let name = user.userName
         
         
         avatarImageView.image = user.photo
-        nameLabel.text = "\(name)"
+        nameLabel.text = "Change Profile Photo"
         
-        usernamtTextField.text = UserController.shared.currentUser?.userName
-        emailTextField.text = UserController.shared.currentUser?.email
+        title = "Edit Profile"
+        
+        nameLabel.textColor = Colors.designBlue
+        navigationController?.navigationBar.tintColor = UIColor.darkGray
+        
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
+
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
     }
+    
+    //MARK: - UI Actions
+    
+    @IBAction func CloseProfile(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     //Profile CRUD stuff
 
