@@ -360,10 +360,28 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // send the user to the User Detail
+    
+    var user: User?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toUserDetail" {
+            guard let user = self.user
+                else { return }
+            
+            if let destinationViewController = segue.destination as? UserViewController {
+                
+                destinationViewController.user = user
+            }
+        }
+    }
+    
     func usernameClicked(user: User) {
         
-        self.performSegue(withIdentifier: "toUserDetail", sender: user)
-    
+        self.user = user
+        
+        self.performSegue(withIdentifier: "toUserDetail", sender: nil)
     }
 }
 

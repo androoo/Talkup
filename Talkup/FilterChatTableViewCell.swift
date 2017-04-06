@@ -13,10 +13,15 @@ class FilterTableViewCell: UITableViewCell {
     //MARK: - Properties 
     
     
+    @IBOutlet weak var SectionLabel: UILabel!
+    @IBOutlet weak var botomHighlightLine: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .white
+        
+        botomHighlightLine.backgroundColor = Colors.alertOrange
+        
     }
 
 

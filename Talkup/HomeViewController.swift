@@ -327,7 +327,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let percentage = openAmount / range
         
         self.headerBackgroundView.alpha = percentage
-        self.topNavBarTitleConstraint.constant = -openAmount + 36
+        self.topNavBarTitleConstraint.constant = -openAmount + 35
         
         
     }

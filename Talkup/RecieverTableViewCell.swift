@@ -10,12 +10,12 @@ import UIKit
 
 //MARK: - Protocol
 
-
 protocol RecieverTableViewCellDelegate {
     func toggleVoteCount(_ sender: RecieverTableViewCell)
     func reportAbuse(_ sender: RecieverTableViewCell)
     func usernameClicked(user: User)
 }
+
 
 class RecieverTableViewCell: UITableViewCell {
     
@@ -24,7 +24,6 @@ class RecieverTableViewCell: UITableViewCell {
     var message: Message? {
         didSet {
             updateViews()
-            
         }
     }
     
@@ -45,6 +44,7 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var usernameButton: UIButton!
+    
     
     @IBOutlet weak var flagIcon: UIButton!
     
@@ -75,11 +75,11 @@ class RecieverTableViewCell: UITableViewCell {
         
     }
     
-    @IBAction func usernameButton(_ sender: Any) {
-        
-        guard let user = message?.owner else { return }
 
-        
+    @IBAction func usernameButtonWasTapped(_ sender: Any) {
+        guard let user = message?.owner
+            else { return }
+        delegate?.usernameClicked(user: user)
     }
     
     
@@ -153,7 +153,6 @@ class RecieverTableViewCell: UITableViewCell {
         chatMessageLabel.text = message.text
         buttonVoteCountLabel.text = "\(message.score)"
         timestampLabel.text = "\(time)"
-        usernameButton.tintColor = Colors.designBlue
         usernameButton.setTitle("\(username)", for: .normal)
         
         userAvatarImageView.image = message.owner?.photo
