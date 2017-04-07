@@ -151,7 +151,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
             
-            cell.backgroundColor = .white
+            cell.backgroundColor = Colors.hightlightBlue
+            
+            let bottomBorder = CALayer()
+            bottomBorder.backgroundColor = Colors.sepBlue.cgColor
+            bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
+            cell.layer.addSublayer(bottomBorder)
             
             cell.separatorInset.left = 0
             cell.separatorInset.right = 0

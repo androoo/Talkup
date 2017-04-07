@@ -154,6 +154,8 @@ class RecieverTableViewCell: UITableViewCell {
         buttonVoteCountLabel.text = "\(message.score)"
         timestampLabel.text = "\(time)"
         usernameButton.setTitle("\(username)", for: .normal)
+        usernameButton.tintColor = Colors.designBlue
+        
         
         userAvatarImageView.image = message.owner?.photo
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2

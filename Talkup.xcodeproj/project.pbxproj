@@ -102,6 +102,7 @@
 			children = (
 				5A35A2551E76FDC500162A20 /* Talkup */,
 				5A35A2541E76FDC500162A20 /* Products */,
+				5A35A26A1E76FE1100162A20 /* Resources */,
 				5A35A2721E76FFCD00162A20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -127,7 +128,6 @@
 				5A35A2701E76FF7A00162A20 /* Protocols */,
 				5A35A2811E773EF900162A20 /* Helper Files */,
 				5A35A2681E76FDE300162A20 /* Storyboards */,
-				5A35A26A1E76FE1100162A20 /* Resources */,
 			);
 			path = Talkup;
 			sourceTree = "<group>";
@@ -156,6 +156,7 @@
 				5A35A2621E76FDC500162A20 /* Info.plist */,
 			);
 			name = Resources;
+			path = Talkup;
 			sourceTree = "<group>";
 		};
 		5A35A26B1E76FF5500162A20 /* Model */ = {

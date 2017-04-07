@@ -19,6 +19,9 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var hasReadBadgeNumberLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
+    @IBOutlet weak var toUserArrow: UIImageView!
+    
+    
     var chat: Chat? {
         didSet {
             updateViews()
@@ -44,5 +47,7 @@ class ChatTableViewCell: UITableViewCell {
         subTitleLabel.textColor = .lightGray
         userAvatarImageView.image = creator.photo
         subTitleLabel.text = "by \(creator.userName)"
+        
+        toUserArrow.tintColor = Colors.actionBlue
     }
 }

@@ -32,17 +32,13 @@ class ProfileViewController: UIViewController {
         avatarImageView.image = user.photo
         nameLabel.text = "Change Profile Photo"
         
-        title = "Edit Profile"
+        title = "Edit Profile"     
         
         nameLabel.textColor = Colors.designBlue
         navigationController?.navigationBar.tintColor = UIColor.darkGray
         
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
 
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
         
         view.backgroundColor = .white
     }

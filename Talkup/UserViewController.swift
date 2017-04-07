@@ -13,12 +13,12 @@ class UserViewController: UIViewController {
     //MARK: - Outlets
     
     @IBOutlet weak var backArrowTapped: UIButton!
+    @IBOutlet weak var imageOverlayImageView: UIImageView!
+    
     
     @IBAction func backArrowTapped(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
-    
-
 
     var user: User?
     
@@ -37,7 +37,8 @@ class UserViewController: UIViewController {
     func updateViews() {
         userAvatarImageView.image = user?.photo
         usernameLabel.text = user?.userName
-        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width / 2
-        userAvatarImageView.clipsToBounds = true 
+
+        self.imageOverlayImageView.applyNavGradient(colours: [Colors.clearBlack, .clear])
+        
     }
 }
