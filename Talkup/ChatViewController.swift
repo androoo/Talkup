@@ -15,6 +15,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var liveButton: UIButton!
     @IBOutlet weak var topButton: UIButton!
     
+    @IBOutlet weak var nowLabel: UILabel!
+    @IBOutlet weak var topLabel: UILabel!
+    
+    
     @IBOutlet weak var liveButtonBottomBorder: UIImageView!
     @IBOutlet weak var topButtonBottomBorder: UIImageView!
     @IBOutlet weak var navBarBottomBorderImageView: UIImageView!
@@ -42,18 +46,22 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - UIActions
     
     @IBAction func liveButton(_ sender: Any) {
-        liveButton.setTitleColor(Colors.magenta, for: .normal)
-        topButton.setTitleColor(.lightGray, for: .normal)
-        liveButtonBottomBorder.backgroundColor = Colors.magenta
+        liveButton.setTitleColor(Colors.hotRed, for: .normal)
+        topButton.setTitleColor(UIColor.lightGray, for: .normal)
+        nowLabel.textColor = Colors.hotRed
+        topLabel.textColor = .lightGray
+        liveButtonBottomBorder.backgroundColor = Colors.hotRed
         topButtonBottomBorder.backgroundColor = Colors.bubbleGray
         messageSortSelection = .live
         updateViews()
     }
 
     @IBAction func topButton(_ sender: Any) {
-        liveButton.setTitleColor(.lightGray, for: .normal)
-        topButton.setTitleColor(Colors.magenta, for: .normal)
-        topButtonBottomBorder.backgroundColor = Colors.magenta
+        liveButton.setTitleColor(UIColor.lightGray, for: .normal)
+        topButton.setTitleColor(Colors.alertOrange, for: .normal)
+        topLabel.textColor = Colors.alertOrange
+        nowLabel.textColor = .lightGray
+        topButtonBottomBorder.backgroundColor = Colors.alertOrange
         liveButtonBottomBorder.backgroundColor = Colors.bubbleGray
         messageSortSelection = .top
         updateViews()
@@ -110,8 +118,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        liveButton.setTitleColor(Colors.magenta, for: .normal)
-        liveButtonBottomBorder.backgroundColor = Colors.magenta
+        liveButton.setTitleColor(Colors.hotRed, for: .normal)
+        nowLabel.textColor = Colors.hotRed
+        liveButtonBottomBorder.backgroundColor = Colors.hotRed
         topButtonBottomBorder.backgroundColor = Colors.bubbleGray
         
         updateViews()

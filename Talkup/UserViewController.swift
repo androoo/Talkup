@@ -12,9 +12,13 @@ class UserViewController: UIViewController {
     
     //MARK: - Outlets
     
-    @IBAction func backButtonTapped(_ sender: Any) {
+    @IBOutlet weak var backArrowTapped: UIButton!
+    
+    @IBAction func backArrowTapped(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
+    
+
 
     var user: User?
     
@@ -24,6 +28,8 @@ class UserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isHidden = true
         
         updateViews()
     }
