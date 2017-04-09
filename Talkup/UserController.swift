@@ -100,8 +100,33 @@ class UserController {
             }
         }
     }
+    
+    //MARK: - Fetch Messages by User 
+    
+    func fetchMessagesBy(user: User, completion: @escaping () -> Void) {
+        
+        guard let userRecordID = user.cloudKitRecordID else { return }
+        
+        let predicate = NSPredicate(format: "creator == %@", userRecordID)
+        
+        let query = CKQuery(recordType: Constants.chattypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                guard let records = records else { return }
+                
+                let chats = records.flatMap({Chat(cloudKitRecord: $0)})
+                
+                user.chats = chats
+                completion()
+            }
+        }
+    }
 
-
+    
     // delete below 
     
     @discardableResult func addMessage(byUser owner: User, toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {

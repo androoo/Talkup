@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol UserNameLabelCellTappedDelegate {
+    func moreButtonTapped(_ sender: TopTableViewCell)
+}
+
 class TopTableViewCell: UITableViewCell {
     
     //MARK: - Properties
+    
+    var user: User?
+    
+    var delegate: UserNameLabelCellTappedDelegate?
     
     @IBOutlet weak var usernameLabel: UILabel!
     
@@ -21,5 +29,14 @@ class TopTableViewCell: UITableViewCell {
     
     func updateViews() {
     }
+    
+    @IBAction func moreButtonTapped(_ sender: Any) {
+        delegate?.moreButtonTapped(self)
+    }
+    
+    //MARK: - Message Recieved Cell Delegate
+    
+    
+    
 
 }

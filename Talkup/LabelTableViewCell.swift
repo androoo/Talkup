@@ -12,8 +12,8 @@ class LabelTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

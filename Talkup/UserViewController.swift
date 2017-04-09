@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserNameLabelCellTappedDelegate{
     
     //MARK: - Outlets
     
@@ -22,6 +22,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var blurCoverImageView: UIImageView!
     
+    
     @IBOutlet weak var coverImageViewBig: UIView!
     @IBOutlet weak var topNavBarSmall: UIView!
     
@@ -34,6 +35,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func backArrowTapped(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
+    
 
     //MARK: - Properties
     
@@ -44,6 +46,12 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var user: User?
     
+    var chats: [Chat]? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     //MARK: - View Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,9 +59,12 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.headerHeightConstraint.constant = maxHeaderHeight
         updateHeader()
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("\(user?.chats)")
         
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -68,6 +79,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         updateViews()
     }
     
+    
     //MARK: - Tableview Datasource 
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,10 +87,13 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let chats = user?.chats.count else { return 1 }
+        
         switch section {
         case 0: return 1
         case 1: return 1
-        case 2: return 40 
+        case 2: return chats
         default: return 1
         }
     }
@@ -91,6 +106,8 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.backgroundColor = .white
             
+            cell.user = user
+            cell.delegate = self 
             cell.usernameLabel.text = user?.userName
             
             cell.separatorInset.left = 0
@@ -100,15 +117,24 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath) as? LabelTableViewCell else { return LabelTableViewCell() }
             
-            cell.separatorInset.left = 22.0
+            cell.separatorInset.left = 32.0
             
             cell.titleLabel.text = "Chats"
             
             return cell
         case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatItemCell", for: indexPath) as? ChatItemTableViewCell else { return ChatItemTableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatItemCell", for: indexPath) as? ChatItemTableViewCell,
+                let user = user else {
+                return ChatItemTableViewCell() }
             
-            cell.separatorInset.left = 86.0
+            cell.separatorInset.left = 32.0
+            
+            let chat = user.chats[indexPath.row]
+            
+            cell.chat = chat
+            cell.user = user
+            
+            cell.usersLabel.text = "by \(user.userName)"
             
             return cell
             
@@ -145,12 +171,10 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         default:
             break
         }
-        
-        
     }
     
-    //MARK: - Navigation bar animation
     
+    //MARK: - Navigation bar animation
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -247,10 +271,18 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func updateViews() {
         
-        coverImageView.image = user?.photo
-        blurCoverImageView.image = user?.photo
+        guard let user = user, isViewLoaded else { return }
         
-        usernameLabel.text = user?.userName
+        UserController.shared.fetchMessagesBy(user: user) {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        coverImageView.image = self.user?.photo
+        blurCoverImageView.image = self.user?.photo
+        
+        usernameLabel.text = self.user?.userName
         
         let layer = CAGradientLayer()
 //        layer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: imageOverlayImageView.frame.height)
@@ -259,7 +291,70 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toChatDetailFromUser" {
+            if let detailViewController = segue.destination as? ChatViewController,
+                let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+                
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
+                
+                let chats = user?.chats
+                
+                detailViewController.chat = chats?[selectedIndexPath.row]
+            }
+        }
+    }
+    
+    //MARK: - Delegation 
+    
+    func moreButtonTapped(_ sender: TopTableViewCell) {
+        
+        guard let currentUser = UserController.shared.currentUser,
+            let userToBlock = user else { return }
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let reportAbuse = UIAlertAction(title: "Report", style: .default) { (action) in
+            print("report abuse")
+        }
+        
+        let blockUser = UIAlertAction(title: "Block", style: .destructive) { (action) in
+            
+            let userName = userToBlock.userName
+            
+            let confirmAlertController = UIAlertController(title: "Block User?", message: "Are you suer you want to block \(userName)?", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "Block", style: .default) { (action) in
+                UserController.shared.addBlockedUser(Foruser: currentUser, blockedUser: userToBlock, completion: {
 
+                    self.updateViews()
+                    
+                })
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            confirmAlertController.addAction(confirmAction)
+            confirmAlertController.addAction(cancelAction)
+            self.present(confirmAlertController, animated: true, completion: nil)
+            
+        }
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(reportAbuse)
+        alertController.addAction(blockUser)
+        alertController.addAction(cancelButton)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+
+        
+    }
 }
 
 
