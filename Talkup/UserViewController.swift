@@ -17,6 +17,10 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var coverImageView: UIImageView!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var blurCoverImageView: UIImageView!
     
     @IBOutlet weak var coverImageViewBig: UIView!
     @IBOutlet weak var topNavBarSmall: UIView!
@@ -34,7 +38,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Properties
     
     let maxHeaderHeight: CGFloat = 250
-    let minHeaderHeight: CGFloat = 74
+    let minHeaderHeight: CGFloat = 94
     
     var previousScrollOffset: CGFloat = 0
     
@@ -50,6 +54,12 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = blurCoverImageView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurCoverImageView.addSubview(blurEffectView)
         
         self.navigationController?.navigationBar.isHidden = true
         
@@ -144,6 +154,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
         
         let absoluteTop: CGFloat = 0;
@@ -229,14 +240,17 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
         let percentage = openAmount / range
         
-        self.coverImageViewBig.alpha = percentage
+        self.blurCoverImageView.alpha = 1 - percentage
         self.titleTopConstraint.constant = -openAmount + 35
     }
     
     
     func updateViews() {
         
-//        userAvatarImageView.image = user?.photo
+        coverImageView.image = user?.photo
+        blurCoverImageView.image = user?.photo
+        
+        usernameLabel.text = user?.userName
         
         let layer = CAGradientLayer()
 //        layer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: imageOverlayImageView.frame.height)
