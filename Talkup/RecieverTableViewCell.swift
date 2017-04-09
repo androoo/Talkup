@@ -89,11 +89,15 @@ class RecieverTableViewCell: UITableViewCell {
         
         if voteButtonState == .yesVote {
             
-            voteButton.backgroundColor = Colors.gradientBlue
+//            voteButton.backgroundColor = Colors.purple
+            
+            voteButton.applyGradient(colours: [Colors.gradientBlue, Colors.gradientPurple])
+            voteButton.applyGradient(colours: [Colors.purple, Colors.alertOrange], locations: [0.0, 1.0])
             
             voteButton.layer.cornerRadius = voteButton.frame.width/2
             voteButton.layer.borderWidth = 1
-            voteButton.layer.borderColor = Colors.gradientBlue.cgColor
+            voteButton.layer.borderColor = Colors.purple.cgColor
+            voteButton.clipsToBounds = true 
             
             buttonVoteCountLabel.textColor = .white
             buttonVoteArrow.image = UIImage(named: "upVoteWhite")

@@ -16,7 +16,11 @@ class ChatItemTableViewCell: UITableViewCell {
     
     var chat: Chat? {
         didSet {
-            updateViews()
+            
+            DispatchQueue.main.async {
+                
+                self.updateViews()
+            }
         }
     }
     

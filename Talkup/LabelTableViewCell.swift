@@ -12,6 +12,7 @@ class LabelTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
+    @IBOutlet weak var sepHightlintImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
 

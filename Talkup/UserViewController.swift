@@ -121,6 +121,8 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.titleLabel.text = "Chats"
             
+            cell.sepHightlintImageView.backgroundColor = Colors.alertOrange
+            
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatItemCell", for: indexPath) as? ChatItemTableViewCell,

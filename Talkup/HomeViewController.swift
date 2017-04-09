@@ -236,7 +236,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 detailViewController.chat = chats[selectedIndexPath.row]
             }
+        } else if segue.identifier == "toMyProfile" {
+                    guard let user = UserController.shared.currentUser
+                        else { return }
+                    
+                    if let destinationViewController = segue.destination as? UserViewController {
+                        
+                        destinationViewController.user = user
+                    
+                }
         }
+        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -335,6 +345,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
     }
+
     
     //MARK: - Appearance Helpers
     
