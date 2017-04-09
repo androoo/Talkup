@@ -178,7 +178,6 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - Navigation bar animation
     
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
@@ -195,8 +194,10 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             var newHeight = self.headerHeightConstraint.constant
             if isScrollingDown {
                 newHeight = max(self.minHeaderHeight, self.headerHeightConstraint.constant - abs(scrollDiff))
+                
             } else if isScrollingUp {
                 newHeight = min(self.maxHeaderHeight, self.headerHeightConstraint.constant + abs(scrollDiff))
+                
             }
             
             // Header needs to animate
@@ -230,6 +231,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.collapseHeader()
         }
     }
+    
     
     func canAnimateHeader(_ scrollView: UIScrollView) -> Bool {
         // Calculate the size of the scrollView when header is collapsed
@@ -268,6 +270,8 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.blurCoverImageView.alpha = 1 - percentage
         self.titleTopConstraint.constant = -openAmount + 35
+        
+        
     }
     
     

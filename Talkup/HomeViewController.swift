@@ -246,7 +246,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                 }
         }
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
