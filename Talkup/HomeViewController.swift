@@ -8,9 +8,7 @@
 
 import UIKit
 
-
-
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - Properties 
     
@@ -30,8 +28,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
-    
-    @IBOutlet weak var tableViewTopContraint: NSLayoutConstraint!
     
     @IBOutlet var tableViewBG: UIView!
     
@@ -74,7 +70,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.isHidden = true 
         
         tableView.backgroundColor = .clear
-        
+
         self.view.applyGradient(colours: [Colors.gradientBlue, Colors.gradientPurple])
         self.view.applyGradient(colours: [Colors.purple, Colors.alertOrange], locations: [0.0, 1.0])
         
@@ -187,9 +183,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = UITableViewCell()
             return cell
         }
-        
     }
-
 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -333,8 +327,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.headerBackgroundView.alpha = percentage
         self.topNavBarTitleConstraint.constant = -openAmount + 35
-        
-        
     }
 
     

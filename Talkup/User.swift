@@ -47,12 +47,13 @@ class User: CloudKitSyncable {
         guard let userName = cloudKitRecord[Constants.usernameKey] as? String,
             let email = cloudKitRecord[Constants.userEmailKey] as? String,
             let photoAsset = cloudKitRecord[Constants.photoDataKey] as? CKAsset,
-            let blocked = cloudKitRecord[Constants.blockedReferenceKey] as? [CKReference],
-            let defaultUserRef = cloudKitRecord[Constants.userReferenceKey] as? CKReference else { return nil }
+            let defaultUserRef = cloudKitRecord[Constants.userReferenceKey] as? CKReference else {
+                return nil
+        }
         
         let photoData = try? Data(contentsOf: photoAsset.fileURL)
         self.init(userName: userName, email: email, photoData: photoData, defaultUserReference: defaultUserRef)
-        self.blocked = blocked
+        self.blocked = cloudKitRecord[Constants.blockedReferenceKey] as? [CKReference] ?? []
         self.defaultUserReference = defaultUserRef
         self.cloudKitRecordID = cloudKitRecord.recordID
             
@@ -81,8 +82,10 @@ extension CKRecord {
         self[Constants.usernameKey] = user.userName as CKRecordValue?
         self[Constants.userEmailKey] = user.email as CKRecordValue?
         self[Constants.photoDataKey] = CKAsset(fileURL: user.temporaryPhotoURL)
-        self[Constants.blockedReferenceKey] = user.blocked as CKRecordValue?
+//        self[Constants.blockedReferenceKey] = user.blocked as CKRecordValue?
         self[Constants.userReferenceKey] = user.defaultUserReference
+        guard let blocked = user.blocked else { return }
+        self.setValue(blocked, forKey: Constants.blockedReferenceKey)
     }
 }
 

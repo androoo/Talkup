@@ -70,7 +70,7 @@ class UserController {
     func addBlockedUser(Foruser user: User, blockedUser: User, completion: @escaping () -> Void = {_ in}) {
         
         guard let userID = user.cloudKitRecordID,
-            let blockedUser = user.cloudKitRecordID else { return }
+            let blockedUser = blockedUser.cloudKitRecordID else { return }
         
         cloudKitManager.fetchRecord(withID: userID) { (record, error) in
             if let error = error {
@@ -88,7 +88,7 @@ class UserController {
                 
                 guard let blockedUserReferences = user.blocked else { return }
                 record.setValue(blockedUserReferences, forKey: Constants.blockedReferenceKey)
-                self.cloudKitManager.saveRecord(record, completion: { (_, error) in
+                self.cloudKitManager.saveRecord(record, completion: { (record, error) in
                     if let error = error {
                         print("\(error)")
                         completion()

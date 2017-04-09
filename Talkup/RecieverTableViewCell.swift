@@ -89,11 +89,11 @@ class RecieverTableViewCell: UITableViewCell {
         
         if voteButtonState == .yesVote {
             
-            voteButton.backgroundColor = Colors.gradientPurple
+            voteButton.backgroundColor = Colors.gradientBlue
             
             voteButton.layer.cornerRadius = voteButton.frame.width/2
             voteButton.layer.borderWidth = 1
-            voteButton.layer.borderColor = Colors.gradientPurple.cgColor
+            voteButton.layer.borderColor = Colors.gradientBlue.cgColor
             
             buttonVoteCountLabel.textColor = .white
             buttonVoteArrow.image = UIImage(named: "upVoteWhite")
@@ -154,7 +154,7 @@ class RecieverTableViewCell: UITableViewCell {
         buttonVoteCountLabel.text = "\(message.score)"
         timestampLabel.text = "\(time)"
         usernameButton.setTitle("\(username)", for: .normal)
-        usernameButton.tintColor = Colors.designBlue
+        usernameButton.tintColor = Colors.actionBlue
         
         
         userAvatarImageView.image = message.owner?.photo
