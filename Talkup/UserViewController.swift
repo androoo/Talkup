@@ -21,6 +21,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var blurCoverImageView: UIImageView!
+    @IBOutlet weak var coverImageOverlayImageView: UIImageView!
     
     
     @IBOutlet weak var coverImageViewBig: UIView!
@@ -270,8 +271,6 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.blurCoverImageView.alpha = 1 - percentage
         self.titleTopConstraint.constant = -openAmount + 35
-        
-        
     }
     
     
@@ -284,7 +283,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.reloadData()
             }
         }
-        
+    
         coverImageView.image = self.user?.photo
         blurCoverImageView.image = self.user?.photo
         
@@ -323,43 +322,57 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let currentUser = UserController.shared.currentUser,
             let userToBlock = user else { return }
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let reportAbuse = UIAlertAction(title: "Report", style: .default) { (action) in
-            print("report abuse")
-        }
-        
-        let blockUser = UIAlertAction(title: "Block", style: .destructive) { (action) in
+        if currentUser.cloudKitRecordID == userToBlock.cloudKitRecordID {
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
-            let userName = userToBlock.userName
-            
-            let confirmAlertController = UIAlertController(title: "Block User?", message: "Are you suer you want to block \(userName)?", preferredStyle: .alert)
-            
-            let confirmAction = UIAlertAction(title: "Block", style: .default) { (action) in
-                UserController.shared.addBlockedUser(Foruser: currentUser, blockedUser: userToBlock, completion: {
-
-                    self.updateViews()
-                    
-                })
-            }
+            let newPhoto = UIAlertAction(title: "Edit profile photo", style: .default, handler: { (action) in
+                
+            })
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            confirmAlertController.addAction(confirmAction)
-            confirmAlertController.addAction(cancelAction)
-            self.present(confirmAlertController, animated: true, completion: nil)
+            
+            alertController.addAction(newPhoto)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+        } else {
+            
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let reportAbuse = UIAlertAction(title: "Report", style: .default) { (action) in
+                print("report abuse")
+            }
+            
+            let blockUser = UIAlertAction(title: "Block", style: .destructive) { (action) in
+                
+                let userName = userToBlock.userName
+                
+                let confirmAlertController = UIAlertController(title: "Block User?", message: "Are you suer you want to block \(userName)?", preferredStyle: .alert)
+                
+                let confirmAction = UIAlertAction(title: "Block", style: .default) { (action) in
+                    UserController.shared.addBlockedUser(Foruser: currentUser, blockedUser: userToBlock, completion: {
+                        
+                        self.updateViews()
+                        
+                    })
+                }
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                confirmAlertController.addAction(confirmAction)
+                confirmAlertController.addAction(cancelAction)
+                self.present(confirmAlertController, animated: true, completion: nil)
+                
+            }
+            
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alertController.addAction(reportAbuse)
+            alertController.addAction(blockUser)
+            alertController.addAction(cancelButton)
+            
+            self.present(alertController, animated: true, completion: nil)
             
         }
-        
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alertController.addAction(reportAbuse)
-        alertController.addAction(blockUser)
-        alertController.addAction(cancelButton)
-        
-        self.present(alertController, animated: true, completion: nil)
-        
-
-        
     }
 }
 

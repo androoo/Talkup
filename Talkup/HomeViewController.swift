@@ -71,8 +71,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.backgroundColor = .clear
 
-        self.view.applyGradient(colours: [Colors.gradientBlue, Colors.gradientPurple])
-        self.view.applyGradient(colours: [Colors.purple, Colors.alertOrange], locations: [0.0, 1.0])
+        self.view.applyGradient(colours: [Colors.conPurpleDark, Colors.purple])
+        self.view.applyGradient(colours: [Colors.purple, Colors.purple], locations: [0.0, 1.0])
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         

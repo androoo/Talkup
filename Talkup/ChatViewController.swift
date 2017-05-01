@@ -267,6 +267,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // the recordNames of the blocked users and owner refs are what will match
         let blockedRecordNames = blockedUsers.flatMap({$0.recordID.recordName})
+        
         //if message owner ref == blocked owner ref then message is hidden
         let messageRecordNames = messages.flatMap({$0.ownerReference.recordID.recordName})
         
