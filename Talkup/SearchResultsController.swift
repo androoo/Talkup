@@ -32,6 +32,8 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = false
+        
         //        setupSearchResultsController()
         configureCustomSearchController()
     }
@@ -54,13 +56,14 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
         
     }
     
+    
     //MARK: - Configure Search Controller
     
     func configureCustomSearchController() {
         
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: resultsTableView.frame.width, height: 75.0), searchBarFont: UIFont(name: "Futura", size: 24.0)!, searchBarTextColor: Colors.purple, searchBarTintColor: UIColor.white)
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: resultsTableView.frame.width, height: 75.0), searchBarFont: UIFont(name: "ArialRoundedMTBold", size: 24.0)!, searchBarTextColor: Colors.primaryBgPurple, searchBarTintColor: UIColor.white)
         
-        customSearchController.customSearchBar.placeholder = "Enter topic name"
+        customSearchController.customSearchBar.placeholder = "Enter topic name                              "
         resultsTableView.tableHeaderView = customSearchController.customSearchBar
         
         customSearchController.customDelegate = self
@@ -137,4 +140,31 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
             
         }
     }
+    
+    //MARK: - Navigation 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromSearchToChat" {
+            
+            if let detailViewController = segue.destination as? ChatViewController,
+                let selectedIndexPath = resultsTableView.indexPathForSelectedRow {
+                
+                let chat = ChatController.shared.chats[selectedIndexPath.row]
+                
+                detailViewController.navigationController?.navigationBar.isHidden = true
+                detailViewController.chat = chat
+                
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+

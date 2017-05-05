@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/SearchResultsController.swift"
-            timestampString = "515637418.395297"
+            timestampString = "515699171.253283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "didChangeSearchText(searchText:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -40,11 +40,13 @@ class ChatTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let chat = chat,
             let creator = chat.creator else { return }
+
         
         chatTopicLabel.text = chat.topic
+        chatTopicLabel.textColor = Colors.primaryDark
         chatRankLabel.text = "\(chat.score)"
-        chatRankLabel.textColor = .black
-        subTitleLabel.textColor = .lightGray
+        chatRankLabel.textColor = Colors.primaryDark
+        subTitleLabel.textColor = Colors.primaryDarkGray
         userAvatarImageView.image = creator.photo
         subTitleLabel.text = "by \(creator.userName)"
         

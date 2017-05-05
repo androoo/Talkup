@@ -12,6 +12,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     //MARK: - Outlets
     
+    @IBOutlet weak var navBarViewBgView: UIView!
+    @IBOutlet weak var chatCreatorAvatar: UIImageView!
+    
     @IBOutlet weak var liveButton: UIButton!
     @IBOutlet weak var topButton: UIButton!
     
@@ -46,26 +49,32 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - UIActions
     
     @IBAction func liveButton(_ sender: Any) {
-        liveButton.setTitleColor(Colors.hotRed, for: .normal)
+        liveButton.setTitleColor(Colors.flatYellow, for: .normal)
         topButton.setTitleColor(UIColor.lightGray, for: .normal)
-        nowLabel.textColor = Colors.hotRed
-        topLabel.textColor = .lightGray
-        liveButtonBottomBorder.backgroundColor = Colors.hotRed
-        topButtonBottomBorder.backgroundColor = Colors.bubbleGray
+        nowLabel.textColor = Colors.flatYellow
+        topLabel.textColor = Colors.primaryDarkGray
+        liveButtonBottomBorder.backgroundColor = Colors.flatYellow
+        topButtonBottomBorder.backgroundColor = Colors.primaryLightGray
         messageSortSelection = .live
         updateViews()
     }
 
     @IBAction func topButton(_ sender: Any) {
         liveButton.setTitleColor(UIColor.lightGray, for: .normal)
-        topButton.setTitleColor(Colors.alertOrange, for: .normal)
-        topLabel.textColor = Colors.alertOrange
-        nowLabel.textColor = .lightGray
-        topButtonBottomBorder.backgroundColor = Colors.alertOrange
-        liveButtonBottomBorder.backgroundColor = Colors.bubbleGray
+        topButton.setTitleColor(Colors.greenBlue, for: .normal)
+        topLabel.textColor = Colors.greenBlue
+        nowLabel.textColor = Colors.primaryDarkGray
+        topButtonBottomBorder.backgroundColor = Colors.greenBlue
+        liveButtonBottomBorder.backgroundColor = Colors.primaryLightGray
         messageSortSelection = .top
         updateViews()
     }
+    
+    @IBOutlet weak var toCreatorButtonTapped: UIButton!
+    
+    @IBAction func creatorButtonTapped(_ sender: Any) {
+    }
+    
 
     @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
         guard inputTextField.text != "" else { sendMessageButtonTapped.isEnabled = false; return }
@@ -118,10 +127,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        liveButton.setTitleColor(Colors.hotRed, for: .normal)
-        nowLabel.textColor = Colors.hotRed
-        liveButtonBottomBorder.backgroundColor = Colors.hotRed
-        topButtonBottomBorder.backgroundColor = Colors.bubbleGray
+        liveButton.setTitleColor(Colors.flatYellow, for: .normal)
+        nowLabel.textColor = Colors.flatYellow
+        liveButtonBottomBorder.backgroundColor = Colors.flatYellow
+        topButtonBottomBorder.backgroundColor = Colors.primaryLightGray
         
         updateViews()
     }
@@ -131,14 +140,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isHidden = true
+        
+        navBarViewBgView.backgroundColor = .white
+        chatCreatorAvatar.image = chat?.creator?.photo
+        chatCreatorAvatar.layer.cornerRadius = chatCreatorAvatar.frame.width / 2
+        chatCreatorAvatar.clipsToBounds = true
+        
         guard let name = chat?.topic else { return }
         inputTextField.delegate = self
         updateViews()
         customize()
-        navBarBottomBorderImageView.backgroundColor = Colors.bubbleGray
+        navBarBottomBorderImageView.backgroundColor = Colors.primaryLightGray
         liveButtonBottomBorder.isHidden = false
+        
         title = "\(name)"
         chatTitleLabel.text = "\(name)"
+        chatTitleLabel.textColor = Colors.primaryDark
+        chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 18)
         
         guard let chat = chat, isViewLoaded else { return }
         title = "\(chat.topic)"
@@ -382,6 +402,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if let destinationViewController = segue.destination as? UserViewController {
                 
+                destinationViewController.user = user
+            }
+        } else if segue.identifier == "toChatCreator" {
+            guard let user = chat?.creator else { return }
+            
+            if let destinationViewController = segue.destination as? UserViewController {
                 destinationViewController.user = user
             }
         }

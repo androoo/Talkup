@@ -28,6 +28,7 @@ class TopTableViewCell: UITableViewCell {
     }
     
     func updateViews() {
+        
     }
     
     @IBAction func moreButtonTapped(_ sender: Any) {

@@ -71,7 +71,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.backgroundColor = .clear
 
-        self.view.applyGradient(colours: [Colors.flatPurple, Colors.flatPurple])
+        bigNavbarTitle.font = UIFont(name: "ArialRoundedMTBold", size: 48)
+        
+        //set the main background color
+        self.view.applyGradient(colours: [Colors.primaryBgPurple, Colors.primaryBgPurple])
         self.view.applyGradient(colours: [Colors.purple, Colors.purple], locations: [0.0, 1.0])
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -147,10 +150,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
             
-            cell.backgroundColor = Colors.hightlightBlue
+            cell.backgroundColor = .white
             
             let bottomBorder = CALayer()
-            bottomBorder.backgroundColor = Colors.sepBlue.cgColor
+            bottomBorder.backgroundColor = Colors.tableViewSepPurple.cgColor
             bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
             cell.layer.addSublayer(bottomBorder)
             
@@ -170,6 +173,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let chat = ChatController.shared.chats[indexPath.row]
             cell.chat = chat
             cell.chatRankLabel.text = "\(indexPath.row + 1)"
+            
+            let customSelectedView = UIView()
+            customSelectedView.backgroundColor = Colors.primaryLightGray
+            cell.selectedBackgroundView = customSelectedView
             
             cell.separatorInset.left = 86.0
 
@@ -247,6 +254,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
         }
     }
+
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset

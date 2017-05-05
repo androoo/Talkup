@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "backArrowWhite.png",
+      "filename" : "userPicto.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "backArrowWhite@2x.png",
+      "filename" : "userPicto@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "backArrowWhite@3x.png",
+      "filename" : "userPicto@3x.png",
       "scale" : "3x"
     }
   ],

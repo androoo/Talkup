@@ -19,8 +19,9 @@ class FilterTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .white
-        
-        botomHighlightLine.backgroundColor = Colors.alertOrange
+        SectionLabel.font = UIFont(name: "ArialRoundedMTBold", size: 24)
+        SectionLabel.textColor = Colors.primaryDark
+        botomHighlightLine.backgroundColor = Colors.flatYellow
         
     }
 

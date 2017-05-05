@@ -61,9 +61,19 @@ struct Colors {
     
     //v2 colors 
     static let flatPurple = UIColor.init(red: 181/255.0, green: 37/255.0, blue: 243/255.0, alpha: 1)
-    static let flatYellow = UIColor.init(red: 255/255.0, green: 183/255.0, blue: 8/255.0, alpha: 1)
+    static let flatYellow = UIColor.init(red: 255/255.0, green: 203/255.0, blue: 93/255.0, alpha: 1)
     static let messagePurple = UIColor.init(red: 100/255.0, green: 63/255.0, blue: 237/255.0, alpha: 1)
     static let messageBlue = UIColor.init(red: 47/255.0, green: 140/255.0, blue: 255/255.0, alpha: 1)
+    static let tableCellBgBlue = UIColor.init(red: 249/255.0, green: 253/255.0, blue: 254/255.0, alpha: 1)
+    static let tableCellSepBlue = UIColor.init(red: 225/255.0, green: 247/255.0, blue: 250/255.0, alpha: 1)
+    static let primaryBlueGreen = UIColor.init(red: 56/255.0, green: 197/255.0, blue: 221/255.0, alpha: 1)
+    static let primaryBgPurple = UIColor.init(red: 129/255.0, green: 80/255.0, blue: 231/255.0, alpha: 1)
+    static let tableViewBgPurple = UIColor.init(red: 251/255.0, green: 249/255.0, blue: 254/255.0, alpha: 1)
+    static let tableViewSepPurple = UIColor.init(red: 236/255.0, green: 229/255.0, blue: 252/255.0, alpha: 1)
+    
+    static let primaryDark = UIColor.init(red: 48/255.0, green: 54/255.0, blue: 67/255.0, alpha: 1)
+    static let primaryLightGray = UIColor.init(red: 243/255.0, green: 245/255.0, blue: 248/255.0, alpha: 1)
+    static let primaryDarkGray = UIColor.init(red: 193/255.0, green: 201/255.0, blue: 219/255.0, alpha: 1)
     
 }
 

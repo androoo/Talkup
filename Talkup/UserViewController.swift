@@ -65,8 +65,6 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("\(user?.chats)")
-        
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = blurCoverImageView.bounds
@@ -110,6 +108,8 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.user = user
             cell.delegate = self 
             cell.usernameLabel.text = user?.userName
+            cell.usernameLabel.font = UIFont(name: "ArialRoundedMTBold", size: 36)
+            cell.usernameLabel.textColor = Colors.primaryDark
             
             cell.separatorInset.left = 0
             cell.separatorInset.right = 0
@@ -121,6 +121,8 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.separatorInset.left = 32.0
             
             cell.titleLabel.text = "Chats"
+            cell.titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 22)
+            cell.titleLabel.textColor = Colors.primaryDark
             
             cell.sepHightlintImageView.backgroundColor = Colors.alertOrange
             
