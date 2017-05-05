@@ -32,7 +32,8 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.isToolbarHidden = false 
         
         //        setupSearchResultsController()
         configureCustomSearchController()
