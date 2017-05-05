@@ -143,6 +143,7 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
     
     //MARK: - Navigation 
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromSearchToChat" {
             
@@ -157,6 +158,7 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
             }
         }
     }
+    
 }
 
 

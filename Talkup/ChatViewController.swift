@@ -143,7 +143,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.navigationController?.navigationBar.isHidden = true
         
+        tableView.backgroundColor = .white
+        
         navBarViewBgView.backgroundColor = .white
+        
+        //add shadow to top part 
+        
         chatCreatorAvatar.image = chat?.creator?.photo
         chatCreatorAvatar.layer.cornerRadius = chatCreatorAvatar.frame.width / 2
         chatCreatorAvatar.clipsToBounds = true
@@ -152,12 +157,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputTextField.delegate = self
         updateViews()
         customize()
-        navBarBottomBorderImageView.backgroundColor = Colors.primaryLightGray
+        navBarBottomBorderImageView.backgroundColor = .white
         liveButtonBottomBorder.isHidden = false
         
         title = "\(name)"
         chatTitleLabel.text = "\(name)"
-        chatTitleLabel.textColor = Colors.primaryDark
+        chatTitleLabel.textColor = Colors.primaryBgPurple
         chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 18)
         
         guard let chat = chat, isViewLoaded else { return }
@@ -206,10 +211,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
             
             cell.message = message
+            
+            cell.backgroundColor = .clear
+            
             return cell
             
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
+            
+            cell.backgroundColor = .clear
             
             cell.delegate = self
             cell.message = message

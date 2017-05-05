@@ -69,6 +69,9 @@ class CustomSearchBar: UISearchBar {
             searchField.leftView = nil
             searchField.rightView = nil
             
+            searchField.clearButtonMode = .never
+            
+            
             // Set the background color 
             searchField.backgroundColor = barTintColor
             

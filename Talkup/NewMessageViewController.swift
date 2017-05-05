@@ -69,9 +69,8 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate, SearchRes
         
         ChatController.shared.createChatWith(chatTopic: topicText, owner: owner, firstMessage: message) { (_) in
             
-            
-            
             self.dismiss(animated: true, completion: nil)
+            
         }
     }
     

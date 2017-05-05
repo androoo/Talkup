@@ -139,6 +139,8 @@ class RecieverTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         
+        
+        
         messageToCustomize.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
         messageBg.layer.cornerRadius = 15
         messageBg.clipsToBounds = true
@@ -158,7 +160,7 @@ class RecieverTableViewCell: UITableViewCell {
         buttonVoteCountLabel.text = "\(message.score)"
         timestampLabel.text = "\(time)"
         usernameButton.setTitle("\(username)", for: .normal)
-        usernameButton.tintColor = Colors.primaryDark
+        usernameButton.tintColor = Colors.primaryDarkGray
         
         
         userAvatarImageView.image = message.owner?.photo

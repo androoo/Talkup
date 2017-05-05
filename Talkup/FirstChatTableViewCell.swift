@@ -33,7 +33,7 @@ class FirstChatTableViewCell: UITableViewCell {
         newTopicLabel.text = "New Topic"
         newTopicLabel.textColor = .black
 
-        subTitleLabel.textColor = UIColor.gray
+        subTitleLabel.textColor = Colors.primaryDarkGray
         
     }
 }
