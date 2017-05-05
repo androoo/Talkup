@@ -54,7 +54,13 @@ class Chat: CloudKitSyncable {
     var recordType: String { return Constants.chattypeKey }
 }
 
-//MARK: -
+//MARK: - extensions 
+
+extension Chat: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        return self.topic.lowercased().contains(searchTerm)
+    }
+}
 
 extension CKRecord {
     convenience init(chat: Chat) {

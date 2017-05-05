@@ -32,8 +32,8 @@ class NewUserViewController: UIViewController {
                 
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNavigation") as? PageViewController else { return }
             self.present(vc, animated: false, completion: nil)
+                
             }
-            
         }
     }
     
@@ -55,7 +55,6 @@ class NewUserViewController: UIViewController {
             embedViewController?.delegate = self
         }
     }
-    
 }
 
 extension NewUserViewController: PhotoSelectViewControllerDelegate {

@@ -59,6 +59,12 @@ struct Colors {
     static let clearBlack = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.25)
     static let addBlue = UIColor.init(red: 39/255.0, green: 150/255.0, blue: 252/255.0, alpha: 1)
     
+    //v2 colors 
+    static let flatPurple = UIColor.init(red: 181/255.0, green: 37/255.0, blue: 243/255.0, alpha: 1)
+    static let flatYellow = UIColor.init(red: 255/255.0, green: 183/255.0, blue: 8/255.0, alpha: 1)
+    static let messagePurple = UIColor.init(red: 100/255.0, green: 63/255.0, blue: 237/255.0, alpha: 1)
+    static let messageBlue = UIColor.init(red: 47/255.0, green: 140/255.0, blue: 255/255.0, alpha: 1)
+    
 }
 
 //MARK: - Gradients 

@@ -9,10 +9,11 @@
 import UIKit
 import CloudKit
 
-class NewMessageViewController: UIViewController, UITextFieldDelegate {
+class NewMessageViewController: UIViewController, UITextFieldDelegate, SearchResultsControllerDelegate {
     
     //MARK: - Properties
     
+    var searchTerm: String?
     
     //MARK: - Outlets
     
@@ -51,14 +52,15 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
-        guard messageTextField.text != "" && topicTextField.text != "" else { sendMessageButton.isEnabled = false; return }
+        guard messageTextField.text != "" && searchTerm != "" else { sendMessageButton.isEnabled = false; return }
         sendMessageButton.isEnabled = true
     }
     //MARK: - Methods
     
     func createChat() {
-        guard let topicText = topicTextField.text,
+        guard let topicText = searchTerm,
             let message = messageTextField.text,
             !topicText.isEmpty,
             message != "",
@@ -68,6 +70,21 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate {
         ChatController.shared.createChatWith(chatTopic: topicText, owner: owner, firstMessage: message) { (_) in
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchTermEntered" {
+            let embedSearchController = segue.destination as? SearchResultsController
+            embedSearchController?.delegate = self
+        }
+    }
+    
+    //MARK: - Search Controller Delegate 
+    
+    func searchTermsEntered(_ term: String) {
+        self.searchTerm = term
     }
 }
 

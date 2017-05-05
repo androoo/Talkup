@@ -47,7 +47,7 @@ class SenderTableViewCell: UITableViewCell {
         chatTextView.text = message.text
         chatCountLabel.text = "\(message.score) up"
         
-        chatBubbleBackgroundImageView.backgroundColor = Colors.gradientBlue
+        chatBubbleBackgroundImageView.backgroundColor = Colors.messageBlue
         chatBubbleBackgroundImageView.layer.cornerRadius = 20
         chatTextView.textColor = .white
         
