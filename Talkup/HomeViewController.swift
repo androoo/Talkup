@@ -57,9 +57,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //navbar actions
     
-    @IBAction func profileButtonTapped(_ sender: Any) {
-        
-    }
+    @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
+    
+    @IBAction func profileButtonTapped(_ sender: Any) { }
     
     
     override func viewDidLoad() {
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.backgroundColor = .clear
 
-        bigNavbarTitle.font = UIFont(name: "ArialRoundedMTBold", size: 48)
+//        bigNavbarTitle.font = UIFont(name: "ArialRoundedMTBold", size: 48)
         
         //set the main background color
         self.view.applyGradient(colours: [Colors.primaryBgPurple, Colors.primaryBgPurple])
@@ -239,9 +239,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 backItem.title = ""
                 navigationItem.backBarButtonItem = backItem
                 
-                let chats = ChatController.shared.chats
-                
-                detailViewController.chat = chats[selectedIndexPath.row]
+                let chat = ChatController.shared.chats[selectedIndexPath.row]
+                chat.isDismisable = false
+                detailViewController.chat = chat
             }
         } else if segue.identifier == "toMyProfile" {
                     guard let user = UserController.shared.currentUser
@@ -251,7 +251,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         destinationViewController.user = user
                     
-                }
+            }
         }
     }
 

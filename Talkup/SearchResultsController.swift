@@ -133,8 +133,8 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
         
         if let searchTerm = searchController.searchBar.text?.lowercased() {
             
-            let topics = ChatController.shared.chats
-            let filteredPosts = topics.filter { $0.matches(searchTerm: searchTerm) }.map { $0 as SearchableRecord }
+            let chats = ChatController.shared.chats
+            let filteredPosts = chats.filter { $0.matches(searchTerm: searchTerm) }.map { $0 as SearchableRecord }
             
             self.resultsArray = filteredPosts
             self.resultsTableView.reloadData()
@@ -151,15 +151,15 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
             if let detailViewController = segue.destination as? ChatViewController,
                 let selectedIndexPath = resultsTableView.indexPathForSelectedRow {
                 
-                let chat = ChatController.shared.chats[selectedIndexPath.row]
+                guard let chat = resultsArray[selectedIndexPath.row] as? Chat else { return }
                 
                 detailViewController.navigationController?.navigationBar.isHidden = true
+                chat.isDismisable = true
                 detailViewController.chat = chat
                 
             }
         }
     }
-    
 }
 
 

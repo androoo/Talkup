@@ -20,6 +20,8 @@ class Chat: CloudKitSyncable {
     var score: Int?
     var messages: [Message]
     
+    var isDismisable: Bool = false
+    
     var filteredMessages: [Message] {
         return messages.filter({$0.blocked == false})
     }

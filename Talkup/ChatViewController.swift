@@ -261,8 +261,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func backNavButtonTapped(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
-        inputBar.isHidden = true 
+        
+        if chat?.isDismisable == true {
+            chat?.isDismisable = false
+            
+            performSegue(withIdentifier: "unwindToHome", sender: self)
+            
+        } else {
+            
+            _ = navigationController?.popViewController(animated: true)
+            inputBar.isHidden = true
+            
+        }
     }
     
     
