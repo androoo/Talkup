@@ -71,6 +71,7 @@ class CustomSearchBar: UISearchBar {
             
             searchField.clearButtonMode = .never
             
+            searchField.attributedPlaceholder = NSAttributedString(string: self.placeholder != nil ? self.placeholder! : "", attributes: [NSForegroundColorAttributeName: Colors.primaryDarkGray])
             
             // Set the background color 
             searchField.backgroundColor = barTintColor

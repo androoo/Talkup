@@ -33,10 +33,13 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = false
-        navigationController?.isToolbarHidden = false 
+        navigationController?.isToolbarHidden = false
+        
+        resultsTableView.tableFooterView = UIView()
         
         //        setupSearchResultsController()
         configureCustomSearchController()
+        
     }
     
     
@@ -47,11 +50,19 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "resultsCell", for: indexPath)
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "resultsCell", for: indexPath) as? ResultTableViewCell else { return ResultTableViewCell() }
         
         guard let result = resultsArray[indexPath.row] as? Chat else { return UITableViewCell() }
         
-        cell.textLabel?.text = result.topic
+        cell.chat = result
+        
+        let bottomBorder = CALayer()
+        bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+        bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
+        cell.layer.addSublayer(bottomBorder)
+        
+        cell.separatorInset.left = 800
         
         return cell
         
@@ -141,6 +152,7 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
             
         }
     }
+
     
     //MARK: - Navigation 
     

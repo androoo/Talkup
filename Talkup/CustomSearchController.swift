@@ -39,7 +39,10 @@ class CustomSearchController: UISearchController, UISearchBarDelegate {
         configureSearchBar(frame: searchBarFrame, font: searchBarFont, textColor: searchBarTextColor, bgColor: searchBarTintColor)
     }
     
+    
+    
     func configureSearchBar(frame: CGRect, font: UIFont, textColor: UIColor, bgColor: UIColor) {
+        
         customSearchBar = CustomSearchBar(frame: frame, font: font , textColor: textColor)
         
         customSearchBar.barTintColor = bgColor

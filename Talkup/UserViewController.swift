@@ -111,8 +111,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.usernameLabel.font = UIFont(name: "ArialRoundedMTBold", size: 36)
             cell.usernameLabel.textColor = Colors.primaryDark
             
-            cell.separatorInset.left = 0
-            cell.separatorInset.right = 0
+            
             
             return cell
         case 1:
@@ -120,7 +119,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.separatorInset.left = 32.0
             
-            cell.titleLabel.text = "Chats"
+            cell.titleLabel.text = "💬 Chats"
             cell.titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 22)
             cell.titleLabel.textColor = Colors.primaryDark
             

@@ -30,8 +30,8 @@ class FirstChatTableViewCell: UITableViewCell {
     
     private func updateViews() {
         
-        newTopicLabel.text = "New Topic"
-        newTopicLabel.textColor = .black
+        newTopicLabel.text = "Create & Discover"
+        newTopicLabel.textColor = Colors.primaryDark
 
         subTitleLabel.textColor = Colors.primaryDarkGray
         

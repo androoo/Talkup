@@ -21,6 +21,7 @@ class FilterTableViewCell: UITableViewCell {
         backgroundColor = .white
         SectionLabel.font = UIFont(name: "ArialRoundedMTBold", size: 24)
         SectionLabel.textColor = Colors.primaryDark
+        SectionLabel.text = "⚡️ Trending Now"
         botomHighlightLine.backgroundColor = Colors.flatYellow
         
     }

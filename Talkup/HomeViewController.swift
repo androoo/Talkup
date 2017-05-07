@@ -68,7 +68,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         title = "Talkup"
         
         self.navigationController?.navigationBar.isHidden = true 
-        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.backgroundColor = .clear
 
 //        bigNavbarTitle.font = UIFont(name: "ArialRoundedMTBold", size: 48)
@@ -150,21 +150,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
             
-            cell.backgroundColor = .white
-            
             let bottomBorder = CALayer()
-            bottomBorder.backgroundColor = Colors.tableViewSepPurple.cgColor
-            bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
+            bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+            bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
             cell.layer.addSublayer(bottomBorder)
             
-            cell.separatorInset.left = 0
-            cell.separatorInset.right = 0
+            cell.backgroundColor = .white
             
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
             
-            cell.separatorInset.left = 22.0
+            let bottomBorder = CALayer()
+            bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+            bottomBorder.frame = CGRect(x: 220, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
+            cell.layer.addSublayer(bottomBorder)
             
             return cell
         case 2:
@@ -178,7 +178,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             customSelectedView.backgroundColor = Colors.primaryLightGray
             cell.selectedBackgroundView = customSelectedView
             
-            cell.separatorInset.left = 86.0
+            let bottomBorder = CALayer()
+            bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+            bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
+            cell.layer.addSublayer(bottomBorder)
 
             return cell
             

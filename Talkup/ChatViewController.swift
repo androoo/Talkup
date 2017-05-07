@@ -163,7 +163,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         title = "\(name)"
         chatTitleLabel.text = "\(name)"
         chatTitleLabel.textColor = Colors.primaryBgPurple
-        chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 18)
+        chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20)
         
         guard let chat = chat, isViewLoaded else { return }
         title = "\(chat.topic)"
