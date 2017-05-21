@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var headerBigTitleLabel: UILabel!
     
     
+    
     let maxHeaderHeight: CGFloat = 150
     let minHeaderHeight: CGFloat = 74
     
@@ -130,79 +131,192 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        
+        if UserController.shared.currentUser?.following == nil {
+            return 4
+        } else {
+            return 6
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch section {
-        case 0: return 1
-        case 1: return 1
-        case 2: return ChatController.shared.chats.count
-        case 3: return 1
-        default: return 1
+        if UserController.shared.currentUser?.following == nil {
+            switch section {
+            case 0: return 1
+            case 1: return 1
+            case 2: return ChatController.shared.chats.count
+            case 3: return 1
+            default: return 1
+            }
+        } else {
+            switch section {
+            case 0: return 1
+            case 1: return 1
+            case 2: return (UserController.shared.currentUser?.following?.count)!
+            case 3: return 1
+            case 4: return ChatController.shared.chats.count
+            case 5: return 1
+            default: return 1
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.section {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
+        if UserController.shared.currentUser?.following == nil {
             
-            let bottomBorder = CALayer()
-            bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-            bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
-            cell.layer.addSublayer(bottomBorder)
+            switch indexPath.section {
+            case 0:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
+                
+                let bottomBorder = CALayer()
+                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+                bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
+                cell.layer.addSublayer(bottomBorder)
+                
+                cell.backgroundColor = .white
+                
+                return cell
+                
+            case 1:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
+                
+                let bottomBorder = CALayer()
+                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+                bottomBorder.frame = CGRect(x: 220, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
+                cell.layer.addSublayer(bottomBorder)
+                
+                return cell
+            case 2:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+                
+                let chat = ChatController.shared.chats[indexPath.row]
+                cell.chat = chat
+                cell.chatRankLabel.text = "\(indexPath.row + 1)"
+                
+                let customSelectedView = UIView()
+                customSelectedView.backgroundColor = Colors.primaryLightGray
+                cell.selectedBackgroundView = customSelectedView
+                
+                let bottomBorder = CALayer()
+                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+                bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
+                cell.layer.addSublayer(bottomBorder)
+                
+                return cell
+                
+            case 3:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
+                return cell
+                
+            default:
+                let cell = UITableViewCell()
+                return cell
+            }
             
-            cell.backgroundColor = .white
+        } else {
             
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
-            
-            let bottomBorder = CALayer()
-            bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-            bottomBorder.frame = CGRect(x: 220, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
-            cell.layer.addSublayer(bottomBorder)
-            
-            return cell
-        case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
-            
-            let chat = ChatController.shared.chats[indexPath.row]
-            cell.chat = chat
-            cell.chatRankLabel.text = "\(indexPath.row + 1)"
-            
-            let customSelectedView = UIView()
-            customSelectedView.backgroundColor = Colors.primaryLightGray
-            cell.selectedBackgroundView = customSelectedView
-            
-            let bottomBorder = CALayer()
-            bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-            bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
-            cell.layer.addSublayer(bottomBorder)
-
-            return cell
-            
-        case 3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
-            return cell
-            
-        default:
-            let cell = UITableViewCell()
-            return cell
+            switch indexPath.section {
+            case 0:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
+                
+                let bottomBorder = CALayer()
+                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+                bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
+                cell.layer.addSublayer(bottomBorder)
+                
+                cell.backgroundColor = .white
+                
+                return cell
+            case 1:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "followTitle", for: indexPath) as? FollowingTitleTableViewCell else { return FollowingTitleTableViewCell() }
+                
+                let bottomBorder = CALayer()
+                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+                bottomBorder.frame = CGRect(x: 165, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
+                cell.layer.addSublayer(bottomBorder)
+                
+                return cell
+                
+            case 2:
+                
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "followChat", for: indexPath) as? FollowingChatTableViewCell else { return FollowingChatTableViewCell() }
+                ChatController.shared.populateFollowingChats()
+                let chat = ChatController.shared.followingChats[indexPath.row]
+                
+                cell.chat = chat
+                
+                let customSelectedView = UIView()
+                customSelectedView.backgroundColor = Colors.primaryLightGray
+                cell.selectedBackgroundView = customSelectedView
+                
+                let bottomBorder = CALayer()
+                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+                bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
+                cell.layer.addSublayer(bottomBorder)
+                
+                return cell
+                
+            case 3:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
+                
+                let bottomBorder = CALayer()
+                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+                bottomBorder.frame = CGRect(x: 220, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
+                cell.layer.addSublayer(bottomBorder)
+                
+                return cell
+            case 4:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+                
+                let chat = ChatController.shared.chats[indexPath.row]
+                cell.chat = chat
+                cell.chatRankLabel.text = "\(indexPath.row + 1)"
+                
+                let customSelectedView = UIView()
+                customSelectedView.backgroundColor = Colors.primaryLightGray
+                cell.selectedBackgroundView = customSelectedView
+                
+                let bottomBorder = CALayer()
+                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
+                bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
+                cell.layer.addSublayer(bottomBorder)
+                
+                return cell
+                
+            case 5:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
+                return cell
+                
+            default:
+                let cell = UITableViewCell()
+                return cell
+            }
         }
     }
 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0: return 76
-        case 1: return UITableViewAutomaticDimension
-        case 2: return 76
-        case 3: return 0
-        default: return 86
+        
+        if UserController.shared.currentUser?.following == nil {
+            switch indexPath.section {
+            case 0: return 76
+            case 1: return UITableViewAutomaticDimension
+            case 2: return 76
+            case 3: return 0
+            default: return 86
+            }
+        } else {
+            switch indexPath.section {
+            case 0: return 76
+            case 1: return UITableViewAutomaticDimension
+            case 2: return 76
+            case 3: return UITableViewAutomaticDimension
+            case 4: return 76
+            case 5: return 0
+            default: return 86
+            }
         }
     }
     

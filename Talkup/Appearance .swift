@@ -75,6 +75,8 @@ struct Colors {
     static let primaryLightGray = UIColor.init(red: 243/255.0, green: 245/255.0, blue: 248/255.0, alpha: 1)
     static let primaryDarkGray = UIColor.init(red: 193/255.0, green: 201/255.0, blue: 219/255.0, alpha: 1)
     
+    static let badgeOrange = UIColor.init(red: 255/255.0, green: 130/255.0, blue: 98/255.0, alpha: 1)
+    
 }
 
 //MARK: - Gradients 

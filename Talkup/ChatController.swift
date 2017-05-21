@@ -34,6 +34,12 @@ class ChatController {
         }
     }
     
+    var followingChats = [Chat]() {
+        didSet {
+            
+        }
+    }
+    
     var messages: [Message] {
        return chats.flatMap { $0.messages }
     }
@@ -42,6 +48,9 @@ class ChatController {
     
     init() {
         self.cloudKitManager = CloudKitManager()
+        
+        guard let user = UserController.shared.currentUser else { return }
+        
         performFullSync()
         
         subscribeToNewChats { (success, error) in
@@ -49,6 +58,36 @@ class ChatController {
                 print("Successfully subscribed to new chats")
             }
         }
+        
+    }
+    
+    //MARK: - Following stuff 
+
+    
+    func populateFollowingChats() {
+        
+        guard let user = UserController.shared.currentUser,
+            let records = user.following else { return }
+        
+        let followingChatRecordNames = records.flatMap({$0.recordID.recordName})
+        
+        let chatRecordNames = chats.flatMap({$0.chatReference?.recordID.recordName})
+        
+        for id in chatRecordNames {
+            
+            if followingChatRecordNames.contains(id) {
+                
+                for chat in chats {
+                    
+                    if chat.chatReference?.recordID.recordName == id {
+                        followingChats.append(chat)
+                    }
+                }
+            }
+        }
+        
+
+        
     }
     
     //MARK: - Set Chat's Creator
@@ -127,10 +166,7 @@ class ChatController {
                     chat.messages.append(message)
                     completion?(chat)
                 }
-
             }
-            
-            
         }
     }
     
@@ -251,19 +287,21 @@ class ChatController {
         }
     }
     
-    //MARK: - Sync
+    //MARK: - Sync - maybe put this in the launch vc
     
     func performFullSync(completion: @escaping (() -> Void) = { _ in }) {
         
-        guard !isSyncing else {
-            completion()
-            return
-        }
+//        guard !isSyncing else {
+//            completion()
+//            return
+//        }
         isSyncing = true
         
         pushChangesToCloudKit { (success) in
             self.fetchNewRecordsOf(type: Constants.chattypeKey) {
                 self.fetchChatOwnersFor(chats: self.chats, completion: { 
+                    
+                    self.populateFollowingChats()
                     
                     self.isSyncing = false
                     NotificationCenter.default.post(name: Notification.Name("syncingComplete"), object: nil)
@@ -273,6 +311,8 @@ class ChatController {
             }
         }
     }
+    
+    //this is what fetches and sets the chats and messages this should probably go in the launch to happen before the view is loaded
     
     func fetchNewRecordsOf(type: String, completion: @escaping (() -> Void) = { _ in }) {
         
@@ -313,15 +353,140 @@ class ChatController {
             completion()
         }
     }
+    
+    // subscribe to chat
+    
+    func fetchFollowingChats(_ subscriptionID: String, completion: ((_ subscription: CKSubscription?, _ error: Error?) -> Void)?) {
+        
+        cloudKitManager.publicDatabase.fetch(withSubscriptionID: subscriptionID) { (subscription, error) in
+            
+            
+            
+            completion?(subscription, error)
+        }
+        
+    }
+    
+    // fetch following chats
+    
+    func fetchFollowingChatsForUser(user: User, completion: @escaping (_ chats: [Chat]?) -> Void) {
+        
+        guard let userRecordID = user.cloudKitRecordID else { return }
+        
+        let predicate = NSPredicate(format: "followingReference == %@", userRecordID)
+        
+        let query = CKQuery(recordType: Constants.usertypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                
+            } else {
+                guard let records = records else { return }
+                
+                let chats = records.flatMap({Chat(cloudKitRecord: $0)})
+                
+                completion(chats)
+                
+            }
+        }
+    }
+    
+    func checkSubscriptionTo(chat: Chat, completion: @escaping ((_ subscribed: Bool) -> Void ) = { _ in }) {
+        
+        guard let subscriptionID = chat.cloudKitRecordID?.recordName else {
+            completion(false)
+            return
+        }
+        
+        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+            let subscribed = subscription != nil
+            completion(subscribed)
+        }
+    }
+
+    func toggleSubscriptionTo(chatNammed chat: Chat,
+                              completion: @escaping ((_ success: Bool, _ isSubscribed: Bool, _ error: Error?) -> Void) = { _,_,_ in }) {
+        
+        guard let subscriptionID = chat.cloudKitRecordID?.recordName else {
+            completion(false, false, nil)
+            return
+        }
+        
+        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+            
+            if subscription != nil {
+                self.removeSubscriptionTo(chat: chat)
+                
+            } else {
+                self.subscribeToChatTopic(chat: chat)
+            }
+        }
+    }
+    
+    func subscribeToChatTopic(chat: Chat) {
+        
+        let notificationInfo = CKNotificationInfo()
+        
+        guard let chatID = chat.cloudKitRecordID else { fatalError("Unable to create CloudKit ref for subscription") }
+        
+        let predicate = NSPredicate(format: "recordID == %@", chatID)
+        
+        notificationInfo.shouldSendContentAvailable = true
+        notificationInfo.shouldBadge = true
+        
+        let subscription = CKQuerySubscription(recordType: "Chat", predicate: predicate, options: .firesOnRecordUpdate)
+        
+        subscription.notificationInfo = notificationInfo
+        
+        cloudKitManager.subscribe(Constants.chattypeKey, predicate: predicate, subscriptionID: chatID.recordName, contentAvailable: true, options: .firesOnRecordCreation) { (_, _) in
+            
+            print("successfull subscription to chat added")
+            
+        }
+    }
+    
+    // follow messages
+    
+    func followMessagesIn(chat: Chat) {
+        
+        guard let chatID = chat.cloudKitRecordID else { return }
+        
+        let notificationInfo = CKNotificationInfo()
+        
+        let messagePredicate = NSPredicate(value: true)
+        let chatPredicate = NSPredicate(format: "chatReference == %@", chatID)
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [messagePredicate, chatPredicate])
+        
+        notificationInfo.shouldSendContentAvailable = true
+        notificationInfo.shouldBadge = true
+        
+        // subscribe and stuff
+        
+        cloudKitManager.subscribe(Constants.messagetypeKey, predicate: predicate, subscriptionID: "ChatMessages", contentAvailable: true, options: .firesOnRecordUpdate) { (_, _) in
+            
+        }
+    }
+    
+    func removeSubscriptionTo(chat: Chat,
+                              completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
+        
+        guard let subscriptionID = chat.cloudKitRecordID?.recordName else {
+            completion(true, nil)
+            return
+        }
+        
+        cloudKitManager.unsubscribe(subscriptionID) { (subscriptionID, error) in
+            let success = subscriptionID != nil && error == nil
+            completion(success, error)
+        }
+    }
+    
 }
-
-
-
-
 
 /*
  
- christians subscirption stuff
+ christian's subscirption stuff
  
  func subscribeToStudentReadyCheck(topic: Topic) {
  guard let topicID = topic.recordID else { return }
@@ -340,6 +505,8 @@ class ChatController {
  }
  
  }
+ 
+
  
  func subscribeToStudentQuestion(topic: Topic) {
  let notificationInfo = CKNotificationInfo()

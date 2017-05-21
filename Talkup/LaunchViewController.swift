@@ -29,7 +29,13 @@ class LaunchViewController: UIViewController {
                 
                 if let currentUser = user {
                     UserController.shared.currentUser = currentUser
-                    self.performSegue(withIdentifier: Constants.toChats, sender: self)
+                    
+                    ChatController.shared.performFullSync(completion: {
+                        ChatController.shared.populateFollowingChats()
+                        self.performSegue(withIdentifier: Constants.toChats, sender: self)
+                    })
+                    
+                    
                 } else {
                     self.performSegue(withIdentifier: Constants.toWelcome, sender: self)
                 }

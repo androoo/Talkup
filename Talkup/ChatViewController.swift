@@ -13,7 +13,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Outlets
     
     @IBOutlet weak var navBarViewBgView: UIView!
-    @IBOutlet weak var chatCreatorAvatar: UIImageView!
     
     @IBOutlet weak var liveButton: UIButton!
     @IBOutlet weak var topButton: UIButton!
@@ -21,6 +20,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var nowLabel: UILabel!
     @IBOutlet weak var topLabel: UILabel!
     
+    @IBOutlet weak var followingButtonImageView: UIImageView!
     
     @IBOutlet weak var liveButtonBottomBorder: UIImageView!
     @IBOutlet weak var topButtonBottomBorder: UIImageView!
@@ -32,6 +32,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - Properties
     @IBOutlet var tableView: UITableView!
+    
+    var followButton: FollowingButton?
     
     var chat: Chat? {
         didSet {
@@ -70,9 +72,32 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         updateViews()
     }
     
-    @IBOutlet weak var toCreatorButtonTapped: UIButton!
-    
-    @IBAction func creatorButtonTapped(_ sender: Any) {
+    @IBAction func followingButtonTapped(_ sender: Any) {
+        
+        guard let chat = chat,
+              let user = UserController.shared.currentUser else { return }
+        
+//        UserController.shared.followChat(Foruser: user, chat: chat) { 
+//            
+//        }
+        
+        ChatController.shared.followMessagesIn(chat: chat)
+        
+        if followingButtonImageView.image == UIImage(named:"subscribed") {
+            followingButtonImageView.image = UIImage(named: "subscribe")
+        }
+        
+        if followingButtonImageView.image == UIImage(named:"subscribe") {
+            followingButtonImageView.image = UIImage(named: "subscribed")
+        }
+        
+        ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (_, _, _) in
+            
+            DispatchQueue.main.async {
+                self.updateViews()
+            }
+            
+        }
     }
     
 
@@ -119,6 +144,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+        ChatController.shared.checkSubscriptionTo(chat: chat) { (subscription) in
+            if subscription {
+                self.followButton = .follow
+                
+            } else {
+                self.followButton = .unfollow
+            }
+            
+            DispatchQueue.main.async {
+                self.followButtonAppearance()
+            }
+        }
+        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
@@ -149,9 +187,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //add shadow to top part 
         
-        chatCreatorAvatar.image = chat?.creator?.photo
-        chatCreatorAvatar.layer.cornerRadius = chatCreatorAvatar.frame.width / 2
-        chatCreatorAvatar.clipsToBounds = true
+//        chatCreatorAvatar.image = chat?.creator?.photo
+//        chatCreatorAvatar.layer.cornerRadius = chatCreatorAvatar.frame.width / 2
+//        chatCreatorAvatar.clipsToBounds = true
         
         guard let name = chat?.topic else { return }
         inputTextField.delegate = self
@@ -240,6 +278,24 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        self.tableView.estimatedRowHeight = self.barHeight
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
+    }
+    
+    
+    // follow button appearance
+    
+    func followButtonAppearance() {
+        
+        //toggle follow button appearance
+        
+        if followButton == .follow {
+            
+            followingButtonImageView.image = UIImage(named: "subscribed")
+            
+        } else {
+            
+            followingButtonImageView.image = UIImage(named: "subscribe")
+            
+        }
     }
     
     //MARK: - Chat Input
@@ -422,12 +478,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if let destinationViewController = segue.destination as? UserViewController {
                 
-                destinationViewController.user = user
-            }
-        } else if segue.identifier == "toChatCreator" {
-            guard let user = chat?.creator else { return }
-            
-            if let destinationViewController = segue.destination as? UserViewController {
                 destinationViewController.user = user
             }
         }

@@ -101,7 +101,46 @@ class UserController {
         }
     }
     
-    //MARK: - Fetch Messages by User 
+    // Follow Chat
+    
+    func followChat(Foruser user: User, chat: Chat, completion: @escaping () -> Void = {_ in}) {
+        
+        guard let userID = user.cloudKitRecordID,
+            let chat = chat.cloudKitRecordID else { return }
+        
+        cloudKitManager.fetchRecord(withID: userID) { (record, error) in
+            if let error = error {
+                print("\(error)")
+                completion()
+                
+            } else if let record = record {
+                
+                let reference = CKReference(recordID: chat, action: .none)
+                
+                if user.following == nil {
+                    user.following = [reference]
+                } else {
+                    user.following?.append(reference)
+                }
+                
+                guard let followingChatReferences = user.following else { return }
+                record.setValue(followingChatReferences, forKey: Constants.followingReferenceKey)
+                self.cloudKitManager.saveRecord(record, completion: { (record, error) in
+                    if let error = error {
+                        print("\(error)")
+                        completion()
+                    } else {
+                        print("following chat succes")
+                        completion()
+                    }
+                })
+            }
+        }
+    }
+
+    
+    
+    //MARK: - Fetch Messages by User
     
     func fetchMessagesBy(user: User, completion: @escaping () -> Void) {
         

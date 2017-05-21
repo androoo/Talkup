@@ -18,6 +18,7 @@ class User: CloudKitSyncable {
     let email: String
     var chats: [Chat]
     var messages: [Message]
+    var following: [CKReference]?
     var blocked: [CKReference]?
     var defaultUserReference: CKReference
     var cloudKitRecordID: CKRecordID?
@@ -29,12 +30,13 @@ class User: CloudKitSyncable {
     }
     
     
-    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], blocked: [CKReference] = [], users: [User] = [], defaultUserReference: CKReference) {
+    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], following: [CKReference] = [], blocked: [CKReference] = [], users: [User] = [], defaultUserReference: CKReference) {
         self.userName = userName
         self.email = email
         self.photoData = photoData
         self.chats = chats
         self.messages = messages
+        self.following = following
         self.blocked = blocked
         self.users = users
         self.defaultUserReference = defaultUserReference
@@ -53,6 +55,7 @@ class User: CloudKitSyncable {
         
         let photoData = try? Data(contentsOf: photoAsset.fileURL)
         self.init(userName: userName, email: email, photoData: photoData, defaultUserReference: defaultUserRef)
+        self.following = cloudKitRecord[Constants.followingReferenceKey] as? [CKReference] ?? []
         self.blocked = cloudKitRecord[Constants.blockedReferenceKey] as? [CKReference] ?? []
         self.defaultUserReference = defaultUserRef
         self.cloudKitRecordID = cloudKitRecord.recordID
@@ -84,7 +87,11 @@ extension CKRecord {
         self[Constants.photoDataKey] = CKAsset(fileURL: user.temporaryPhotoURL)
 //        self[Constants.blockedReferenceKey] = user.blocked as CKRecordValue?
         self[Constants.userReferenceKey] = user.defaultUserReference
-        guard let blocked = user.blocked else { return }
+        
+        guard let blocked = user.blocked,
+            let following = user.following else { return }
+        
+        self.setValue(following, forKey: Constants.followingReferenceKey)
         self.setValue(blocked, forKey: Constants.blockedReferenceKey)
     }
 }
