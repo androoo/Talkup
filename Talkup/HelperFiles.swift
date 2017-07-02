@@ -28,8 +28,8 @@ enum VoteButtonState {
 }
 
 enum FollowingButton {
-    case follow
-    case unfollow
+    case pressed
+    case notPressed
 }
 
 enum MessageType {

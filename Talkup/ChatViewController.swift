@@ -13,21 +13,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Outlets
     
     @IBOutlet weak var navBarViewBgView: UIView!
-    
     @IBOutlet weak var liveButton: UIButton!
     @IBOutlet weak var topButton: UIButton!
-    
     @IBOutlet weak var nowLabel: UILabel!
     @IBOutlet weak var topLabel: UILabel!
-    
     @IBOutlet weak var followingButtonImageView: UIImageView!
-    
     @IBOutlet weak var liveButtonBottomBorder: UIImageView!
     @IBOutlet weak var topButtonBottomBorder: UIImageView!
     @IBOutlet weak var navBarBottomBorderImageView: UIImageView!
-    
     @IBOutlet weak var sendMessageButtonTapped: UIButton!
-    
     @IBOutlet weak var chatTitleLabel: UILabel!
     
     //MARK: - Properties
@@ -47,6 +41,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     var messageSortSelection: MessageSort = .live
+    
+    var timeOfLastVisit: Date?
     
     //MARK: - UIActions
     
@@ -83,13 +79,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         ChatController.shared.followMessagesIn(chat: chat)
         
-        if followingButtonImageView.image == UIImage(named:"subscribed") {
-            followingButtonImageView.image = UIImage(named: "subscribe")
-        }
-        
-        if followingButtonImageView.image == UIImage(named:"subscribe") {
-            followingButtonImageView.image = UIImage(named: "subscribed")
-        }
+        followButtonAppearance()
         
         ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (_, _, _) in
             
@@ -146,10 +136,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         ChatController.shared.checkSubscriptionTo(chat: chat) { (subscription) in
             if subscription {
-                self.followButton = .follow
+                self.followButton = .pressed
                 
             } else {
-                self.followButton = .unfollow
+                self.followButton = .notPressed
             }
             
             DispatchQueue.main.async {
@@ -170,12 +160,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         liveButtonBottomBorder.backgroundColor = Colors.flatYellow
         topButtonBottomBorder.backgroundColor = Colors.primaryLightGray
         
+        
         updateViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         sendMessageButtonTapped.isEnabled = false
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -213,6 +205,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    // set timeOfLastVisit property to now
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        //set value of current date to key of chat's recordID.recordName in user defaults
+        
+        guard let recordName = chat?.cloudKitRecordID?.recordName else { return }
+        
+        let defaults = UserDefaults.standard
+
+        defaults.set(Date(), forKey: "\(recordName)")
+        
     }
     
     // MARK: Notifications
@@ -287,14 +294,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //toggle follow button appearance
         
-        if followButton == .follow {
-            
+        if followButton == .pressed {
+            // subscribed is the check
             followingButtonImageView.image = UIImage(named: "subscribed")
-            
         } else {
-            
+            // subscribe is the plus
             followingButtonImageView.image = UIImage(named: "subscribe")
-            
         }
     }
     
