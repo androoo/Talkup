@@ -72,21 +72,31 @@ class ChatController {
             let records = user.following else { return }
         
         let followingChatRecordNames = records.flatMap({$0.recordID.recordName})
+//        let chatRecordNames = chats.flatMap({$0.chatReference?.recordID.recordName})
         
-        let chatRecordNames = chats.flatMap({$0.chatReference?.recordID.recordName})
-        
-        for id in chatRecordNames {
-            
-            if followingChatRecordNames.contains(id) {
-                
-                for chat in chats {
+        for chat in chats {
+            for id in followingChatRecordNames {
+                if chat.chatReference?.recordID.recordName == id {
+
+                    followingChats.append(chat)
                     
-                    if chat.chatReference?.recordID.recordName == id {
-                        followingChats.append(chat)
-                    }
                 }
             }
         }
+        
+        
+//        for id in chatRecordNames {
+//            
+//            if followingChatRecordNames.contains(id) {
+//                
+//                for chat in chats {
+//                    
+//                    if chat.chatReference?.recordID.recordName == id {
+//                        followingChats.append(chat)
+//                    }
+//                }
+//            }
+//        }
     }
     
     // compare message's creation date timestamp to user's userdefaults last visit to chat.
@@ -402,8 +412,6 @@ func fetchNewRecordsOf(type: String, completion: @escaping (() -> Void) = { _ in
 func fetchFollowingChats(_ subscriptionID: String, completion: ((_ subscription: CKSubscription?, _ error: Error?) -> Void)?) {
     
     cloudKitManager.publicDatabase.fetch(withSubscriptionID: subscriptionID) { (subscription, error) in
-        
-        
         
         completion?(subscription, error)
     }

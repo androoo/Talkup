@@ -71,22 +71,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func followingButtonTapped(_ sender: Any) {
         
         guard let chat = chat,
-              let user = UserController.shared.currentUser else { return }
-        
-//        UserController.shared.followChat(Foruser: user, chat: chat) { 
-//            
-//        }
+             let user = UserController.shared.currentUser else { return }
         
         ChatController.shared.followMessagesIn(chat: chat)
         
-        followButtonAppearance()
+        UserController.shared.followChat(Foruser: user, chat: chat)
+        
+        if followButton == .pressed {
+            followingButtonImageView.image = UIImage(named: "subscribe")
+            followButton = .notPressed
+        } else {
+            followingButtonImageView.image = UIImage(named: "subscribed")
+            followButton = .pressed
+        }
         
         ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (_, _, _) in
             
             DispatchQueue.main.async {
                 self.updateViews()
             }
-            
         }
     }
     
