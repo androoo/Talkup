@@ -243,7 +243,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "followChat", for: indexPath) as? FollowingChatTableViewCell else { return FollowingChatTableViewCell() }
                 
-                ChatController.shared.populateFollowingChats()
                 let chat = ChatController.shared.followingChats[indexPath.row]
                 
                 cell.chat = chat
