@@ -52,14 +52,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         updateHeader()
         backgroundNavbarTitleLabel.text = "\(username)"
         
-//        self.topNavBarBackgroundView.applyGradient(colours: [Colors.clearBlack, .clear])
+        //fetchMessagesInFollowingChatsForUser
+        
         
     }
     
     //navbar actions
     
     @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
-    
     @IBAction func profileButtonTapped(_ sender: Any) { }
     
     
@@ -153,7 +153,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch section {
             case 0: return 1
             case 1: return 1
-            case 2: return (UserController.shared.currentUser?.following?.count)!
+            case 2: return ChatController.shared.followingChats.count
             case 3: return 1
             case 4: return ChatController.shared.chats.count
             case 5: return 1
@@ -360,7 +360,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 chat.isDismisable = false
                 detailViewController.chat = chat
             }
-        } else if segue.identifier == "toMyProfile" {
+        } else if segue.identifier == "toFollowingDetail" {
+            
+            if let detailViewController = segue.destination as? ChatViewController,
+                let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+                
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
+                
+                let chat = ChatController.shared.followingChats[selectedIndexPath.row]
+                chat.isDismisable = false
+                detailViewController.chat = chat
+                
+            }
+            
+            
+        }else if segue.identifier == "toMyProfile" {
                     guard let user = UserController.shared.currentUser
                         else { return }
                     

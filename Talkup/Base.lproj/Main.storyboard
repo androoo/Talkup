@@ -779,14 +779,12 @@
                                                     </subviews>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9WB-oU-CmC">
-                                                    <rect key="frame" x="337" y="29" width="22" height="22"/>
+                                                    <rect key="frame" x="337" y="28" width="22" height="24"/>
                                                     <color key="backgroundColor" red="0.99607843139999996" green="0.30980392159999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="tintColor" red="0.99607843139999996" green="0.30980392159999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="9Hy-Ln-U2o"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="Bqh-an-jxU"/>
-                                                        <constraint firstAttribute="width" constant="22" id="Eyd-Sd-h9Z"/>
-                                                        <constraint firstAttribute="height" constant="22" id="uJD-6x-N7A"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -796,7 +794,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="333" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEK-lq-fbT">
-                                                    <rect key="frame" x="335" y="27" width="26" height="26"/>
+                                                    <rect key="frame" x="345" y="32" width="6" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -809,10 +807,10 @@
                                                 <constraint firstItem="rMg-IG-yct" firstAttribute="centerY" secondItem="zZx-Lg-01D" secondAttribute="centerY" id="Clh-rX-nGd"/>
                                                 <constraint firstItem="FEK-lq-fbT" firstAttribute="centerY" secondItem="9WB-oU-CmC" secondAttribute="centerY" id="KGp-UT-Ced"/>
                                                 <constraint firstItem="Ucf-Au-Yst" firstAttribute="centerY" secondItem="rMg-IG-yct" secondAttribute="centerY" id="fvQ-ab-NvO"/>
-                                                <constraint firstItem="FEK-lq-fbT" firstAttribute="width" secondItem="9WB-oU-CmC" secondAttribute="width" constant="4" id="hEc-i9-UHw"/>
+                                                <constraint firstItem="9WB-oU-CmC" firstAttribute="height" secondItem="FEK-lq-fbT" secondAttribute="height" constant="8" id="gu4-6L-z3w"/>
                                                 <constraint firstItem="rMg-IG-yct" firstAttribute="leading" secondItem="zZx-Lg-01D" secondAttribute="leading" constant="22" id="hc0-lM-RMd"/>
-                                                <constraint firstItem="FEK-lq-fbT" firstAttribute="height" secondItem="9WB-oU-CmC" secondAttribute="height" constant="4" id="rKm-9L-oun"/>
                                                 <constraint firstItem="Ucf-Au-Yst" firstAttribute="leading" secondItem="rMg-IG-yct" secondAttribute="trailing" constant="16" id="w3Q-iE-zTf"/>
+                                                <constraint firstItem="9WB-oU-CmC" firstAttribute="width" secondItem="FEK-lq-fbT" secondAttribute="width" constant="16" id="zwU-VB-F7D"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -821,7 +819,7 @@
                                             <outlet property="creatorImageView" destination="rMg-IG-yct" id="YWT-aI-7nj"/>
                                             <outlet property="unreadBadgeBgImageView" destination="9WB-oU-CmC" id="nWv-mG-EKl"/>
                                             <outlet property="unreadBadgeCountLabel" destination="FEK-lq-fbT" id="HNp-C8-0eu"/>
-                                            <segue destination="xyf-XF-umS" kind="show" identifier="toChatDetail" id="5mC-52-GKd"/>
+                                            <segue destination="xyf-XF-umS" kind="show" identifier="toFollowingDetail" id="5mC-52-GKd"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="76" id="Zzq-GL-AVo" customClass="FilterTableViewCell" customModule="Talkup" customModuleProvider="target">
@@ -14433,8 +14431,8 @@ AAt8KQALfC4AAAAAAAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAt8MA
         <image name="whiteBack" width="30" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="slc-cx-anL"/>
         <segue reference="kGW-lx-mis"/>
         <segue reference="5mC-52-GKd"/>
-        <segue reference="slc-cx-anL"/>
     </inferredMetricsTieBreakers>
 </document>

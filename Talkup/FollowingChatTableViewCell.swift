@@ -45,12 +45,18 @@ class FollowingChatTableViewCell: UITableViewCell {
         creatorImageView.layer.cornerRadius = creatorImageView.frame.width / 2
         creatorImageView.clipsToBounds = true
         
-        unreadBadgeBgImageView.backgroundColor = Colors.badgeOrange
-        unreadBadgeBgImageView.layer.cornerRadius = unreadBadgeBgImageView.layer.frame.width / 2
+        unreadBadgeBgImageView.layer.cornerRadius = unreadBadgeBgImageView.layer.frame.height / 2
         unreadBadgeBgImageView.clipsToBounds = true
         
-        unreadBadgeCountLabel.textColor = .white 
-        unreadBadgeCountLabel.text = "12"
+        if chat.unreadMessages.count < 1 {
+            unreadBadgeCountLabel.text = ""
+            unreadBadgeBgImageView.backgroundColor = .white
+        } else {
+            unreadBadgeCountLabel.text = "\(chat.unreadMessages.count)"
+            unreadBadgeBgImageView.backgroundColor = Colors.badgeOrange
+        }
+        
+        unreadBadgeCountLabel.textColor = .white
         
     }
 

@@ -20,6 +20,8 @@ class Chat: CloudKitSyncable {
     var score: Int?
     var messages: [Message]
     
+    // local property
+    var unreadMessages: [Message] = []
     var isDismisable: Bool = false
     
     var filteredMessages: [Message] {

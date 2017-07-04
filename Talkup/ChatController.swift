@@ -40,20 +40,20 @@ class ChatController {
         }
     }
     
+    var unreadMessages: [Message] = []
+    
     var messages: [Message] {
         return chats.flatMap { $0.messages }
     }
     
-    var unreadMessages: [Message]?
     var chatLastVisitLog: [String: String] = [:]
     
     
     init() {
         self.cloudKitManager = CloudKitManager()
-        
         guard let user = UserController.shared.currentUser else { return }
         
-        performFullSync()
+//        performFullSync()
         
         subscribeToNewChats { (success, error) in
             if success {
@@ -73,31 +73,30 @@ class ChatController {
         
         let followingChatRecordNames = records.flatMap({$0.recordID.recordName})
 //        let chatRecordNames = chats.flatMap({$0.chatReference?.recordID.recordName})
+        let alreadyFollowingChats = followingChats.flatMap({$0.chatReference?.recordID.recordName})
         
         for chat in chats {
-            for id in followingChatRecordNames {
-                if chat.chatReference?.recordID.recordName == id {
-
-                    followingChats.append(chat)
-                    
+            guard let chatRecordName = chat.chatReference?.recordID.recordName else { return }
+            
+            if !alreadyFollowingChats.contains(chatRecordName) {
+                // passes one check, but then adds all following chats
+                for id in followingChatRecordNames {
+                    if chatRecordName == id {
+                        
+                        if !alreadyFollowingChats.contains(chatRecordName) {
+                            
+                            followingChats.append(chat)
+                            
+                        }
+                        
+                        
+                    }
                 }
             }
         }
-        
-        
-//        for id in chatRecordNames {
-//            
-//            if followingChatRecordNames.contains(id) {
-//                
-//                for chat in chats {
-//                    
-//                    if chat.chatReference?.recordID.recordName == id {
-//                        followingChats.append(chat)
-//                    }
-//                }
-//            }
-//        }
     }
+    
+    
     
     // compare message's creation date timestamp to user's userdefaults last visit to chat.
     
@@ -107,19 +106,17 @@ class ChatController {
         
         // then we match the chat name's and check if any of their child messages were created after the last visit.
         
-        for chat in chats {
+        for chat in followingChats {
             for chatLog in chatLastVisitLog {
                 if chatLog.key == chat.cloudKitRecordID?.recordName {
                     for message in chat.messages {
                         let messageCreationStamp = ChatController.shared.createTimeStamp(theDate: message.timestamp)
                         
                         if messageCreationStamp > chatLog.value {
-                            // add message to array of unread
+                            unreadMessages.append(message)
+                            chat.unreadMessages.append(message)
                         }
                         
-                        if messageCreationStamp < chatLog.value {
-                            // do nothing
-                        }
                     }
                 }
             }
@@ -348,6 +345,7 @@ func performFullSync(completion: @escaping (() -> Void) = { _ in }) {
     //            completion()
     //            return
     //        }
+    
     isSyncing = true
     
     pushChangesToCloudKit { (success) in
@@ -355,6 +353,19 @@ func performFullSync(completion: @escaping (() -> Void) = { _ in }) {
             self.fetchChatOwnersFor(chats: self.chats, completion: {
                 
                 self.populateFollowingChats()
+                
+                // fetch messages for following chats
+                
+                let chatsFollowed = ChatController.shared.followingChats
+                
+                MessageController.shared.fetchMessagesIn(chats: chatsFollowed, completion: { 
+                    // this populates the followed chat's messages. We need to see if any messages are new. 
+                    
+                    self.newMessagesCheck()
+                    
+                })
+                
+                // check if any messages have been posted since current User's last visit to chat
                 
                 self.isSyncing = false
                 NotificationCenter.default.post(name: Notification.Name("syncingComplete"), object: nil)

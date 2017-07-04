@@ -75,13 +75,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         ChatController.shared.followMessagesIn(chat: chat)
         
-        UserController.shared.followChat(Foruser: user, chat: chat)
         
         if followButton == .pressed {
             followingButtonImageView.image = UIImage(named: "subscribe")
+            // remove chat from followed list 
             followButton = .notPressed
         } else {
             followingButtonImageView.image = UIImage(named: "subscribed")
+            UserController.shared.followChat(Foruser: user, chat: chat)
             followButton = .pressed
         }
         
@@ -222,6 +223,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let defaults = UserDefaults.standard
 
         defaults.set(Date(), forKey: "\(recordName)")
+        
+        chat?.unreadMessages = []
         
     }
     
