@@ -237,8 +237,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Table view data source
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 2
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chat?.filteredMessages.count ?? 0
+        
+        switch section {
+        case 0: return 1
+        default: return chat?.filteredMessages.count ?? 0
+            
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -252,31 +265,43 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // switch on the message's owner. If the owner ID = current user ID then cell type is sender.
-        
         let message = messages[indexPath.row]
         
         guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
         
-        if owner.cloudKitRecordID == currentUser.cloudKitRecordID {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
+        switch indexPath.section {
+        case 0:
             
-            cell.message = message
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as? ChatHeaderTableViewCell else { return ChatHeaderTableViewCell() }
             
-            cell.backgroundColor = .clear
-            
-            return cell
-            
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
-            
-            cell.backgroundColor = .clear
-            
-            cell.delegate = self
-            cell.message = message
+            cell.chat = chat
             
             return cell
-        }
+            
+        default:
+            
+            if owner.cloudKitRecordID == currentUser.cloudKitRecordID {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
+                
+                cell.message = message
+                
+                cell.backgroundColor = .clear
+                
+                return cell
+                
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
+                
+                cell.backgroundColor = .clear
+                
+                cell.delegate = self
+                cell.message = message
+                
+                return cell
+            }
+            
+        }    
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -327,8 +327,86 @@
                                 <rect key="frame" x="0.0" y="159" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="165" id="ORw-FU-r1K" customClass="ChatHeaderTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="165"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ORw-FU-r1K" id="Xxx-tE-ZfY">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="164.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-DJ-CdM">
+                                                    <rect key="frame" x="304" y="92.5" width="55" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="rXb-90-yo4"/>
+                                                        <constraint firstAttribute="width" constant="55" id="vGP-Yq-bC8"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Yi9-qs-MDK">
+                                                    <rect key="frame" x="16" y="84" width="280" height="63.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJb-YC-2SI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="71" height="17.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vM-Kv-gbg">
+                                                            <rect key="frame" x="0.0" y="17.5" width="43" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <connections>
+                                                                <action selector="creatorButtonTapped:" destination="ORw-FU-r1K" eventType="touchUpInside" id="Uqa-qU-hVA"/>
+                                                            </connections>
+                                                        </button>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Nde-fp-gKI">
+                                                            <rect key="frame" x="0.0" y="46.5" width="75" height="17"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyz-R2-hFe">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="35.5" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcV-vb-dxB">
+                                                                    <rect key="frame" x="39.5" y="0.0" width="35.5" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gXU-bo-yM3">
+                                                    <rect key="frame" x="0.0" y="162.5" width="375" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="XOa-By-Nka"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qRr-DJ-CdM" firstAttribute="bottom" secondItem="gXU-bo-yM3" secondAttribute="bottom" constant="-16" id="4nJ-kx-9yV"/>
+                                                <constraint firstAttribute="bottom" secondItem="gXU-bo-yM3" secondAttribute="bottom" constant="1" id="8iL-Si-inq"/>
+                                                <constraint firstItem="gXU-bo-yM3" firstAttribute="leading" secondItem="Xxx-tE-ZfY" secondAttribute="leading" id="9b2-jR-Ilh"/>
+                                                <constraint firstItem="Yi9-qs-MDK" firstAttribute="bottom" secondItem="gXU-bo-yM3" secondAttribute="bottom" constant="-16" id="CrD-tR-Cd1"/>
+                                                <constraint firstItem="Yi9-qs-MDK" firstAttribute="top" secondItem="Xxx-tE-ZfY" secondAttribute="topMargin" constant="76" id="CwB-za-Wdf"/>
+                                                <constraint firstItem="Yi9-qs-MDK" firstAttribute="leading" secondItem="Xxx-tE-ZfY" secondAttribute="leadingMargin" constant="8" id="L5H-4a-jpI"/>
+                                                <constraint firstItem="qRr-DJ-CdM" firstAttribute="trailing" secondItem="Xxx-tE-ZfY" secondAttribute="trailingMargin" constant="-8" id="Yqe-7M-ZCe"/>
+                                                <constraint firstItem="Yi9-qs-MDK" firstAttribute="trailing" secondItem="qRr-DJ-CdM" secondAttribute="leading" constant="-8" id="bSB-HV-KG3"/>
+                                                <constraint firstAttribute="trailing" secondItem="gXU-bo-yM3" secondAttribute="trailing" id="onK-8e-EmU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatTitleLabel" destination="kJb-YC-2SI" id="fIY-Wg-bqb"/>
+                                            <outlet property="creatorAvatarImageView" destination="qRr-DJ-CdM" id="daL-TJ-koL"/>
+                                            <outlet property="creatorButton" destination="0vM-Kv-gbg" id="KF3-Kq-zvO"/>
+                                            <outlet property="membersLabel" destination="Iyz-R2-hFe" id="c29-Bk-ZGF"/>
+                                            <outlet property="separatorImageView" destination="gXU-bo-yM3" id="vd2-dW-GQd"/>
+                                            <outlet property="votesLabel" destination="fcV-vb-dxB" id="lc7-Vz-MfX"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recieverCell" rowHeight="92" id="pT6-sZ-X2h" customClass="RecieverTableViewCell" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="92"/>
+                                        <rect key="frame" x="0.0" y="193" width="375" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pT6-sZ-X2h" id="UJJ-qm-m9g">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
@@ -468,7 +546,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="senderCell" rowHeight="83" id="wUb-XF-bzN" customClass="SenderTableViewCell" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="83"/>
+                                        <rect key="frame" x="0.0" y="285" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wUb-XF-bzN" id="1e3-UP-fVB">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
@@ -14432,7 +14510,7 @@ AAt8KQALfC4AAAAAAAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAt8MA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="slc-cx-anL"/>
-        <segue reference="kGW-lx-mis"/>
         <segue reference="5mC-52-GKd"/>
+        <segue reference="7Rg-fY-qhG"/>
     </inferredMetricsTieBreakers>
 </document>

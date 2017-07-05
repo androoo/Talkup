@@ -34,6 +34,7 @@
 		5A446B211E9972FC000AC705 /* ChatItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B201E9972FC000AC705 /* ChatItemTableViewCell.swift */; };
 		5A446B231E9974B2000AC705 /* TopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B221E9974B2000AC705 /* TopTableViewCell.swift */; };
 		5A446B251E9974C0000AC705 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B241E9974C0000AC705 /* LabelTableViewCell.swift */; };
+		5A7467DA1F0C59E100BAF86D /* ChatHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7467D91F0C59E100BAF86D /* ChatHeaderTableViewCell.swift */; };
 		5A842FD61EBA39140099E637 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A842FD51EBA39140099E637 /* SearchResultsController.swift */; };
 		5A842FD81EBA39D50099E637 /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A842FD71EBA39D50099E637 /* SearchableRecord.swift */; };
 		5A8B7D871EBB988B00CCEFAD /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B7D861EBB988B00CCEFAD /* CustomSearchBar.swift */; };
@@ -85,6 +86,7 @@
 		5A446B201E9972FC000AC705 /* ChatItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemTableViewCell.swift; sourceTree = "<group>"; };
 		5A446B221E9974B2000AC705 /* TopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTableViewCell.swift; sourceTree = "<group>"; };
 		5A446B241E9974C0000AC705 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		5A7467D91F0C59E100BAF86D /* ChatHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5A842FD51EBA39140099E637 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		5A842FD71EBA39D50099E637 /* SearchableRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
 		5A8B7D861EBB988B00CCEFAD /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
@@ -145,7 +147,7 @@
 				5A35A26C1E76FF5C00162A20 /* Model Controllers */,
 				5A446B1F1E997249000AC705 /* User Views */,
 				5A8B7D851EBB985C00CCEFAD /* CustomSearch */,
-				5A35A26D1E76FF6200162A20 /* Home Views */,
+				5A35A26D1E76FF6200162A20 /* Cell Views */,
 				5A35A26E1E76FF6800162A20 /* View Controllers */,
 				5A35A26F1E76FF6E00162A20 /* Network */,
 				5A35A2701E76FF7A00162A20 /* Protocols */,
@@ -201,7 +203,7 @@
 			name = "Model Controllers";
 			sourceTree = "<group>";
 		};
-		5A35A26D1E76FF6200162A20 /* Home Views */ = {
+		5A35A26D1E76FF6200162A20 /* Cell Views */ = {
 			isa = PBXGroup;
 			children = (
 				5AAC94AE1E95274D009155FE /* HeaderTableViewCell.swift */,
@@ -213,8 +215,9 @@
 				5AAC94B61E959FCB009155FE /* LastTableViewCell.swift */,
 				5A8B7DB11EBF94B400CCEFAD /* FollowingTitleTableViewCell.swift */,
 				5A8B7DB31EBF94C300CCEFAD /* FollowingChatTableViewCell.swift */,
+				5A7467D91F0C59E100BAF86D /* ChatHeaderTableViewCell.swift */,
 			);
-			name = "Home Views";
+			name = "Cell Views";
 			sourceTree = "<group>";
 		};
 		5A35A26E1E76FF6800162A20 /* View Controllers */ = {
@@ -385,6 +388,7 @@
 				5A35A2801E772E5100162A20 /* CloudKitSyncable.swift in Sources */,
 				5A35A2891E7752DA00162A20 /* ChatController.swift in Sources */,
 				5A1467701E82E00200F7E3EA /* NewUserViewController.swift in Sources */,
+				5A7467DA1F0C59E100BAF86D /* ChatHeaderTableViewCell.swift in Sources */,
 				5A446B211E9972FC000AC705 /* ChatItemTableViewCell.swift in Sources */,
 				5A446B251E9974C0000AC705 /* LabelTableViewCell.swift in Sources */,
 				5A14676E1E82DF8200F7E3EA /* PhotoSelectViewController.swift in Sources */,
