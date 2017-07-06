@@ -53,6 +53,7 @@
 		5AAC94B51E955DCF009155FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B41E955DCF009155FE /* Notifications.swift */; };
 		5AAC94B71E959FCB009155FE /* LastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B61E959FCB009155FE /* LastTableViewCell.swift */; };
 		5AAC94B91E95B67B009155FE /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B81E95B67B009155FE /* UserViewController.swift */; };
+		5AEDF1A61F0DB67100DDE503 /* FilterHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		5AAC94B41E955DCF009155FE /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		5AAC94B61E959FCB009155FE /* LastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTableViewCell.swift; sourceTree = "<group>"; };
 		5AAC94B81E95B67B009155FE /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterHeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				5A8B7DB11EBF94B400CCEFAD /* FollowingTitleTableViewCell.swift */,
 				5A8B7DB31EBF94C300CCEFAD /* FollowingChatTableViewCell.swift */,
 				5A7467D91F0C59E100BAF86D /* ChatHeaderTableViewCell.swift */,
+				5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */,
 			);
 			name = "Cell Views";
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */,
 				5A35A28F1E77533A00162A20 /* RecieverTableViewCell.swift in Sources */,
 				5AAC94B91E95B67B009155FE /* UserViewController.swift in Sources */,
+				5AEDF1A61F0DB67100DDE503 /* FilterHeaderTableViewCell.swift in Sources */,
 				5A8B7DB01EBE2C7E00CCEFAD /* ResultTableViewCell.swift in Sources */,
 				5A35A2831E773F1500162A20 /* HelperFiles.swift in Sources */,
 				5A35A27C1E772BE400162A20 /* Chat.swift in Sources */,

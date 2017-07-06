@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate {
 
     //MARK: - Outlets
     
@@ -255,19 +255,38 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if tableView.isDragging {
-            cell.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
-            UIView.animate(withDuration: 0.3, animations: {
-                cell.transform = CGAffineTransform.identity
-            })
+        
+        if indexPath.section != 0 {
+            if tableView.isDragging {
+                cell.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
+                UIView.animate(withDuration: 0.3, animations: {
+                    cell.transform = CGAffineTransform.identity
+                })
+            }
         }
     }
     
+    // Filter header stuff
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        guard let header = tableView.dequeueReusableCell(withIdentifier: "filterHeader") as? FilterHeaderTableViewCell else { return FilterHeaderTableViewCell() }
+        
+        header.delegate = self
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 55
+    }
+    
+    
+    // set up the cells 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let message = messages[indexPath.row]
         
-        guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
         
         switch indexPath.section {
         case 0:
@@ -275,10 +294,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as? ChatHeaderTableViewCell else { return ChatHeaderTableViewCell() }
             
             cell.chat = chat
+            cell.backgroundColor = Colors.primaryLightGray
             
             return cell
             
         default:
+            
+            
+            let message = messages[indexPath.row]
+            
+            guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
+            
             
             if owner.cloudKitRecordID == currentUser.cloudKitRecordID {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
@@ -431,6 +457,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         confirmAlertController.addAction(cancelAction)
         present(confirmAlertController, animated: true, completion: nil)
     }
+    
+    //MARK: - Filter Header Delegate 
+    
+    func nowSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
+        print("Now selected")
+    }
+    
+    func topSortButtonClicked() {
+        print("top button clicked")
+    }
+    
     
     //MARK: - Message Recieved Cell Delegate
     
