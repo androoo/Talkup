@@ -13,16 +13,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Outlets
     
     @IBOutlet weak var navBarViewBgView: UIView!
-    @IBOutlet weak var liveButton: UIButton!
-    @IBOutlet weak var topButton: UIButton!
-    @IBOutlet weak var nowLabel: UILabel!
-    @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var followingButtonImageView: UIImageView!
-    @IBOutlet weak var liveButtonBottomBorder: UIImageView!
-    @IBOutlet weak var topButtonBottomBorder: UIImageView!
-    @IBOutlet weak var navBarBottomBorderImageView: UIImageView!
     @IBOutlet weak var sendMessageButtonTapped: UIButton!
     @IBOutlet weak var chatTitleLabel: UILabel!
+    @IBOutlet weak var mainNavBottomSep: UIImageView!
+    
+    @IBOutlet weak var followingButtonimageView: UIImageView!
+    
     
     //MARK: - Properties
     @IBOutlet var tableView: UITableView!
@@ -46,28 +42,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - UIActions
     
-    @IBAction func liveButton(_ sender: Any) {
-        liveButton.setTitleColor(Colors.flatYellow, for: .normal)
-        topButton.setTitleColor(UIColor.lightGray, for: .normal)
-        nowLabel.textColor = Colors.flatYellow
-        topLabel.textColor = Colors.primaryDarkGray
-        liveButtonBottomBorder.backgroundColor = Colors.flatYellow
-        topButtonBottomBorder.backgroundColor = Colors.primaryLightGray
-        messageSortSelection = .live
-        updateViews()
-    }
-
-    @IBAction func topButton(_ sender: Any) {
-        liveButton.setTitleColor(UIColor.lightGray, for: .normal)
-        topButton.setTitleColor(Colors.greenBlue, for: .normal)
-        topLabel.textColor = Colors.greenBlue
-        nowLabel.textColor = Colors.primaryDarkGray
-        topButtonBottomBorder.backgroundColor = Colors.greenBlue
-        liveButtonBottomBorder.backgroundColor = Colors.primaryLightGray
-        messageSortSelection = .top
-        updateViews()
-    }
-    
     @IBAction func followingButtonTapped(_ sender: Any) {
         
         guard let chat = chat,
@@ -77,11 +51,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         if followButton == .pressed {
-            followingButtonImageView.image = UIImage(named: "subscribe")
+            followingButtonimageView.image = UIImage(named: "subscribe")
             // remove chat from followed list 
             followButton = .notPressed
         } else {
-            followingButtonImageView.image = UIImage(named: "subscribed")
+            followingButtonimageView.image = UIImage(named: "subscribed")
             UserController.shared.followChat(Foruser: user, chat: chat)
             followButton = .pressed
         }
@@ -159,12 +133,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        liveButton.setTitleColor(Colors.flatYellow, for: .normal)
-        nowLabel.textColor = Colors.flatYellow
-        liveButtonBottomBorder.backgroundColor = Colors.flatYellow
-        topButtonBottomBorder.backgroundColor = Colors.primaryLightGray
-        
-        
         updateViews()
     }
     
@@ -180,6 +148,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.backgroundColor = .white
         
         navBarViewBgView.backgroundColor = .white
+        mainNavBottomSep.backgroundColor = Colors.primaryLightGray
         
         //add shadow to top part 
         
@@ -191,8 +160,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputTextField.delegate = self
         updateViews()
         customize()
-        navBarBottomBorderImageView.backgroundColor = .white
-        liveButtonBottomBorder.isHidden = false
         
         title = "\(name)"
         chatTitleLabel.text = "\(name)"
@@ -238,7 +205,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 2
         
     }
@@ -270,15 +236,30 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        guard let header = tableView.dequeueReusableCell(withIdentifier: "filterHeader") as? FilterHeaderTableViewCell else { return FilterHeaderTableViewCell() }
         
-        header.delegate = self
+        switch section {
+            
+        case 0:
+            return nil
+        default:
+            guard let header = tableView.dequeueReusableCell(withIdentifier: "headerViewCell") as? FilterHeaderTableViewCell else { return FilterHeaderTableViewCell() }
+            
+            header.delegate = self
+            
+            return header
+            
+        }
         
-        return header
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 55
+        switch section {
+        case 0:
+            return 0
+        default:
+            return 50
+        }
     }
     
     
@@ -334,6 +315,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0: return UITableViewAutomaticDimension
+        default: return UITableViewAutomaticDimension
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     
     //MARK: - Customize Appearance
     
@@ -353,10 +344,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if followButton == .pressed {
             // subscribed is the check
-            followingButtonImageView.image = UIImage(named: "subscribed")
+            followingButtonimageView.image = UIImage(named: "subscribed")
         } else {
             // subscribe is the plus
-            followingButtonImageView.image = UIImage(named: "subscribe")
+            followingButtonimageView.image = UIImage(named: "subscribe")
         }
     }
     
@@ -461,11 +452,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Filter Header Delegate 
     
     func nowSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
-        print("Now selected")
+        // filter messages to now
+        messageSortSelection = .live
+        updateViews()
     }
     
     func topSortButtonClicked() {
-        print("top button clicked")
+        // filter messages to top
+        messageSortSelection = .top
+        updateViews()
     }
     
     

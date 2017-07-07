@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ChatHeaderTableViewCell: UITableViewCell {
     
     //MARK: - Properties 
@@ -18,6 +20,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var votesLabel: UILabel!
     @IBOutlet weak var creatorAvatarImageView: UIImageView!
     @IBOutlet weak var separatorImageView: UIImageView!
+    @IBOutlet weak var followButton: UIButton!
     
     
     var chat: Chat? {
@@ -33,10 +36,13 @@ class ChatHeaderTableViewCell: UITableViewCell {
         
     }
     
+    @IBAction func followButtonTapped(_ sender: Any) {
+        
+    }
     
     func updateViews() {
         
-        chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 28)
+        chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 48)
         chatTitleLabel.textColor = Colors.primaryDark
         chatTitleLabel.text = chat?.topic
         creatorButton.tintColor = Colors.primaryBgPurple
@@ -47,6 +53,14 @@ class ChatHeaderTableViewCell: UITableViewCell {
         separatorImageView.backgroundColor = Colors.bubbleGray
         membersLabel.textColor = Colors.primaryDarkGray
         votesLabel.textColor = Colors.primaryDarkGray
+        
+        followButton.layer.borderColor = Colors.primaryBgPurple.cgColor
+        followButton.layer.borderWidth = 2
+        followButton.tintColor = Colors.primaryBgPurple
+        followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+        followButton.layer.masksToBounds = true
+        followButton.setTitle("Follow", for: .normal)
+        
         
     }
 
