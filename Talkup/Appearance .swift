@@ -77,6 +77,10 @@ struct Colors {
     
     static let badgeOrange = UIColor.init(red: 255/255.0, green: 130/255.0, blue: 98/255.0, alpha: 1)
     
+    // v3 
+    
+    static let followingGreen = UIColor.init(red: 56.0 / 255.0, green: 221.0 / 255.0, blue: 139.0 / 255.0, alpha: 1.0)
+    
 }
 
 //MARK: - Gradients 

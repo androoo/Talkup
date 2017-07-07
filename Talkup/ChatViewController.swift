@@ -17,8 +17,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var chatTitleLabel: UILabel!
     @IBOutlet weak var mainNavBottomSep: UIImageView!
     
-    @IBOutlet weak var followingButtonimageView: UIImageView!
-    
     
     //MARK: - Properties
     @IBOutlet var tableView: UITableView!
@@ -41,31 +39,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var timeOfLastVisit: Date?
     
     //MARK: - UIActions
-    
-    @IBAction func followingButtonTapped(_ sender: Any) {
-        
-        guard let chat = chat,
-             let user = UserController.shared.currentUser else { return }
-        
-        ChatController.shared.followMessagesIn(chat: chat)
-        
-        if followButton == .pressed {
-            followingButtonimageView.image = UIImage(named: "subscribe")
-            // remove chat from followed list 
-            followButton = .notPressed
-        } else {
-            followingButtonimageView.image = UIImage(named: "subscribed")
-            UserController.shared.followChat(Foruser: user, chat: chat)
-            followButton = .pressed
-        }
-        
-        ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (_, _, _) in
-            
-            DispatchQueue.main.async {
-                self.updateViews()
-            }
-        }
-    }
+
     
 
     @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
@@ -117,10 +91,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
             } else {
                 self.followButton = .notPressed
-            }
-            
-            DispatchQueue.main.async {
-                self.followButtonAppearance()
             }
         }
         
@@ -326,21 +296,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
     }
     
-    
-    // follow button appearance
-    
-    func followButtonAppearance() {
-        
-        //toggle follow button appearance
-        
-        if followButton == .pressed {
-            // subscribed is the check
-            followingButtonimageView.image = UIImage(named: "subscribed")
-        } else {
-            // subscribe is the plus
-            followingButtonimageView.image = UIImage(named: "subscribe")
-        }
-    }
     
     //MARK: - Chat Input
     

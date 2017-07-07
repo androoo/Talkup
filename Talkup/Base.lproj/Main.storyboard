@@ -168,8 +168,9 @@
                                             <constraint firstAttribute="height" constant="2" id="5qL-mM-QhL"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subscribe" translatesAutoresizingMaskIntoConstraints="NO" id="4C7-6O-oiA">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreButton" translatesAutoresizingMaskIntoConstraints="NO" id="4C7-6O-oiA">
                                         <rect key="frame" x="334" y="30" width="28" height="28"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="FPh-1S-6to"/>
                                             <constraint firstAttribute="width" constant="28" id="a85-oQ-XGX"/>
@@ -177,9 +178,10 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSj-so-A1m">
                                         <rect key="frame" x="334" y="30" width="28" height="28"/>
-                                        <connections>
-                                            <action selector="followingButtonTapped:" destination="xyf-XF-umS" eventType="touchUpInside" id="UcK-gx-5Y2"/>
-                                        </connections>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -206,7 +208,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="365" id="ORw-FU-r1K" customClass="ChatHeaderTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="365" id="ORw-FU-r1K" customClass="ChatHeaderTableViewCell" customModule="Talkup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="365"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ORw-FU-r1K" id="Xxx-tE-ZfY">
@@ -671,7 +673,6 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="cHU-oT-s1c" id="SCJ-lu-Pya"/>
                         <outlet property="chatTitleLabel" destination="VWN-R1-60p" id="Hux-kP-bbE"/>
-                        <outlet property="followingButtonimageView" destination="4C7-6O-oiA" id="5wk-4r-O5N"/>
                         <outlet property="inputBar" destination="dWI-2J-VXK" id="bE3-ND-vCd"/>
                         <outlet property="inputTextField" destination="0lT-5l-Cc4" id="yJH-BC-yFv"/>
                         <outlet property="mainNavBottomSep" destination="qkT-Hr-DGX" id="aPk-5L-35b"/>
@@ -700,7 +701,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpA-ra-cx8" userLabel="Container View">
                             <rect key="frame" x="0.0" y="119" width="376" height="50"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type message..." adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0lT-5l-Cc4">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type message..." adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0lT-5l-Cc4">
                                     <rect key="frame" x="12" y="5" width="304" height="40"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -14543,7 +14544,6 @@ AAt8KQALfC4AAAAAAAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAt8MA
         <image name="newTalkup" width="22" height="22"/>
         <image name="profileSmile" width="22" height="22"/>
         <image name="send" width="16" height="16"/>
-        <image name="subscribe" width="32" height="32"/>
         <image name="talkUpOutlines" width="49" height="49"/>
         <image name="talkupChat" width="195" height="199"/>
         <image name="toUserArrow" width="10" height="17"/>

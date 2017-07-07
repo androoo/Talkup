@@ -61,16 +61,16 @@ class ChatHeaderTableViewCell: UITableViewCell {
     
     func followButtonAppearance() {
         if following == .pressed {
-            followButton.backgroundColor = Colors.primaryBgPurple
+            followButton.backgroundColor = Colors.followingGreen
             followButton.setTitle("Following", for: .normal)
 //            followButton.titleLabel?.text = "Following"
             followButton.titleLabel?.textColor = .white
             followButton.layer.borderWidth = 0
         } else {
             followButton.backgroundColor = nil
-            followButton.layer.borderColor = Colors.primaryBgPurple.cgColor
+            followButton.layer.borderColor = Colors.followingGreen.cgColor
             followButton.layer.borderWidth = 2
-            followButton.tintColor = Colors.primaryBgPurple
+            followButton.tintColor = Colors.followingGreen
             followButton.setTitle("Follow", for: .normal)
         }
     }
@@ -85,14 +85,14 @@ class ChatHeaderTableViewCell: UITableViewCell {
         
         if followButton.titleLabel?.text == "Follow" {
             delegate?.followButtonPressed(self)
-            followButton.backgroundColor = Colors.primaryBgPurple
+            followButton.backgroundColor = Colors.followingGreen
             followButton.setTitle("Following", for: .selected)
             followButton.layer.borderWidth = 0
         } else {
             followButton.backgroundColor = nil
-            followButton.layer.borderColor = Colors.primaryBgPurple.cgColor
+            followButton.layer.borderColor = Colors.followingGreen.cgColor
             followButton.layer.borderWidth = 2
-            followButton.tintColor = Colors.primaryBgPurple
+            followButton.tintColor = Colors.followingGreen
             followButton.setTitle("Follow", for: .normal)
         }
         
@@ -103,7 +103,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
         chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 48)
         chatTitleLabel.textColor = Colors.primaryDark
         chatTitleLabel.text = chat?.topic
-        creatorButton.tintColor = Colors.primaryBgPurple
+        creatorButton.tintColor = Colors.primaryDark
         creatorAvatarImageView.image = chat?.creator?.photo
         creatorAvatarImageView.layer.cornerRadius = creatorAvatarImageView.layer.frame.width / 2
         creatorAvatarImageView.clipsToBounds = true 
@@ -112,9 +112,9 @@ class ChatHeaderTableViewCell: UITableViewCell {
         membersLabel.textColor = Colors.primaryDarkGray
         votesLabel.textColor = Colors.primaryDarkGray
         
-        followButton.layer.borderColor = Colors.primaryBgPurple.cgColor
+        followButton.layer.borderColor = Colors.followingGreen.cgColor
         followButton.layer.borderWidth = 2
-        followButton.tintColor = Colors.primaryBgPurple
+        followButton.tintColor = Colors.followingGreen
         followButton.layer.cornerRadius = followButton.layer.frame.height / 2
         followButton.layer.masksToBounds = true
         followButton.setTitle("Follow", for: .normal)
