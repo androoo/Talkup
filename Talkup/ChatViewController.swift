@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate, ChatHeaderDelegate {
 
     //MARK: - Outlets
     
@@ -48,7 +48,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
              let user = UserController.shared.currentUser else { return }
         
         ChatController.shared.followMessagesIn(chat: chat)
-        
         
         if followButton == .pressed {
             followingButtonimageView.image = UIImage(named: "subscribe")
@@ -144,17 +143,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
-        
         tableView.backgroundColor = .white
-        
         navBarViewBgView.backgroundColor = .white
         mainNavBottomSep.backgroundColor = Colors.primaryLightGray
-        
-        //add shadow to top part 
-        
-//        chatCreatorAvatar.image = chat?.creator?.photo
-//        chatCreatorAvatar.layer.cornerRadius = chatCreatorAvatar.frame.width / 2
-//        chatCreatorAvatar.clipsToBounds = true
         
         guard let name = chat?.topic else { return }
         inputTextField.delegate = self
@@ -169,13 +160,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let chat = chat, isViewLoaded else { return }
         title = "\(chat.topic)"
         
-        //        self.navigationItem.titleView = setTitle(title: "\(chat.topic)", subtitle: "45 people")
-        
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(chatMessagesChanged(_:)), name: ChatController.ChatMessagesChangedNotification, object: nil)
         
         tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
     }
     
     // set timeOfLastVisit property to now
@@ -267,8 +258,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         switch indexPath.section {
         case 0:
             
@@ -276,6 +265,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.chat = chat
             cell.backgroundColor = Colors.primaryLightGray
+            cell.following = followButton
+            cell.delegate = self
             
             return cell
             
@@ -463,6 +454,32 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         updateViews()
     }
     
+    //MARK: - Chat Header Delegate 
+    
+    func followButtonPressed(_ sender: ChatHeaderTableViewCell) {
+        
+        guard let chat = chat,
+            let user = UserController.shared.currentUser else { return }
+        
+        ChatController.shared.followMessagesIn(chat: chat)
+        
+        if followButton == .pressed {
+            // remove chat from followed list
+            followButton = .notPressed
+        } else {
+            UserController.shared.followChat(Foruser: user, chat: chat)
+            followButton = .pressed
+        }
+        
+        ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (_, _, _) in
+            
+            DispatchQueue.main.async {
+                self.updateViews()
+            }
+        }
+        
+        
+    }
     
     //MARK: - Message Recieved Cell Delegate
     

@@ -168,4 +168,27 @@ class RoundedButton: UIButton {
     }
 }
 
+class RoundedCornerButton : UIButton {
+    
+    override func draw(_ rect: CGRect) {
+        
+        let path = UIBezierPath(roundedRect: rect,
+                                byRoundingCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight],
+                                cornerRadii: CGSize(width: 10, height: 10))
+        
+//        UIColor.red.setFill()
+        
+//        path.fill()
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        
+        let originalSize = super.intrinsicContentSize
+        
+        let size = CGSize(width: originalSize.width + 35, height: originalSize.height)
+        
+        return size
+    }
+}
+
 
