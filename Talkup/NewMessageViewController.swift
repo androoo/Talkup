@@ -40,7 +40,7 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate, SearchRes
         sendMessageButton.isEnabled = false
     }
     
-    var barHeight: CGFloat = 50
+    var barHeight: CGFloat = 65
     
     //MARK: - UI Actions
     

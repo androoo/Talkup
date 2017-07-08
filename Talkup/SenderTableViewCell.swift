@@ -44,7 +44,7 @@ class SenderTableViewCell: UITableViewCell {
         
         let time = message.timeSinceCreation(from: message.timestamp, to: Date())
         
-        
+        let emojiChars = CharacterSet()
         
         chatTextView.text = message.text
         chatCountLabel.text = "\(message.score) up"
@@ -52,6 +52,12 @@ class SenderTableViewCell: UITableViewCell {
         chatBubbleBackgroundImageView.backgroundColor = Colors.primaryBgPurple
         chatBubbleBackgroundImageView.layer.cornerRadius = 22
         chatTextView.textColor = .white
+        
+        
+        if message.text.containsOnlyEmoji {
+            chatBubbleBackgroundImageView.isHidden = true
+            chatTextView.font = UIFont(name: "Helvetica", size: 40)
+        }
         
 //        ownerAvatarImageView.image = message.owner?.photo
 //        timestampLabel.text = "\(time)"

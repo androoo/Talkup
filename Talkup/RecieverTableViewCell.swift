@@ -154,6 +154,10 @@ class RecieverTableViewCell: UITableViewCell {
         
         let time = message.timeSinceCreation(from: message.timestamp, to: Date())
       
+        if message.text.containsOnlyEmoji {
+            messageBackground.isHidden = true
+            chatMessageLabel.font = UIFont(name: "Helvetica", size: 40)
+        }
         
         messageScoreLabel.text = ""
         chatMessageLabel.text = message.text

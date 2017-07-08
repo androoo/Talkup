@@ -34,8 +34,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    var heroChatCell: ChatHeaderTableViewCell?
     var messageSortSelection: MessageSort = .live
-    
     var timeOfLastVisit: Date?
     
     //MARK: - UIActions
@@ -122,10 +122,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         updateViews()
         customize()
         
-        title = "\(name)"
-        chatTitleLabel.text = "\(name)"
-        chatTitleLabel.textColor = Colors.primaryBgPurple
-        chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20)
         
         guard let chat = chat, isViewLoaded else { return }
         title = "\(chat.topic)"
@@ -237,6 +233,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.backgroundColor = Colors.primaryLightGray
             cell.following = followButton
             cell.delegate = self
+            self.heroChatCell = cell
             
             return cell
             
@@ -346,9 +343,33 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return true
     }
     
-    let barHeight: CGFloat = 50
+    let barHeight: CGFloat = 65
     
-    //MARK: - Helper Methods
+    //MARK: - Scrolling UX
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        guard let name = chat?.topic else { return }
+        
+        if let heroCell = self.heroChatCell {
+            if scrollView.contentOffset.y < 0 {
+                heroCell.headerViewTopContstraint.constant = scrollView.contentOffset.y
+            }
+        }
+        
+        if (scrollView.contentOffset.y > 0) && (scrollView.contentOffset.y < 350) {
+            
+            title = ""
+            
+            title = "\(name)"
+            chatTitleLabel.text = "\(name)"
+            chatTitleLabel.textColor = Colors.primaryBgPurple
+            chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20)
+            
+        }
+        
+        
+    }
     
     
     

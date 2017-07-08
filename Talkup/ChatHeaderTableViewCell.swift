@@ -24,6 +24,9 @@ class ChatHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var creatorAvatarImageView: UIImageView!
     @IBOutlet weak var separatorImageView: UIImageView!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var headerViewBgView: UIView!
+    @IBOutlet weak var headerViewTopContstraint: NSLayoutConstraint!
+    
     
     var delegate: ChatHeaderDelegate?
     
@@ -99,6 +102,8 @@ class ChatHeaderTableViewCell: UITableViewCell {
     }
     
     func updateViews() {
+        
+        headerViewBgView.backgroundColor = Colors.primaryLightGray
         
         chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 48)
         chatTitleLabel.textColor = Colors.primaryDark
