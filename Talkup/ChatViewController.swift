@@ -206,8 +206,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             return header
             
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -291,6 +289,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        self.tableView.estimatedRowHeight = self.barHeight
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
+        
+        self.currentUserAvatarInputImageView.image = UserController.shared.currentUser?.photo
+        self.currentUserAvatarInputImageView.layer.cornerRadius = currentUserAvatarInputImageView.layer.frame.width / 2
+        self.currentUserAvatarInputImageView.layer.masksToBounds = true 
     }
     
     
@@ -331,6 +333,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var inputBar: UIView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var currentUserAvatarInputImageView: UIImageView!
     
     override var inputAccessoryView: UIView? {
         get {

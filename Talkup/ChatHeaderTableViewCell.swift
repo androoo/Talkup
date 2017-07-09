@@ -27,6 +27,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var headerViewBgView: UIView!
     @IBOutlet weak var headerViewTopContstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var creatorTopSepImageView: UIImageView!
     
     var delegate: ChatHeaderDelegate?
     
@@ -103,7 +104,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        headerViewBgView.backgroundColor = Colors.primaryLightGray
+        headerViewBgView.backgroundColor = .white 
         
         chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 48)
         chatTitleLabel.textColor = Colors.primaryDark
@@ -116,6 +117,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
         separatorImageView.backgroundColor = Colors.bubbleGray
         membersLabel.textColor = Colors.primaryDarkGray
         votesLabel.textColor = Colors.primaryDarkGray
+        creatorTopSepImageView.backgroundColor = Colors.primaryLightGray
         
         followButton.layer.borderColor = Colors.followingGreen.cgColor
         followButton.layer.borderWidth = 2
@@ -124,6 +126,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
         followButton.layer.masksToBounds = true
         followButton.setTitle("Follow", for: .normal)
         followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
+        
 
         
     }

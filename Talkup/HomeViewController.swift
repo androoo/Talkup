@@ -15,11 +15,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var userIconTopConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var currentUserHeaderImageView: UIImageView!
     @IBOutlet weak var headerBackgroundView: UIView!
     @IBOutlet weak var headerBigTitleLabel: UILabel!
-    
-    
     
     let maxHeaderHeight: CGFloat = 150
     let minHeaderHeight: CGFloat = 74
@@ -46,11 +44,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let username = UserController.shared.currentUser?.userName else { return }
-        
-        self.headerHeightConstraint.constant = maxHeaderHeight
-        updateHeader()
-        backgroundNavbarTitleLabel.text = "\(username)"
         
         //fetchMessagesInFollowingChatsForUser
         
@@ -66,17 +59,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Talkup"
+        guard let user = UserController.shared.currentUser else { return }
+        
+        currentUserHeaderImageView.image = user.photo
+        currentUserHeaderImageView.layer.cornerRadius = currentUserHeaderImageView.layer.frame.width / 2
+        currentUserHeaderImageView.layer.masksToBounds = true
         
         self.navigationController?.navigationBar.isHidden = true 
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.backgroundColor = .clear
-
-//        bigNavbarTitle.font = UIFont(name: "ArialRoundedMTBold", size: 48)
         
-        //set the main background color
-        self.view.applyGradient(colours: [Colors.primaryBgPurple, Colors.primaryBgPurple])
-        self.view.applyGradient(colours: [Colors.purple, Colors.purple], locations: [0.0, 1.0])
+        view.backgroundColor = .white
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
@@ -85,8 +78,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.tableHeaderView = UIView()
         
         requestFullSync()
-        
-        customize()
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
@@ -100,7 +91,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(_ animated: Bool) {
         updateViews()
-        
         tableView.setNeedsLayout()
     }
     
@@ -133,9 +123,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func numberOfSections(in tableView: UITableView) -> Int {
         
         if UserController.shared.currentUser?.following == nil {
-            return 4
+            return 3
         } else {
-            return 6
+            return 5
         }
     }
     
@@ -144,19 +134,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if UserController.shared.currentUser?.following == nil {
             switch section {
             case 0: return 1
-            case 1: return 1
-            case 2: return ChatController.shared.chats.count
-            case 3: return 1
+            case 1: return ChatController.shared.chats.count
+            case 2: return 1
             default: return 1
             }
         } else {
             switch section {
             case 0: return 1
-            case 1: return 1
-            case 2: return ChatController.shared.followingChats.count
-            case 3: return 1
-            case 4: return ChatController.shared.chats.count
-            case 5: return 1
+            case 1: return ChatController.shared.followingChats.count
+            case 2: return 1
+            case 3: return ChatController.shared.chats.count
+            case 4: return 1
             default: return 1
             }
         }
@@ -167,19 +155,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if UserController.shared.currentUser?.following == nil {
             
             switch indexPath.section {
+                
             case 0:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
-                
-                let bottomBorder = CALayer()
-                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-                bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
-                cell.layer.addSublayer(bottomBorder)
-                
-                cell.backgroundColor = .white
-                
-                return cell
-                
-            case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
                 
                 let bottomBorder = CALayer()
@@ -188,7 +165,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.layer.addSublayer(bottomBorder)
                 
                 return cell
-            case 2:
+            case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
                 
                 let chat = ChatController.shared.chats[indexPath.row]
@@ -202,11 +179,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let bottomBorder = CALayer()
                 bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
                 bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
-                cell.layer.addSublayer(bottomBorder)
+//                cell.layer.addSublayer(bottomBorder)
                 
                 return cell
                 
-            case 3:
+            case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
                 return cell
                 
@@ -218,18 +195,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             
             switch indexPath.section {
+                
             case 0:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as? FirstChatTableViewCell else { return FirstChatTableViewCell() }
-                
-                let bottomBorder = CALayer()
-                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-                bottomBorder.frame = CGRect(x: 0, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
-                cell.layer.addSublayer(bottomBorder)
-                
-                cell.backgroundColor = .white
-                
-                return cell
-            case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "followTitle", for: indexPath) as? FollowingTitleTableViewCell else { return FollowingTitleTableViewCell() }
                 
                 let bottomBorder = CALayer()
@@ -239,7 +206,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 return cell
                 
-            case 2:
+            case 1:
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "followChat", for: indexPath) as? FollowingChatTableViewCell else { return FollowingChatTableViewCell() }
                 
@@ -254,11 +221,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let bottomBorder = CALayer()
                 bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
                 bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
-                cell.layer.addSublayer(bottomBorder)
+//                cell.layer.addSublayer(bottomBorder)
                 
                 return cell
                 
-            case 3:
+            case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
                 
                 let bottomBorder = CALayer()
@@ -267,7 +234,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.layer.addSublayer(bottomBorder)
                 
                 return cell
-            case 4:
+            case 3:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
                 
                 let chat = ChatController.shared.chats[indexPath.row]
@@ -281,11 +248,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let bottomBorder = CALayer()
                 bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
                 bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
-                cell.layer.addSublayer(bottomBorder)
+//                cell.layer.addSublayer(bottomBorder)
                 
                 return cell
                 
-            case 5:
+            case 4:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
                 return cell
                 
@@ -301,20 +268,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if UserController.shared.currentUser?.following == nil {
             switch indexPath.section {
-            case 0: return 76
-            case 1: return UITableViewAutomaticDimension
-            case 2: return 76
-            case 3: return 0
+            case 0: return UITableViewAutomaticDimension
+            case 1: return 76
+            case 2: return 0
             default: return 86
             }
         } else {
             switch indexPath.section {
-            case 0: return 76
-            case 1: return UITableViewAutomaticDimension
-            case 2: return 76
-            case 3: return UITableViewAutomaticDimension
-            case 4: return 76
-            case 5: return 0
+            case 0: return UITableViewAutomaticDimension
+            case 1: return 76
+            case 2: return UITableViewAutomaticDimension
+            case 3: return 76
+            case 4: return 0
             default: return 86
             }
         }
@@ -322,27 +287,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        let maskPathTop = UIBezierPath(roundedRect: cell.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 13.0, height: 13.0))
-        let shapeLayerTop = CAShapeLayer()
-        shapeLayerTop.frame = cell.bounds
-        shapeLayerTop.path = maskPathTop.cgPath
-
-//        cell.separatorInset.left = 1000.0
-        
-        
-        switch indexPath.section {
-
-        case 0:
-            return cell.layer.mask = shapeLayerTop
-        default:
-            break
-        }
-        
-
     }
     
     // MARK: - Navigation
@@ -389,113 +333,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
-        
-        let absoluteTop: CGFloat = 0;
-        let absoluteBottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height;
-        
-        let isScrollingDown = scrollDiff > 0 && scrollView.contentOffset.y > absoluteTop
-        let isScrollingUp = scrollDiff < 0 && scrollView.contentOffset.y < absoluteBottom
-        
-        if canAnimateHeader(scrollView) {
-            
-            // Calculate new header height
-            var newHeight = self.headerHeightConstraint.constant
-            if isScrollingDown {
-                newHeight = max(self.minHeaderHeight, self.headerHeightConstraint.constant - abs(scrollDiff))
-            } else if isScrollingUp {
-                newHeight = min(self.maxHeaderHeight, self.headerHeightConstraint.constant + abs(scrollDiff))
-            }
-            
-            // Header needs to animate
-            if newHeight != self.headerHeightConstraint.constant {
-                self.headerHeightConstraint.constant = newHeight
-                self.updateHeader()
-                self.setScrollPosition(self.previousScrollOffset)
-            }
-            
-            self.previousScrollOffset = scrollView.contentOffset.y
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.scrollViewDidStopScrolling()
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate {
-            self.scrollViewDidStopScrolling()
-        }
-    }
-    
-    func scrollViewDidStopScrolling() {
-        let range = self.maxHeaderHeight - self.minHeaderHeight
-        let midPoint = self.minHeaderHeight + (range / 2)
-        
-        if self.headerHeightConstraint.constant > midPoint {
-            self.expandHeader()
-        } else {
-            self.collapseHeader()
-        }
-    }
-    
-    func canAnimateHeader(_ scrollView: UIScrollView) -> Bool {
-        // Calculate the size of the scrollView when header is collapsed
-        let scrollViewMaxHeight = scrollView.frame.height + self.headerHeightConstraint.constant - minHeaderHeight
-        
-        // Make sure that when header is collapsed, there is still room to scroll
-        return scrollView.contentSize.height > scrollViewMaxHeight
-    }
-    
-    func collapseHeader() {
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.2, animations: {
-            self.headerHeightConstraint.constant = self.minHeaderHeight
-            self.updateHeader()
-            self.view.layoutIfNeeded()
-        })
-    }
-    
-    func expandHeader() {
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.2, animations: {
-            self.headerHeightConstraint.constant = self.maxHeaderHeight
-            self.updateHeader()
-            self.view.layoutIfNeeded()
-        })
-    }
-    
-    func setScrollPosition(_ position: CGFloat) {
-        self.tableView.contentOffset = CGPoint(x: self.tableView.contentOffset.x, y: position)
-    }
-    
-    func updateHeader() {
-        let range = self.maxHeaderHeight - self.minHeaderHeight
-        let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
-        let percentage = openAmount / range
-        
-        self.headerBackgroundView.alpha = percentage
-        self.topNavBarTitleConstraint.constant = -openAmount + 35
-    }
-
-    
     func updateViews() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
 
-    
-    //MARK: - Appearance Helpers
-    
-    func customize() {
-        
-        //        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-//        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 84, bottom: 0, right: 0)
-        
-//        tableView.layer.cornerRadius = 12
-        
-        view.backgroundColor = .clear
-    }
 }
