@@ -13,19 +13,18 @@ class FollowingTitleTableViewCell: UITableViewCell {
     //MARK: - Outlets 
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var titleBottomBorderImageView: UIImageView!
+    @IBOutlet weak var cellBottomBorderSep: UIImageView!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         let followingCount = ChatController.shared.followingChats.count
         
         backgroundColor = .white
-        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 24)
+        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 36)
         titleLabel.textColor = Colors.primaryDark
-        titleLabel.text = "\(followingCount) Following"
-        titleBottomBorderImageView.backgroundColor = Colors.flatYellow
+        titleLabel.text = "✅ Following"
+        
     }
 
 }

@@ -54,6 +54,8 @@
 		5AAC94B71E959FCB009155FE /* LastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B61E959FCB009155FE /* LastTableViewCell.swift */; };
 		5AAC94B91E95B67B009155FE /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC94B81E95B67B009155FE /* UserViewController.swift */; };
 		5ADD34E81F0EEB4D0039322E /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34E71F0EEB4D0039322E /* DebugButton.swift */; };
+		5ADD34EA1F13ED4C0039322E /* MessageItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */; };
+		5ADD34EC1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */; };
 		5AEDF1A61F0DB67100DDE503 /* FilterHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +110,8 @@
 		5AAC94B61E959FCB009155FE /* LastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTableViewCell.swift; sourceTree = "<group>"; };
 		5AAC94B81E95B67B009155FE /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		5ADD34E71F0EEB4D0039322E /* DebugButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
+		5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentMessageCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterHeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +226,8 @@
 				5A8B7DB31EBF94C300CCEFAD /* FollowingChatTableViewCell.swift */,
 				5A7467D91F0C59E100BAF86D /* ChatHeaderTableViewCell.swift */,
 				5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */,
+				5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */,
+				5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */,
 			);
 			name = "Cell Views";
 			sourceTree = "<group>";
@@ -420,7 +426,9 @@
 				5AAC94B31E9547BD009155FE /* FilterChatTableViewCell.swift in Sources */,
 				5AAC94AF1E95274D009155FE /* HeaderTableViewCell.swift in Sources */,
 				5A8B7DB41EBF94C300CCEFAD /* FollowingChatTableViewCell.swift in Sources */,
+				5ADD34EA1F13ED4C0039322E /* MessageItemCollectionViewCell.swift in Sources */,
 				5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */,
+				5ADD34EC1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift in Sources */,
 				5AAC94871E9304B9009155FE /* ChatViewController.swift in Sources */,
 				5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */,
 				5A35A29B1E78989000162A20 /* Constants.swift in Sources */,

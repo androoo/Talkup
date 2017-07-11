@@ -32,8 +32,8 @@ class ChatTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        chatRankLabel.layer.cornerRadius = chatRankLabel.frame.width/2
-        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2
+        chatRankLabel.layer.cornerRadius = chatRankLabel.frame.width / 2
+        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width / 2
         hasReadBadgeBackgroundImageView.isHidden = true
     }
     
@@ -45,9 +45,11 @@ class ChatTableViewCell: UITableViewCell {
         chatTopicLabel.text = chat.topic
         chatTopicLabel.textColor = Colors.primaryDark
         chatRankLabel.text = "\(chat.score)"
-        chatRankLabel.textColor = Colors.primaryDark
+        chatRankLabel.textColor = Colors.alertOrange
         subTitleLabel.textColor = Colors.primaryDarkGray
-        userAvatarImageView.image = creator.photo
+        userAvatarImageView.backgroundColor = .white
+        userAvatarImageView.layer.borderColor = Colors.alertOrange.cgColor
+        userAvatarImageView.layer.borderWidth = 1
         subTitleLabel.text = "by \(creator.userName)"
         
         toUserArrow.tintColor = Colors.actionBlue

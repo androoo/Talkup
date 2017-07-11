@@ -8,9 +8,15 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     //MARK: - Properties 
+    
+    var recentMessages: [Message]? {
+        
+        return ChatController.shared.followingChats.first?.messages
+        
+    }
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
@@ -19,10 +25,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var headerBackgroundView: UIView!
     @IBOutlet weak var headerBigTitleLabel: UILabel!
     
+    @IBOutlet weak var recentMessagesCollectionView: UICollectionView!
+    
     let maxHeaderHeight: CGFloat = 150
     let minHeaderHeight: CGFloat = 74
     
     var previousScrollOffset: CGFloat = 0
+    
+    var searchController: UISearchController?
     
     //MARK: - Outlets
     
@@ -32,6 +42,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var navbarBackgroundUIView: UIView!
     @IBOutlet weak var topNavBarBackgroundView: UIView!
+    @IBOutlet weak var mainNavBottomSep: UIImageView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var backgroundNavbarTitleLabel: UILabel!
     @IBOutlet weak var bigNavbarTitle: UILabel!
@@ -39,26 +52,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var userIconSmall: UIImageView!
     
     @IBOutlet weak var topNavBarTitleConstraint: NSLayoutConstraint!
+    
+    var flowLayout: UICollectionViewFlowLayout?
+    
     //MARK: - View lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        //fetchMessagesInFollowingChatsForUser
-        
-        
-    }
     
     //navbar actions
     
     @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
     @IBAction func profileButtonTapped(_ sender: Any) { }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        topNavBarBackgroundView.backgroundColor = .white
+        self.flowLayout?.estimatedItemSize = CGSize(width: 100, height: 100)
         guard let user = UserController.shared.currentUser else { return }
         
         currentUserHeaderImageView.image = user.photo
@@ -125,7 +134,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if UserController.shared.currentUser?.following == nil {
             return 3
         } else {
-            return 5
+            return 4
         }
     }
     
@@ -142,9 +151,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch section {
             case 0: return 1
             case 1: return ChatController.shared.followingChats.count
-            case 2: return 1
-            case 3: return ChatController.shared.chats.count
-            case 4: return 1
+            case 2: return ChatController.shared.chats.count
+            case 3: return 1
             default: return 1
             }
         }
@@ -157,14 +165,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch indexPath.section {
                 
             case 0:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
                 
-                let bottomBorder = CALayer()
-                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-                bottomBorder.frame = CGRect(x: 220, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
-                cell.layer.addSublayer(bottomBorder)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "recentChatsCell", for: indexPath)
                 
                 return cell
+                
             case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
                 
@@ -175,11 +180,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let customSelectedView = UIView()
                 customSelectedView.backgroundColor = Colors.primaryLightGray
                 cell.selectedBackgroundView = customSelectedView
-                
-                let bottomBorder = CALayer()
-                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-                bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
-//                cell.layer.addSublayer(bottomBorder)
                 
                 return cell
                 
@@ -197,18 +197,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch indexPath.section {
                 
             case 0:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "followTitle", for: indexPath) as? FollowingTitleTableViewCell else { return FollowingTitleTableViewCell() }
                 
-                let bottomBorder = CALayer()
-                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-                bottomBorder.frame = CGRect(x: 165, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
-                cell.layer.addSublayer(bottomBorder)
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "recentChatsCell", for: indexPath) as? RecentMessageCollectionTableViewCell else { return RecentMessageCollectionTableViewCell() }
+                
+                cell.backgroundColor = Colors.primaryLightGray
+                
                 
                 return cell
                 
             case 1:
                 
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "followChat", for: indexPath) as? FollowingChatTableViewCell else { return FollowingChatTableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "followChat", for: indexPath) as? FollowingChatTableViewCell else {
+                    return FollowingChatTableViewCell()
+                }
                 
                 let chat = ChatController.shared.followingChats[indexPath.row]
                 
@@ -218,24 +219,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 customSelectedView.backgroundColor = Colors.primaryLightGray
                 cell.selectedBackgroundView = customSelectedView
                 
-                let bottomBorder = CALayer()
-                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-                bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
-//                cell.layer.addSublayer(bottomBorder)
-                
                 return cell
                 
             case 2:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
-                
-                let bottomBorder = CALayer()
-                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-                bottomBorder.frame = CGRect(x: 220, y: cell.frame.size.height - 2, width: cell.frame.size.width, height: 2)
-                cell.layer.addSublayer(bottomBorder)
-                
-                return cell
-            case 3:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else {
+                    return ChatTableViewCell()
+                }
                 
                 let chat = ChatController.shared.chats[indexPath.row]
                 cell.chat = chat
@@ -245,14 +234,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 customSelectedView.backgroundColor = Colors.primaryLightGray
                 cell.selectedBackgroundView = customSelectedView
                 
-                let bottomBorder = CALayer()
-                bottomBorder.backgroundColor = Colors.primaryLightGray.cgColor
-                bottomBorder.frame = CGRect(x: 86, y: cell.frame.size.height - 1, width: cell.frame.size.width, height: 1)
-//                cell.layer.addSublayer(bottomBorder)
-                
                 return cell
                 
-            case 4:
+            case 3:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
                 return cell
                 
@@ -268,18 +252,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if UserController.shared.currentUser?.following == nil {
             switch indexPath.section {
-            case 0: return UITableViewAutomaticDimension
+            case 0: return 250
             case 1: return 76
-            case 2: return 0
+            case 2: return UITableViewAutomaticDimension
             default: return 86
             }
         } else {
             switch indexPath.section {
-            case 0: return UITableViewAutomaticDimension
+            case 0: return 250
             case 1: return 76
-            case 2: return UITableViewAutomaticDimension
-            case 3: return 76
-            case 4: return 0
+            case 2: return 76
+            case 3: return UITableViewAutomaticDimension
             default: return 86
             }
         }
@@ -288,6 +271,65 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            guard let header = tableView.dequeueReusableCell(withIdentifier: "followTitle") as? FollowingTitleTableViewCell else { return FollowingTitleTableViewCell() }
+            return header
+        default:
+            guard let header = tableView.dequeueReusableCell(withIdentifier: "filterCell") as? FilterTableViewCell else { return FilterTableViewCell() }
+            return header
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        switch section {
+        case 0:
+            return 0
+        default:
+            return 76
+        }
+        
+    }
+    
+    
+    //MARK: - Collection View Datasource 
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let messages = recentMessages else { return 0 }
+        return messages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageItemCell", for: indexPath) as? MessageItemCollectionViewCell else { return MessageItemCollectionViewCell() }
+        
+        guard let message = recentMessages?[indexPath.row]
+            else { return MessageItemCollectionViewCell() }
+        
+        cell.message = message
+        
+        return cell
+        
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        
+//        let message = recentMessages?[indexPath.row]
+//        
+//        let messageSize = message!.text.size()
+//        return CGSize(width: messageSize.width, height: messageSize.height)
+//    }
+    
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -338,5 +380,4 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
     }
-
 }
