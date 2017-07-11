@@ -17,7 +17,6 @@ protocol CustomSearchControllerDelegate {
 
 class CustomSearchController: UISearchController, UISearchBarDelegate {
     
-
     //MARK: - Properties 
     
     var customSearchBar: CustomSearchBar!
@@ -38,7 +37,6 @@ class CustomSearchController: UISearchController, UISearchBarDelegate {
         
         configureSearchBar(frame: searchBarFrame, font: searchBarFont, textColor: searchBarTextColor, bgColor: searchBarTintColor)
     }
-    
     
     
     func configureSearchBar(frame: CGRect, font: UIFont, textColor: UIColor, bgColor: UIColor) {

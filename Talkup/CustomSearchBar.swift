@@ -23,7 +23,6 @@ class CustomSearchBar: UISearchBar {
         preferredFont = font
         preferredTextColor = textColor
         
-        
         searchBarStyle = UISearchBarStyle.prominent
         isTranslucent = false
         

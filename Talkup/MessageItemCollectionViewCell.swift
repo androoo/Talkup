@@ -63,7 +63,8 @@ class MessageItemCollectionViewCell: UICollectionViewCell {
         messageAuthorImageView.image = message.owner?.photo
         messageAuthorImageView.layer.cornerRadius = messageAuthorImageView.frame.width / 2
         messageAuthorImageView.layer.masksToBounds = true
-        
+        messageAuthorNameButton.setTitle("\(message.owner?.userName ?? "username")", for: .normal)
+        messageAuthorNameButton.tintColor = Colors.primaryDarkGray
         voteButtonVoteCountlabel.text = "\(message.score)"
 
     }

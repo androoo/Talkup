@@ -322,4 +322,24 @@ extension String {
     }
 }
 
+class MainSearchTextField: UITextField {
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        
+        self.layer.cornerRadius = 10.0
+        self.layer.borderColor = Colors.primaryLightGray.cgColor
+        self.backgroundColor = Colors.primaryLightGray
+        self.textColor = Colors.primaryDark
+        self.tintColor = Colors.primaryBgPurple
+        
+        self.font = UIFont(name: "Helvetica", size: 18)
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: self.layer.frame.height))
+        
+        self.leftView = paddingView
+        self.leftViewMode = UITextFieldViewMode.always
+        
+    }
+}
+
 

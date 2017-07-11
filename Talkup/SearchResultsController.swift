@@ -91,7 +91,6 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
         searchController?.delegate = self
         searchController?.searchBar.delegate = self
         searchController?.searchBar.sizeToFit()
-        
         searchController?.searchBar.placeholder = "Enter topic name"
         
     }

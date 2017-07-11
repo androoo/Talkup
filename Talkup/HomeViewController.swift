@@ -27,6 +27,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var recentMessagesCollectionView: UICollectionView!
     
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    
     let maxHeaderHeight: CGFloat = 150
     let minHeaderHeight: CGFloat = 74
     
@@ -78,7 +81,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.backgroundColor = .clear
         
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.primaryLightGray
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
