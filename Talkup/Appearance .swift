@@ -96,11 +96,12 @@ extension UIView {
         let gradient: CAGradientLayer = CAGradientLayer()
         
         gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 1, y: 1)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
         
         gradient.frame = self.bounds
         gradient.colors = colours.map { $0.cgColor }
         gradient.locations = locations
+        
         self.layer.insertSublayer(gradient, at: 0)
     }
     
@@ -317,7 +318,6 @@ extension String {
             
             previous = cur
         }
-        
         return chars
     }
 }

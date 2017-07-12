@@ -823,13 +823,17 @@
                                 <rect key="frame" x="0.0" y="117" width="375" height="883"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="recentChatsCell" rowHeight="176" id="6iC-LD-iJf" customClass="RecentMessageCollectionTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="recentChatsCell" rowHeight="176" id="6iC-LD-iJf" customClass="RecentMessageCollectionTableViewCell" customModule="Talkup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6iC-LD-iJf" id="sUE-OB-XQC">
+                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6iC-LD-iJf" id="sUE-OB-XQC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="LCt-lT-A0N">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4fZ-4E-FbX">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -975,7 +979,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="LCt-lT-A0N" secondAttribute="bottom" id="4BT-1H-ScQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="LCt-lT-A0N" secondAttribute="trailing" id="NGi-9a-tSO"/>
+                                                <constraint firstItem="LCt-lT-A0N" firstAttribute="leading" secondItem="sUE-OB-XQC" secondAttribute="leading" id="XZb-RW-NN0"/>
                                                 <constraint firstItem="4fZ-4E-FbX" firstAttribute="leading" secondItem="sUE-OB-XQC" secondAttribute="leading" id="Yvm-qn-uSh"/>
+                                                <constraint firstItem="LCt-lT-A0N" firstAttribute="top" secondItem="sUE-OB-XQC" secondAttribute="top" id="Zxx-VE-b5M"/>
                                                 <constraint firstItem="hmU-Oz-byh" firstAttribute="leading" secondItem="sUE-OB-XQC" secondAttribute="leadingMargin" constant="8" id="hVG-af-E8e"/>
                                                 <constraint firstAttribute="bottom" secondItem="4fZ-4E-FbX" secondAttribute="bottom" id="jy9-SO-O70"/>
                                                 <constraint firstAttribute="trailing" secondItem="4fZ-4E-FbX" secondAttribute="trailing" id="ohA-tS-eW0"/>
@@ -984,6 +992,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="collectionView" destination="4fZ-4E-FbX" id="SkU-rq-66j"/>
+                                            <outlet property="contentView" destination="sUE-OB-XQC" id="zEa-NH-fIG"/>
+                                            <outlet property="gradientBackGroundView" destination="LCt-lT-A0N" id="UwW-7O-5L7"/>
                                             <outlet property="recentMessagesTitleLabel" destination="hmU-Oz-byh" id="wsF-RR-jjv"/>
                                         </connections>
                                     </tableViewCell>
@@ -1277,33 +1287,23 @@
                                             <segue destination="ESL-pB-usD" kind="show" identifier="toMyProfile" id="kGW-lx-mis"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j81-ub-t7K" customClass="MainSearchTextField" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="66" y="30" width="253" height="36"/>
-                                        <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="top" secondItem="ZaH-OO-Djp" secondAttribute="top" id="3hl-FO-i8R"/>
                                     <constraint firstItem="6if-OO-gG5" firstAttribute="top" secondItem="jUV-Xk-2SS" secondAttribute="top" id="40c-ub-4mW"/>
                                     <constraint firstItem="ZaH-OO-Djp" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" constant="22" id="5zX-mM-Qel"/>
-                                    <constraint firstItem="6if-OO-gG5" firstAttribute="leading" secondItem="j81-ub-t7K" secondAttribute="trailing" constant="8" id="6Be-Rt-wMs"/>
-                                    <constraint firstItem="OiM-RP-z4T" firstAttribute="top" secondItem="j81-ub-t7K" secondAttribute="bottom" constant="8" id="9ej-kR-Awg"/>
                                     <constraint firstAttribute="height" constant="75" id="CuI-OJ-1kq"/>
-                                    <constraint firstItem="ZaH-OO-Djp" firstAttribute="centerY" secondItem="j81-ub-t7K" secondAttribute="centerY" id="Djh-J5-j5I"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="leading" secondItem="ZaH-OO-Djp" secondAttribute="leading" id="EHN-w3-hRc"/>
                                     <constraint firstAttribute="bottom" secondItem="OiM-RP-z4T" secondAttribute="bottom" id="Epj-8p-MyG"/>
-                                    <constraint firstItem="j81-ub-t7K" firstAttribute="height" secondItem="ZaH-OO-Djp" secondAttribute="height" id="HDs-pK-kWt"/>
                                     <constraint firstItem="6if-OO-gG5" firstAttribute="height" secondItem="jUV-Xk-2SS" secondAttribute="height" id="HPg-hg-yIG"/>
                                     <constraint firstItem="6if-OO-gG5" firstAttribute="leading" secondItem="jUV-Xk-2SS" secondAttribute="leading" id="KJJ-dC-9c3"/>
-                                    <constraint firstItem="jUV-Xk-2SS" firstAttribute="centerY" secondItem="j81-ub-t7K" secondAttribute="centerY" id="Kyu-DO-gnD"/>
+                                    <constraint firstItem="OiM-RP-z4T" firstAttribute="top" secondItem="jUV-Xk-2SS" secondAttribute="bottom" constant="8" id="Lca-sB-7I3"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="height" secondItem="ZaH-OO-Djp" secondAttribute="height" id="aOc-8Z-akh"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="width" secondItem="ZaH-OO-Djp" secondAttribute="width" id="c58-rK-ieo"/>
                                     <constraint firstItem="OiM-RP-z4T" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" id="ctY-pN-oxP"/>
                                     <constraint firstItem="6if-OO-gG5" firstAttribute="width" secondItem="jUV-Xk-2SS" secondAttribute="width" id="dpf-Vu-kEQ"/>
-                                    <constraint firstItem="j81-ub-t7K" firstAttribute="leading" secondItem="TXI-yd-EAI" secondAttribute="trailing" constant="8" id="jEj-Kh-gtt"/>
+                                    <constraint firstItem="OiM-RP-z4T" firstAttribute="top" secondItem="ZaH-OO-Djp" secondAttribute="bottom" constant="8" id="hlN-hQ-eVg"/>
                                     <constraint firstAttribute="trailing" secondItem="OiM-RP-z4T" secondAttribute="trailing" id="o2c-A7-lwb"/>
                                     <constraint firstAttribute="trailing" secondItem="jUV-Xk-2SS" secondAttribute="trailing" constant="22" id="qej-mh-8Zp"/>
                                 </constraints>
@@ -1330,9 +1330,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="addChatIconImageView" destination="jUV-Xk-2SS" id="rNE-IN-WeC"/>
                         <outlet property="currentUserHeaderImageView" destination="ZaH-OO-Djp" id="Ypy-zA-I31"/>
                         <outlet property="mainNavBottomSep" destination="OiM-RP-z4T" id="pSm-gb-97j"/>
-                        <outlet property="searchTextField" destination="j81-ub-t7K" id="RLe-jo-tFY"/>
                         <outlet property="tableView" destination="nyw-UT-Cw1" id="RkY-mE-cq0"/>
                         <outlet property="tableViewBG" destination="fH8-mv-QcO" id="6EY-wF-nve"/>
                         <outlet property="topNavBarBackgroundView" destination="B6p-Hd-LND" id="Ho9-ET-lQ1"/>
@@ -2014,7 +2014,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lbj-5f-fze">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lbj-5f-fze">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -14725,8 +14725,8 @@ AAt8KQALfC4AAAAAAAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAt8MA
         <image name="whiteBack" width="30" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xlZ-ee-MrH"/>
         <segue reference="slc-cx-anL"/>
+        <segue reference="xlZ-ee-MrH"/>
         <segue reference="kGW-lx-mis"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -88,7 +88,7 @@ class MessageItemCollectionViewCell: UICollectionViewCell {
             layoutIfNeeded()
             let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
             var newFrame = layoutAttributes.frame
-            newFrame.size.width = CGFloat((message?.text.size().width)!)
+            newFrame.size.width = CGFloat(ceilf(Float(size.width)))
             layoutAttributes.frame = newFrame
             isWidthCalculated = true
             

@@ -38,6 +38,10 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate, SearchRes
     override func viewDidLoad() {
         messageTextField.delegate = self
         sendMessageButton.isEnabled = false
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
     }
     
     var barHeight: CGFloat = 65

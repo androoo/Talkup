@@ -18,10 +18,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    var searchBar: UISearchBar?
+    
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var userIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var currentUserHeaderImageView: UIImageView!
+    @IBOutlet weak var addChatIconImageView: UIImageView!
+    
     @IBOutlet weak var headerBackgroundView: UIView!
     @IBOutlet weak var headerBigTitleLabel: UILabel!
     
@@ -44,6 +48,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableViewBG: UIView!
     
     @IBOutlet weak var navbarBackgroundUIView: UIView!
+    
+    //main view for custom nav bar
     @IBOutlet weak var topNavBarBackgroundView: UIView!
     @IBOutlet weak var mainNavBottomSep: UIImageView!
     
@@ -69,6 +75,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpSearch()
+        
         topNavBarBackgroundView.backgroundColor = .white
         self.flowLayout?.estimatedItemSize = CGSize(width: 100, height: 100)
         guard let user = UserController.shared.currentUser else { return }
@@ -81,7 +89,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.backgroundColor = .clear
         
-        view.backgroundColor = Colors.primaryLightGray
+        view.backgroundColor = .white
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
@@ -94,6 +102,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
+    }
+    
+    func setUpSearch() {
+        searchBar = UISearchBar(frame: CGRect(x: Int(currentUserHeaderImageView.frame.maxX + 8), y: Int(currentUserHeaderImageView.frame.minY), width: Int(addChatIconImageView.frame.minX - 32), height: Int(currentUserHeaderImageView.frame.height)))
+        
+        topNavBarBackgroundView.addSubview(searchBar!)
     }
     
     func addChat(button: UIButton) {
@@ -203,8 +217,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "recentChatsCell", for: indexPath) as? RecentMessageCollectionTableViewCell else { return RecentMessageCollectionTableViewCell() }
                 
-                cell.backgroundColor = Colors.primaryLightGray
-                
+                cell.backgroundColor = .clear 
+                cell.setAppearance()
                 
                 return cell
                 
