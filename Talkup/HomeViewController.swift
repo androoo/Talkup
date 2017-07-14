@@ -8,17 +8,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchControllerDelegate {
     
     //MARK: - Properties 
     
     var recentMessages: [Message]? {
-        
         return ChatController.shared.followingChats.first?.messages
-        
     }
     
     var searchBar: UISearchBar?
+    var searchController: MainSearchController!
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
@@ -39,7 +39,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var previousScrollOffset: CGFloat = 0
     
-    var searchController: UISearchController?
     
     //MARK: - Outlets
     
@@ -75,8 +74,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpSearch()
-        
         topNavBarBackgroundView.backgroundColor = .white
         self.flowLayout?.estimatedItemSize = CGSize(width: 100, height: 100)
         guard let user = UserController.shared.currentUser else { return }
@@ -102,13 +99,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
+        
     }
     
-    func setUpSearch() {
-        searchBar = UISearchBar(frame: CGRect(x: Int(currentUserHeaderImageView.frame.maxX + 8), y: Int(currentUserHeaderImageView.frame.minY), width: Int(addChatIconImageView.frame.minX - 32), height: Int(currentUserHeaderImageView.frame.height)))
-        
-        topNavBarBackgroundView.addSubview(searchBar!)
-    }
+    
     
     func addChat(button: UIButton) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "newChatNav") as? NavViewController else { return }
@@ -345,6 +339,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        let messageSize = message!.text.size()
 //        return CGSize(width: messageSize.width, height: messageSize.height)
 //    }
+    
+    
+    
     
     
     

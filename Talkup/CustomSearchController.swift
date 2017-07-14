@@ -33,6 +33,7 @@ class CustomSearchController: UISearchController, UISearchBarDelegate {
     }
     
     init(searchResultsController: UIViewController!, searchBarFrame: CGRect, searchBarFont: UIFont, searchBarTextColor: UIColor, searchBarTintColor: UIColor) {
+        
         super.init(searchResultsController: searchResultsController)
         
         configureSearchBar(frame: searchBarFrame, font: searchBarFont, textColor: searchBarTextColor, bgColor: searchBarTintColor)
@@ -42,14 +43,11 @@ class CustomSearchController: UISearchController, UISearchBarDelegate {
     func configureSearchBar(frame: CGRect, font: UIFont, textColor: UIColor, bgColor: UIColor) {
         
         customSearchBar = CustomSearchBar(frame: frame, font: font , textColor: textColor)
-        
         customSearchBar.barTintColor = bgColor
         customSearchBar.tintColor = textColor
-        
         customSearchBar.showsBookmarkButton = false
         customSearchBar.showsCancelButton = false
         customSearchBar.showsSearchResultsButton = false
-        
         customSearchBar.delegate = self
     }
     

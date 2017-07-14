@@ -56,6 +56,10 @@
 		5ADD34E81F0EEB4D0039322E /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34E71F0EEB4D0039322E /* DebugButton.swift */; };
 		5ADD34EA1F13ED4C0039322E /* MessageItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */; };
 		5ADD34EC1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */; };
+		5ADD34EF1F1697320039322E /* MainSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34EE1F1697320039322E /* MainSearchBar.swift */; };
+		5ADD34F11F16B35F0039322E /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34F01F16B35F0039322E /* SearchResultTableViewCell.swift */; };
+		5ADD34F31F16B7350039322E /* MainSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34F21F16B7350039322E /* MainSearchResultsViewController.swift */; };
+		5ADD34F51F16B8EF0039322E /* MainSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34F41F16B8EF0039322E /* MainSearchController.swift */; };
 		5AEDF1A61F0DB67100DDE503 /* FilterHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +116,10 @@
 		5ADD34E71F0EEB4D0039322E /* DebugButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
 		5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentMessageCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		5ADD34EE1F1697320039322E /* MainSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSearchBar.swift; sourceTree = "<group>"; };
+		5ADD34F01F16B35F0039322E /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		5ADD34F21F16B7350039322E /* MainSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSearchResultsViewController.swift; sourceTree = "<group>"; };
+		5ADD34F41F16B8EF0039322E /* MainSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSearchController.swift; sourceTree = "<group>"; };
 		5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterHeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,9 +162,10 @@
 				5A35A26B1E76FF5500162A20 /* Model */,
 				5A35A26C1E76FF5C00162A20 /* Model Controllers */,
 				5A446B1F1E997249000AC705 /* User Views */,
-				5A8B7D851EBB985C00CCEFAD /* CustomSearch */,
 				5A35A26D1E76FF6200162A20 /* Cell Views */,
 				5A35A26E1E76FF6800162A20 /* View Controllers */,
+				5ADD34ED1F16961C0039322E /* Main Search */,
+				5A8B7D851EBB985C00CCEFAD /* CustomSearch */,
 				5A35A26F1E76FF6E00162A20 /* Network */,
 				5A35A2701E76FF7A00162A20 /* Protocols */,
 				5A35A2811E773EF900162A20 /* Helper Files */,
@@ -245,7 +254,6 @@
 				5A8D59111E9289AE007F107A /* ProfileViewController.swift */,
 				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
 				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
-				5A842FD51EBA39140099E637 /* SearchResultsController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -300,11 +308,23 @@
 		5A8B7D851EBB985C00CCEFAD /* CustomSearch */ = {
 			isa = PBXGroup;
 			children = (
-				5A8B7D861EBB988B00CCEFAD /* CustomSearchBar.swift */,
-				5A8B7D881EBBC0BA00CCEFAD /* CustomSearchController.swift */,
+				5A842FD51EBA39140099E637 /* SearchResultsController.swift */,
 				5A8B7DAF1EBE2C7E00CCEFAD /* ResultTableViewCell.swift */,
+				5A8B7D881EBBC0BA00CCEFAD /* CustomSearchController.swift */,
+				5A8B7D861EBB988B00CCEFAD /* CustomSearchBar.swift */,
 			);
 			name = CustomSearch;
+			sourceTree = "<group>";
+		};
+		5ADD34ED1F16961C0039322E /* Main Search */ = {
+			isa = PBXGroup;
+			children = (
+				5ADD34F21F16B7350039322E /* MainSearchResultsViewController.swift */,
+				5ADD34F01F16B35F0039322E /* SearchResultTableViewCell.swift */,
+				5ADD34F41F16B8EF0039322E /* MainSearchController.swift */,
+				5ADD34EE1F1697320039322E /* MainSearchBar.swift */,
+			);
+			name = "Main Search";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,6 +409,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A35A27A1E772BD300162A20 /* Message.swift in Sources */,
+				5ADD34EF1F1697320039322E /* MainSearchBar.swift in Sources */,
+				5ADD34F11F16B35F0039322E /* SearchResultTableViewCell.swift in Sources */,
 				5A14676C1E82237900F7E3EA /* UserController.swift in Sources */,
 				5A842FD81EBA39D50099E637 /* SearchableRecord.swift in Sources */,
 				5AAC94B51E955DCF009155FE /* Notifications.swift in Sources */,
@@ -408,6 +430,7 @@
 				5A35A2931E78329A00162A20 /* WelcomeViewController.swift in Sources */,
 				5A8D59101E928618007F107A /* PageViewController.swift in Sources */,
 				5ADD34E81F0EEB4D0039322E /* DebugButton.swift in Sources */,
+				5ADD34F51F16B8EF0039322E /* MainSearchController.swift in Sources */,
 				5A8D590E1E928057007F107A /* HomeViewController.swift in Sources */,
 				5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */,
 				5A35A28F1E77533A00162A20 /* RecieverTableViewCell.swift in Sources */,
@@ -430,6 +453,7 @@
 				5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */,
 				5ADD34EC1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift in Sources */,
 				5AAC94871E9304B9009155FE /* ChatViewController.swift in Sources */,
+				5ADD34F31F16B7350039322E /* MainSearchResultsViewController.swift in Sources */,
 				5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */,
 				5A35A29B1E78989000162A20 /* Constants.swift in Sources */,
 				5A8B7DB21EBF94B400CCEFAD /* FollowingTitleTableViewCell.swift in Sources */,

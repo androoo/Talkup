@@ -18,9 +18,7 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
     //MARK: - Properties
     
     var resultsArray: [SearchableRecord] = []
-    
     var customSearchController: CustomSearchController!
-    
     var delegate: SearchResultsControllerDelegate?
     
     @IBOutlet weak var resultsTableView: UITableView!
@@ -77,23 +75,22 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
         
         customSearchController.customSearchBar.placeholder = "Enter topic name                              "
         resultsTableView.tableHeaderView = customSearchController.customSearchBar
-        
         customSearchController.customDelegate = self
     }
     
-    func setupSearchResultsController() {
-        
-        // Initialize and perform minimum configuration for search controller
-        searchController = UISearchController(searchResultsController: nil)
-        self.resultsTableView.tableHeaderView = searchController?.searchBar
-        searchController?.searchResultsUpdater = self
-        searchController?.dimsBackgroundDuringPresentation = false
-        searchController?.delegate = self
-        searchController?.searchBar.delegate = self
-        searchController?.searchBar.sizeToFit()
-        searchController?.searchBar.placeholder = "Enter topic name"
-        
-    }
+//    func setupSearchResultsController() {
+//        
+//        // Initialize and perform minimum configuration for search controller
+//        searchController = UISearchController(searchResultsController: nil)
+//        self.resultsTableView.tableHeaderView = searchController?.searchBar
+//        searchController?.searchResultsUpdater = self
+//        searchController?.dimsBackgroundDuringPresentation = false
+//        searchController?.delegate = self
+//        searchController?.searchBar.delegate = self
+//        searchController?.searchBar.sizeToFit()
+//        searchController?.searchBar.placeholder = "Enter topic name"
+//        
+//    }
     
     // cusom search delegate func s
     
@@ -112,12 +109,9 @@ class SearchResultsController: UIViewController , UISearchResultsUpdating, UITab
     func didChangeSearchText(searchText: String) {
         
         let searchTerm = searchText.lowercased()
-        
         delegate?.searchTermsEntered(searchText)
-        
         let topics = ChatController.shared.chats
         let filteredPosts = topics.filter { $0.matches(searchTerm: searchTerm) }.map { $0 as SearchableRecord }
-        
         self.resultsArray = filteredPosts
         self.resultsTableView.reloadData()
         

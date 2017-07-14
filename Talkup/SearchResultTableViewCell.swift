@@ -1,14 +1,14 @@
 //
-//  ResultTableViewCell.swift
+//  SearchResultTableViewCell.swift
 //  Talkup
 //
-//  Created by Andrew Ervin Gierke on 5/6/17.
+//  Created by Andrew Ervin Gierke on 7/12/17.
 //  Copyright © 2017 Androoo. All rights reserved.
 //
 
 import UIKit
 
-class ResultTableViewCell: UITableViewCell {
+class SearchResultTableViewCell: UITableViewCell {
     
     //MARK: - Outlets 
     
@@ -17,6 +17,7 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     
     
+
     //MARK: - Properties
     
     var chat: Chat? {
@@ -27,19 +28,19 @@ class ResultTableViewCell: UITableViewCell {
     
     
     //MARK: - View life
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    //MARK: - Helper Methods 
+    //MARK: - Helper Methods
     
     func updateViews() {
         guard let chat = chat,
@@ -50,10 +51,17 @@ class ResultTableViewCell: UITableViewCell {
         userNameLabel.text = "by \(creator.userName)"
         
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width / 2
-        userAvatarImageView.clipsToBounds = true 
+        userAvatarImageView.clipsToBounds = true
         
         chatTitleLabel.textColor = Colors.primaryDark
         userNameLabel.textColor = Colors.primaryDarkGray
         
     }
+    
 }
+
+
+
+
+
+
