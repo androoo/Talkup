@@ -33,6 +33,25 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        for subView in mainSearchController.mainSearchBar.subviews  {
+            for subsubView in subView.subviews  {
+                if let textField = subsubView as? UITextField {
+                    var bounds: CGRect
+                    bounds = textField.frame
+                    bounds.size.height = 35 //(set height to whatever)
+                    textField.bounds = bounds
+                    textField.borderStyle = UITextBorderStyle.roundedRect
+                    textField.backgroundColor = Colors.primaryLightGray
+                    textField.layer.cornerRadius = 10.0
+                    textField.layer.frame = CGRect(x: 16.0, y: 30.0, width: bounds.size.width, height: 35.0)
+                }
+            }
+        }
+        
+    }
+    
     //MARK: - TableViewDataSource Methods 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,10 +72,11 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     
     func configureMainSearchController() {
         
-        mainSearchController = MainSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: 375.0, height: 75.0), searchBarFont: UIFont(name: "helvetica", size: 18.0)!, searchBarTextColor: Colors.primaryBgPurple, searchBarTintColor: .white)
+        mainSearchController = MainSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: 375.0, height: 75.0), searchBarFont: UIFont(name: "Helvetica", size: 18.0)!, searchBarTextColor: Colors.primaryBgPurple, searchBarTintColor: .white)
         
         mainSearchController.mainSearchBar.placeholder = "Search Talkup"
-        mainNavbar.addSubview(mainSearchController.mainSearchBar)
+        resultsTableView.tableHeaderView = mainSearchController.mainSearchBar
+//        mainNavbar.addSubview(mainSearchController.mainSearchBar)
         mainSearchController.searchDelegate = self
         
     }

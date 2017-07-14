@@ -972,7 +972,7 @@
                                                     </connections>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmU-Oz-byh">
-                                                    <rect key="frame" x="16" y="16" width="87" height="43"/>
+                                                    <rect key="frame" x="16" y="8" width="87" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -987,7 +987,7 @@
                                                 <constraint firstItem="hmU-Oz-byh" firstAttribute="leading" secondItem="sUE-OB-XQC" secondAttribute="leadingMargin" constant="8" id="hVG-af-E8e"/>
                                                 <constraint firstAttribute="bottom" secondItem="4fZ-4E-FbX" secondAttribute="bottom" id="jy9-SO-O70"/>
                                                 <constraint firstAttribute="trailing" secondItem="4fZ-4E-FbX" secondAttribute="trailing" id="ohA-tS-eW0"/>
-                                                <constraint firstItem="hmU-Oz-byh" firstAttribute="top" secondItem="sUE-OB-XQC" secondAttribute="topMargin" constant="8" id="pJK-T0-9qt"/>
+                                                <constraint firstItem="hmU-Oz-byh" firstAttribute="top" secondItem="sUE-OB-XQC" secondAttribute="topMargin" id="pJK-T0-9qt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2139,14 +2139,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-SN-hJ2">
-                                <rect key="frame" x="0.0" y="42" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="42" width="375" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="gIu-ng-3U3"/>
+                                    <constraint firstAttribute="height" constant="1" id="gIu-ng-3U3"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MOB-4k-aDU">
-                                <rect key="frame" x="0.0" y="117" width="375" height="550"/>
+                                <rect key="frame" x="0.0" y="43" width="375" height="624"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="mainResultsCell" rowHeight="78" id="OMa-xc-lVS" customClass="SearchResultTableViewCell" customModule="Talkup" customModuleProvider="target">

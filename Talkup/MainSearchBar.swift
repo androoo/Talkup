@@ -49,16 +49,17 @@ class MainSearchBar: UISearchBar {
         
         if let index = indexOfSearchFieldInSubviews() {
             let searchField: UITextField = (subviews[0]).subviews[index] as! UITextField
-            searchField.frame = CGRect(x: 5.0, y: 5.0, width: frame.size.width - 10.0, height: frame.size.width - 10.0)
+            
+            searchField.frame = CGRect(x: 8.0, y: 15.0, width: frame.size.width - 50.0, height: frame.size.height)
             searchField.font = preferredFont
             searchField.textColor = preferredTextColor
             searchField.leftView = nil
             searchField.rightView = nil
             searchField.clearButtonMode = .never
             
-            searchField.attributedPlaceholder = NSAttributedString(string: self.placeholder != nil ? self.placeholder! : "", attributes: [NSForegroundColorAttributeName: Colors.primaryDark])
+            searchField.attributedPlaceholder = NSAttributedString(string: self.placeholder != nil ? self.placeholder! : "", attributes: [NSForegroundColorAttributeName: Colors.recievedMessagePrimary])
             
-            searchField.backgroundColor = barTintColor
+            searchField.backgroundColor = Colors.primaryLightGray
             
             let startPoint = CGPoint(x: 0.0, y: frame.size.height)
             let endPoint = CGPoint(x: frame.size.width, y: frame.size.height)
