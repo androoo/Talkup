@@ -1297,7 +1297,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR8-V1-una">
                                         <rect key="frame" x="65.5" y="30" width="253" height="36"/>
                                         <connections>
-                                            <segue destination="iUe-rJ-ozy" kind="show" id="05r-XR-gGE"/>
+                                            <segue destination="iUe-rJ-ozy" kind="show" identifier="toSearchView" id="05r-XR-gGE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1358,6 +1358,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEP-fZ-2Ie" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="DbQ-0t-x0B" customClass="NavDelegate" customModule="Talkup" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="3780" y="-300.44977511244377"/>
         </scene>
@@ -2139,14 +2140,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-SN-hJ2">
-                                <rect key="frame" x="0.0" y="42" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="42" width="375" height="75"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="gIu-ng-3U3"/>
+                                    <constraint firstAttribute="height" constant="75" id="gIu-ng-3U3"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MOB-4k-aDU">
-                                <rect key="frame" x="0.0" y="43" width="375" height="624"/>
+                                <rect key="frame" x="0.0" y="117" width="375" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="mainResultsCell" rowHeight="78" id="OMa-xc-lVS" customClass="SearchResultTableViewCell" customModule="Talkup" customModuleProvider="target">
@@ -2223,6 +2224,7 @@
                             <constraint firstItem="MOB-4k-aDU" firstAttribute="leading" secondItem="3DC-hy-QrS" secondAttribute="leading" id="o7r-V2-AfG"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="yQa-WM-ofO"/>
                     <connections>
                         <outlet property="mainNavbar" destination="ggG-SN-hJ2" id="Xvu-f9-KN2"/>
                         <outlet property="resultsTableView" destination="MOB-4k-aDU" id="dyi-qM-yw1"/>

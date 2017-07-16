@@ -29,10 +29,12 @@ class MainSearchController: UISearchController, UISearchBarDelegate {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
     }
     
     
@@ -41,7 +43,7 @@ class MainSearchController: UISearchController, UISearchBarDelegate {
         super.init(searchResultsController: searchResultsController)
         
         configureSearchBar(frame: searchBarFrame, font: searchBarFont, textColor: searchBarTextColor, bgColor: searchBarTintColor)
-    
+        
     }
     
     func configureSearchBar(frame: CGRect, font: UIFont, textColor: UIColor, bgColor: UIColor) {
@@ -52,7 +54,7 @@ class MainSearchController: UISearchController, UISearchBarDelegate {
         mainSearchBar.showsCancelButton = true
         mainSearchBar.showsSearchResultsButton = false
         mainSearchBar.delegate = self
-        
+    
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

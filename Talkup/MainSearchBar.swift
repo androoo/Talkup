@@ -25,7 +25,7 @@ class MainSearchBar: UISearchBar {
         
         searchBarStyle = UISearchBarStyle.prominent
         isTranslucent = false
-        
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,12 +45,39 @@ class MainSearchBar: UISearchBar {
         return index
     }
     
+    
+    
     override func draw(_ rect: CGRect) {
+        
+        for subView in self.subviews {
+            for subsubView in subView.subviews {
+                
+                if let textField = subsubView as? UITextField {
+                    var bounds: CGRect
+                    bounds = textField.frame
+                    bounds.size.height = 35 //(set height to whatever)
+                    textField.bounds = bounds
+                    textField.borderStyle = UITextBorderStyle.roundedRect
+                    textField.backgroundColor = Colors.primaryLightGray
+                    textField.layer.cornerRadius = 10.0
+                    textField.layer.frame = CGRect(x: 16.0, y: 30.0, width: bounds.size.width - 8.0, height: 35.0)
+                }
+            }
+        }
         
         if let index = indexOfSearchFieldInSubviews() {
             let searchField: UITextField = (subviews[0]).subviews[index] as! UITextField
             
-            searchField.frame = CGRect(x: 8.0, y: 15.0, width: frame.size.width - 50.0, height: frame.size.height)
+            var bounds: CGRect
+            bounds = searchField.frame
+            bounds.size.height = 35 //(set height to whatever)
+            searchField.bounds = bounds
+            searchField.borderStyle = UITextBorderStyle.roundedRect
+            searchField.backgroundColor = Colors.primaryLightGray
+            searchField.layer.cornerRadius = 10.0
+            searchField.layer.frame = CGRect(x: 16.0, y: 30.0, width: bounds.size.width, height: 35.0)
+            
+//            searchField.frame = CGRect(x: 8.0, y: 15.0, width: frame.size.width, height: frame.size.height)
             searchField.font = preferredFont
             searchField.textColor = preferredTextColor
             searchField.leftView = nil
@@ -74,7 +101,6 @@ class MainSearchBar: UISearchBar {
             shapeLayer.lineWidth = 1.0
             
             layer.addSublayer(shapeLayer)
-            
         }
         super.draw(rect)
     }

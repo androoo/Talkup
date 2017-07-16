@@ -9,7 +9,7 @@
 import UIKit
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchControllerDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: - Properties 
     
@@ -19,6 +19,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var searchBar: UISearchBar?
     var searchController: MainSearchController!
+    
+    //VC transitions 
+    let slideAnimator = SearchTransitionAnimator()
+    let customNavigationAnimationController = SearchTransitionAnimator()
+    
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
@@ -99,6 +104,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
+        
+        
         
     }
     
@@ -376,7 +383,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             
-        }else if segue.identifier == "toMyProfile" {
+        } else if segue.identifier == "toMyProfile" {
                     guard let user = UserController.shared.currentUser
                         else { return }
                     
@@ -385,9 +392,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         destinationViewController.user = user
                     
             }
+        } else if segue.identifier == "toSearchView" {
+            
+            let destination = segue.destination
+            navigationController?.delegate = self
         }
     }
 
+    //MARK: - Custom Transitions 
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return customNavigationAnimationController
+    }
+    
     
     func updateViews() {
         DispatchQueue.main.async {
