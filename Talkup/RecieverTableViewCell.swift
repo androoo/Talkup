@@ -89,14 +89,14 @@ class RecieverTableViewCell: UITableViewCell {
         
         if voteButtonState == .yesVote {
             
-            voteButton.backgroundColor = Colors.alertOrange
+            voteButton.backgroundColor = Colors.greenBlue
             
 //            voteButton.applyGradient(colours: [Colors.gradientBlue, Colors.gradientPurple])
 //            voteButton.applyGradient(colours: [Colors.purple, Colors.alertOrange], locations: [0.0, 1.0])
             
             voteButton.layer.cornerRadius = voteButton.frame.width/2
             voteButton.layer.borderWidth = 1
-            voteButton.layer.borderColor = Colors.alertOrange.cgColor
+            voteButton.layer.borderColor = Colors.greenBlue.cgColor
             voteButton.clipsToBounds = true 
             
             buttonVoteCountLabel.textColor = .white
@@ -109,13 +109,13 @@ class RecieverTableViewCell: UITableViewCell {
             
         } else {
             
-            voteButton.backgroundColor = .clear
+            voteButton.backgroundColor = Colors.bubbleGray
             voteButton.layer.cornerRadius = voteButton.frame.width/2
             voteButton.layer.borderWidth = 1
-            voteButton.layer.borderColor = Colors.buttonBorderGray.cgColor
+            voteButton.layer.borderColor = Colors.bubbleGray.cgColor
             
             buttonVoteArrow.image = UIImage(named: "upVoteBlack")
-            buttonVoteCountLabel.textColor = .lightGray
+            buttonVoteCountLabel.textColor = .black
             
             message?.score += 1
             
@@ -139,6 +139,8 @@ class RecieverTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         
+        
+        
         messageToCustomize.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
         messageBg.layer.cornerRadius = 15
         messageBg.clipsToBounds = true
@@ -152,21 +154,29 @@ class RecieverTableViewCell: UITableViewCell {
         
         let time = message.timeSinceCreation(from: message.timestamp, to: Date())
       
+        if message.text.containsOnlyEmoji {
+            messageBackground.isHidden = true
+            chatMessageLabel.font = UIFont(name: "Helvetica", size: 40)
+        }
         
         messageScoreLabel.text = ""
         chatMessageLabel.text = message.text
         buttonVoteCountLabel.text = "\(message.score)"
         timestampLabel.text = "\(time)"
         usernameButton.setTitle("\(username)", for: .normal)
-        usernameButton.tintColor = Colors.actionBlue
+        usernameButton.tintColor = Colors.primaryDarkGray
         
         
         userAvatarImageView.image = message.owner?.photo
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2
         userAvatarImageView.clipsToBounds = true
         
-        messageBackground.backgroundColor = Colors.bubbleGray
-        messageBackground.layer.cornerRadius = 20
+        messageBackground.backgroundColor = .clear
+        
+        messageBackground.layer.borderWidth = 2
+        messageBackground.layer.borderColor = Colors.bubbleGray.cgColor
+        
+        messageBackground.layer.cornerRadius = 22
         chatMessageLabel.textColor = .black 
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscription) in

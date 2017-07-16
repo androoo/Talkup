@@ -54,6 +54,39 @@ class MessageController {
         }
     }
     
+    
+    // new func to go search cloudkit for messages in array of chats, then set the messages to the chat array.
+    
+    func fetchMessagesIn(chats: [Chat], completion: @escaping () -> Void) {
+        
+        let chatReferences = chats.flatMap({$0.chatReference})
+        
+        let predicate = NSPredicate(format: "chat IN %@", chatReferences)
+        
+        let query = CKQuery(recordType: Constants.messagetypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                completion()
+            } else {
+                guard let records = records else { completion(); return }
+                let messages = records.flatMap({Message(cloudKitRecord: $0)})
+                
+                for chat in chats {
+                    for message in messages {
+                        if message.chatReference.recordID == chat.cloudKitRecordID {
+                            chat.messages.append(message)
+                            completion()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
     // Set Message Owner
     
     func fetchMessageOwnersFor(messages: [Message], completion: @escaping () -> Void) {

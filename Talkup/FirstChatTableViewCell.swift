@@ -24,17 +24,16 @@ class FirstChatTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         updateViews()
-        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2
 
     }
     
     
     private func updateViews() {
         
-        newTopicLabel.text = "New Topic"
-        newTopicLabel.textColor = Colors.actionBlue
+        newTopicLabel.text = "Create & Discover"
+        newTopicLabel.textColor = Colors.primaryDark
 
-        subTitleLabel.textColor = UIColor.gray
+        subTitleLabel.textColor = Colors.primaryDarkGray
         
     }
 }

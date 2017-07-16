@@ -86,6 +86,14 @@ class Message: CloudKitSyncable {
     var recordType: String { return Constants.messagetypeKey }
 }
 
+//MARK: - Extenstions 
+
+extension Message: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        return text.contains(searchTerm)
+    }
+}
+
 extension CKRecord {
     convenience init(message: Message) {
         

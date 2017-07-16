@@ -27,6 +27,11 @@ enum VoteButtonState {
     case yesVote
 }
 
+enum FollowingButton {
+    case pressed
+    case notPressed
+}
+
 enum MessageType {
     case photo
     case text

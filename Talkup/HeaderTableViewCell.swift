@@ -48,7 +48,4 @@ class HeaderTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // configure view for selected state here
     }
-    
-    
-
 }

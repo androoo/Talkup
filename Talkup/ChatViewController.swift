@@ -8,27 +8,20 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate, ChatHeaderDelegate {
 
     //MARK: - Outlets
     
-    @IBOutlet weak var liveButton: UIButton!
-    @IBOutlet weak var topButton: UIButton!
-    
-    @IBOutlet weak var nowLabel: UILabel!
-    @IBOutlet weak var topLabel: UILabel!
-    
-    
-    @IBOutlet weak var liveButtonBottomBorder: UIImageView!
-    @IBOutlet weak var topButtonBottomBorder: UIImageView!
-    @IBOutlet weak var navBarBottomBorderImageView: UIImageView!
-    
+    @IBOutlet weak var navBarViewBgView: UIView!
     @IBOutlet weak var sendMessageButtonTapped: UIButton!
-    
     @IBOutlet weak var chatTitleLabel: UILabel!
+    @IBOutlet weak var mainNavBottomSep: UIImageView!
+    
     
     //MARK: - Properties
     @IBOutlet var tableView: UITableView!
+    
+    var followButton: FollowingButton?
     
     var chat: Chat? {
         didSet {
@@ -41,31 +34,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    var heroChatCell: ChatHeaderTableViewCell?
     var messageSortSelection: MessageSort = .live
+    var timeOfLastVisit: Date?
     
     //MARK: - UIActions
-    
-    @IBAction func liveButton(_ sender: Any) {
-        liveButton.setTitleColor(Colors.hotRed, for: .normal)
-        topButton.setTitleColor(UIColor.lightGray, for: .normal)
-        nowLabel.textColor = Colors.hotRed
-        topLabel.textColor = .lightGray
-        liveButtonBottomBorder.backgroundColor = Colors.hotRed
-        topButtonBottomBorder.backgroundColor = Colors.bubbleGray
-        messageSortSelection = .live
-        updateViews()
-    }
 
-    @IBAction func topButton(_ sender: Any) {
-        liveButton.setTitleColor(UIColor.lightGray, for: .normal)
-        topButton.setTitleColor(Colors.alertOrange, for: .normal)
-        topLabel.textColor = Colors.alertOrange
-        nowLabel.textColor = .lightGray
-        topButtonBottomBorder.backgroundColor = Colors.alertOrange
-        liveButtonBottomBorder.backgroundColor = Colors.bubbleGray
-        messageSortSelection = .top
-        updateViews()
-    }
+    
 
     @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
         guard inputTextField.text != "" else { sendMessageButtonTapped.isEnabled = false; return }
@@ -110,6 +85,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+        ChatController.shared.checkSubscriptionTo(chat: chat) { (subscription) in
+            if subscription {
+                self.followButton = .pressed
+                
+            } else {
+                self.followButton = .notPressed
+            }
+        }
+        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
@@ -118,38 +102,54 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        liveButton.setTitleColor(Colors.hotRed, for: .normal)
-        nowLabel.textColor = Colors.hotRed
-        liveButtonBottomBorder.backgroundColor = Colors.hotRed
-        topButtonBottomBorder.backgroundColor = Colors.bubbleGray
-        
         updateViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         sendMessageButtonTapped.isEnabled = false
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isHidden = true
+        tableView.backgroundColor = .white
+        navBarViewBgView.backgroundColor = .white
+        mainNavBottomSep.backgroundColor = Colors.primaryLightGray
+        
         guard let name = chat?.topic else { return }
         inputTextField.delegate = self
         updateViews()
         customize()
-        navBarBottomBorderImageView.backgroundColor = Colors.bubbleGray
-        liveButtonBottomBorder.isHidden = false
-        title = "\(name)"
-        chatTitleLabel.text = "\(name)"
+        
         
         guard let chat = chat, isViewLoaded else { return }
         title = "\(chat.topic)"
-        
-        //        self.navigationItem.titleView = setTitle(title: "\(chat.topic)", subtitle: "45 people")
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(chatMessagesChanged(_:)), name: ChatController.ChatMessagesChangedNotification, object: nil)
         
         tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
+    }
+    
+    // set timeOfLastVisit property to now
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        //set value of current date to key of chat's recordID.recordName in user defaults
+        
+        guard let recordName = chat?.cloudKitRecordID?.recordName else { return }
+        
+        let defaults = UserDefaults.standard
+
+        defaults.set(Date(), forKey: "\(recordName)")
+        
+        chat?.unreadMessages = []
+        
     }
     
     // MARK: Notifications
@@ -161,47 +161,126 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Table view data source
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chat?.filteredMessages.count ?? 0
+        
+        switch section {
+        case 0: return 1
+        default: return chat?.filteredMessages.count ?? 0
+            
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if tableView.isDragging {
-            cell.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
-            UIView.animate(withDuration: 0.3, animations: {
-                cell.transform = CGAffineTransform.identity
-            })
+        
+        if indexPath.section != 0 {
+            if tableView.isDragging {
+                cell.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
+                UIView.animate(withDuration: 0.3, animations: {
+                    cell.transform = CGAffineTransform.identity
+                })
+            }
         }
     }
     
+    // Filter header stuff
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        
+        switch section {
+            
+        case 0:
+            return nil
+        default:
+            guard let header = tableView.dequeueReusableCell(withIdentifier: "headerViewCell") as? FilterHeaderTableViewCell else { return FilterHeaderTableViewCell() }
+            
+            header.delegate = self
+            
+            return header
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 0
+        default:
+            return 50
+        }
+    }
+    
+    
+    // set up the cells 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // switch on the message's owner. If the owner ID = current user ID then cell type is sender.
-        
-        let message = messages[indexPath.row]
-        
-        guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
-        
-        if owner.cloudKitRecordID == currentUser.cloudKitRecordID {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
+        switch indexPath.section {
+        case 0:
             
-            cell.message = message
-            return cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as? ChatHeaderTableViewCell else { return ChatHeaderTableViewCell() }
             
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
-            
+            cell.chat = chat
+            cell.backgroundColor = Colors.primaryLightGray
+            cell.following = followButton
             cell.delegate = self
-            cell.message = message
+            self.heroChatCell = cell
             
             return cell
-        }
+            
+        default:
+            
+            
+            let message = messages[indexPath.row]
+            
+            guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
+            
+            
+            if owner.cloudKitRecordID == currentUser.cloudKitRecordID {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
+                
+                cell.message = message
+                
+                cell.backgroundColor = .clear
+                
+                return cell
+                
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
+                
+                cell.backgroundColor = .clear
+                
+                cell.delegate = self
+                cell.message = message
+                
+                return cell
+            }
+            
+        }    
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if inputTextField.isFirstResponder { inputTextField.resignFirstResponder() }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0: return UITableViewAutomaticDimension
+        default: return UITableViewAutomaticDimension
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     
     //MARK: - Customize Appearance
     
@@ -210,7 +289,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        self.tableView.estimatedRowHeight = self.barHeight
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
+        
+        self.currentUserAvatarInputImageView.image = UserController.shared.currentUser?.photo
+        self.currentUserAvatarInputImageView.layer.cornerRadius = currentUserAvatarInputImageView.layer.frame.width / 2
+        self.currentUserAvatarInputImageView.layer.masksToBounds = true 
     }
+    
     
     //MARK: - Chat Input
     
@@ -231,14 +315,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func backNavButtonTapped(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
-        inputBar.isHidden = true 
+        
+        if chat?.isDismisable == true {
+            chat?.isDismisable = false
+            
+            performSegue(withIdentifier: "unwindToHome", sender: self)
+            
+        } else {
+            
+            _ = navigationController?.popViewController(animated: true)
+            inputBar.isHidden = true
+            
+        }
     }
     
     
     @IBOutlet var inputBar: UIView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var currentUserAvatarInputImageView: UIImageView!
     
     override var inputAccessoryView: UIView? {
         get {
@@ -251,9 +346,33 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return true
     }
     
-    let barHeight: CGFloat = 50
+    let barHeight: CGFloat = 65
     
-    //MARK: - Helper Methods
+    //MARK: - Scrolling UX
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        guard let name = chat?.topic else { return }
+        
+        if let heroCell = self.heroChatCell {
+            if scrollView.contentOffset.y < 0 {
+                heroCell.headerViewTopContstraint.constant = scrollView.contentOffset.y
+            }
+        }
+        
+        if (scrollView.contentOffset.y > 0) && (scrollView.contentOffset.y < 350) {
+            
+            title = ""
+            
+            title = "\(name)"
+            chatTitleLabel.text = "\(name)"
+            chatTitleLabel.textColor = Colors.primaryBgPurple
+            chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20)
+            
+        }
+        
+        
+    }
     
     
     
@@ -267,6 +386,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // the recordNames of the blocked users and owner refs are what will match
         let blockedRecordNames = blockedUsers.flatMap({$0.recordID.recordName})
+        
         //if message owner ref == blocked owner ref then message is hidden
         let messageRecordNames = messages.flatMap({$0.ownerReference.recordID.recordName})
         
@@ -297,6 +417,47 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         confirmAlertController.addAction(confirmAction)
         confirmAlertController.addAction(cancelAction)
         present(confirmAlertController, animated: true, completion: nil)
+    }
+    
+    //MARK: - Filter Header Delegate 
+    
+    func nowSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
+        // filter messages to now
+        messageSortSelection = .live
+        updateViews()
+    }
+    
+    func topSortButtonClicked() {
+        // filter messages to top
+        messageSortSelection = .top
+        updateViews()
+    }
+    
+    //MARK: - Chat Header Delegate 
+    
+    func followButtonPressed(_ sender: ChatHeaderTableViewCell) {
+        
+        guard let chat = chat,
+            let user = UserController.shared.currentUser else { return }
+        
+        ChatController.shared.followMessagesIn(chat: chat)
+        
+        if followButton == .pressed {
+            // remove chat from followed list
+            followButton = .notPressed
+        } else {
+            UserController.shared.followChat(Foruser: user, chat: chat)
+            followButton = .pressed
+        }
+        
+        ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (_, _, _) in
+            
+            DispatchQueue.main.async {
+                self.updateViews()
+            }
+        }
+        
+        
     }
     
     //MARK: - Message Recieved Cell Delegate

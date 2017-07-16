@@ -20,6 +20,10 @@ class Chat: CloudKitSyncable {
     var score: Int?
     var messages: [Message]
     
+    // local property
+    var unreadMessages: [Message] = []
+    var isDismisable: Bool = false
+    
     var filteredMessages: [Message] {
         return messages.filter({$0.blocked == false})
     }
@@ -54,7 +58,13 @@ class Chat: CloudKitSyncable {
     var recordType: String { return Constants.chattypeKey }
 }
 
-//MARK: -
+//MARK: - extensions 
+
+extension Chat: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        return self.topic.lowercased().contains(searchTerm)
+    }
+}
 
 extension CKRecord {
     convenience init(chat: Chat) {
