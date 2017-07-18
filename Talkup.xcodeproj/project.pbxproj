@@ -67,6 +67,10 @@
 		5AFEED861F1A5A3800E50422 /* NavDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED851F1A5A3800E50422 /* NavDelegate.swift */; };
 		5AFEED8B1F1D92A500E50422 /* SlideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */; };
 		5AFEED8D1F1D94DE00E50422 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */; };
+		5AFEED8F1F1D986D00E50422 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED8E1F1D986D00E50422 /* MenuTableViewCell.swift */; };
+		5AFEED921F1E4F0F00E50422 /* SlideMenuTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED911F1E4F0F00E50422 /* SlideMenuTransitionController.swift */; };
+		5AFEED941F1E518900E50422 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED931F1E518900E50422 /* SlideMenuController.swift */; };
+		5AFEEDBB1F1EA0B900E50422 /* SlideMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEEDBA1F1EA0B900E50422 /* SlideMenuAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +137,10 @@
 		5AFEED851F1A5A3800E50422 /* NavDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDelegate.swift; sourceTree = "<group>"; };
 		5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SlideMenu.storyboard; sourceTree = "<group>"; };
 		5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
+		5AFEED8E1F1D986D00E50422 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		5AFEED911F1E4F0F00E50422 /* SlideMenuTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTransitionController.swift; sourceTree = "<group>"; };
+		5AFEED931F1E518900E50422 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
+		5AFEEDBA1F1EA0B900E50422 /* SlideMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +184,7 @@
 				5A446B1F1E997249000AC705 /* User Views */,
 				5A35A26D1E76FF6200162A20 /* Cell Views */,
 				5A35A26E1E76FF6800162A20 /* View Controllers */,
+				5AFEED901F1E4ECE00E50422 /* SlideTransition */,
 				5ADD34ED1F16961C0039322E /* Main Search */,
 				5A8B7D851EBB985C00CCEFAD /* CustomSearch */,
 				5AB1222D1F191F0400B4D02D /* Presentation Controllers */,
@@ -251,6 +260,7 @@
 				5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */,
 				5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */,
 				5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */,
+				5AFEED8E1F1D986D00E50422 /* MenuTableViewCell.swift */,
 			);
 			name = "Cell Views";
 			sourceTree = "<group>";
@@ -369,6 +379,16 @@
 			name = "Main Search";
 			sourceTree = "<group>";
 		};
+		5AFEED901F1E4ECE00E50422 /* SlideTransition */ = {
+			isa = PBXGroup;
+			children = (
+				5AFEED911F1E4F0F00E50422 /* SlideMenuTransitionController.swift */,
+				5AFEED931F1E518900E50422 /* SlideMenuController.swift */,
+				5AFEEDBA1F1EA0B900E50422 /* SlideMenuAnimator.swift */,
+			);
+			name = SlideTransition;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -453,6 +473,7 @@
 			files = (
 				5A35A27A1E772BD300162A20 /* Message.swift in Sources */,
 				5ADD34EF1F1697320039322E /* MainSearchBar.swift in Sources */,
+				5AFEED8F1F1D986D00E50422 /* MenuTableViewCell.swift in Sources */,
 				5ADD34F11F16B35F0039322E /* SearchResultTableViewCell.swift in Sources */,
 				5A14676C1E82237900F7E3EA /* UserController.swift in Sources */,
 				5A842FD81EBA39D50099E637 /* SearchableRecord.swift in Sources */,
@@ -492,12 +513,15 @@
 				5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */,
 				5AB122321F1927F100B4D02D /* FadeInController.swift in Sources */,
 				5A8F7AAB1E7C504200C4E566 /* ChatTableViewCell.swift in Sources */,
+				5AFEEDBB1F1EA0B900E50422 /* SlideMenuAnimator.swift in Sources */,
 				5A35A2571E76FDC500162A20 /* AppDelegate.swift in Sources */,
 				5AAC94B31E9547BD009155FE /* FilterChatTableViewCell.swift in Sources */,
+				5AFEED941F1E518900E50422 /* SlideMenuController.swift in Sources */,
 				5AAC94AF1E95274D009155FE /* HeaderTableViewCell.swift in Sources */,
 				5A8B7DB41EBF94C300CCEFAD /* FollowingChatTableViewCell.swift in Sources */,
 				5ADD34EA1F13ED4C0039322E /* MessageItemCollectionViewCell.swift in Sources */,
 				5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */,
+				5AFEED921F1E4F0F00E50422 /* SlideMenuTransitionController.swift in Sources */,
 				5ADD34EC1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift in Sources */,
 				5AAC94871E9304B9009155FE /* ChatViewController.swift in Sources */,
 				5ADD34F31F16B7350039322E /* MainSearchResultsViewController.swift in Sources */,

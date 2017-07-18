@@ -884,12 +884,6 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCL-cL-Cw1">
                                                                         <rect key="frame" x="16" y="76" width="40" height="40"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJZ-n3-jdQ">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                                                                <connections>
-                                                                                    <action selector="messageVoteButton:" destination="y0Y-ig-9y6" eventType="touchUpInside" id="QVu-eY-Gud"/>
-                                                                                </connections>
-                                                                            </button>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upVoteArrow" translatesAutoresizingMaskIntoConstraints="NO" id="tGm-MS-e1y">
                                                                                 <rect key="frame" x="14" y="8" width="13" height="8"/>
                                                                                 <constraints>
@@ -903,6 +897,12 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJZ-n3-jdQ">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                                <connections>
+                                                                                    <action selector="messageVoteButton:" destination="y0Y-ig-9y6" eventType="touchUpInside" id="QVu-eY-Gud"/>
+                                                                                </connections>
+                                                                            </button>
                                                                         </subviews>
                                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
@@ -1292,7 +1292,7 @@
                                         <rect key="frame" x="22" y="30" width="36" height="36"/>
                                         <connections>
                                             <action selector="profileButtonTapped:" destination="Q4K-Y1-ARG" eventType="touchUpInside" id="Mah-B3-T2g"/>
-                                            <segue destination="L3l-l5-Yw8" kind="show" identifier="slideMenu" id="sLS-K5-lfJ"/>
+                                            <segue destination="L3l-l5-Yw8" kind="presentation" identifier="slideMenu" id="sLS-K5-lfJ"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Talkup" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wgz-b0-stT" customClass="MainSearchTextField" customModule="Talkup" customModuleProvider="target">

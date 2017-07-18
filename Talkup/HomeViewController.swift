@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //VC transitions 
     let slideAnimator = SearchTransitionAnimator()
     let customNavigationAnimationController = SearchTransitionAnimator()
+    lazy var slideInMenuTransitioningDelegate = SlideMenuTransitionController()
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
@@ -383,8 +384,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         else { return }
                     
                     if let destinationViewController = segue.destination as? SlideMenuViewController {
-                        destinationViewController.user = user
                     
+                    destinationViewController.transitioningDelegate = slideInMenuTransitioningDelegate
+                    destinationViewController.modalPresentationStyle = .custom
+                    slideInMenuTransitioningDelegate.direction = .left
+                        
             }
         } else if segue.identifier == "toSearchView" {
             
