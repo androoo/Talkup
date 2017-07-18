@@ -23,7 +23,7 @@ class MainSearchBar: UISearchBar {
         preferredFont = font
         preferredTextColor = textColor
         
-        searchBarStyle = UISearchBarStyle.prominent
+        searchBarStyle = UISearchBarStyle.default
         isTranslucent = false
 
     }
@@ -49,22 +49,6 @@ class MainSearchBar: UISearchBar {
     
     override func draw(_ rect: CGRect) {
         
-        for subView in self.subviews {
-            for subsubView in subView.subviews {
-                
-                if let textField = subsubView as? UITextField {
-                    var bounds: CGRect
-                    bounds = textField.frame
-                    bounds.size.height = 35 //(set height to whatever)
-                    textField.bounds = bounds
-                    textField.borderStyle = UITextBorderStyle.roundedRect
-                    textField.backgroundColor = Colors.primaryLightGray
-                    textField.layer.cornerRadius = 10.0
-                    textField.layer.frame = CGRect(x: 16.0, y: 30.0, width: bounds.size.width - 8.0, height: 35.0)
-                }
-            }
-        }
-        
         if let index = indexOfSearchFieldInSubviews() {
             let searchField: UITextField = (subviews[0]).subviews[index] as! UITextField
             
@@ -75,9 +59,10 @@ class MainSearchBar: UISearchBar {
             searchField.borderStyle = UITextBorderStyle.roundedRect
             searchField.backgroundColor = Colors.primaryLightGray
             searchField.layer.cornerRadius = 10.0
-            searchField.layer.frame = CGRect(x: 16.0, y: 30.0, width: bounds.size.width, height: 35.0)
+            searchField.frame = CGRect(x: 8.0, y: 30.0, width: frame.size.width - 86.0, height: 35.0)
             
-//            searchField.frame = CGRect(x: 8.0, y: 15.0, width: frame.size.width, height: frame.size.height)
+            
+            
             searchField.font = preferredFont
             searchField.textColor = preferredTextColor
             searchField.leftView = nil
@@ -88,19 +73,6 @@ class MainSearchBar: UISearchBar {
             
             searchField.backgroundColor = Colors.primaryLightGray
             
-            let startPoint = CGPoint(x: 0.0, y: frame.size.height)
-            let endPoint = CGPoint(x: frame.size.width, y: frame.size.height)
-            let path = UIBezierPath()
-            
-            path.move(to: startPoint)
-            path.addLine(to: endPoint)
-            
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.path = path.cgPath
-            shapeLayer.strokeColor = preferredTextColor.cgColor
-            shapeLayer.lineWidth = 1.0
-            
-            layer.addSublayer(shapeLayer)
         }
         super.draw(rect)
     }

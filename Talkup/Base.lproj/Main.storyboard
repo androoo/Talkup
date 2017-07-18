@@ -803,6 +803,14 @@
             </objects>
             <point key="canvasLocation" x="1186" y="-1701"/>
         </scene>
+        <!--slideMenu-->
+        <scene sceneID="qdc-OS-tMr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SlideMenu" referencedIdentifier="slideMenu" id="L3l-l5-Yw8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Quc-RB-2Za" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3780" y="-769"/>
+        </scene>
         <!--Talkup-->
         <scene sceneID="5G9-er-5fu">
             <objects>
@@ -1284,7 +1292,7 @@
                                         <rect key="frame" x="22" y="30" width="36" height="36"/>
                                         <connections>
                                             <action selector="profileButtonTapped:" destination="Q4K-Y1-ARG" eventType="touchUpInside" id="Mah-B3-T2g"/>
-                                            <segue destination="ESL-pB-usD" kind="show" identifier="toMyProfile" id="kGW-lx-mis"/>
+                                            <segue destination="L3l-l5-Yw8" kind="show" identifier="slideMenu" id="sLS-K5-lfJ"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Talkup" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wgz-b0-stT" customClass="MainSearchTextField" customModule="Talkup" customModuleProvider="target">
@@ -1303,11 +1311,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="Wgz-b0-stT" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" constant="66" id="0HV-BR-J95"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="top" secondItem="ZaH-OO-Djp" secondAttribute="top" id="3hl-FO-i8R"/>
                                     <constraint firstItem="6if-OO-gG5" firstAttribute="top" secondItem="jUV-Xk-2SS" secondAttribute="top" id="40c-ub-4mW"/>
                                     <constraint firstItem="UR8-V1-una" firstAttribute="centerY" secondItem="Wgz-b0-stT" secondAttribute="centerY" id="596-XT-s7c"/>
                                     <constraint firstItem="ZaH-OO-Djp" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" constant="22" id="5zX-mM-Qel"/>
-                                    <constraint firstItem="Wgz-b0-stT" firstAttribute="leading" secondItem="ZaH-OO-Djp" secondAttribute="trailing" constant="8" id="68i-K1-8Br"/>
                                     <constraint firstItem="Wgz-b0-stT" firstAttribute="centerY" secondItem="ZaH-OO-Djp" secondAttribute="centerY" id="CTd-GT-x8B"/>
                                     <constraint firstAttribute="height" constant="75" id="CuI-OJ-1kq"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="leading" secondItem="ZaH-OO-Djp" secondAttribute="leading" id="EHN-w3-hRc"/>
@@ -1352,6 +1360,7 @@
                         <outlet property="addChatIconImageView" destination="jUV-Xk-2SS" id="rNE-IN-WeC"/>
                         <outlet property="currentUserHeaderImageView" destination="ZaH-OO-Djp" id="Ypy-zA-I31"/>
                         <outlet property="mainNavBottomSep" destination="OiM-RP-z4T" id="pSm-gb-97j"/>
+                        <outlet property="searchTextFieldLeadingConstraint" destination="0HV-BR-J95" id="tvX-NB-WoF"/>
                         <outlet property="tableView" destination="nyw-UT-Cw1" id="RkY-mE-cq0"/>
                         <outlet property="tableViewBG" destination="fH8-mv-QcO" id="6EY-wF-nve"/>
                         <outlet property="topNavBarBackgroundView" destination="B6p-Hd-LND" id="Ho9-ET-lQ1"/>
@@ -14811,7 +14820,6 @@ AAt8KQALfC4AAAAAAAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAt8MA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xlZ-ee-MrH"/>
-        <segue reference="kGW-lx-mis"/>
         <segue reference="slc-cx-anL"/>
     </inferredMetricsTieBreakers>
 </document>

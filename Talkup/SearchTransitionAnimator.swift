@@ -64,11 +64,13 @@ class SearchTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
             imageView.alpha = 0.0
             imageView.frame = self.selectedCellFrame ?? imageView.frame
             homeVC.currentUserHeaderImageView.alpha = 1.0
+            homeVC.searchTextFieldLeadingConstraint.constant = 66.0
             
         }) { (complete) in
             homeVC.currentUserHeaderImageView.alpha = 0.0
             homeVC.view.transform = CGAffineTransform.identity
             imageView.removeFromSuperview()
+            homeVC.searchTextFieldLeadingConstraint.constant = 8.0
             context.completeTransition(complete)
         }
         
@@ -89,6 +91,7 @@ class SearchTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
             imageView.alpha = 0.0
             homeVC.view.alpha = 1.0
             imageView.frame = self.selectedCellFrame ?? imageView.frame
+            homeVC.searchTextFieldLeadingConstraint.constant = 8.0
             
             homeVC.currentUserHeaderImageView.alpha = 0.0
             
@@ -96,6 +99,7 @@ class SearchTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
             
             homeVC.currentUserHeaderImageView.alpha = 1.0
             searchVC.view.transform = CGAffineTransform.identity
+            homeVC.searchTextFieldLeadingConstraint.constant = 66.0
             imageView.removeFromSuperview()
             context.completeTransition(complete)
         }

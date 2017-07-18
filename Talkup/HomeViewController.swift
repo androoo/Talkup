@@ -24,20 +24,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let slideAnimator = SearchTransitionAnimator()
     let customNavigationAnimationController = SearchTransitionAnimator()
     
-    
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var userIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var currentUserHeaderImageView: UIImageView!
     @IBOutlet weak var addChatIconImageView: UIImageView!
-    
     @IBOutlet weak var headerBackgroundView: UIView!
     @IBOutlet weak var headerBigTitleLabel: UILabel!
-    
     @IBOutlet weak var recentMessagesCollectionView: UICollectionView!
-    
     @IBOutlet weak var searchTextField: UITextField!
-    
+    @IBOutlet weak var searchTextFieldLeadingConstraint: NSLayoutConstraint!
     
     let maxHeaderHeight: CGFloat = 150
     let minHeaderHeight: CGFloat = 74
@@ -379,16 +375,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let chat = ChatController.shared.followingChats[selectedIndexPath.row]
                 chat.isDismisable = false
                 detailViewController.chat = chat
-                
+    
             }
             
-            
-        } else if segue.identifier == "toMyProfile" {
+        } else if segue.identifier == "slideMenu" {
                     guard let user = UserController.shared.currentUser
                         else { return }
                     
-                    if let destinationViewController = segue.destination as? UserViewController {
-                        
+                    if let destinationViewController = segue.destination as? SlideMenuViewController {
                         destinationViewController.user = user
                     
             }
@@ -396,6 +390,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let destination = segue.destination
             navigationController?.delegate = self
+            destination.view.setNeedsLayout()
         }
     }
 

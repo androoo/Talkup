@@ -65,6 +65,8 @@
 		5ADD34F51F16B8EF0039322E /* MainSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34F41F16B8EF0039322E /* MainSearchController.swift */; };
 		5AEDF1A61F0DB67100DDE503 /* FilterHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */; };
 		5AFEED861F1A5A3800E50422 /* NavDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED851F1A5A3800E50422 /* NavDelegate.swift */; };
+		5AFEED8B1F1D92A500E50422 /* SlideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */; };
+		5AFEED8D1F1D94DE00E50422 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +131,8 @@
 		5ADD34F41F16B8EF0039322E /* MainSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSearchController.swift; sourceTree = "<group>"; };
 		5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5AFEED851F1A5A3800E50422 /* NavDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDelegate.swift; sourceTree = "<group>"; };
+		5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SlideMenu.storyboard; sourceTree = "<group>"; };
+		5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,8 +190,9 @@
 		5A35A2681E76FDE300162A20 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				5A35A25A1E76FDC500162A20 /* Main.storyboard */,
 				5A35A25F1E76FDC500162A20 /* LaunchScreen.storyboard */,
+				5A35A25A1E76FDC500162A20 /* Main.storyboard */,
+				5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				5A8D59111E9289AE007F107A /* ProfileViewController.swift */,
 				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
 				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
+				5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A35A2611E76FDC500162A20 /* LaunchScreen.storyboard in Resources */,
+				5AFEED8B1F1D92A500E50422 /* SlideMenu.storyboard in Resources */,
 				5A35A25E1E76FDC500162A20 /* Assets.xcassets in Resources */,
 				5A35A25C1E76FDC500162A20 /* Main.storyboard in Resources */,
 			);
@@ -479,6 +486,7 @@
 				5A0347BA1E86D4BE0080CAD9 /* Appearance .swift in Sources */,
 				5AAC94B11E95275C009155FE /* FirstChatTableViewCell.swift in Sources */,
 				5AFEED861F1A5A3800E50422 /* NavDelegate.swift in Sources */,
+				5AFEED8D1F1D94DE00E50422 /* SlideMenuViewController.swift in Sources */,
 				5A8B7D871EBB988B00CCEFAD /* CustomSearchBar.swift in Sources */,
 				5AAC94B71E959FCB009155FE /* LastTableViewCell.swift in Sources */,
 				5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */,

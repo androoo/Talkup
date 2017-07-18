@@ -177,7 +177,7 @@ class RoundedCornerButton : UIButton {
     
     override func draw(_ rect: CGRect) {
         
-        let path = UIBezierPath(roundedRect: rect,
+        _ = UIBezierPath(roundedRect: rect,
                                 byRoundingCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight],
                                 cornerRadii: CGSize(width: 10, height: 10))
         

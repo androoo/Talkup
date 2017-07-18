@@ -34,29 +34,29 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         navigationController?.navigationBar.isHidden = true
         navigationController?.isToolbarHidden = true
 //        resultsTableView.tableFooterView = UIView()
-        configureMainSearchController()
+        
+//        setupSearchBar()
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        for subView in mainSearchController.mainSearchBar.subviews  {
-            for subsubView in subView.subviews  {
-                if let textField = subsubView as? UITextField {
-                    var bounds: CGRect
-                    bounds = textField.frame
-                    bounds.size.height = 35 //(set height to whatever)
-                    textField.bounds = bounds
-                    textField.borderStyle = UITextBorderStyle.roundedRect
-                    textField.backgroundColor = Colors.primaryLightGray
-                    textField.layer.cornerRadius = 10.0
-                    textField.layer.frame = CGRect(x: 16.0, y: 30.0, width: bounds.size.width - 8.0, height: 35.0)
-                }
-            }
+        setupSearchBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureMainSearchController {_ in
+            self.setupSearchBar()
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        setupSearchBar()
+        view.layoutIfNeeded()
+        mainSearchController.mainSearchBar.layoutIfNeeded()
+        
     }
     
     //MARK: - TableViewDataSource Methods 
@@ -75,15 +75,34 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         return cell 
     }
     
+    func setupSearchBar() {
+        for subView in mainSearchController.mainSearchBar.subviews  {
+            for subsubView in subView.subviews  {
+                if let textField = subsubView as? UITextField {
+                    var bounds: CGRect
+                    bounds = textField.frame
+                    bounds.size.height = 35 //(set height to whatever)
+                    textField.bounds = bounds
+                    textField.borderStyle = UITextBorderStyle.roundedRect
+                    textField.backgroundColor = Colors.primaryLightGray
+                    textField.layer.cornerRadius = 10.0
+                    textField.layer.frame = CGRect(x: 16.0, y: 30.0, width: bounds.size.width - 8.0, height: 35.0)
+                    
+                    subsubView.layoutSubviews()
+                }
+            }
+        }
+    }
+    
     //MARK: - Configure Search Controller 
     
-    func configureMainSearchController() {
+    func configureMainSearchController(completion: @escaping (MainSearchBar) -> Void) {
         
         mainSearchController = MainSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: Double(self.view.frame.width), height: 75.0), searchBarFont: UIFont(name: "Helvetica", size: 18.0)!, searchBarTextColor: Colors.primaryBgPurple, searchBarTintColor: .white)
         
         mainSearchController.mainSearchBar.placeholder = "Search Talkup"
-//        resultsTableView.tableHeaderView = mainSearchController.mainSearchBar
         mainNavbar.addSubview(mainSearchController.mainSearchBar)
+        setupSearchBar()
         mainSearchController.searchDelegate = self
         
     }
