@@ -268,15 +268,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if UserController.shared.currentUser?.following == nil {
             switch indexPath.section {
             case 0: return 250
-            case 1: return 76
+            case 1: return 96
             case 2: return UITableViewAutomaticDimension
             default: return 86
             }
         } else {
             switch indexPath.section {
             case 0: return 250
-            case 1: return 76
-            case 2: return 76
+            case 1: return 96
+            case 2: return 96
             case 3: return UITableViewAutomaticDimension
             default: return 86
             }
@@ -306,7 +306,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             return 0
         default:
-            return 76
+            return 56
         }
         
     }

@@ -108,7 +108,9 @@ extension CKRecord {
         self[Constants.timestampKey] = message.timestamp as CKRecordValue?
         self[Constants.blockedKey] = message.blocked as CKRecordValue?
         self[Constants.scoreKey] = message.score as CKRecordValue?
+        
         self[Constants.chatKey] = CKReference(recordID: chatRecordID, action: .deleteSelf)
+        
     }
 }
 

@@ -21,9 +21,10 @@ class FollowingTitleTableViewCell: UITableViewCell {
         let followingCount = ChatController.shared.followingChats.count
         
         backgroundColor = .white
-        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 36)
-        titleLabel.textColor = Colors.primaryDark
-        titleLabel.text = "✅ Following"
+        titleLabel.font = UIFont.appSectionHeaderFont
+        titleLabel.textColor = Colors.greenBlue
+        titleLabel.text = "FOLLOWING CHATS"
+        cellBottomBorderSep.backgroundColor = Colors.buttonBorderGray
         
     }
 

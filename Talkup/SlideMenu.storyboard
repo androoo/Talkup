@@ -146,6 +146,7 @@
                                         <connections>
                                             <outlet property="menuItemIconImageView" destination="Cw9-sM-mOi" id="Fh7-MV-Nw5"/>
                                             <outlet property="menuItemNameLabel" destination="nph-lk-5ju" id="4Yz-eJ-QCT"/>
+                                            <segue destination="w7k-9a-KZy" kind="show" identifier="toMyProfile" id="Yva-A0-hYf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -178,6 +179,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpv-au-hma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-84" y="111.99400299850076"/>
+        </scene>
+        <!--userDetail-->
+        <scene sceneID="NuC-U1-8wB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserDetail" referencedIdentifier="userDetail" id="w7k-9a-KZy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BHo-Qb-Fza" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="583" y="112"/>
         </scene>
     </scenes>
 </document>

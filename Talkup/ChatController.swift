@@ -224,7 +224,6 @@ func createChatWith(chatTopic: String, owner: User, firstMessage: String, comple
     
     let ownerReference = owner.cloudKitReference
     let chatReference = chat.cloudKitReference
-    
     let message = Message(ownerReference: ownerReference!, text: messageText, chatReference: chatReference!)
     chat.messages.append(message)
     

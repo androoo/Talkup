@@ -12,8 +12,17 @@ class MenuTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
+    var itemName: String? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     @IBOutlet weak var menuItemIconImageView: UIImageView!
     @IBOutlet weak var menuItemNameLabel: UILabel!
     
+    func updateViews() {
+        menuItemNameLabel.text = itemName
+    }
 
 }

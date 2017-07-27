@@ -164,16 +164,11 @@ class UserController {
             }
         }
     }
-
-    
-    // delete below 
     
     @discardableResult func addMessage(byUser owner: User, toChat chat: Chat, messageText: String, completion: @escaping ((Message) -> Void) = { _ in }) -> Message {
         
         let ownerReference = owner.cloudKitReference
         let chatReference = chat.cloudKitReference
-        
-        // TODO: - don't force unwrap this you idiot
         
         let message = Message(ownerReference: ownerReference!, text: messageText, chatReference: chatReference!)
         chat.messages.append(message)

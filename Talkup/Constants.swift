@@ -28,6 +28,8 @@ struct Constants {
     static let followingReferenceKey = "followingReference"
     static let blockedReferenceKey = "blockedReference"
     static let unreadKey = "unread"
+    static let authorized = "authorized"
+    static let accessCode = "accessCode"
     
     //MARK: - Chat Keys
     
@@ -45,6 +47,7 @@ struct Constants {
     static let messageReferenceKey = "message"
     static let ownerKey = "owner"
     static let chatKey = "chat"
+    static let profileKey = "profile"
     static let timestampKey = "timestamp"
     static let textKey = "text"
     static let blockedKey = "blocked"

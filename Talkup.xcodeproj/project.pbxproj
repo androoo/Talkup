@@ -56,6 +56,7 @@
 		5AB122301F1924AB00B4D02D /* FadeInPushTransition .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1222F1F1924AB00B4D02D /* FadeInPushTransition .swift */; };
 		5AB122321F1927F100B4D02D /* FadeInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB122311F1927F100B4D02D /* FadeInController.swift */; };
 		5AB1223F1F199FC400B4D02D /* SearchTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1223E1F199FC400B4D02D /* SearchTransitionAnimator.swift */; };
+		5ACBE52D1F2119330049FAE0 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ACBE52C1F2119330049FAE0 /* Onboarding.storyboard */; };
 		5ADD34E81F0EEB4D0039322E /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34E71F0EEB4D0039322E /* DebugButton.swift */; };
 		5ADD34EA1F13ED4C0039322E /* MessageItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */; };
 		5ADD34EC1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */; };
@@ -71,6 +72,25 @@
 		5AFEED921F1E4F0F00E50422 /* SlideMenuTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED911F1E4F0F00E50422 /* SlideMenuTransitionController.swift */; };
 		5AFEED941F1E518900E50422 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED931F1E518900E50422 /* SlideMenuController.swift */; };
 		5AFEEDBB1F1EA0B900E50422 /* SlideMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEEDBA1F1EA0B900E50422 /* SlideMenuAnimator.swift */; };
+		5AFEEDBD1F1EC23000E50422 /* UserDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDBC1F1EC23000E50422 /* UserDetail.storyboard */; };
+		5AFEEDCF1F1F9DBF00E50422 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDBF1F1F9DBF00E50422 /* Gotham-Black.otf */; };
+		5AFEEDD01F1F9DBF00E50422 /* Gotham-BlackIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC01F1F9DBF00E50422 /* Gotham-BlackIta.otf */; };
+		5AFEEDD11F1F9DBF00E50422 /* Gotham-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC11F1F9DBF00E50422 /* Gotham-Bold.otf */; };
+		5AFEEDD21F1F9DBF00E50422 /* Gotham-BoldIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC21F1F9DBF00E50422 /* Gotham-BoldIta.otf */; };
+		5AFEEDD31F1F9DBF00E50422 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC31F1F9DBF00E50422 /* Gotham-Book.otf */; };
+		5AFEEDD41F1F9DBF00E50422 /* Gotham-BookIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC41F1F9DBF00E50422 /* Gotham-BookIta.otf */; };
+		5AFEEDD51F1F9DBF00E50422 /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC51F1F9DBF00E50422 /* Gotham-Light.otf */; };
+		5AFEEDD61F1F9DBF00E50422 /* Gotham-LightIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC61F1F9DBF00E50422 /* Gotham-LightIta.otf */; };
+		5AFEEDD71F1F9DBF00E50422 /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC71F1F9DBF00E50422 /* Gotham-Medium.otf */; };
+		5AFEEDD81F1F9DBF00E50422 /* Gotham-MediumIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC81F1F9DBF00E50422 /* Gotham-MediumIta.otf */; };
+		5AFEEDD91F1F9DBF00E50422 /* Gotham-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDC91F1F9DBF00E50422 /* Gotham-Thin.otf */; };
+		5AFEEDDA1F1F9DBF00E50422 /* Gotham-ThinIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDCA1F1F9DBF00E50422 /* Gotham-ThinIta.otf */; };
+		5AFEEDDB1F1F9DBF00E50422 /* Gotham-Ultra.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDCB1F1F9DBF00E50422 /* Gotham-Ultra.otf */; };
+		5AFEEDDC1F1F9DBF00E50422 /* Gotham-UltraIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDCC1F1F9DBF00E50422 /* Gotham-UltraIta.otf */; };
+		5AFEEDDD1F1F9DBF00E50422 /* Gotham-XLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDCD1F1F9DBF00E50422 /* Gotham-XLight.otf */; };
+		5AFEEDDE1F1F9DBF00E50422 /* Gotham-XLightIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEEDCE1F1F9DBF00E50422 /* Gotham-XLightIta.otf */; };
+		5AFEEDE01F1F9E2E00E50422 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEEDDF1F1F9E2E00E50422 /* Theme.swift */; };
+		5AFEEDEA1F1FF25800E50422 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEEDE91F1FF25800E50422 /* UserDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +146,7 @@
 		5AB1222F1F1924AB00B4D02D /* FadeInPushTransition .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FadeInPushTransition .swift"; sourceTree = "<group>"; };
 		5AB122311F1927F100B4D02D /* FadeInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeInController.swift; sourceTree = "<group>"; };
 		5AB1223E1F199FC400B4D02D /* SearchTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTransitionAnimator.swift; sourceTree = "<group>"; };
+		5ACBE52C1F2119330049FAE0 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		5ADD34E71F0EEB4D0039322E /* DebugButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
 		5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentMessageCollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +162,25 @@
 		5AFEED911F1E4F0F00E50422 /* SlideMenuTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTransitionController.swift; sourceTree = "<group>"; };
 		5AFEED931F1E518900E50422 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		5AFEEDBA1F1EA0B900E50422 /* SlideMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuAnimator.swift; sourceTree = "<group>"; };
+		5AFEEDBC1F1EC23000E50422 /* UserDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
+		5AFEEDBF1F1F9DBF00E50422 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
+		5AFEEDC01F1F9DBF00E50422 /* Gotham-BlackIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-BlackIta.otf"; sourceTree = "<group>"; };
+		5AFEEDC11F1F9DBF00E50422 /* Gotham-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold.otf"; sourceTree = "<group>"; };
+		5AFEEDC21F1F9DBF00E50422 /* Gotham-BoldIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-BoldIta.otf"; sourceTree = "<group>"; };
+		5AFEEDC31F1F9DBF00E50422 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
+		5AFEEDC41F1F9DBF00E50422 /* Gotham-BookIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-BookIta.otf"; sourceTree = "<group>"; };
+		5AFEEDC51F1F9DBF00E50422 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
+		5AFEEDC61F1F9DBF00E50422 /* Gotham-LightIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-LightIta.otf"; sourceTree = "<group>"; };
+		5AFEEDC71F1F9DBF00E50422 /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
+		5AFEEDC81F1F9DBF00E50422 /* Gotham-MediumIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-MediumIta.otf"; sourceTree = "<group>"; };
+		5AFEEDC91F1F9DBF00E50422 /* Gotham-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Thin.otf"; sourceTree = "<group>"; };
+		5AFEEDCA1F1F9DBF00E50422 /* Gotham-ThinIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-ThinIta.otf"; sourceTree = "<group>"; };
+		5AFEEDCB1F1F9DBF00E50422 /* Gotham-Ultra.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Ultra.otf"; sourceTree = "<group>"; };
+		5AFEEDCC1F1F9DBF00E50422 /* Gotham-UltraIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-UltraIta.otf"; sourceTree = "<group>"; };
+		5AFEEDCD1F1F9DBF00E50422 /* Gotham-XLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-XLight.otf"; sourceTree = "<group>"; };
+		5AFEEDCE1F1F9DBF00E50422 /* Gotham-XLightIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-XLightIta.otf"; sourceTree = "<group>"; };
+		5AFEEDDF1F1F9E2E00E50422 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		5AFEEDE91F1FF25800E50422 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +219,7 @@
 				5A35A2711E76FFC500162A20 /* Talkup.entitlements */,
 				5A35A2681E76FDE300162A20 /* Storyboards */,
 				5A35A2691E76FE0B00162A20 /* Sources */,
+				5A5A80031F2A662C00E4CA04 /* Onboarding */,
 				5A35A26B1E76FF5500162A20 /* Model */,
 				5A35A26C1E76FF5C00162A20 /* Model Controllers */,
 				5A446B1F1E997249000AC705 /* User Views */,
@@ -202,6 +243,8 @@
 				5A35A25F1E76FDC500162A20 /* LaunchScreen.storyboard */,
 				5A35A25A1E76FDC500162A20 /* Main.storyboard */,
 				5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */,
+				5AFEEDBC1F1EC23000E50422 /* UserDetail.storyboard */,
+				5ACBE52C1F2119330049FAE0 /* Onboarding.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -217,6 +260,7 @@
 		5A35A26A1E76FE1100162A20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5AFEEDBE1F1F9D9F00E50422 /* Fonts */,
 				5A35A25D1E76FDC500162A20 /* Assets.xcassets */,
 				5A35A2621E76FDC500162A20 /* Info.plist */,
 			);
@@ -268,10 +312,6 @@
 		5A35A26E1E76FF6800162A20 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5A35A2941E78412A00162A20 /* LaunchViewController.swift */,
-				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
-				5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */,
-				5A35A2981E786E1600162A20 /* NavViewController.swift */,
 				5A8D590F1E928618007F107A /* PageViewController.swift */,
 				5A8D590D1E928057007F107A /* HomeViewController.swift */,
 				5AAC94861E9304B9009155FE /* ChatViewController.swift */,
@@ -279,6 +319,7 @@
 				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
 				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
 				5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */,
+				5AFEEDE91F1FF25800E50422 /* UserDetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -315,6 +356,7 @@
 				5A35A2821E773F1500162A20 /* HelperFiles.swift */,
 				5A35A29A1E78989000162A20 /* Constants.swift */,
 				5AAC94B41E955DCF009155FE /* Notifications.swift */,
+				5AFEEDDF1F1F9E2E00E50422 /* Theme.swift */,
 			);
 			name = "Helper Files";
 			sourceTree = "<group>";
@@ -328,6 +370,25 @@
 				5A446B241E9974C0000AC705 /* LabelTableViewCell.swift */,
 			);
 			name = "User Views";
+			sourceTree = "<group>";
+		};
+		5A5A80031F2A662C00E4CA04 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5A5A80041F2A664400E4CA04 /* View Controllers */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		5A5A80041F2A664400E4CA04 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A35A2941E78412A00162A20 /* LaunchViewController.swift */,
+				5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */,
+				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
+				5A35A2981E786E1600162A20 /* NavViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		5A8B7D851EBB985C00CCEFAD /* CustomSearch */ = {
@@ -387,6 +448,29 @@
 				5AFEEDBA1F1EA0B900E50422 /* SlideMenuAnimator.swift */,
 			);
 			name = SlideTransition;
+			sourceTree = "<group>";
+		};
+		5AFEEDBE1F1F9D9F00E50422 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5AFEEDBF1F1F9DBF00E50422 /* Gotham-Black.otf */,
+				5AFEEDC01F1F9DBF00E50422 /* Gotham-BlackIta.otf */,
+				5AFEEDC11F1F9DBF00E50422 /* Gotham-Bold.otf */,
+				5AFEEDC21F1F9DBF00E50422 /* Gotham-BoldIta.otf */,
+				5AFEEDC31F1F9DBF00E50422 /* Gotham-Book.otf */,
+				5AFEEDC41F1F9DBF00E50422 /* Gotham-BookIta.otf */,
+				5AFEEDC51F1F9DBF00E50422 /* Gotham-Light.otf */,
+				5AFEEDC61F1F9DBF00E50422 /* Gotham-LightIta.otf */,
+				5AFEEDC71F1F9DBF00E50422 /* Gotham-Medium.otf */,
+				5AFEEDC81F1F9DBF00E50422 /* Gotham-MediumIta.otf */,
+				5AFEEDC91F1F9DBF00E50422 /* Gotham-Thin.otf */,
+				5AFEEDCA1F1F9DBF00E50422 /* Gotham-ThinIta.otf */,
+				5AFEEDCB1F1F9DBF00E50422 /* Gotham-Ultra.otf */,
+				5AFEEDCC1F1F9DBF00E50422 /* Gotham-UltraIta.otf */,
+				5AFEEDCD1F1F9DBF00E50422 /* Gotham-XLight.otf */,
+				5AFEEDCE1F1F9DBF00E50422 /* Gotham-XLightIta.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,8 +541,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFEEDD01F1F9DBF00E50422 /* Gotham-BlackIta.otf in Resources */,
+				5AFEEDD21F1F9DBF00E50422 /* Gotham-BoldIta.otf in Resources */,
+				5AFEEDD31F1F9DBF00E50422 /* Gotham-Book.otf in Resources */,
 				5A35A2611E76FDC500162A20 /* LaunchScreen.storyboard in Resources */,
+				5AFEEDD61F1F9DBF00E50422 /* Gotham-LightIta.otf in Resources */,
+				5AFEEDDA1F1F9DBF00E50422 /* Gotham-ThinIta.otf in Resources */,
+				5AFEEDCF1F1F9DBF00E50422 /* Gotham-Black.otf in Resources */,
+				5AFEEDDE1F1F9DBF00E50422 /* Gotham-XLightIta.otf in Resources */,
+				5AFEEDD91F1F9DBF00E50422 /* Gotham-Thin.otf in Resources */,
 				5AFEED8B1F1D92A500E50422 /* SlideMenu.storyboard in Resources */,
+				5AFEEDDD1F1F9DBF00E50422 /* Gotham-XLight.otf in Resources */,
+				5ACBE52D1F2119330049FAE0 /* Onboarding.storyboard in Resources */,
+				5AFEEDD11F1F9DBF00E50422 /* Gotham-Bold.otf in Resources */,
+				5AFEEDD81F1F9DBF00E50422 /* Gotham-MediumIta.otf in Resources */,
+				5AFEEDBD1F1EC23000E50422 /* UserDetail.storyboard in Resources */,
+				5AFEEDD51F1F9DBF00E50422 /* Gotham-Light.otf in Resources */,
+				5AFEEDD71F1F9DBF00E50422 /* Gotham-Medium.otf in Resources */,
+				5AFEEDDB1F1F9DBF00E50422 /* Gotham-Ultra.otf in Resources */,
+				5AFEEDDC1F1F9DBF00E50422 /* Gotham-UltraIta.otf in Resources */,
+				5AFEEDD41F1F9DBF00E50422 /* Gotham-BookIta.otf in Resources */,
 				5A35A25E1E76FDC500162A20 /* Assets.xcassets in Resources */,
 				5A35A25C1E76FDC500162A20 /* Main.storyboard in Resources */,
 			);
@@ -474,6 +576,7 @@
 				5A35A27A1E772BD300162A20 /* Message.swift in Sources */,
 				5ADD34EF1F1697320039322E /* MainSearchBar.swift in Sources */,
 				5AFEED8F1F1D986D00E50422 /* MenuTableViewCell.swift in Sources */,
+				5AFEEDEA1F1FF25800E50422 /* UserDetailViewController.swift in Sources */,
 				5ADD34F11F16B35F0039322E /* SearchResultTableViewCell.swift in Sources */,
 				5A14676C1E82237900F7E3EA /* UserController.swift in Sources */,
 				5A842FD81EBA39D50099E637 /* SearchableRecord.swift in Sources */,
@@ -528,6 +631,7 @@
 				5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */,
 				5A35A29B1E78989000162A20 /* Constants.swift in Sources */,
 				5A8B7DB21EBF94B400CCEFAD /* FollowingTitleTableViewCell.swift in Sources */,
+				5AFEEDE01F1F9E2E00E50422 /* Theme.swift in Sources */,
 				5AB122301F1924AB00B4D02D /* FadeInPushTransition .swift in Sources */,
 				5A14676A1E8205AA00F7E3EA /* User.swift in Sources */,
 			);

@@ -18,6 +18,7 @@ class User: CloudKitSyncable {
     let email: String
     var chats: [Chat]
     var messages: [Message]
+    var directMessages: [Message]
     var following: [CKReference]?
     var blocked: [CKReference]?
     var defaultUserReference: CKReference
@@ -28,18 +29,23 @@ class User: CloudKitSyncable {
         guard let photoData = self.photoData else { return nil }
         return UIImage(data: photoData)
     }
+    var authorized: Bool = false
+    var accessCode: String?
     
     
-    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], following: [CKReference] = [], blocked: [CKReference] = [], users: [User] = [], defaultUserReference: CKReference) {
+    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], directMessages: [Message] = [], following: [CKReference] = [], blocked: [CKReference] = [], users: [User] = [], defaultUserReference: CKReference, authorized: Bool = false, accessCode: String? = nil) {
         self.userName = userName
         self.email = email
         self.photoData = photoData
         self.chats = chats
         self.messages = messages
+        self.directMessages = directMessages
         self.following = following
         self.blocked = blocked
         self.users = users
         self.defaultUserReference = defaultUserReference
+        self.authorized = authorized
+        self.accessCode = accessCode
         
     }
     
@@ -49,12 +55,14 @@ class User: CloudKitSyncable {
         guard let userName = cloudKitRecord[Constants.usernameKey] as? String,
             let email = cloudKitRecord[Constants.userEmailKey] as? String,
             let photoAsset = cloudKitRecord[Constants.photoDataKey] as? CKAsset,
+            let authorized = cloudKitRecord[Constants.authorized] as? Bool,
+            let accessCode = cloudKitRecord[Constants.accessCode] as? String,
             let defaultUserRef = cloudKitRecord[Constants.userReferenceKey] as? CKReference else {
                 return nil
         }
         
         let photoData = try? Data(contentsOf: photoAsset.fileURL)
-        self.init(userName: userName, email: email, photoData: photoData, defaultUserReference: defaultUserRef)
+        self.init(userName: userName, email: email, photoData: photoData, defaultUserReference: defaultUserRef, authorized: authorized, accessCode: accessCode)
         self.following = cloudKitRecord[Constants.followingReferenceKey] as? [CKReference] ?? []
         self.blocked = cloudKitRecord[Constants.blockedReferenceKey] as? [CKReference] ?? []
         self.defaultUserReference = defaultUserRef
@@ -84,6 +92,8 @@ extension CKRecord {
         
         self[Constants.usernameKey] = user.userName as CKRecordValue?
         self[Constants.userEmailKey] = user.email as CKRecordValue?
+        self[Constants.authorized] = user.authorized as CKRecordValue?
+        self[Constants.accessCode] = user.accessCode as CKRecordValue?
         self[Constants.photoDataKey] = CKAsset(fileURL: user.temporaryPhotoURL)
 //        self[Constants.blockedReferenceKey] = user.blocked as CKRecordValue?
         self[Constants.userReferenceKey] = user.defaultUserReference

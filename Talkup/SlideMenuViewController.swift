@@ -10,7 +10,13 @@ import UIKit
 
 class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //MARK: - Properties 
+    //MARK: - Properties
+    
+    var menuItems: [String] = [
+        "My Profile",
+        "My Topics",
+        "Help"
+    ]
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,14 +30,14 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: - TableView Datasource/Delegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return menuItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as? MenuTableViewCell else { return MenuTableViewCell() }
         
-    
+        cell.itemName = menuItems[indexPath.row]
         
         return cell
     }
@@ -52,7 +58,32 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         userNameLabel.text = user.email
         userNameLabel.textColor = Colors.primaryDarkGray
         
+        chatsCountLabel.text = "\(user.chats.count)"
+        
     }
     
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    // need to check which menu item clicked
+    // need to send the user to the page too
+        
+        if segue.identifier == "toMyProfile" {
+            
+            if let detailViewController = segue.destination as? UserDetailViewController,
+                let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+                
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
+                
+                let chat = ChatController.shared.chats[selectedIndexPath.row]
+                chat.isDismisable = false
+                detailViewController.chat = chat
+            }
+            
+        }
+    }
+    
+    
 }

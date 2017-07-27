@@ -18,9 +18,9 @@ class FilterTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .white
-        SectionLabel.font = UIFont(name: "ArialRoundedMTBold", size: 36)
-        SectionLabel.textColor = Colors.primaryDark
-        SectionLabel.text = "⚡️ Trending"
+        SectionLabel.font = UIFont.appSectionHeaderFont
+        SectionLabel.textColor = Colors.alertOrange
+        SectionLabel.text = "TRENDING TOPICS"
         
         
     }

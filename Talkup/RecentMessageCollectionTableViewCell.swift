@@ -17,10 +17,11 @@ class RecentMessageCollectionTableViewCell: UITableViewCell {
     
     
     func setAppearance() {
-            
-            recentMessagesTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 36)
-            recentMessagesTitleLabel.textColor = Colors.primaryDark
-            recentMessagesTitleLabel.text = "🔥 Messages"
+        
+            layoutSubviews()
+            recentMessagesTitleLabel.font = UIFont.appSectionHeaderFont
+            recentMessagesTitleLabel.textColor = Colors.badgeOrange
+            recentMessagesTitleLabel.text = "TOP MESSAGES"
             gradientBackGroundView.backgroundColor = .clear
             gradientBackGroundView.applyGradient(colours: [.white, Colors.bubbleGray], locations: [0.0, 1.0])
             collectionView.backgroundColor = .clear
