@@ -20,6 +20,15 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     var username: String?
     
     //MARK: - View lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UserController.shared.fetchAllUsernames {
+            
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,27 +39,6 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
         continueButton.layer.masksToBounds = true
         usernameTextfield.delegate = self
     
-    }
-    
-    func registerForKeyboardNotifications() {
-        // Adding notification on keyboard appearing 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func deRegisterFromKeyboardNotifications() {
-        // Remove notificaiton on keyboard activity 
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func keyboardWasShown(notification: NSNotification) {
-        // Calculate keyboard exact size per Apple suggestions
-        
-    }
-    
-    func keyboardWillBeHidden(notification: NSNotification) {
-        
     }
     
     

@@ -29,14 +29,7 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - View Lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        UserController.shared.fetchAllUsernames { 
-        
-        }
-        
-    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +42,8 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         continueButton.backgroundColor = .white
         accessCodeTextField.delegate = self
         accessCodeWarningLabel.isHidden = true
+        accessCodeTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+        accessCodeTextField.textColor = Colors.conPurpleDark
         continueButton.isEnabled = false
         continueButton.backgroundColor = UIColor(white: 1.0, alpha: 0.15)
         continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
@@ -93,18 +88,18 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        guard let enteredCode = textField.text else { return }
         
-        if self.accessCodes.contains(enteredCode) {
-            
-            accessCodeWarningLabel.isHidden = false
-            accessCodeWarningLabel.textColor = Colors.deepPurple
-            
-            continueButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
-            continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
-        }
+        accessCodeWarningLabel.textColor = Colors.deepPurple
+        
+        continueButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
+        
+        accessCodeTextField.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        accessCodeTextField.textColor = Colors.conPurpleDark
         
     }
+    
+    
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         guard let enteredCode = textField.text else { return false }
@@ -122,6 +117,14 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if (accessCodeTextField.text?.isEmpty)! {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
@@ -129,7 +132,9 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         
         if accessCodes.contains(accessCode) {
             performSegue(withIdentifier: "accessCodeSuccess", sender: self)
+            
         } else {
+            accessCodeWarningLabel.isHidden = false
 //            requestCode()
         }
         
@@ -147,6 +152,12 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
     }
     
 }
