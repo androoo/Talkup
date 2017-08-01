@@ -12,11 +12,14 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties 
     
+    @IBOutlet weak var scrollView: UIScrollView!
     var accessCodes: [String] = ["test1234"]
     
     @IBOutlet weak var accessCodeTextField: UITextField!
     @IBOutlet weak var requestCodeButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var buttonsStackView: UIStackView!
+    @IBOutlet weak var accessCodeWarningLabel: UILabel!
     
     
     //MARK: - UI Actions 
@@ -25,6 +28,15 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: - View Lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UserController.shared.fetchAllUsernames { 
+        
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +46,81 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         requestCodeButton.layer.masksToBounds = true
         continueButton.layer.cornerRadius = 8.0
         continueButton.layer.masksToBounds = true
+        continueButton.backgroundColor = .white
         accessCodeTextField.delegate = self
+        accessCodeWarningLabel.isHidden = true
+        continueButton.isEnabled = false
+        continueButton.backgroundColor = UIColor(white: 1.0, alpha: 0.15)
+        continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
+        registerForKeyboardNotifications()
+    }
+    
+    
+    //MARK: - Handle Keyboard 
+    
+    func registerForKeyboardNotifications() {
+        // Adding notification on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deRegisterFromKeyboardNotifications() {
+        // Remove notificaiton on keyboard activity
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     
     
     //MARK: - text field delegate 
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        guard let enteredCode = textField.text else { return }
+        
+        if self.accessCodes.contains(enteredCode) {
+            
+            accessCodeWarningLabel.isHidden = false
+            accessCodeWarningLabel.textColor = Colors.deepPurple
+            
+            continueButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+            continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
+        }
+        
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        guard let enteredCode = textField.text else { return false }
+        
+        if self.accessCodes.contains(enteredCode) {
+            
+            accessCodeWarningLabel.isHidden = false
+            accessCodeWarningLabel.textColor = Colors.deepPurple
+            
+            continueButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+            continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
+            
+        }
+        
+        return true
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -49,23 +130,30 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         if accessCodes.contains(accessCode) {
             performSegue(withIdentifier: "accessCodeSuccess", sender: self)
         } else {
-            print("show alert problem")
+//            requestCode()
         }
         
         return true
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func requestCode() {
         
-        guard let accessCode = accessCodeTextField.text else { return }
-        
-        if accessCodes.contains(accessCode) {
-            
-            print("haz code")
-            
-        } else {
-            print("show alert")
+        let alertController = UIAlertController(title: "Request Access", message: "Send us your email address to request access", preferredStyle: .alert)
+        let sendAction = UIAlertAction(title: "Send", style: .default) { (_) in
+            print("send email")
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(sendAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
     }
+    
 }
+
+
+
+
+
+
+

@@ -29,6 +29,7 @@ class WelcomeViewController: UIViewController {
         signUpButton.layer.masksToBounds = true
         talkupLabel.font = UIFont.appWelcomeTitlerFont
         talkupLabel.textColor = .white
+        aboutTextLabel.textColor = .white
         
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

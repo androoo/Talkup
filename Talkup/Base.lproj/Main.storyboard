@@ -801,7 +801,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVc-zS-YXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1186" y="-1701"/>
+            <point key="canvasLocation" x="785" y="-1673"/>
         </scene>
         <!--slideMenu-->
         <scene sceneID="qdc-OS-tMr">
@@ -1444,7 +1444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMG-QA-rbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5606" y="999"/>
+            <point key="canvasLocation" x="5734" y="753"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2fD-8L-AMp">
@@ -1463,7 +1463,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3t-Yc-rke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4626" y="999"/>
+            <point key="canvasLocation" x="4938" y="752"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0OY-69-bpg">

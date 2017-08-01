@@ -35,6 +35,8 @@
 		5A446B231E9974B2000AC705 /* TopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B221E9974B2000AC705 /* TopTableViewCell.swift */; };
 		5A446B251E9974C0000AC705 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B241E9974C0000AC705 /* LabelTableViewCell.swift */; };
 		5A5A80061F2A96F400E4CA04 /* AccessCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80051F2A96F400E4CA04 /* AccessCodeViewController.swift */; };
+		5A5A80081F2AC85600E4CA04 /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80071F2AC85600E4CA04 /* CreateUsernameViewController.swift */; };
+		5A5A800A1F2B743700E4CA04 /* NewUserAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A80091F2B743700E4CA04 /* NewUserAvatarViewController.swift */; };
 		5A7467DA1F0C59E100BAF86D /* ChatHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7467D91F0C59E100BAF86D /* ChatHeaderTableViewCell.swift */; };
 		5A842FD61EBA39140099E637 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A842FD51EBA39140099E637 /* SearchResultsController.swift */; };
 		5A842FD81EBA39D50099E637 /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A842FD71EBA39D50099E637 /* SearchableRecord.swift */; };
@@ -126,6 +128,8 @@
 		5A446B221E9974B2000AC705 /* TopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTableViewCell.swift; sourceTree = "<group>"; };
 		5A446B241E9974C0000AC705 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		5A5A80051F2A96F400E4CA04 /* AccessCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessCodeViewController.swift; sourceTree = "<group>"; };
+		5A5A80071F2AC85600E4CA04 /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
+		5A5A80091F2B743700E4CA04 /* NewUserAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserAvatarViewController.swift; sourceTree = "<group>"; };
 		5A7467D91F0C59E100BAF86D /* ChatHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5A842FD51EBA39140099E637 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		5A842FD71EBA39D50099E637 /* SearchableRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
@@ -319,7 +323,6 @@
 				5AAC94861E9304B9009155FE /* ChatViewController.swift */,
 				5A8D59111E9289AE007F107A /* ProfileViewController.swift */,
 				5A35A2901E77539500162A20 /* NewMessageViewController.swift */,
-				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
 				5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */,
 				5AFEEDE91F1FF25800E50422 /* UserDetailViewController.swift */,
 			);
@@ -386,10 +389,13 @@
 			isa = PBXGroup;
 			children = (
 				5A35A2941E78412A00162A20 /* LaunchViewController.swift */,
-				5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */,
-				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
 				5A35A2981E786E1600162A20 /* NavViewController.swift */,
+				5A35A2921E78329A00162A20 /* WelcomeViewController.swift */,
 				5A5A80051F2A96F400E4CA04 /* AccessCodeViewController.swift */,
+				5A5A80071F2AC85600E4CA04 /* CreateUsernameViewController.swift */,
+				5A5A80091F2B743700E4CA04 /* NewUserAvatarViewController.swift */,
+				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
+				5A14676F1E82E00200F7E3EA /* NewUserViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -617,6 +623,7 @@
 				5A8B7D871EBB988B00CCEFAD /* CustomSearchBar.swift in Sources */,
 				5AAC94B71E959FCB009155FE /* LastTableViewCell.swift in Sources */,
 				5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */,
+				5A5A800A1F2B743700E4CA04 /* NewUserAvatarViewController.swift in Sources */,
 				5AB122321F1927F100B4D02D /* FadeInController.swift in Sources */,
 				5A8F7AAB1E7C504200C4E566 /* ChatTableViewCell.swift in Sources */,
 				5A5A80061F2A96F400E4CA04 /* AccessCodeViewController.swift in Sources */,
@@ -638,6 +645,7 @@
 				5AFEEDE01F1F9E2E00E50422 /* Theme.swift in Sources */,
 				5AB122301F1924AB00B4D02D /* FadeInPushTransition .swift in Sources */,
 				5A14676A1E8205AA00F7E3EA /* User.swift in Sources */,
+				5A5A80081F2AC85600E4CA04 /* CreateUsernameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

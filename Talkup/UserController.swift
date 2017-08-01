@@ -30,6 +30,8 @@ class UserController {
         }
     }
     
+    var allUsernames: [String]?
+    
     //MARK: - View lifecycle
     
     init() {
@@ -138,9 +140,53 @@ class UserController {
         }
     }
 
+    //MARK: - Fetches
+    
+    // Fetch all usernames for sign up 
     
     
-    //MARK: - Fetch Messages by User
+    func fetchAllUsernames(completion: @escaping() -> Void) {
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: Constants.usertypeKey, predicate: predicate)
+        
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["username"]
+        
+        var usernames = [String]()
+        
+        operation.queryCompletionBlock = ( { (cursor, error) -> Void in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        
+            DispatchQueue.main.async {
+                // do something with results 
+                print(cursor)
+            }
+            
+        })
+        
+        operation.recordFetchedBlock = ( { (record) -> Void in
+        
+            guard let username = record.value(forKey: "username") as? String else { return }
+            usernames.append(username)
+            self.allUsernames = usernames
+            
+        })
+        
+        cloudKitManager.publicDatabase.add(operation)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            // handle error
+            // take results and add each username to array
+        }
+        
+    }
+    
+    
+    //Fetch Messages by User
     
     func fetchMessagesBy(user: User, completion: @escaping () -> Void) {
         
@@ -191,12 +237,4 @@ class UserController {
         }
         return message
     }
-    
-    
-    // update user info
-    
-    // check if user info already exists
-    
-
-    
 }
