@@ -1,51 +1,50 @@
 //
-//  CreateUsernameViewController.swift
+//  AddEmailViewController.swift
 //  Talkup
 //
-//  Created by Andrew Ervin Gierke on 7/27/17.
+//  Created by Andrew Ervin Gierke on 3/22/17.
 //  Copyright © 2017 Androoo. All rights reserved.
 //
 
 import UIKit
 
-class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
+class AddEmailViewController: UIViewController, UITextFieldDelegate {
     
-    //MARK: - Properties 
+    //MARK: - Properties
     
-    @IBOutlet weak var titleSubtext: UILabel!
-    @IBOutlet weak var titleUsernameLabel: UILabel!
-    @IBOutlet weak var usernameTextfield: UITextField!
-    @IBOutlet weak var continueButton: UIButton!
+    var image: UIImage?
+    var userName: String? 
     
-    var username: String?
-    let limitLength = 15
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var continueButtonTapped: UIButton!
+    @IBOutlet weak var invalidEmailWarningLabel: UILabel!
     
-    //MARK: - View lifecycle
+    //MARK: - UI Actions
+    
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.tintColor = .white
-        UserController.shared.fetchAllUsernames {
-            
-        }
-        
     }
-
+    
+    //MARK: - View lifecycle 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        continueButton.layer.cornerRadius = 8.0
-        continueButton.layer.masksToBounds = true
-        usernameTextfield.delegate = self
+        continueButtonTapped.layer.cornerRadius = 8.0
+        continueButtonTapped.layer.masksToBounds = true
+        emailTextField.delegate = self
         registerForKeyboardNotifications()
-        registerForTextFieldLengthNotification()
+        invalidEmailWarningLabel.isHidden = true
+        
     }
     
     //MARK: - Handle Keyboard
-    
-    func registerForTextFieldLengthNotification() {
-    }
     
     func registerForKeyboardNotifications() {
         // Adding notification on keyboard appearing
@@ -77,18 +76,21 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-    //MARK: - Text Field Delegate 
+    //MARK: - Text Field Delegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        // check that text field is a valid email address
         
-        guard let enteredUsername = textField.text,
-           let allUsernames = UserController.shared.allUsernames else { return false }
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         
-        if allUsernames.contains(enteredUsername) {
-            // handle username taken
+        if emailTest.evaluate(with: textField.text) == false {
+            invalidEmailWarningLabel.isHidden = false
+            invalidEmailWarningLabel.text = "please enter a valid email address"
+            invalidEmailWarningLabel.textColor = UIColor(white: 1.0, alpha: 0.3)
         } else {
-            performSegue(withIdentifier: "toAddUserPhoto", sender: self)
+            invalidEmailWarningLabel.isHidden = true
         }
         
         return true
@@ -96,9 +98,7 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        // protect that text exists, and get that last character 
         guard let text = textField.text else { return true }
-        let newString = NSString(string: text).replacingCharacters(in: range, with: string)
         
         // define invalid char set
         var invalidCharSet = NSCharacterSet.whitespacesAndNewlines
@@ -110,16 +110,12 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         
-        // check length limit
-        let newLength = newString.characters.count + string.characters.count - range.length
         
-        self.username = newString
         
-        return newLength <= limitLength
+        return true
         
     }
     
-
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,17 +124,15 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
         
-        if segue.identifier == "toAddUserPhoto" {
-            if let detailViewController = segue.destination as? NewUserAvatarViewController {
-                
-                detailViewController.username = self.username
-                
+        if segue.identifier == "toCreateNewUser" {
+            if let detailViewController = segue.destination as? CreateAccountViewController {
+                detailViewController.username = self.userName
+                detailViewController.image = self.image
             }
         }
     }
     
 }
-
 
 
 

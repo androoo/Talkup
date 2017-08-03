@@ -13,6 +13,13 @@ class NewUserAvatarViewController: UIViewController {
     //MARK: - Properties 
 
     var image: UIImage?
+    var username: String?
+    
+    
+    //MARK: - Outlets
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var continueButton: UIButton!
     
     
     //MARK: - UI Actions
@@ -23,12 +30,41 @@ class NewUserAvatarViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    //MARK: - View lifecycle 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.tintColor = Colors.primaryBgPurple
+    }
+    
+    override func viewDidLoad() {
+        usernameLabel.text = username
+        
+    }
+    
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toCreateNewUser" {
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+        
+        if segue.identifier == "embedPhotoSelect" {
+            
             let embedViewController = segue.destination as? PhotoSelectViewController
             embedViewController?.delegate = self
+            
+        }
+        
+        if segue.identifier == "toAddEmail" {
+            
+            if let detailViewController = segue.destination as? AddEmailViewController {
+                detailViewController.userName = self.username
+                detailViewController.image = self.image
+                
+            }
         }
     }
 }

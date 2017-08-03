@@ -13,7 +13,7 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Properties 
     
     @IBOutlet weak var scrollView: UIScrollView!
-    var accessCodes: [String] = ["test1234"]
+    var accessCodes: [String] = ["test1234", "a"]
     
     @IBOutlet weak var accessCodeTextField: UITextField!
     @IBOutlet weak var requestCodeButton: UIButton!
@@ -29,7 +29,11 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - View Lifecycle
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        continueButton.isEnabled = false
+        accessCodeTextField.text = ""
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +52,23 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         continueButton.backgroundColor = UIColor(white: 1.0, alpha: 0.15)
         continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
         registerForKeyboardNotifications()
+        registerForValidTextField()
+    }
+    
+    //MARK: - UI Actions 
+    
+    @IBAction func continueButtonTapped(_ sender: Any) {
+        
+        
     }
     
     
+    
     //MARK: - Handle Keyboard 
+    
+    func registerForValidTextField() {
+        accessCodeTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+    }
     
     func registerForKeyboardNotifications() {
         // Adding notification on keyboard appearing
@@ -63,6 +80,19 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         // Remove notificaiton on keyboard activity
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    // enable continue button if code is valid 
+    
+    func editingChanged(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        
+        if accessCodes.contains(text) {
+            
+            continueButton.isEnabled = true
+            
+        }
+        
     }
     
     func keyboardWasShown(notification: NSNotification) {
@@ -87,7 +117,6 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     //MARK: - text field delegate 
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
         
         accessCodeWarningLabel.textColor = Colors.deepPurple
         
