@@ -43,7 +43,7 @@ class UserController {
     
     //MARK: - CloudKit Helpers
     
-    func createUserWith(username: String, email: String, image: UIImage, completion: @escaping (User?) -> Void) {
+    func createUserWith(username: String, email: String, image: UIImage, accessCode: String, completion: @escaping (User?) -> Void) {
         
         guard let data = UIImageJPEGRepresentation(image, 0.8) else { return }
         
@@ -53,9 +53,12 @@ class UserController {
         
         let user = User(userName: username, email: email, photoData: data, defaultUserReference: defaultUserRef)
         
-        let userRecord = CKRecord(user: user)
+        let uuser = User(userName: username, email: email, photoData: data, defaultUserReference: defaultUserRef, accessCode: accessCode)
+        
+        let userRecord = CKRecord(user: uuser)
         
         CKContainer.default().publicCloudDatabase.save(userRecord) { (record, error) in
+            
             if let error = error { print(error.localizedDescription) }
             
             guard let record = record,

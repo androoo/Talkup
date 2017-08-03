@@ -76,6 +76,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = true
+        
         topNavBarBackgroundView.backgroundColor = .white
         self.flowLayout?.estimatedItemSize = CGSize(width: 100, height: 100)
         guard let user = UserController.shared.currentUser else { return }

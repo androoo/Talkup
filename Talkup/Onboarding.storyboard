@@ -351,7 +351,7 @@
         <!--Main-->
         <scene sceneID="NfC-AH-T9t">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="eA7-3d-SzA" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="MainNav" storyboardName="Main" id="eA7-3d-SzA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRk-qU-X9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4738" y="-182"/>

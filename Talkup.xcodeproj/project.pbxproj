@@ -31,6 +31,7 @@
 		5A35A2951E78412A00162A20 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2941E78412A00162A20 /* LaunchViewController.swift */; };
 		5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2981E786E1600162A20 /* NavViewController.swift */; };
 		5A35A29B1E78989000162A20 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A29A1E78989000162A20 /* Constants.swift */; };
+		5A405E5A1F33985300C10F15 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A405E591F33985300C10F15 /* MainNavigationController.swift */; };
 		5A446B211E9972FC000AC705 /* ChatItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B201E9972FC000AC705 /* ChatItemTableViewCell.swift */; };
 		5A446B231E9974B2000AC705 /* TopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B221E9974B2000AC705 /* TopTableViewCell.swift */; };
 		5A446B251E9974C0000AC705 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B241E9974C0000AC705 /* LabelTableViewCell.swift */; };
@@ -125,6 +126,7 @@
 		5A35A2941E78412A00162A20 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		5A35A2981E786E1600162A20 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		5A35A29A1E78989000162A20 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5A405E591F33985300C10F15 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5A446B201E9972FC000AC705 /* ChatItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemTableViewCell.swift; sourceTree = "<group>"; };
 		5A446B221E9974B2000AC705 /* TopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTableViewCell.swift; sourceTree = "<group>"; };
 		5A446B241E9974C0000AC705 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		5A35A26E1E76FF6800162A20 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A405E591F33985300C10F15 /* MainNavigationController.swift */,
 				5A8D590F1E928618007F107A /* PageViewController.swift */,
 				5A8D590D1E928057007F107A /* HomeViewController.swift */,
 				5AAC94861E9304B9009155FE /* ChatViewController.swift */,
@@ -621,6 +624,7 @@
 				5A35A2831E773F1500162A20 /* HelperFiles.swift in Sources */,
 				5A35A27C1E772BE400162A20 /* Chat.swift in Sources */,
 				5A0347BA1E86D4BE0080CAD9 /* Appearance .swift in Sources */,
+				5A405E5A1F33985300C10F15 /* MainNavigationController.swift in Sources */,
 				5AAC94B11E95275C009155FE /* FirstChatTableViewCell.swift in Sources */,
 				5AFEED861F1A5A3800E50422 /* NavDelegate.swift in Sources */,
 				5AFEED8D1F1D94DE00E50422 /* SlideMenuViewController.swift in Sources */,

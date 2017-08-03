@@ -12,6 +12,8 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties 
     
+    var enteredCode: String?
+    
     @IBOutlet weak var scrollView: UIScrollView!
     var accessCodes: [String] = ["test1234", "a"]
     
@@ -170,6 +172,18 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        // protect that text exists, and get that last character
+        guard let text = textField.text else { return true }
+        let newString = NSString(string: text).replacingCharacters(in: range, with: string)
+    
+        self.enteredCode = newString
+        
+        return true
+        
+    }
+    
     func requestCode() {
         
         let alertController = UIAlertController(title: "Request Access", message: "Send us your email address to request access", preferredStyle: .alert)
@@ -187,6 +201,11 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
+        
+        if segue.identifier == "accessCodeSuccess" {
+            let destination = segue.destination as? CreateUsernameViewController
+            destination?.accessCode = enteredCode
+        }
     }
     
 }

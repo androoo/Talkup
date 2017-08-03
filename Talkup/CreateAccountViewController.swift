@@ -14,6 +14,7 @@ class CreateAccountViewController: UIViewController {
     var username: String?
     var email: String?
     var image: UIImage?
+    var accessCode: String?
     
     
     //MARK: - Outlets
@@ -29,14 +30,15 @@ class CreateAccountViewController: UIViewController {
         
         guard let username = username,
             let email = email,
-            let image = image else { emptyFieldsAlert(); return }
+            let accessCode = accessCode,
+            let image = image ?? UIImage(named: "defaultUser") else { emptyFieldsAlert(); return }
         
-        UserController.shared.createUserWith(username: username, email: email, image: image) { (user) in
+        UserController.shared.createUserWith(username: username, email: email, image: image, accessCode: accessCode) { (user) in
             
             //send to convo TVC
             DispatchQueue.main.async {
                 
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNavigation") as? PageViewController else { return }
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNav") else { return }
                 self.present(vc, animated: false, completion: nil)
                 
             }

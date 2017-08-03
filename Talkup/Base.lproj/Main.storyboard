@@ -1735,12 +1735,12 @@
             </objects>
             <point key="canvasLocation" x="5312.8000000000002" y="-300"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--mainNavigation-->
         <scene sceneID="0yT-9H-YYP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vHR-j6-vCf" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="MainNavigationController" storyboardIdentifier="MainNavigationController" title="mainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="vHR-j6-vCf" customClass="MainNavigationController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3yE-wK-jrV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3yE-wK-jrV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

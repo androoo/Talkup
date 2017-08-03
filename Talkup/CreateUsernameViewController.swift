@@ -17,6 +17,7 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var continueButton: UIButton!
     
+    var accessCode: String?
     var username: String?
     let limitLength = 15
     
@@ -132,7 +133,7 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
             if let detailViewController = segue.destination as? NewUserAvatarViewController {
                 
                 detailViewController.username = self.username
-                
+                detailViewController.accessCode = self.accessCode
             }
         }
     }

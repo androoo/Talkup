@@ -13,6 +13,7 @@ class NewUserAvatarViewController: UIViewController {
     //MARK: - Properties 
 
     var image: UIImage?
+    var accessCode: String?
     var username: String?
     
     
@@ -63,7 +64,7 @@ class NewUserAvatarViewController: UIViewController {
             if let detailViewController = segue.destination as? AddEmailViewController {
                 detailViewController.userName = self.username
                 detailViewController.image = self.image
-                
+                detailViewController.accessCode = self.accessCode
             }
         }
     }

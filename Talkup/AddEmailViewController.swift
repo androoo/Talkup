@@ -13,7 +13,9 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Properties
     
     var image: UIImage?
-    var userName: String? 
+    var userName: String?
+    var email: String?
+    var accessCode: String?
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var continueButtonTapped: UIButton!
@@ -93,12 +95,15 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
             invalidEmailWarningLabel.isHidden = true
         }
         
+        self.email = textField.text
+        
         return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let text = textField.text else { return true }
+        let newString = NSString(string: text).replacingCharacters(in: range, with: string)
         
         // define invalid char set
         var invalidCharSet = NSCharacterSet.whitespacesAndNewlines
@@ -110,7 +115,7 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         
-        
+        self.email = newString
         
         return true
         
@@ -127,7 +132,9 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "toCreateNewUser" {
             if let detailViewController = segue.destination as? CreateAccountViewController {
                 detailViewController.username = self.userName
+                detailViewController.email = self.email
                 detailViewController.image = self.image
+                detailViewController.accessCode = self.accessCode
             }
         }
     }
