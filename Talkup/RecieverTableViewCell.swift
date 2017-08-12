@@ -61,7 +61,7 @@ class RecieverTableViewCell: UITableViewCell {
     }
     
     @IBAction func recievedMessageCellVoteButtonTapped(_ sender: UIButton) {
-        guard let message = message else { return }
+        guard message != nil else { return }
         
         // switch local appearance
         voteButtonAppearance()

@@ -16,6 +16,7 @@ class Chat: CloudKitSyncable {
     
     var creator: User?
     var creatorReference: CKReference
+    var isDirectChat: Bool
     var topic: String
     var score: Int?
     var messages: [Message]
@@ -37,9 +38,10 @@ class Chat: CloudKitSyncable {
     
     //MARK: - CloudKitSyncable
     
-    init(creator: User? = nil, creatorReference: CKReference, topic: String, score: Int? = 0, messages: [Message] = []) {
+    init(creator: User? = nil, creatorReference: CKReference, isDirectChat: Bool, topic: String, score: Int? = 0, messages: [Message] = []) {
         self.creator = creator
         self.creatorReference = creatorReference
+        self.isDirectChat = isDirectChat
         self.topic = topic
         self.score = score
         self.messages = messages
@@ -47,9 +49,11 @@ class Chat: CloudKitSyncable {
     
     required init?(cloudKitRecord: CKRecord) {
         guard let creatorReference = cloudKitRecord[Constants.chatCreatorKey] as? CKReference,
+            let isDirect = cloudKitRecord[Constants.isDirectKey] as? Bool,
             let topic = cloudKitRecord[Constants.chatKey] as? String else { return nil }
 
         self.creatorReference = creatorReference
+        self.isDirectChat = isDirect
         self.topic = topic
         self.cloudKitRecordID = cloudKitRecord.recordID
         self.messages = []
@@ -72,6 +76,7 @@ extension CKRecord {
         self.init(recordType: chat.recordType, recordID: recordID)
         
         self[Constants.chatKey] = chat.topic as CKRecordValue?
+        self[Constants.isDirectKey] = chat.isDirectChat as CKRecordValue
         self[Constants.chatReferenceKey] = chat.chatReference
         self[Constants.chatCreatorKey] = chat.creatorReference
     }

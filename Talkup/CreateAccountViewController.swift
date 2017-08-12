@@ -42,6 +42,13 @@ class CreateAccountViewController: UIViewController {
                 self.present(vc, animated: false, completion: nil)
                 
             }
+            // can create user direct chat channel here 
+            
+            guard let createdUser = user else { return }
+            
+            ChatController.shared.createChatWith(chatTopic: username, owner: createdUser, firstMessage: "hi", isDirectChat: true, completion: { (_) in
+                // whatever
+            })
         }
     }
     

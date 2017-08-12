@@ -34,7 +34,6 @@ class LaunchViewController: UIViewController {
                         self.performSegue(withIdentifier: Constants.toChats, sender: self)
                     })
                     
-                    
                 } else {
                     self.performSegue(withIdentifier: Constants.toWelcome, sender: self)
                 }

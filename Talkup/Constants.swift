@@ -39,6 +39,7 @@ struct Constants {
     static let messagesKey = "messages"
     static let chatReferenceKey = "chatReference"
     static let chatCreatorKey = "creator"
+    static let isDirectKey = "isDirect"
     static let unreadMessages = "unreadChat"
     
     //MARK: - Message Keys

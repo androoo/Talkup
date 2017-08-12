@@ -31,6 +31,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var message: Message? {
         didSet {
+            
         }
     }
     
@@ -38,9 +39,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var messageSortSelection: MessageSort = .live
     var timeOfLastVisit: Date?
     
-    //MARK: - UIActions
-
     
+    //MARK: - UIActions
 
     @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
         guard inputTextField.text != "" else { sendMessageButtonTapped.isEnabled = false; return }
@@ -68,6 +68,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let group = DispatchGroup()
         
         group.enter()
+        
         MessageController.shared.fetchMessagesIn(chat: chat) {
             group.enter()
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
@@ -96,6 +97,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
+    
     
     //MARK: - View lifecycle
     
@@ -173,8 +175,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         default: return chat?.filteredMessages.count ?? 0
             
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -188,6 +188,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
+    
     
     // Filter header stuff
     
@@ -261,10 +262,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.message = message
                 
                 return cell
+                
             }
-            
-        }    
-        
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -281,6 +281,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
     
     //MARK: - Customize Appearance
     
@@ -370,11 +371,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20)
             
         }
-        
-        
     }
-    
-    
     
     // Remove Blocked Message
     
@@ -456,8 +453,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.updateViews()
             }
         }
-        
-        
     }
     
     //MARK: - Message Recieved Cell Delegate

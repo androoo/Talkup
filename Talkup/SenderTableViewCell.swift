@@ -42,9 +42,9 @@ class SenderTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let message = message else { return }
         
-        let time = message.timeSinceCreation(from: message.timestamp, to: Date())
+        _ = message.timeSinceCreation(from: message.timestamp, to: Date())
         
-        let emojiChars = CharacterSet()
+        _ = CharacterSet()
         
         chatTextView.text = message.text
         chatCountLabel.text = "\(message.score) up"

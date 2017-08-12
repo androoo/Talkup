@@ -9,7 +9,7 @@
 import UIKit
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: - Properties 
     
@@ -75,6 +75,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let currenctUser = UserController.shared.currentUser else { return }
+        
+        ChatController.shared.fetchDirectChat(forUser: currenctUser) { (chat) in
+            UserController.shared.currentUserDirectChat = chat
+        }
         
         navigationController?.navigationBar.isHidden = true
         
@@ -149,9 +155,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func numberOfSections(in tableView: UITableView) -> Int {
         
         if UserController.shared.currentUser?.following == nil {
-            return 3
+            return 2
         } else {
-            return 4
+            return 3
         }
     }
     
@@ -159,17 +165,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if UserController.shared.currentUser?.following == nil {
             switch section {
-            case 0: return 1
-            case 1: return ChatController.shared.chats.count
-            case 2: return 1
+            case 0: return ChatController.shared.chats.count
+            case 1: return 1
             default: return 1
             }
         } else {
             switch section {
-            case 0: return 1
-            case 1: return ChatController.shared.followingChats.count
-            case 2: return ChatController.shared.chats.count
-            case 3: return 1
+            case 0: return ChatController.shared.followingChats.count
+            case 1: return ChatController.shared.chats.count
+            case 2: return 1
             default: return 1
             }
         }
@@ -182,12 +186,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch indexPath.section {
                 
             case 0:
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "recentChatsCell", for: indexPath)
-                
-                return cell
-                
-            case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
                 
                 let chat = ChatController.shared.chats[indexPath.row]
@@ -200,7 +198,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 return cell
                 
-            case 2:
+            case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
                 return cell
                 
@@ -214,15 +212,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch indexPath.section {
                 
             case 0:
-                
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "recentChatsCell", for: indexPath) as? RecentMessageCollectionTableViewCell else { return RecentMessageCollectionTableViewCell() }
-                
-                cell.backgroundColor = .clear 
-                cell.setAppearance()
-                
-                return cell
-                
-            case 1:
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "followChat", for: indexPath) as? FollowingChatTableViewCell else {
                     return FollowingChatTableViewCell()
@@ -238,7 +227,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 return cell
                 
-            case 2:
+            case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else {
                     return ChatTableViewCell()
                 }
@@ -253,7 +242,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 return cell
                 
-            case 3:
+            case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
                 return cell
                 
@@ -269,14 +258,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if UserController.shared.currentUser?.following == nil {
             switch indexPath.section {
-            case 0: return 250
             case 1: return 96
             case 2: return UITableViewAutomaticDimension
             default: return 86
             }
         } else {
             switch indexPath.section {
-            case 0: return 250
             case 1: return 96
             case 2: return 96
             case 3: return UITableViewAutomaticDimension
@@ -292,8 +279,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            return nil
-        case 1:
             guard let header = tableView.dequeueReusableCell(withIdentifier: "followTitle") as? FollowingTitleTableViewCell else { return FollowingTitleTableViewCell() }
             return header
         default:
@@ -303,40 +288,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        switch section {
-        case 0:
-            return 0
-        default:
-            return 56
-        }
+        return 56
         
     }
     
-    
-    //MARK: - Collection View Datasource 
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let messages = recentMessages else { return 0 }
-        return messages.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageItemCell", for: indexPath) as? MessageItemCollectionViewCell else { return MessageItemCollectionViewCell() }
-        
-        guard let message = recentMessages?[indexPath.row]
-            else { return MessageItemCollectionViewCell() }
-        
-        cell.message = message
-        
-        return cell
-        
-    }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        
@@ -382,7 +337,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
         } else if segue.identifier == "slideMenu" {
-                    guard let user = UserController.shared.currentUser
+                    guard UserController.shared.currentUser != nil
                         else { return }
                     
                     if let destinationViewController = segue.destination as? SlideMenuViewController {

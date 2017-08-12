@@ -51,9 +51,11 @@ class ChatController {
     
     init() {
         self.cloudKitManager = CloudKitManager()
-        guard let user = UserController.shared.currentUser else { return }
+        guard UserController.shared.currentUser != nil else { return }
         
 //        performFullSync()
+        
+        
         
         subscribeToNewChats { (success, error) in
             if success {
@@ -172,11 +174,11 @@ func fetchChatOwnersFor(chats: [Chat], completion: @escaping () -> Void) {
 
 //MARK: - CK Methods
 
-func createChatWith(chatTopic: String, owner: User, firstMessage: String, completion: ((Chat) -> Void)?) {
+    func createChatWith(chatTopic: String, owner: User, firstMessage: String, isDirectChat: Bool, completion: ((Chat) -> Void)?) {
     
     guard let creatorRef = UserController.shared.currentUser?.cloudKitReference else { return }
     
-    let chat = Chat(creatorReference: creatorRef, topic: chatTopic)
+    let chat = Chat(creatorReference: creatorRef, isDirectChat: isDirectChat, topic: chatTopic)
     chat.creator = owner
     chats.append(chat)
     
@@ -427,6 +429,41 @@ func fetchFollowingChats(_ subscriptionID: String, completion: ((_ subscription:
     }
     
 }
+    
+
+
+    
+
+// fetch direct chat for user 
+
+// need to get all chats. Filter to only the ones that are directs. 
+// know what user you need for direct pairing 
+// match that user's RecordID with directChat recordID's 
+    
+    func fetchDirectChat(forUser user: User, completion: @escaping (_ chat: Chat) -> Void) {
+        
+        // 1. fetch all chats 
+        let predicate = NSPredicate(format: "isDirect == true")
+        
+        let query = CKQuery(recordType: Constants.chattypeKey, predicate: predicate)
+        
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            guard let records = records else { return }
+            let chats = records.flatMap({Chat(cloudKitRecord: $0)})
+            
+            for chat in chats {
+                if chat.creatorReference.recordID == user.cloudKitRecordID {
+                    completion(chat)
+                }
+            }
+        }
+    }
+
 
 // fetch following chats
 

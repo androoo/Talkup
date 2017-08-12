@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false 
         
         guard let user = UserController.shared.currentUser else { return }
-        let name = user.userName
+        _ = user.userName
         
         
         avatarImageView.image = user.photo

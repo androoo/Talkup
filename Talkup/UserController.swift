@@ -27,6 +27,13 @@ class UserController {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: self.currentUserWasSetNotification, object: self)
             }
+            // fetch current user's chat
+        }
+    }
+    
+    var currentUserDirectChat: Chat? {
+        didSet {
+            
         }
     }
     
@@ -51,7 +58,7 @@ class UserController {
         
         let defaultUserRef = CKReference(recordID: defaultUserRecordID, action: .deleteSelf)
         
-        let user = User(userName: username, email: email, photoData: data, defaultUserReference: defaultUserRef)
+        _ = User(userName: username, email: email, photoData: data, defaultUserReference: defaultUserRef)
         
         let uuser = User(userName: username, email: email, photoData: data, defaultUserReference: defaultUserRef, accessCode: accessCode)
         

@@ -44,7 +44,7 @@ class ChatTableViewCell: UITableViewCell {
         
         chatTopicLabel.text = chat.topic
         chatTopicLabel.textColor = Colors.primaryDark
-        chatRankLabel.text = "\(chat.score)"
+        chatRankLabel.text = "\(chat.score ?? 1)"
         chatRankLabel.textColor = Colors.alertOrange
         subTitleLabel.textColor = Colors.primaryDarkGray
         userAvatarImageView.backgroundColor = .white
