@@ -90,6 +90,12 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
         updateViews()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.estimatedRowHeight = 86
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
 
     //MARK: - View Helpers 
     
@@ -168,7 +174,14 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             
         case 0:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "userHeaderCell", for: indexPath) as? UserHeaderTableViewCell else { return UserHeaderTableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "userHeaderCell", for: indexPath) as? UserHeaderTableViewCell else {
+                return UserHeaderTableViewCell()
+            }
+            
+            // have to make this whatever you clicked on
+            cell.user = UserController.shared.currentUser
+            cell.backgroundColor = .blue
+            
             return cell
             
         default:
@@ -191,7 +204,47 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 return cell
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0: return UITableViewAutomaticDimension
+        default: return UITableViewAutomaticDimension
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    
+    //MARK: - TableView header 
+    
+    // Filter header stuff
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
+        switch section {
+            
+        case 0:
+            return nil
+        default:
+            guard let header = tableView.dequeueReusableCell(withIdentifier: "headerViewCell") as? FilterHeaderTableViewCell else { return FilterHeaderTableViewCell() }
+            
+            header.delegate = self
+            
+            return header
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 0
+        default:
+            return 50
+        }
     }
     
     

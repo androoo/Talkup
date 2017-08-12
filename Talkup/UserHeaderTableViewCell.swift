@@ -10,6 +10,14 @@ import UIKit
 
 class UserHeaderTableViewCell: UITableViewCell {
     
+    //MARK: - Properties
+    
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     //MARK: - Outlets 
     
     @IBOutlet weak var userAvatarImageView: UIImageView!
@@ -21,6 +29,15 @@ class UserHeaderTableViewCell: UITableViewCell {
     //MARK: - UI Actions 
     
     @IBAction func followButtonTapped(_ sender: Any) {
+    }
+    
+    
+    //MARK: - Methods 
+    
+    func updateViews() {
+        guard let user = user else { return }
+        
+        userNameLabel.text = user.userName
     }
     
 
