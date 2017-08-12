@@ -522,6 +522,7 @@
                         <outlet property="inputContainerViewBottomContstaint" destination="gTg-to-BJz" id="M43-mR-MzL"/>
                         <outlet property="navBarBackArrow" destination="Xj2-X9-Mto" id="BAW-Wo-a91"/>
                         <outlet property="navBarMoreButton" destination="ym4-v0-ggR" id="936-xg-zA8"/>
+                        <outlet property="tableView" destination="AwR-IN-zaP" id="QB3-h6-7UJ"/>
                         <segue destination="uOL-11-uIp" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="2PV-Wl-EH5"/>
                     </connections>
                 </viewController>

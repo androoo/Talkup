@@ -10,9 +10,17 @@ import UIKit
 
 class UserDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate, ChatHeaderDelegate {
     
-    //MARK: - Properties 
+    //MARK: - Properties
     
-    var chat: Chat?
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var chat: Chat? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     var messageSortSelection: MessageSort = .live
     
     var messages: [Message] {
@@ -74,7 +82,69 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func navBarMoreButtonTapped(_ sender: Any) {
         
     }
+    
+    
+    //MARK: - View Lifecycle 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateViews()
+    }
 
+    //MARK: - View Helpers 
+    
+    func updateViews() {
+        guard let chat = chat, isViewLoaded else { return }
+        
+        let group = DispatchGroup()
+        
+        group.enter()
+        
+        MessageController.shared.fetchMessagesIn(chat: chat) {
+            group.enter()
+            MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
+                
+                //check to see if any messages need to be hidden
+                self.hideBlockedMessages()
+                
+                group.leave()
+            }
+            group.leave()
+        }
+        group.notify(queue: DispatchQueue.main) {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    // Remove Blocked Message
+    
+    func hideBlockedMessages() {
+        
+        guard let messages = chat?.messages else { return }
+        
+        guard let blockedUsers = UserController.shared.currentUser?.blocked else { return }
+        
+        // the recordNames of the blocked users and owner refs are what will match
+        let blockedRecordNames = blockedUsers.flatMap({$0.recordID.recordName})
+        
+        //if message owner ref == blocked owner ref then message is hidden
+        let messageRecordNames = messages.flatMap({$0.ownerReference.recordID.recordName})
+        
+        for id in messageRecordNames {
+            if blockedRecordNames.contains(id) {
+                print("\(id) is hidden")
+                
+                for message in messages {
+                    if message.ownerReference.recordID.recordName == id {
+                        message.blocked = true
+                    }
+                }
+            }
+        }
+    }
+    
     
     
     //MARK: - TableView Datasource 
