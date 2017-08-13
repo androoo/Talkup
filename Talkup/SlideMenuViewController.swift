@@ -78,9 +78,10 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 navigationItem.backBarButtonItem = backItem
                 
                 let chat = UserController.shared.currentUserDirectChat
-                chat?.isDismisable = false
+                chat?.isDismisable = true
                 detailViewController.chat = chat
-                
+                detailViewController.user = UserController.shared.currentUser
+                detailViewController.isDirectChat = true 
             }
         }
     }

@@ -18,18 +18,26 @@ class UserHeaderTableViewCell: UITableViewCell {
         }
     }
     
+    
     //MARK: - Outlets 
     
     @IBOutlet weak var userAvatarImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userFollowButton: RoundedCornerButton!
     @IBOutlet weak var headerBgView: UIView!
+    @IBOutlet weak var headerViewBottomSep: UIImageView!
     
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var followButton: RoundedCornerButton!
     
     //MARK: - UI Actions 
     
     @IBAction func followButtonTapped(_ sender: Any) {
     }
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
+    }
+    
     
     
     //MARK: - Methods 
@@ -38,6 +46,10 @@ class UserHeaderTableViewCell: UITableViewCell {
         guard let user = user else { return }
         
         userNameLabel.text = user.userName
+        userAvatarImageView.image = user.photo
+        userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width / 2
+        userAvatarImageView.layer.masksToBounds = true 
+        headerViewBottomSep.backgroundColor = Colors.primaryLightGray
     }
     
 

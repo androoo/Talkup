@@ -137,7 +137,7 @@
                         <viewControllerLayoutGuide type="top" id="8H1-nF-Y1P"/>
                         <viewControllerLayoutGuide type="bottom" id="IEj-wS-yNQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Dvq-vW-MIe" customClass="DebugView" customModule="Talkup" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Dvq-vW-MIe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -706,8 +706,8 @@
                         <outlet property="navBarViewBgView" destination="G6E-bU-lpm" id="H9g-na-0lW"/>
                         <outlet property="sendMessageButtonTapped" destination="fPB-W9-QX1" id="fCv-Ah-X7z"/>
                         <outlet property="tableView" destination="Xov-EP-6Q8" id="KYR-B0-arb"/>
-                        <segue destination="ESL-pB-usD" kind="show" identifier="toUserDetail" id="7Rg-fY-qhG"/>
                         <segue destination="JDY-hS-eKU" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="cEK-rE-TJW"/>
+                        <segue destination="e9f-U5-oBw" kind="show" identifier="toUserDetail" id="WbD-eR-ej5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNz-dV-QfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -738,7 +738,7 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPB-W9-QX1">
-                                    <rect key="frame" x="316" y="12.5" width="40" height="40"/>
+                                    <rect key="frame" x="320" y="12.5" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="8Xh-zk-EaY"/>
                                         <constraint firstAttribute="width" constant="40" id="ATO-NM-WxF"/>
@@ -763,7 +763,7 @@
                                 <constraint firstItem="0lT-5l-Cc4" firstAttribute="leading" secondItem="IRc-aP-5LP" secondAttribute="trailing" constant="8" id="IlE-hR-pCj"/>
                                 <constraint firstItem="IRc-aP-5LP" firstAttribute="leading" secondItem="WpA-ra-cx8" secondAttribute="leading" constant="8" id="Z8q-AZ-e6M"/>
                                 <constraint firstItem="IRc-aP-5LP" firstAttribute="centerY" secondItem="0lT-5l-Cc4" secondAttribute="centerY" id="ce9-EI-pVV"/>
-                                <constraint firstItem="fPB-W9-QX1" firstAttribute="trailing" secondItem="0lT-5l-Cc4" secondAttribute="trailing" constant="-8" id="hBM-fo-pHK"/>
+                                <constraint firstItem="fPB-W9-QX1" firstAttribute="trailing" secondItem="0lT-5l-Cc4" secondAttribute="trailing" constant="-4" id="hBM-fo-pHK"/>
                                 <constraint firstAttribute="height" constant="65" id="rXL-Aq-Lbb"/>
                                 <constraint firstItem="fPB-W9-QX1" firstAttribute="centerY" secondItem="WpA-ra-cx8" secondAttribute="centerY" id="skJ-vg-krj"/>
                                 <constraint firstAttribute="trailing" secondItem="0lT-5l-Cc4" secondAttribute="trailing" constant="12" id="wup-Tn-TER"/>
@@ -793,7 +793,15 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4588" y="-299.10044977511245"/>
+            <point key="canvasLocation" x="4590" y="-151"/>
+        </scene>
+        <!--userDetail-->
+        <scene sceneID="Whe-ak-6vU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserDetail" referencedIdentifier="userDetail" id="e9f-U5-oBw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Of3-LO-UU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5286" y="-151"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="V8O-33-OqJ">
@@ -1320,7 +1328,7 @@
                         <viewControllerLayoutGuide type="bottom" id="51H-zJ-Fus"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZM3-Lf-WZP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3d-bN-Hrl">
@@ -1354,7 +1362,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D1B-KO-dnI">
-                                <rect key="frame" x="0.0" y="226" width="375" height="774"/>
+                                <rect key="frame" x="0.0" y="226" width="375" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="topCell" rowHeight="57" id="7kS-Dh-EMA" customClass="TopTableViewCell" customModule="Talkup" customModuleProvider="target">
@@ -1508,9 +1516,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1f-Nh-khL">
                                         <rect key="frame" x="337" y="34" width="22" height="22"/>
                                         <state key="normal" image="addPlus"/>
-                                        <connections>
-                                            <segue destination="iuj-Yi-uUb" kind="presentation" id="tky-zb-taH"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhH-iW-IK4">
                                         <rect key="frame" x="165" y="34" width="44" height="21"/>
@@ -1561,7 +1566,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNj-AP-2vJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5312.8000000000002" y="-300"/>
+            <point key="canvasLocation" x="5876" y="-589"/>
         </scene>
         <!--mainNavigation-->
         <scene sceneID="0yT-9H-YYP">
@@ -14368,7 +14373,6 @@ AAt8KQALfC4AAAAAAAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAt8MA
         <image name="whiteBack" width="30" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tky-zb-taH"/>
         <segue reference="wRb-29-n3F"/>
     </inferredMetricsTieBreakers>
 </document>

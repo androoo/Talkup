@@ -533,9 +533,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let user = self.user
                 else { return }
             
-            if let destinationViewController = segue.destination as? UserViewController {
+            if let destinationViewController = segue.destination as? UserDetailViewController {
                 
                 destinationViewController.user = user
+                destinationViewController.chat = self.chat
+                destinationViewController.isDirectChat = false
             }
         }
     }

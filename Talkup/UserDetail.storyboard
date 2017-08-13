@@ -20,7 +20,7 @@
                         <viewControllerLayoutGuide type="top" id="p64-1q-krL"/>
                         <viewControllerLayoutGuide type="bottom" id="Jmj-C8-iXj"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aIi-AO-g67" customClass="DebugView" customModule="Talkup" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="aIi-AO-g67">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -42,6 +42,7 @@
                                         <color key="tintColor" red="1" green="0.17015461479999999" blue="0.3186786519" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="GrayBackArrow"/>
                                         <connections>
+                                            <action selector="backBarButtontapped:" destination="haj-Mf-2Vx" eventType="touchUpInside" id="Bk6-6I-y5z"/>
                                             <action selector="navBarBackArrowTapped:" destination="haj-Mf-2Vx" eventType="touchUpInside" id="K7K-Ww-BiF"/>
                                         </connections>
                                     </button>
@@ -129,14 +130,35 @@
                                                                 <action selector="followButtonTapped:" destination="xnC-22-zIi" eventType="touchUpInside" id="kfx-JH-AkO"/>
                                                             </connections>
                                                         </button>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V3B-xU-hKk">
+                                                            <rect key="frame" x="0.0" y="363.5" width="375" height="1"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="X9O-6M-lGn"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkU-4i-bxC" customClass="RoundedCornerButton" customModule="Talkup" customModuleProvider="target">
+                                                            <rect key="frame" x="172" y="215" width="30" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="36" id="6B4-FI-6DW"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Edit"/>
+                                                            <connections>
+                                                                <action selector="editButtonTapped:" destination="xnC-22-zIi" eventType="touchUpInside" id="1VI-Bh-Wvm"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="P4q-Ej-FxP" firstAttribute="top" secondItem="1Oo-5Y-14R" secondAttribute="top" constant="48" id="5lF-xh-r8z"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="xXk-FV-YjO" secondAttribute="trailing" constant="16" id="6cw-21-Wz0"/>
+                                                        <constraint firstItem="CkU-4i-bxC" firstAttribute="centerY" secondItem="Q2c-Dt-1dD" secondAttribute="centerY" id="8gA-5W-t1j"/>
+                                                        <constraint firstAttribute="trailing" secondItem="V3B-xU-hKk" secondAttribute="trailing" id="JEQ-Vt-dC6"/>
+                                                        <constraint firstAttribute="bottom" secondItem="V3B-xU-hKk" secondAttribute="bottom" id="JjI-af-I4P"/>
                                                         <constraint firstItem="Q2c-Dt-1dD" firstAttribute="top" secondItem="xXk-FV-YjO" secondAttribute="bottom" constant="8" id="JwC-v2-qSi"/>
                                                         <constraint firstItem="xXk-FV-YjO" firstAttribute="centerX" secondItem="1Oo-5Y-14R" secondAttribute="centerX" id="Qfw-qX-frk"/>
                                                         <constraint firstItem="xXk-FV-YjO" firstAttribute="leading" secondItem="1Oo-5Y-14R" secondAttribute="leadingMargin" constant="16" id="UrD-6O-FHM"/>
+                                                        <constraint firstItem="CkU-4i-bxC" firstAttribute="centerX" secondItem="Q2c-Dt-1dD" secondAttribute="centerX" id="WSb-Wu-Bzv"/>
+                                                        <constraint firstItem="V3B-xU-hKk" firstAttribute="leading" secondItem="1Oo-5Y-14R" secondAttribute="leading" id="ag5-DI-oSE"/>
                                                         <constraint firstItem="xXk-FV-YjO" firstAttribute="top" secondItem="P4q-Ej-FxP" secondAttribute="bottom" constant="8" id="alR-2f-eHA"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="355" id="ez7-pF-bsK"/>
                                                         <constraint firstItem="Q2c-Dt-1dD" firstAttribute="centerX" secondItem="1Oo-5Y-14R" secondAttribute="centerX" id="iQb-fv-shb"/>
@@ -153,7 +175,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="editButton" destination="CkU-4i-bxC" id="8xP-UG-cn5"/>
+                                            <outlet property="followButton" destination="Q2c-Dt-1dD" id="bjB-gB-Dfp"/>
                                             <outlet property="headerBgView" destination="1Oo-5Y-14R" id="tQ8-AF-d8b"/>
+                                            <outlet property="headerViewBottomSep" destination="V3B-xU-hKk" id="AEA-7j-2xO"/>
                                             <outlet property="userAvatarImageView" destination="P4q-Ej-FxP" id="Mpb-tt-W3h"/>
                                             <outlet property="userFollowButton" destination="Q2c-Dt-1dD" id="JeV-KD-iXJ"/>
                                             <outlet property="userNameLabel" destination="xXk-FV-YjO" id="URk-Zf-FPE"/>
@@ -519,6 +544,7 @@
                     <connections>
                         <outlet property="createChatButton" destination="pQA-qM-oRm" id="3gO-j1-4eJ"/>
                         <outlet property="currentUserChatBarImage" destination="50s-gW-EXH" id="fKR-Ib-5Fh"/>
+                        <outlet property="inputBar" destination="RIH-fR-pt2" id="mwT-tn-s35"/>
                         <outlet property="inputChatBarTextField" destination="5Yl-jY-uB0" id="fFk-dG-uFU"/>
                         <outlet property="inputContainerViewBottomContstaint" destination="gTg-to-BJz" id="M43-mR-MzL"/>
                         <outlet property="navBarBackArrow" destination="Xj2-X9-Mto" id="BAW-Wo-a91"/>
@@ -552,7 +578,7 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQA-qM-oRm">
-                                    <rect key="frame" x="316" y="12.5" width="40" height="40"/>
+                                    <rect key="frame" x="320" y="12.5" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="oPa-2T-hHS"/>
                                         <constraint firstAttribute="width" constant="40" id="s4D-cL-1Fk"/>
@@ -560,6 +586,7 @@
                                     <state key="normal" image="addChatArrow"/>
                                     <connections>
                                         <action selector="createMessageButtonTapped:" destination="haj-Mf-2Vx" eventType="touchUpInside" id="mWB-LX-HE2"/>
+                                        <action selector="submitMessageButtonTapped:" destination="haj-Mf-2Vx" eventType="touchUpInside" id="4NL-Yy-Mox"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="50s-gW-EXH">
@@ -575,7 +602,7 @@
                                 <constraint firstAttribute="height" constant="65" id="GW3-ub-0al"/>
                                 <constraint firstItem="5Yl-jY-uB0" firstAttribute="height" secondItem="gMc-cP-JKw" secondAttribute="height" multiplier="0.7" id="K5t-s9-m4i"/>
                                 <constraint firstItem="pQA-qM-oRm" firstAttribute="centerY" secondItem="gMc-cP-JKw" secondAttribute="centerY" id="VOS-VQ-Jsu"/>
-                                <constraint firstItem="pQA-qM-oRm" firstAttribute="trailing" secondItem="5Yl-jY-uB0" secondAttribute="trailing" constant="-8" id="akW-gT-0cQ"/>
+                                <constraint firstItem="pQA-qM-oRm" firstAttribute="trailing" secondItem="5Yl-jY-uB0" secondAttribute="trailing" constant="-4" id="akW-gT-0cQ"/>
                                 <constraint firstItem="50s-gW-EXH" firstAttribute="centerY" secondItem="5Yl-jY-uB0" secondAttribute="centerY" id="bUl-YJ-tId"/>
                                 <constraint firstItem="5Yl-jY-uB0" firstAttribute="centerY" secondItem="gMc-cP-JKw" secondAttribute="centerY" id="d2o-BU-8Ls"/>
                                 <constraint firstItem="5Yl-jY-uB0" firstAttribute="leading" secondItem="50s-gW-EXH" secondAttribute="trailing" constant="8" id="i2q-6j-FCm"/>

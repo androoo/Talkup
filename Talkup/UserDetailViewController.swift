@@ -21,6 +21,8 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    var user: User?
+    var isDirectChat: Bool? = false
     var messageSortSelection: MessageSort = .live
     
     var messages: [Message] {
@@ -36,10 +38,16 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    @IBAction func backBarButtontapped(_ sender: Any) {
+    }
+    
+    let barHeight: CGFloat = 65
     
     //MARK: - Outlets
     
     // input bar
+    
+    @IBOutlet var inputBar: UIView!
     @IBOutlet weak var inputContainerViewBottomContstaint: NSLayoutConstraint!
     @IBOutlet weak var currentUserChatBarImage: UIImageView!
     @IBOutlet weak var inputChatBarTextField: InputCustomTextField!
@@ -56,6 +64,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var followButton: RoundedCornerButton!
     @IBOutlet weak var headerBgCoverView: UIView!
+    @IBOutlet weak var headerBottomSep: UIImageView!
     
     
     //MARK: - UI Actions 
@@ -80,7 +89,16 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func navBarMoreButtonTapped(_ sender: Any) {
-        
+        if chat?.isDismisable == true {
+            chat?.isDismisable = false
+            
+            performSegue(withIdentifier: "unwindToHome", sender: self)
+            
+        } else {
+            
+            _ = navigationController?.popViewController(animated: true)
+            
+        }
     }
     
     
@@ -93,11 +111,13 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
+        
     }
 
-    //MARK: - View Helpers 
+    //MARK: - View Helpers
     
     func updateViews() {
         guard let chat = chat, isViewLoaded else { return }
@@ -122,6 +142,40 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.tableView.reloadData()
             }
         }
+        
+        currentUserChatBarImage.image = self.user?.photo
+        currentUserChatBarImage.layer.cornerRadius = currentUserChatBarImage.frame.width / 2
+        currentUserChatBarImage.layer.masksToBounds = true 
+        
+    }
+    
+    //MARK: - InputBar Setup
+    
+    
+    override var inputAccessoryView: UIView? {
+        get {
+            self.inputBar.frame.size.height = self.barHeight
+            self.inputBar.clipsToBounds = true
+            return self.inputBar
+        }
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    @IBAction func submitMessageButtonTapped(_ sender: Any) {
+        guard let messageText = inputChatBarTextField.text, let chat = self.chat else { return }
+        
+        guard let owner = UserController.shared.currentUser else { return }
+        
+        ChatController.shared.addMessage(byUser: owner, toChat: chat, messageText: messageText) { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        inputChatBarTextField.text = nil
+        inputChatBarTextField.resignFirstResponder()
     }
     
     // Remove Blocked Message
@@ -174,13 +228,19 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             
         case 0:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "userHeaderCell", for: indexPath) as? UserHeaderTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "userHeaderCell", for: indexPath) as? UserHeaderTableViewCell, let isDirect = isDirectChat else {
                 return UserHeaderTableViewCell()
             }
             
-            // have to make this whatever you clicked on
-            cell.user = UserController.shared.currentUser
-            cell.backgroundColor = .blue
+            if isDirect {
+                cell.followButton.isHidden = true
+                cell.editButton.isHidden = false
+            } else {
+                cell.followButton.isHidden = false
+                cell.editButton.isHidden = true 
+            }
+            
+            cell.user = self.user
             
             return cell
             
