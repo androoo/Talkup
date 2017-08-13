@@ -13,6 +13,7 @@
 		5A14676C1E82237900F7E3EA /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A14676B1E82237900F7E3EA /* UserController.swift */; };
 		5A14676E1E82DF8200F7E3EA /* PhotoSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */; };
 		5A1467701E82E00200F7E3EA /* AddEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A14676F1E82E00200F7E3EA /* AddEmailViewController.swift */; };
+		5A2BBF3A1F40DC6E001431F8 /* SearchResults.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A2BBF391F40DC6E001431F8 /* SearchResults.storyboard */; };
 		5A35A2571E76FDC500162A20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35A2561E76FDC500162A20 /* AppDelegate.swift */; };
 		5A35A25C1E76FDC500162A20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25A1E76FDC500162A20 /* Main.storyboard */; };
 		5A35A25E1E76FDC500162A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A35A25D1E76FDC500162A20 /* Assets.xcassets */; };
@@ -106,6 +107,7 @@
 		5A14676B1E82237900F7E3EA /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectViewController.swift; sourceTree = "<group>"; };
 		5A14676F1E82E00200F7E3EA /* AddEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmailViewController.swift; sourceTree = "<group>"; };
+		5A2BBF391F40DC6E001431F8 /* SearchResults.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchResults.storyboard; sourceTree = "<group>"; };
 		5A35A2531E76FDC500162A20 /* Talkup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talkup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A35A2561E76FDC500162A20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A35A25B1E76FDC500162A20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -207,6 +209,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A07FC421F410BE0004C7B4E /* Search Transition */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Search Transition";
+			sourceTree = "<group>";
+		};
 		5A35A24A1E76FDC500162A20 = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +246,7 @@
 				5A446B1F1E997249000AC705 /* User Views */,
 				5A35A26D1E76FF6200162A20 /* Cell Views */,
 				5A35A26E1E76FF6800162A20 /* View Controllers */,
+				5A07FC421F410BE0004C7B4E /* Search Transition */,
 				5AFEED901F1E4ECE00E50422 /* SlideTransition */,
 				5ADD34ED1F16961C0039322E /* Main Search */,
 				5A8B7D851EBB985C00CCEFAD /* CustomSearch */,
@@ -257,6 +267,7 @@
 				5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */,
 				5AFEEDBC1F1EC23000E50422 /* UserDetail.storyboard */,
 				5ACBE52C1F2119330049FAE0 /* Onboarding.storyboard */,
+				5A2BBF391F40DC6E001431F8 /* SearchResults.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -578,6 +589,7 @@
 				5AFEEDD71F1F9DBF00E50422 /* Gotham-Medium.otf in Resources */,
 				5AFEEDDB1F1F9DBF00E50422 /* Gotham-Ultra.otf in Resources */,
 				5AFEEDDC1F1F9DBF00E50422 /* Gotham-UltraIta.otf in Resources */,
+				5A2BBF3A1F40DC6E001431F8 /* SearchResults.storyboard in Resources */,
 				5AFEEDD41F1F9DBF00E50422 /* Gotham-BookIta.otf in Resources */,
 				5A35A25E1E76FDC500162A20 /* Assets.xcassets in Resources */,
 				5A35A25C1E76FDC500162A20 /* Main.storyboard in Resources */,

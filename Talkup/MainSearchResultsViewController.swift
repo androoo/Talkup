@@ -29,19 +29,15 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     //MARK: - View Lifecycle
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        view.backgroundColor = .clear
+        
         navigationController?.navigationBar.isHidden = true
         navigationController?.isToolbarHidden = true
 //        resultsTableView.tableFooterView = UIView()
-        
+        resultsTableView.isHidden = true 
 //        setupSearchBar()
         self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +54,13 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         mainSearchController.mainSearchBar.layoutIfNeeded()
         
     }
+    
+    //MARK: - UI Actions 
+    
+    @IBAction func cancelButtonWasTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     //MARK: - TableViewDataSource Methods 
     
@@ -101,7 +104,7 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         mainSearchController = MainSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: Double(self.view.frame.width), height: 75.0), searchBarFont: UIFont(name: "Helvetica", size: 18.0)!, searchBarTextColor: Colors.primaryBgPurple, searchBarTintColor: .white)
         
         mainSearchController.mainSearchBar.placeholder = "Search Talkup"
-        mainNavbar.addSubview(mainSearchController.mainSearchBar)
+//        mainNavbar.addSubview(mainSearchController.mainSearchBar)
         setupSearchBar()
         mainSearchController.searchDelegate = self
         

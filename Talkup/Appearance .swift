@@ -215,6 +215,21 @@ class InputCustomTextField: UITextField {
     }
 }
 
+class SearchCustomTextField: UITextField {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.layer.cornerRadius = 10
+        self.borderStyle = .none
+        self.backgroundColor = Colors.buttonBorderGray
+        self.textColor = Colors.primaryDark
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: self.layer.frame.height))
+        
+        self.leftView = paddingView
+        self.leftViewMode = UITextFieldViewMode.always
+        
+    }
+}
 
 //MARK: - Text Formating - Emoji checks 
 

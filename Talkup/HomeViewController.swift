@@ -9,7 +9,7 @@
 import UIKit
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate, UISearchResultsUpdating {
     
     //MARK: - Properties 
     
@@ -18,7 +18,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     var searchBar: UISearchBar?
-    var searchController: MainSearchController!
+    var searchController: UISearchController!
+    @IBOutlet weak var searchBarView: UIView!
+    
     var feedType: FeedFilter = .trending
     
     var chats: [Chat] {
@@ -95,6 +97,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         guard let currenctUser = UserController.shared.currentUser else { return }
         
+        setupSearchController()
         ChatController.shared.fetchDirectChat(forUser: currenctUser) { (chat) in
             UserController.shared.currentUserDirectChat = chat
         }
@@ -127,8 +130,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         nc.addObserver(self, selector: #selector(postsChanged(_:)), name: ChatController.ChatsDidChangeNotification, object: nil)
         nc.addObserver(self, selector: #selector(updateViews), name: Notification.Name("syncingComplete"), object: nil)
         
-        
-        
     }
     
     
@@ -147,6 +148,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.setNeedsLayout()
     }
     
+    
+    //MARK: - Search Controller 
+    
+    func setupSearchController() {
+        let resultsController = UIStoryboard(name: "SearchResults", bundle: nil).instantiateViewController(withIdentifier: "MainSearchResults")
+        searchController = UISearchController(searchResultsController: resultsController)
+        searchController.searchResultsUpdater = self
+        definesPresentationContext = true 
+        searchController.hidesNavigationBarDuringPresentation = true
+//        searchBarView.addSubview(searchController.searchBar)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+    }
     
     
     //MARK: - Sync data
@@ -253,13 +268,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     destinationViewController.transitioningDelegate = slideInMenuTransitioningDelegate
                     destinationViewController.modalPresentationStyle = .custom
                     slideInMenuTransitioningDelegate.direction = .left
-                        
             }
-        } else if segue.identifier == "toSearchView" {
             
-            let destination = segue.destination
-            navigationController?.delegate = self
-            destination.view.setNeedsLayout()
+        } else if segue.identifier == "toSearchResults" {
+            
+            if let destinationViewController = segue.destination as? SearchResultsController {
+                
+                navigationController?.delegate = self
+                
+                
+            }
+            
         }
     }
 

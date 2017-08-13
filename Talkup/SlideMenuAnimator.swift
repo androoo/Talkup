@@ -62,10 +62,7 @@ extension SlideMenuAnimator: UIViewControllerAnimatedTransitioning {
         }) { (finished) in
             transitionContext.completeTransition(finished)
         }
-        
     }
-    
-    
 }
 
 
