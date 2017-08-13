@@ -533,10 +533,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let user = self.user
                 else { return }
             
+            var directChat: Chat?
+            
+            ChatController.shared.fetchDirectChat(forUser: user, completion: { (chat) in
+                directChat = chat
+            })
+            
             if let destinationViewController = segue.destination as? UserDetailViewController {
                 
                 destinationViewController.user = user
-                destinationViewController.chat = self.chat
+                destinationViewController.chat = directChat
                 destinationViewController.isDirectChat = false
             }
         }

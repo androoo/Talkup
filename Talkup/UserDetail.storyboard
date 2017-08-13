@@ -107,14 +107,14 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="364.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultUser" translatesAutoresizingMaskIntoConstraints="NO" id="P4q-Ej-FxP">
-                                                            <rect key="frame" x="144" y="48" width="86" height="86"/>
+                                                            <rect key="frame" x="129" y="48" width="116" height="116"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="86" id="J0O-Dg-VB0"/>
-                                                                <constraint firstAttribute="height" constant="86" id="nLO-a3-Ldx"/>
+                                                                <constraint firstAttribute="width" constant="116" id="J0O-Dg-VB0"/>
+                                                                <constraint firstAttribute="height" constant="116" id="nLO-a3-Ldx"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXk-FV-YjO">
-                                                            <rect key="frame" x="24" y="142" width="327" height="65.5"/>
+                                                            <rect key="frame" x="24" y="172" width="327" height="35.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
