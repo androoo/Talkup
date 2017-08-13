@@ -154,142 +154,43 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        if UserController.shared.currentUser?.following == nil {
-            return 2
-        } else {
-            return 3
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if UserController.shared.currentUser?.following == nil {
-            switch section {
-            case 0: return ChatController.shared.chats.count
-            case 1: return 1
-            default: return 1
-            }
-        } else {
-            switch section {
-            case 0: return ChatController.shared.followingChats.count
-            case 1: return ChatController.shared.chats.count
-            case 2: return 1
-            default: return 1
-            }
-        }
+        // will want to switch on an enum loading the different chat sources 
+        // ChatController.shared.followingChats.count
+        
+        // when VC loads need to see if the user follows chats and load that type first. Otherwise load trending chats first
+        
+        return ChatController.shared.chats.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if UserController.shared.currentUser?.following == nil {
-            
-            switch indexPath.section {
-                
-            case 0:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
-                
-                let chat = ChatController.shared.chats[indexPath.row]
-                cell.chat = chat
-                cell.chatRankLabel.text = "\(indexPath.row + 1)"
-                
-                let customSelectedView = UIView()
-                customSelectedView.backgroundColor = Colors.primaryLightGray
-                cell.selectedBackgroundView = customSelectedView
-                
-                return cell
-                
-            case 1:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
-                return cell
-                
-            default:
-                let cell = UITableViewCell()
-                return cell
-            }
-            
-        } else {
-            
-            switch indexPath.section {
-                
-            case 0:
-                
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "followChat", for: indexPath) as? FollowingChatTableViewCell else {
-                    return FollowingChatTableViewCell()
-                }
-                
-                let chat = ChatController.shared.followingChats[indexPath.row]
-                
-                cell.chat = chat
-                
-                let customSelectedView = UIView()
-                customSelectedView.backgroundColor = Colors.primaryLightGray
-                cell.selectedBackgroundView = customSelectedView
-                
-                return cell
-                
-            case 1:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else {
-                    return ChatTableViewCell()
-                }
-                
-                let chat = ChatController.shared.chats[indexPath.row]
-                cell.chat = chat
-                cell.chatRankLabel.text = "\(indexPath.row + 1)"
-                
-                let customSelectedView = UIView()
-                customSelectedView.backgroundColor = Colors.primaryLightGray
-                cell.selectedBackgroundView = customSelectedView
-                
-                return cell
-                
-            case 2:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "lastCell", for: indexPath) as? LastTableViewCell else { return LastTableViewCell() }
-                return cell
-                
-            default:
-                let cell = UITableViewCell()
-                return cell
-            }
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+        
+        let chat = ChatController.shared.chats[indexPath.row]
+        cell.chat = chat
+        cell.chatRankLabel.text = "\(indexPath.row + 1)"
+        
+        let customSelectedView = UIView()
+        customSelectedView.backgroundColor = Colors.primaryLightGray
+        cell.selectedBackgroundView = customSelectedView
+        
+        return cell
+        
     }
 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if UserController.shared.currentUser?.following == nil {
-            switch indexPath.section {
-            case 1: return 96
-            case 2: return UITableViewAutomaticDimension
-            default: return 86
-            }
-        } else {
-            switch indexPath.section {
-            case 1: return 96
-            case 2: return 96
-            case 3: return UITableViewAutomaticDimension
-            default: return 86
-            }
-        }
+        return 96
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            guard let header = tableView.dequeueReusableCell(withIdentifier: "followTitle") as? FollowingTitleTableViewCell else { return FollowingTitleTableViewCell() }
-            return header
-        default:
-            guard let header = tableView.dequeueReusableCell(withIdentifier: "filterCell") as? FilterTableViewCell else { return FilterTableViewCell() }
-            return header
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 56
-        
+        return 96
     }
     
     

@@ -57,6 +57,8 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var navBarBackArrow: UIButton!
     @IBOutlet weak var navBarMoreButton: UIButton!
+    @IBOutlet weak var navBarBottomSep: UIImageView!
+    @IBOutlet weak var navBarBgView: UIView!
     
     // header details
     
@@ -114,6 +116,11 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.navigationController?.navigationBar.isHidden = true
         tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.navigationController?.navigationBar.isHidden = true
+        tableView.backgroundColor = .white
+        navBarBgView.backgroundColor = .white
+        navBarBottomSep.backgroundColor = Colors.primaryLightGray
         
     }
 
