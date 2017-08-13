@@ -12,6 +12,13 @@ import UIKit
 
 //MARK: - Enums 
 
+enum FeedFilter {
+    case trending
+    case following
+    case recent
+    case featured
+}
+
 enum ViewControllerType {
     case conversations
     case welcome

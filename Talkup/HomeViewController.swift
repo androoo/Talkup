@@ -19,6 +19,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var searchBar: UISearchBar?
     var searchController: MainSearchController!
+    var feedType: FeedFilter = .trending
+    
+    var chats: [Chat] {
+        switch feedType {
+        case .trending:
+            return ChatController.shared.chats
+        case .following:
+            return ChatController.shared.followingChats
+        case .recent:
+            return ChatController.shared.chats
+        case .featured:
+            return ChatController.shared.chats
+        }
+    }
     
     //VC transitions 
     let slideAnimator = SearchTransitionAnimator()
@@ -35,6 +49,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var recentMessagesCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchTextFieldLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var navBarChatFilterLabel: UILabel!
+    @IBOutlet weak var talkUpSearchTextField: UITextField!
+    
     
     let maxHeaderHeight: CGFloat = 150
     let minHeaderHeight: CGFloat = 74
@@ -115,6 +132,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    @IBAction func filterButtonTapped(_ sender: Any) {
+        toggleFilter()
+    }
+    
     
     func addChat(button: UIButton) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "newChatNav") as? NavViewController else { return }
@@ -171,7 +192,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
         
-        let chat = ChatController.shared.chats[indexPath.row]
+        let chat = self.chats[indexPath.row]
         cell.chat = chat
         cell.chatRankLabel.text = "\(indexPath.row + 1)"
         
@@ -192,20 +213,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 96
     }
-    
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        let message = recentMessages?[indexPath.row]
-//        
-//        let messageSize = message!.text.size()
-//        return CGSize(width: messageSize.width, height: messageSize.height)
-//    }
-    
-    
-    
-    
-    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -264,8 +271,60 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func updateViews() {
-        DispatchQueue.main.async {
+        
+        
+        topNavBarBackgroundView.backgroundColor = Colors.navbarGray
+        talkUpSearchTextField.backgroundColor = Colors.buttonBorderGray
+        talkUpSearchTextField.borderStyle = .none
+        talkUpSearchTextField.layer.cornerRadius = 8
+        talkUpSearchTextField.layer.masksToBounds = true
+        mainNavBottomSep.backgroundColor = Colors.buttonBorderGray
+        
+    }
+    
+    //MARK: - Filter ActionSheet 
+    
+    func toggleFilter() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let trendingAction = UIAlertAction(title: "Trending", style: .default) { (_) in
+            self.feedType = .trending
+        }
+        let followingAction = UIAlertAction(title: "Following", style: .default) { (_) in
+            self.feedType = .following
+        }
+        let recentAction = UIAlertAction(title: "Recent", style: .default) { (_) in
+            self.feedType = .recent
+        }
+        let featuredAction = UIAlertAction(title: "Featured", style: .default) { (_) in
+            self.feedType = .featured
+        }
+        alertController.addAction(trendingAction)
+        alertController.addAction(followingAction)
+        alertController.addAction(recentAction)
+        alertController.addAction(featuredAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true) {
+            self.navBarChatFilterLabel.text = "\(self.feedType)"
             self.tableView.reloadData()
         }
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

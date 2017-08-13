@@ -1105,7 +1105,7 @@
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addChatIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jUV-Xk-2SS">
                                         <rect key="frame" x="327" y="30" width="36" height="36"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="8Lp-cg-suW"/>
                                             <constraint firstAttribute="height" constant="36" id="pdR-vz-agu"/>
@@ -1154,6 +1154,9 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoO-Ew-Vg9">
                                         <rect key="frame" x="135" y="30" width="116" height="37"/>
+                                        <connections>
+                                            <action selector="filterButtonTapped:" destination="Q4K-Y1-ARG" eventType="touchUpInside" id="5rG-jU-Od7"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-e7-Csh">
                                         <rect key="frame" x="22" y="87" width="341" height="45"/>
@@ -1219,8 +1222,10 @@
                         <outlet property="addChatIconImageView" destination="jUV-Xk-2SS" id="rNE-IN-WeC"/>
                         <outlet property="currentUserHeaderImageView" destination="ZaH-OO-Djp" id="Ypy-zA-I31"/>
                         <outlet property="mainNavBottomSep" destination="OiM-RP-z4T" id="pSm-gb-97j"/>
+                        <outlet property="navBarChatFilterLabel" destination="Gjl-0q-39N" id="1JC-uC-kKj"/>
                         <outlet property="tableView" destination="nyw-UT-Cw1" id="RkY-mE-cq0"/>
                         <outlet property="tableViewBG" destination="fH8-mv-QcO" id="6EY-wF-nve"/>
+                        <outlet property="talkUpSearchTextField" destination="DFi-e7-Csh" id="Qbi-YW-ai8"/>
                         <outlet property="topNavBarBackgroundView" destination="B6p-Hd-LND" id="Ho9-ET-lQ1"/>
                     </connections>
                 </viewController>
