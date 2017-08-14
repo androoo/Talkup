@@ -30,6 +30,7 @@ extension SlideMenuAnimator: UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
         let key = isPresentation ? UITransitionContextViewControllerKey.to : UITransitionContextViewControllerKey.from
         
         let controller = transitionContext.viewController(forKey: key)!

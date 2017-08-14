@@ -8,10 +8,9 @@
 
 import UIKit
 
-class MainSearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, MainSearchControllerDelegate, UINavigationControllerDelegate {
+class MainSearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, MainSearchControllerDelegate, UIViewControllerTransitioningDelegate {
     
     //MARK: - Properties 
-    
     
     @IBOutlet weak var mainNavbar: UIView!
     
@@ -22,9 +21,6 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     var mainSearchController: MainSearchController!
     var searchController: UISearchController?
     
-    //VC transitions
-    let slideAnimator = SearchTransitionAnimator()
-    let customNavigationAnimationController = SearchTransitionAnimator()
     
     //MARK: - View Lifecycle
     
@@ -34,31 +30,14 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         
         navigationController?.navigationBar.isHidden = true
         navigationController?.isToolbarHidden = true
-//        resultsTableView.tableFooterView = UIView()
-        resultsTableView.isHidden = true 
-//        setupSearchBar()
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureMainSearchController {_ in
-            self.setupSearchBar()
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        
-        setupSearchBar()
-        view.layoutIfNeeded()
-        mainSearchController.mainSearchBar.layoutIfNeeded()
+        resultsTableView.isHidden = true
         
     }
     
     //MARK: - UI Actions 
     
     @IBAction func cancelButtonWasTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     
@@ -125,8 +104,6 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     }
     
     func didTapOnCancelButton() {
-        navigationController?.delegate = self
-        _ = navigationController?.popViewController(animated: true)
     }
     
     func didChangeSearchText(searchText: String) {
@@ -163,15 +140,6 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
             self.resultsTableView.reloadData()
         }
         
-    }
-    
-    //MARK: - Prepare for segue nav
-    
-    
-    //MARK: - Custom Transitions
-    
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return customNavigationAnimationController
     }
     
 }

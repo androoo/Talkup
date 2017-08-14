@@ -11,7 +11,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate, UISearchResultsUpdating {
     
-    //MARK: - Properties 
+    //MARK: - Properties
     
     var recentMessages: [Message]? {
         return ChatController.shared.followingChats.first?.messages
@@ -36,10 +36,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    //VC transitions 
+    //VC transitions
     let slideAnimator = SearchTransitionAnimator()
     let customNavigationAnimationController = SearchTransitionAnimator()
     lazy var slideInMenuTransitioningDelegate = SlideMenuTransitionController()
+    let searchTransition = SearchbarAnimator()
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
@@ -102,6 +103,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             UserController.shared.currentUserDirectChat = chat
         }
         
+        searchTransition.dismissCompletion = {
+            self.tableView.isHidden = false
+        }
+        
         navigationController?.navigationBar.isHidden = true
         
         topNavBarBackgroundView.backgroundColor = .white
@@ -112,7 +117,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         currentUserHeaderImageView.layer.cornerRadius = currentUserHeaderImageView.layer.frame.width / 2
         currentUserHeaderImageView.layer.masksToBounds = true
         
-        self.navigationController?.navigationBar.isHidden = true 
+        self.navigationController?.navigationBar.isHidden = true
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.backgroundColor = .clear
         
@@ -149,15 +154,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    //MARK: - Search Controller 
+    //MARK: - Search Controller
     
     func setupSearchController() {
         let resultsController = UIStoryboard(name: "SearchResults", bundle: nil).instantiateViewController(withIdentifier: "MainSearchResults")
         searchController = UISearchController(searchResultsController: resultsController)
         searchController.searchResultsUpdater = self
-        definesPresentationContext = true 
+        definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = true
-//        searchBarView.addSubview(searchController.searchBar)
+        //        searchBarView.addSubview(searchController.searchBar)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -195,7 +200,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // will want to switch on an enum loading the different chat sources 
+        // will want to switch on an enum loading the different chat sources
         // ChatController.shared.followingChats.count
         
         // when VC loads need to see if the user follows chats and load that type first. Otherwise load trending chats first
@@ -218,7 +223,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
         
     }
-
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -256,33 +261,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let chat = ChatController.shared.followingChats[selectedIndexPath.row]
                 chat.isDismisable = false
                 detailViewController.chat = chat
-    
+                
             }
             
         } else if segue.identifier == "slideMenu" {
-                    guard UserController.shared.currentUser != nil
-                        else { return }
-                    
-                    if let destinationViewController = segue.destination as? SlideMenuViewController {
-                    
-                    destinationViewController.transitioningDelegate = slideInMenuTransitioningDelegate
-                    destinationViewController.modalPresentationStyle = .custom
-                    slideInMenuTransitioningDelegate.direction = .left
+            guard UserController.shared.currentUser != nil
+                else { return }
+            
+            if let destinationViewController = segue.destination as? SlideMenuViewController {
+                
+                destinationViewController.transitioningDelegate = slideInMenuTransitioningDelegate
+                destinationViewController.modalPresentationStyle = .custom
+                slideInMenuTransitioningDelegate.direction = .left
             }
             
         } else if segue.identifier == "toSearchResults" {
             
-            if let destinationViewController = segue.destination as? SearchResultsController {
+            if let destinationViewController = segue.destination as? MainSearchResultsViewController {
                 
-                navigationController?.delegate = self
-                
+                destinationViewController.transitioningDelegate = self
                 
             }
-            
         }
     }
-
-    //MARK: - Custom Transitions 
+    
+    //MARK: - Custom Transitions
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return customNavigationAnimationController
@@ -301,7 +304,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    //MARK: - Filter ActionSheet 
+    //MARK: - Filter ActionSheet
     
     func toggleFilter() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -329,6 +332,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
     }
+    
+}
+
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        searchTransition.originFrame = self.view.frame
+        searchTransition.presenting = true
+        return searchTransition
+        
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        searchTransition.presenting = false
+        return searchTransition
+    }
+    
     
 }
 

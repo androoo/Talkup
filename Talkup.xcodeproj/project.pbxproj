@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A0347BA1E86D4BE0080CAD9 /* Appearance .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0347B91E86D4BE0080CAD9 /* Appearance .swift */; };
+		5A07FC441F411AB2004C7B4E /* searchbarAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A07FC431F411AB2004C7B4E /* searchbarAnimation.swift */; };
 		5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1467671E82021100F7E3EA /* SenderTableViewCell.swift */; };
 		5A14676A1E8205AA00F7E3EA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1467691E8205AA00F7E3EA /* User.swift */; };
 		5A14676C1E82237900F7E3EA /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A14676B1E82237900F7E3EA /* UserController.swift */; };
@@ -102,6 +103,7 @@
 
 /* Begin PBXFileReference section */
 		5A0347B91E86D4BE0080CAD9 /* Appearance .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appearance .swift"; sourceTree = "<group>"; };
+		5A07FC431F411AB2004C7B4E /* searchbarAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchbarAnimation.swift; sourceTree = "<group>"; };
 		5A1467671E82021100F7E3EA /* SenderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenderTableViewCell.swift; sourceTree = "<group>"; };
 		5A1467691E8205AA00F7E3EA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5A14676B1E82237900F7E3EA /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -435,18 +437,19 @@
 			isa = PBXGroup;
 			children = (
 				5AB122331F19370600B4D02D /* Test Presentation */,
-				5AB1222E1F191F2800B4D02D /* Search Presentation  */,
+				5AB1222E1F191F2800B4D02D /* Presentation Animators  */,
 			);
 			name = "Presentation Controllers";
 			sourceTree = "<group>";
 		};
-		5AB1222E1F191F2800B4D02D /* Search Presentation  */ = {
+		5AB1222E1F191F2800B4D02D /* Presentation Animators  */ = {
 			isa = PBXGroup;
 			children = (
 				5AB1223E1F199FC400B4D02D /* SearchTransitionAnimator.swift */,
 				5AFEED851F1A5A3800E50422 /* NavDelegate.swift */,
+				5A07FC431F411AB2004C7B4E /* searchbarAnimation.swift */,
 			);
-			name = "Search Presentation ";
+			name = "Presentation Animators ";
 			sourceTree = "<group>";
 		};
 		5AB122331F19370600B4D02D /* Test Presentation */ = {
@@ -633,6 +636,7 @@
 				5A8D590E1E928057007F107A /* HomeViewController.swift in Sources */,
 				5A35A2991E786E1600162A20 /* NavViewController.swift in Sources */,
 				5A35A28F1E77533A00162A20 /* RecieverTableViewCell.swift in Sources */,
+				5A07FC441F411AB2004C7B4E /* searchbarAnimation.swift in Sources */,
 				5AAC94B91E95B67B009155FE /* UserViewController.swift in Sources */,
 				5AEDF1A61F0DB67100DDE503 /* FilterHeaderTableViewCell.swift in Sources */,
 				5A8B7DB01EBE2C7E00CCEFAD /* ResultTableViewCell.swift in Sources */,

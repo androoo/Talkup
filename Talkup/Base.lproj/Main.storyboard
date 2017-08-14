@@ -819,7 +819,7 @@
                 <viewControllerPlaceholder storyboardName="SearchResults" referencedIdentifier="MainSearchResults" id="4r7-NB-Dqb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXD-lx-U2r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3768" y="-789"/>
+            <point key="canvasLocation" x="3961" y="-767"/>
         </scene>
         <!--slideMenu-->
         <scene sceneID="qdc-OS-tMr">
@@ -827,7 +827,7 @@
                 <viewControllerPlaceholder storyboardName="SlideMenu" referencedIdentifier="slideMenu" id="L3l-l5-Yw8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Quc-RB-2Za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4145" y="-770"/>
+            <point key="canvasLocation" x="3641" y="-840"/>
         </scene>
         <!--Talkup-->
         <scene sceneID="5G9-er-5fu">
