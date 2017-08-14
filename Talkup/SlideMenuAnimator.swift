@@ -58,6 +58,7 @@ extension SlideMenuAnimator: UIViewControllerAnimatedTransitioning {
         
         let animationDuration = transitionDuration(using: transitionContext)
         controller.view.frame = initialFrame
+        
         UIView.animate(withDuration: animationDuration, animations: { 
             controller.view.frame = finalFrame
         }) { (finished) in

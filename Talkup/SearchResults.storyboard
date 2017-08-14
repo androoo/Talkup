@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="-2" width="375" height="145"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-Ay-9F7" customClass="SearchCustomTextField" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="22" y="30" width="271" height="45"/>
+                                        <rect key="frame" x="22" y="30" width="269" height="45"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="kHe-UN-kUX"/>
@@ -36,9 +36,11 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pey-Fu-WPb">
-                                        <rect key="frame" x="309" y="37" width="50" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Cancel"/>
+                                        <rect key="frame" x="307" y="37" width="52" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.32156862749999998" green="0.20392156859999999" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="cancelButtonWasTapped:" destination="2sV-VX-od9" eventType="touchUpInside" id="SSb-mz-aL1"/>
                                         </connections>
@@ -120,21 +122,31 @@
                                     <outlet property="delegate" destination="2sV-VX-od9" id="VfK-wq-DwC"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tmh-Oh-XcY">
+                                <rect key="frame" x="0.0" y="143" width="375" height="524"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rnD-AH-pF8" firstAttribute="top" secondItem="ZD5-7h-UC3" secondAttribute="bottom" id="0Mq-3Z-N3x"/>
                             <constraint firstItem="lLm-AT-4kR" firstAttribute="top" secondItem="Zv0-Xp-Rs4" secondAttribute="bottom" constant="-22" id="7FX-0P-Na7"/>
                             <constraint firstItem="lLm-AT-4kR" firstAttribute="leading" secondItem="VQq-oO-NiK" secondAttribute="leading" id="9Vz-Fo-Gqh"/>
+                            <constraint firstItem="rnD-AH-pF8" firstAttribute="top" secondItem="Tmh-Oh-XcY" secondAttribute="bottom" id="DRu-BQ-iFz"/>
                             <constraint firstAttribute="trailing" secondItem="ZD5-7h-UC3" secondAttribute="trailing" id="Epc-Ga-jzP"/>
                             <constraint firstAttribute="trailing" secondItem="lLm-AT-4kR" secondAttribute="trailing" id="FB8-Ax-HLE"/>
+                            <constraint firstItem="Tmh-Oh-XcY" firstAttribute="leading" secondItem="VQq-oO-NiK" secondAttribute="leading" id="N5g-AT-xap"/>
                             <constraint firstItem="ZD5-7h-UC3" firstAttribute="leading" secondItem="VQq-oO-NiK" secondAttribute="leading" id="RnS-dq-VqQ"/>
                             <constraint firstItem="ZD5-7h-UC3" firstAttribute="top" secondItem="lLm-AT-4kR" secondAttribute="bottom" id="S6I-GO-z8Q"/>
+                            <constraint firstAttribute="trailing" secondItem="Tmh-Oh-XcY" secondAttribute="trailing" id="TCs-8v-RIz"/>
+                            <constraint firstItem="Tmh-Oh-XcY" firstAttribute="top" secondItem="lLm-AT-4kR" secondAttribute="bottom" id="UsL-Yx-LBr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XaP-3E-8WW"/>
                     <connections>
                         <outlet property="resultsTableView" destination="ZD5-7h-UC3" id="dAr-4Q-TI9"/>
+                        <outlet property="searchResultsTextField" destination="P1h-Ay-9F7" id="Aq7-2k-ZYE"/>
+                        <outlet property="tableViewOverlayView" destination="Tmh-Oh-XcY" id="XUC-tf-SRR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wx8-Jx-tFh" userLabel="First Responder" sceneMemberID="firstResponder"/>

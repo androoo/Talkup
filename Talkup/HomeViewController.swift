@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var searchBar: UISearchBar?
     var searchController: UISearchController!
     @IBOutlet weak var searchBarView: UIView!
+    @IBOutlet weak var navBarElementsTopConstraint: NSLayoutConstraint!
     
     var feedType: FeedFilter = .trending
     

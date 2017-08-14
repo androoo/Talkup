@@ -13,8 +13,11 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     //MARK: - Properties 
     
     @IBOutlet weak var mainNavbar: UIView!
+    @IBOutlet weak var tableViewOverlayView: UIView!
     
     @IBOutlet weak var resultsTableView: UITableView!
+    
+    @IBOutlet weak var searchResultsTextField: SearchCustomTextField!
     
     var resultsArray: [SearchableRecord] = []
     var delegate: MainSearchControllerDelegate?
@@ -27,10 +30,17 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        
+        tableViewOverlayView.backgroundColor = .black
+        tableViewOverlayView.alpha = 0.5
         navigationController?.navigationBar.isHidden = true
         navigationController?.isToolbarHidden = true
         resultsTableView.isHidden = true
+        
+        searchResultsTextField.backgroundColor = Colors.buttonBorderGray
+        searchResultsTextField.borderStyle = .none
+        searchResultsTextField.layer.cornerRadius = 8
+        searchResultsTextField.layer.masksToBounds = true
+        
         
     }
     

@@ -1241,6 +1241,7 @@
                         <outlet property="currentUserHeaderImageView" destination="ZaH-OO-Djp" id="Ypy-zA-I31"/>
                         <outlet property="mainNavBottomSep" destination="OiM-RP-z4T" id="pSm-gb-97j"/>
                         <outlet property="navBarChatFilterLabel" destination="Gjl-0q-39N" id="1JC-uC-kKj"/>
+                        <outlet property="navBarElementsTopConstraint" destination="bcr-mo-jhI" id="cKC-DC-Q7D"/>
                         <outlet property="tableView" destination="nyw-UT-Cw1" id="RkY-mE-cq0"/>
                         <outlet property="tableViewBG" destination="fH8-mv-QcO" id="6EY-wF-nve"/>
                         <outlet property="talkUpSearchTextField" destination="DFi-e7-Csh" id="Qbi-YW-ai8"/>
