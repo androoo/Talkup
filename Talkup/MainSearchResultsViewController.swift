@@ -14,6 +14,7 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     
     @IBOutlet weak var mainNavbar: UIView!
     @IBOutlet weak var tableViewOverlayView: UIView!
+    @IBOutlet weak var searchBarTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var resultsTableView: UITableView!
     
@@ -48,6 +49,7 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     
     @IBAction func cancelButtonWasTapped(_ sender: Any) {
         presentingViewController?.dismiss(animated: true, completion: nil)
+        
     }
     
     

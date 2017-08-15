@@ -145,6 +145,7 @@
                     <navigationItem key="navigationItem" id="XaP-3E-8WW"/>
                     <connections>
                         <outlet property="resultsTableView" destination="ZD5-7h-UC3" id="dAr-4Q-TI9"/>
+                        <outlet property="searchBarTopConstraint" destination="4PT-IJ-xcl" id="qxp-Yf-fgg"/>
                         <outlet property="searchResultsTextField" destination="P1h-Ay-9F7" id="Aq7-2k-ZYE"/>
                         <outlet property="tableViewOverlayView" destination="Tmh-Oh-XcY" id="XUC-tf-SRR"/>
                     </connections>

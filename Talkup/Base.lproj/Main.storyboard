@@ -1190,7 +1190,7 @@
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="top" secondItem="ZaH-OO-Djp" secondAttribute="top" id="3hl-FO-i8R"/>
                                     <constraint firstItem="6if-OO-gG5" firstAttribute="top" secondItem="jUV-Xk-2SS" secondAttribute="top" id="40c-ub-4mW"/>
                                     <constraint firstItem="ZaH-OO-Djp" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" constant="22" id="5zX-mM-Qel"/>
-                                    <constraint firstItem="OiM-RP-z4T" firstAttribute="top" secondItem="DFi-e7-Csh" secondAttribute="bottom" constant="18" id="9g4-xW-4zl"/>
+                                    <constraint firstAttribute="bottom" secondItem="DFi-e7-Csh" secondAttribute="bottom" constant="19" id="8Xf-B3-Q2G"/>
                                     <constraint firstAttribute="height" constant="145" id="CuI-OJ-1kq"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="leading" secondItem="ZaH-OO-Djp" secondAttribute="leading" id="EHN-w3-hRc"/>
                                     <constraint firstAttribute="bottom" secondItem="OiM-RP-z4T" secondAttribute="bottom" id="Epj-8p-MyG"/>
@@ -1240,6 +1240,8 @@
                         <outlet property="addChatIconImageView" destination="jUV-Xk-2SS" id="rNE-IN-WeC"/>
                         <outlet property="currentUserHeaderImageView" destination="ZaH-OO-Djp" id="Ypy-zA-I31"/>
                         <outlet property="mainNavBottomSep" destination="OiM-RP-z4T" id="pSm-gb-97j"/>
+                        <outlet property="mainSearchToNavBottomConstraint" destination="8Xf-B3-Q2G" id="LM0-Xw-OVh"/>
+                        <outlet property="mainSearchTrailingConstraint" destination="W4O-uN-wXS" id="dKa-Mk-VGV"/>
                         <outlet property="navBarChatFilterLabel" destination="Gjl-0q-39N" id="1JC-uC-kKj"/>
                         <outlet property="navBarElementsTopConstraint" destination="bcr-mo-jhI" id="cKC-DC-Q7D"/>
                         <outlet property="tableView" destination="nyw-UT-Cw1" id="RkY-mE-cq0"/>
