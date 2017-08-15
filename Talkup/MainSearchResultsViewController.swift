@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainSearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, MainSearchControllerDelegate, UIViewControllerTransitioningDelegate {
+class MainSearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, MainSearchControllerDelegate, UIViewControllerTransitioningDelegate, UITextFieldDelegate {
     
     //MARK: - Properties 
     
@@ -21,11 +21,21 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     @IBOutlet weak var searchResultsTextField: SearchCustomTextField!
     @IBOutlet weak var searchBarTrailingConstraint: NSLayoutConstraint!
     
-    var resultsArray: [SearchableRecord] = []
+    var resultsArray: [SearchableRecord] = [] {
+        didSet {
+            tableViewOverlayView.isHidden = true
+            resultsTableView.isHidden = false
+            resultsTableView.reloadData()
+            // turn on tableview
+            // update the shits
+        }
+    }
+    
     var delegate: MainSearchControllerDelegate?
     var mainSearchController: MainSearchController!
     var searchController: UISearchController?
     
+    var searchTerm: String?
     
     //MARK: - View Lifecycle
     
@@ -37,12 +47,12 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         navigationController?.navigationBar.isHidden = true
         navigationController?.isToolbarHidden = true
         resultsTableView.isHidden = true
-        
+        searchResultsTextField.delegate = self
         searchResultsTextField.backgroundColor = Colors.buttonBorderGray
         searchResultsTextField.borderStyle = .none
         searchResultsTextField.layer.cornerRadius = 8
         searchResultsTextField.layer.masksToBounds = true
-        
+        searchResultsTextField.addTarget(self, action: #selector(textIsChanging(textfield:)), for: .editingChanged)
         tableViewOverlayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionClose(_:))))
     }
     
@@ -107,8 +117,34 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     }
     
     func setupMainSearchResultsController() {
+        
     }
     
+    //MARK: - TextField search 
+    
+    func textIsChanging(textfield: UITextField) {
+        searchTerm = textfield.text
+        
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        // triggers the return 
+        
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let searchTerm = textField.text?.lowercased() else { return false }
+        let topics = ChatController.shared.chats
+        let filteredPosts = topics.filter { $0.matches(searchTerm: searchTerm) }.map { $0 as SearchableRecord }
+        self.resultsArray = filteredPosts
+        self.resultsTableView.reloadData()
+        
+        return true
+    }
 
     //MARK: - Custom Main Search Delegation 
     
@@ -121,10 +157,12 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     }
     
     func didTapOnCancelButton() {
+        
     }
     
     func didChangeSearchText(searchText: String) {
         let searchTerm = searchText.lowercased()
+        self.searchTerm = searchTerm
         let topics = ChatController.shared.chats
         let filteredPosts = topics.filter { $0.matches(searchTerm: searchTerm) }.map { $0 as SearchableRecord }
         self.resultsArray = filteredPosts
@@ -156,6 +194,10 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
             self.resultsArray = filteredPosts
             self.resultsTableView.reloadData()
         }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
     
