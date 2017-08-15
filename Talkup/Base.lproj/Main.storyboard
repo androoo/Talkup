@@ -1111,16 +1111,16 @@
                                             <constraint firstAttribute="height" constant="0.5" id="SzC-bQ-SlL"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addChatIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jUV-Xk-2SS">
-                                        <rect key="frame" x="327" y="30" width="36" height="36"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addChat" translatesAutoresizingMaskIntoConstraints="NO" id="jUV-Xk-2SS">
+                                        <rect key="frame" x="335" y="34.5" width="28" height="28"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="8Lp-cg-suW"/>
-                                            <constraint firstAttribute="height" constant="36" id="pdR-vz-agu"/>
+                                            <constraint firstAttribute="width" constant="28" id="8Lp-cg-suW"/>
+                                            <constraint firstAttribute="height" constant="28" id="pdR-vz-agu"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6if-OO-gG5">
-                                        <rect key="frame" x="327" y="30" width="36" height="36"/>
+                                        <rect key="frame" x="327" y="26.5" width="44" height="44"/>
                                         <connections>
                                             <segue destination="iuj-Yi-uUb" kind="presentation" id="slc-cx-anL"/>
                                         </connections>
@@ -1195,32 +1195,32 @@
                                 <constraints>
                                     <constraint firstItem="BoO-Ew-Vg9" firstAttribute="centerX" secondItem="tar-Vj-KNf" secondAttribute="centerX" id="3Sh-C4-8s9"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="top" secondItem="ZaH-OO-Djp" secondAttribute="top" id="3hl-FO-i8R"/>
-                                    <constraint firstItem="6if-OO-gG5" firstAttribute="top" secondItem="jUV-Xk-2SS" secondAttribute="top" id="40c-ub-4mW"/>
                                     <constraint firstItem="ZaH-OO-Djp" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" constant="22" id="5zX-mM-Qel"/>
                                     <constraint firstAttribute="bottom" secondItem="DFi-e7-Csh" secondAttribute="bottom" constant="19" id="8Xf-B3-Q2G"/>
                                     <constraint firstAttribute="height" constant="145" id="CuI-OJ-1kq"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="leading" secondItem="ZaH-OO-Djp" secondAttribute="leading" id="EHN-w3-hRc"/>
                                     <constraint firstAttribute="bottom" secondItem="OiM-RP-z4T" secondAttribute="bottom" id="Epj-8p-MyG"/>
                                     <constraint firstItem="SOD-C3-u6X" firstAttribute="width" secondItem="DFi-e7-Csh" secondAttribute="width" id="FHw-92-Jy9"/>
-                                    <constraint firstItem="6if-OO-gG5" firstAttribute="height" secondItem="jUV-Xk-2SS" secondAttribute="height" id="HPg-hg-yIG"/>
+                                    <constraint firstItem="6if-OO-gG5" firstAttribute="height" secondItem="jUV-Xk-2SS" secondAttribute="height" constant="16" id="HPg-hg-yIG"/>
+                                    <constraint firstItem="jUV-Xk-2SS" firstAttribute="centerY" secondItem="tar-Vj-KNf" secondAttribute="centerY" id="Hdh-bl-Ppi"/>
                                     <constraint firstItem="5H3-ut-D3x" firstAttribute="centerY" secondItem="DFi-e7-Csh" secondAttribute="centerY" id="Hio-rX-m1C"/>
                                     <constraint firstItem="SOD-C3-u6X" firstAttribute="centerX" secondItem="DFi-e7-Csh" secondAttribute="centerX" id="Ifo-2R-LjG"/>
-                                    <constraint firstItem="6if-OO-gG5" firstAttribute="leading" secondItem="jUV-Xk-2SS" secondAttribute="leading" id="KJJ-dC-9c3"/>
                                     <constraint firstItem="tar-Vj-KNf" firstAttribute="centerX" secondItem="B6p-Hd-LND" secondAttribute="centerX" id="MdB-71-0zQ"/>
                                     <constraint firstItem="5H3-ut-D3x" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" constant="32" id="Shr-50-HUF"/>
                                     <constraint firstItem="BoO-Ew-Vg9" firstAttribute="centerY" secondItem="tar-Vj-KNf" secondAttribute="centerY" id="SrH-Oz-VfE"/>
-                                    <constraint firstItem="jUV-Xk-2SS" firstAttribute="bottom" secondItem="tar-Vj-KNf" secondAttribute="bottom" id="UvI-Ob-D46"/>
                                     <constraint firstAttribute="trailing" secondItem="DFi-e7-Csh" secondAttribute="trailing" constant="22" id="W4O-uN-wXS"/>
                                     <constraint firstItem="SOD-C3-u6X" firstAttribute="centerY" secondItem="DFi-e7-Csh" secondAttribute="centerY" id="YXl-F7-cQf"/>
                                     <constraint firstItem="ZaH-OO-Djp" firstAttribute="bottom" secondItem="tar-Vj-KNf" secondAttribute="bottom" id="ZG1-z7-b7a"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="height" secondItem="ZaH-OO-Djp" secondAttribute="height" id="aOc-8Z-akh"/>
+                                    <constraint firstItem="6if-OO-gG5" firstAttribute="centerY" secondItem="jUV-Xk-2SS" secondAttribute="centerY" id="bOB-HR-C7d"/>
                                     <constraint firstItem="tar-Vj-KNf" firstAttribute="top" secondItem="B6p-Hd-LND" secondAttribute="top" constant="30" id="bcr-mo-jhI"/>
                                     <constraint firstItem="TXI-yd-EAI" firstAttribute="width" secondItem="ZaH-OO-Djp" secondAttribute="width" id="c58-rK-ieo"/>
                                     <constraint firstItem="SOD-C3-u6X" firstAttribute="height" secondItem="DFi-e7-Csh" secondAttribute="height" id="cPI-Wf-CbQ"/>
                                     <constraint firstItem="OiM-RP-z4T" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" id="ctY-pN-oxP"/>
                                     <constraint firstItem="BoO-Ew-Vg9" firstAttribute="height" secondItem="tar-Vj-KNf" secondAttribute="height" id="cvG-Cc-W3Z"/>
                                     <constraint firstItem="BoO-Ew-Vg9" firstAttribute="width" secondItem="tar-Vj-KNf" secondAttribute="width" id="cz6-xJ-UJz"/>
-                                    <constraint firstItem="6if-OO-gG5" firstAttribute="width" secondItem="jUV-Xk-2SS" secondAttribute="width" id="dpf-Vu-kEQ"/>
+                                    <constraint firstItem="6if-OO-gG5" firstAttribute="width" secondItem="jUV-Xk-2SS" secondAttribute="width" constant="16" id="dpf-Vu-kEQ"/>
+                                    <constraint firstItem="6if-OO-gG5" firstAttribute="centerX" secondItem="jUV-Xk-2SS" secondAttribute="centerX" id="ggp-fA-ACM"/>
                                     <constraint firstAttribute="trailing" secondItem="OiM-RP-z4T" secondAttribute="trailing" id="o2c-A7-lwb"/>
                                     <constraint firstAttribute="trailing" secondItem="jUV-Xk-2SS" secondAttribute="trailing" constant="22" id="qej-mh-8Zp"/>
                                     <constraint firstItem="DFi-e7-Csh" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" constant="22" id="wah-bt-rfg"/>
@@ -1860,8 +1860,8 @@
         <image name="Close" width="20" height="20"/>
         <image name="GrayBackArrow" width="30" height="24"/>
         <image name="TalkupBlackSolid1x" width="23" height="22"/>
+        <image name="addChat" width="18" height="18"/>
         <image name="addChatArrow" width="32" height="33"/>
-        <image name="addChatIcon" width="36" height="36"/>
         <image name="addPlus" width="22" height="22"/>
         <image name="dot" width="4" height="4"/>
         <image name="flagIcon" width="11" height="13"/>

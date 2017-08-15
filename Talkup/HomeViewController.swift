@@ -142,7 +142,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func filterButtonTapped(_ sender: Any) {
-        toggleFilter()
+        toggleFilter {
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -203,27 +205,79 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // will want to switch on an enum loading the different chat sources
-        // ChatController.shared.followingChats.count
+        // need to make sure none of these are empty and decide what to load first
         
-        // when VC loads need to see if the user follows chats and load that type first. Otherwise load trending chats first
+        switch feedType {
+        case .following:
+            return ChatController.shared.followingChats.count
+        case .trending:
+            return ChatController.shared.chats.count
+        case .recent:
+            return ChatController.shared.chats.count
+        case .featured:
+            return ChatController.shared.chats.count
+        }
         
-        return ChatController.shared.chats.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
-        
-        let chat = self.chats[indexPath.row]
-        cell.chat = chat
-        cell.chatRankLabel.text = "\(indexPath.row + 1)"
-        
-        let customSelectedView = UIView()
-        customSelectedView.backgroundColor = Colors.primaryLightGray
-        cell.selectedBackgroundView = customSelectedView
-        
-        return cell
+        switch feedType {
+            
+        case .following:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "followChat", for: indexPath) as? FollowingChatTableViewCell else { return
+                FollowingChatTableViewCell()
+            }
+            
+            let chat = self.chats[indexPath.row]
+            cell.chat = chat
+            let customSelectedView = UIView()
+            customSelectedView.backgroundColor = Colors.primaryLightGray
+            cell.selectedBackgroundView = customSelectedView
+            
+            return cell
+            
+        case .trending:
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+            
+            let chat = self.chats[indexPath.row]
+            cell.chat = chat
+            cell.chatRankLabel.text = "\(indexPath.row + 1)"
+            
+            let customSelectedView = UIView()
+            customSelectedView.backgroundColor = Colors.primaryLightGray
+            cell.selectedBackgroundView = customSelectedView
+            
+            return cell
+            
+        case .recent:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+            
+            let chat = self.chats[indexPath.row]
+            cell.chat = chat
+            cell.chatRankLabel.text = "\(indexPath.row + 1)"
+            
+            let customSelectedView = UIView()
+            customSelectedView.backgroundColor = Colors.primaryLightGray
+            cell.selectedBackgroundView = customSelectedView
+            
+            return cell
+            
+        case .featured:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+            
+            let chat = self.chats[indexPath.row]
+            cell.chat = chat
+            cell.chatRankLabel.text = "\(indexPath.row + 1)"
+            
+            let customSelectedView = UIView()
+            customSelectedView.backgroundColor = Colors.primaryLightGray
+            cell.selectedBackgroundView = customSelectedView
+            
+            return cell
+            
+        }
         
     }
     
@@ -309,20 +363,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - Filter ActionSheet
     
-    func toggleFilter() {
+    func toggleFilter(completion: @escaping () -> Void) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let trendingAction = UIAlertAction(title: "Trending", style: .default) { (_) in
             self.feedType = .trending
+            completion()
         }
         let followingAction = UIAlertAction(title: "Following", style: .default) { (_) in
             self.feedType = .following
+            completion()
         }
         let recentAction = UIAlertAction(title: "Recent", style: .default) { (_) in
             self.feedType = .recent
+            completion()
         }
         let featuredAction = UIAlertAction(title: "Featured", style: .default) { (_) in
             self.feedType = .featured
+            completion()
         }
         alertController.addAction(trendingAction)
         alertController.addAction(followingAction)
@@ -332,10 +390,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         present(alertController, animated: true) {
             self.navBarChatFilterLabel.text = "\(self.feedType)"
-            self.tableView.reloadData()
         }
+        
     }
-    
 }
 
 extension HomeViewController: UIViewControllerTransitioningDelegate {
