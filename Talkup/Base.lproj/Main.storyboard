@@ -132,7 +132,7 @@
         <!--Chat View Controller-->
         <scene sceneID="8JC-Hn-xE2">
             <objects>
-                <viewController id="xyf-XF-umS" customClass="ChatViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="xyf-XF-umS" customClass="ChatViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8H1-nF-Y1P"/>
                         <viewControllerLayoutGuide type="bottom" id="IEj-wS-yNQ"/>

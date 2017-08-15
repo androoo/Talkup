@@ -123,6 +123,7 @@
                                             <outlet property="chatTitleLabel" destination="ye3-NB-bKq" id="dPI-cX-Bgk"/>
                                             <outlet property="userAvatarImageView" destination="7T4-yc-wfi" id="PA5-jp-70w"/>
                                             <outlet property="userNameLabel" destination="jOV-EH-DVw" id="L4k-ky-dsa"/>
+                                            <segue destination="akr-FF-MvK" kind="show" identifier="fromSearchToChat" id="kje-7k-aN7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -163,6 +164,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wx8-Jx-tFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3780" y="497.90104947526243"/>
+        </scene>
+        <!--ChatViewController-->
+        <scene sceneID="xTj-dK-6Io">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ChatViewController" id="akr-FF-MvK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L3U-GC-7G1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4432" y="497"/>
         </scene>
     </scenes>
     <resources>

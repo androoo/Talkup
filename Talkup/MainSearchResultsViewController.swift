@@ -52,6 +52,7 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         searchResultsTextField.borderStyle = .none
         searchResultsTextField.layer.cornerRadius = 8
         searchResultsTextField.layer.masksToBounds = true
+        searchResultsTextField.becomeFirstResponder()
         searchResultsTextField.addTarget(self, action: #selector(textIsChanging(textfield:)), for: .editingChanged)
         tableViewOverlayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionClose(_:))))
     }
@@ -198,9 +199,18 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "fromSearchToChat" {
+            guard let destination = segue.destination as? ChatViewController,
+                let indexPath = resultsTableView.indexPathForSelectedRow,
+                let chat = resultsArray[indexPath.row] as? Chat else { return }
+            
+            
+            destination.navigationController?.navigationBar.isHidden = true
+            chat.isDismisable = true
+            destination.chat = chat
+            
+        }
     }
-    
 }
 
 
