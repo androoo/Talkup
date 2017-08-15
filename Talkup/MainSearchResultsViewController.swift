@@ -19,6 +19,7 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     @IBOutlet weak var resultsTableView: UITableView!
     
     @IBOutlet weak var searchResultsTextField: SearchCustomTextField!
+    @IBOutlet weak var searchBarTrailingConstraint: NSLayoutConstraint!
     
     var resultsArray: [SearchableRecord] = []
     var delegate: MainSearchControllerDelegate?
@@ -42,7 +43,7 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
         searchResultsTextField.layer.cornerRadius = 8
         searchResultsTextField.layer.masksToBounds = true
         
-        
+        tableViewOverlayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionClose(_:))))
     }
     
     //MARK: - UI Actions 
@@ -50,6 +51,10 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     @IBAction func cancelButtonWasTapped(_ sender: Any) {
         presentingViewController?.dismiss(animated: true, completion: nil)
         
+    }
+    
+    func actionClose(_ tap: UITapGestureRecognizer) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     

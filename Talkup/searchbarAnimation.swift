@@ -63,16 +63,23 @@ class SearchbarAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             initialVC.mainSearchTrailingConstraint.constant = 22.0
         }
         
+        if let initialVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? MainSearchResultsViewController {
+            initialVC.searchBarTrailingConstraint.constant = 84.0
+            initialVC.searchBarTopConstraint.constant = 30.0
+        }
+        
         controller.view.alpha = CGFloat(initialAlpha)
         
         UIView.animate(withDuration: duration, animations: {
+            
+            // the final state needs to be in here. Use ternary above to set it up depending on presenting
             
             if let dismissedVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? HomeViewController {
                 dismissedVC.navBarElementsTopConstraint.constant = -40.0
                 dismissedVC.mainSearchToNavBottomConstraint.constant = 74.0
                 dismissedVC.mainSearchTrailingConstraint.constant = 96.0
                 initialViewController?.view.layoutIfNeeded()
-                
+                controller.view.alpha = CGFloat(finalAlpha)
             }
             
             if let finalVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? HomeViewController {
@@ -80,7 +87,9 @@ class SearchbarAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                 finalVC.mainSearchTrailingConstraint.constant = 22.0
                 finalVC.mainSearchToNavBottomConstraint.constant = 18.0
                 finalVC.view.layoutIfNeeded()
+                controller.view.alpha = CGFloat(finalAlpha)
             }
+            
             
         }, completion: { _ in
             
@@ -88,7 +97,8 @@ class SearchbarAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                 self.dismissCompletion!()
             }
             
-            controller.view.alpha = CGFloat(finalAlpha)
+            
+            
             
             transitionContext.completeTransition(true)
         })

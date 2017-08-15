@@ -223,7 +223,7 @@ class SearchCustomTextField: UITextField {
         self.backgroundColor = Colors.buttonBorderGray
         self.textColor = Colors.primaryDark
         
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: self.layer.frame.height))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: self.layer.frame.height))
         
         self.leftView = paddingView
         self.leftViewMode = UITextFieldViewMode.always

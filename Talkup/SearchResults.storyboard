@@ -25,19 +25,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLm-AT-4kR">
                                 <rect key="frame" x="0.0" y="-2" width="375" height="145"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-Ay-9F7" customClass="SearchCustomTextField" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="22" y="30" width="269" height="45"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-Ay-9F7" customClass="SearchCustomTextField" customModule="Talkup" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="30" width="273" height="45"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="kHe-UN-kUX"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="mNE-L3-soc">
+                                        <rect key="frame" x="28" y="41.5" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="FCo-D9-WmL"/>
+                                            <constraint firstAttribute="height" constant="22" id="bgP-mq-fZR"/>
+                                        </constraints>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pey-Fu-WPb">
-                                        <rect key="frame" x="307" y="37" width="52" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <rect key="frame" x="307" y="36.5" width="52" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.32156862749999998" green="0.20392156859999999" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -49,10 +56,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="P1h-Ay-9F7" firstAttribute="top" secondItem="lLm-AT-4kR" secondAttribute="top" constant="30" id="4PT-IJ-xcl"/>
+                                    <constraint firstItem="mNE-L3-soc" firstAttribute="centerY" secondItem="P1h-Ay-9F7" secondAttribute="centerY" id="8iy-Rm-jR1"/>
                                     <constraint firstAttribute="height" constant="145" id="DZe-vb-nyF"/>
-                                    <constraint firstItem="P1h-Ay-9F7" firstAttribute="leading" secondItem="lLm-AT-4kR" secondAttribute="leading" constant="22" id="HuX-oq-PD2"/>
-                                    <constraint firstItem="pey-Fu-WPb" firstAttribute="leading" secondItem="P1h-Ay-9F7" secondAttribute="trailing" constant="16" id="dSj-EH-6tt"/>
-                                    <constraint firstAttribute="trailing" secondItem="pey-Fu-WPb" secondAttribute="trailing" constant="16" id="uHJ-Fc-ILH"/>
+                                    <constraint firstItem="P1h-Ay-9F7" firstAttribute="leading" secondItem="lLm-AT-4kR" secondAttribute="leading" constant="18" id="HuX-oq-PD2"/>
+                                    <constraint firstAttribute="trailing" secondItem="P1h-Ay-9F7" secondAttribute="trailing" constant="84" id="NDV-uJ-ucW"/>
+                                    <constraint firstItem="mNE-L3-soc" firstAttribute="leading" secondItem="lLm-AT-4kR" secondAttribute="leading" constant="28" id="NTt-GO-l1a"/>
+                                    <constraint firstItem="pey-Fu-WPb" firstAttribute="leading" secondItem="P1h-Ay-9F7" secondAttribute="trailing" constant="16" id="lgn-4C-NYu"/>
                                     <constraint firstItem="P1h-Ay-9F7" firstAttribute="centerY" secondItem="pey-Fu-WPb" secondAttribute="centerY" id="yTr-Sa-ren"/>
                                 </constraints>
                             </view>
@@ -146,6 +155,7 @@
                     <connections>
                         <outlet property="resultsTableView" destination="ZD5-7h-UC3" id="dAr-4Q-TI9"/>
                         <outlet property="searchBarTopConstraint" destination="4PT-IJ-xcl" id="qxp-Yf-fgg"/>
+                        <outlet property="searchBarTrailingConstraint" destination="NDV-uJ-ucW" id="oew-ki-YHc"/>
                         <outlet property="searchResultsTextField" destination="P1h-Ay-9F7" id="Aq7-2k-ZYE"/>
                         <outlet property="tableViewOverlayView" destination="Tmh-Oh-XcY" id="XUC-tf-SRR"/>
                     </connections>
@@ -156,6 +166,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="search" width="16" height="16"/>
         <image name="toUserArrow" width="10" height="17"/>
     </resources>
 </document>

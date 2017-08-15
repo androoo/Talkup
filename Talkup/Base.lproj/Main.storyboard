@@ -1166,7 +1166,7 @@
                                             <action selector="filterButtonTapped:" destination="Q4K-Y1-ARG" eventType="touchUpInside" id="5rG-jU-Od7"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-e7-Csh" customClass="SearchCustomTextField" customModule="Talkup" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-e7-Csh" customClass="SearchCustomTextField" customModule="Talkup" customModuleProvider="target">
                                         <rect key="frame" x="22" y="81" width="341" height="45"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <color key="tintColor" red="0.43921568630000002" green="0.015686274510000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1177,6 +1177,13 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="5H3-ut-D3x">
+                                        <rect key="frame" x="32" y="92.5" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="DLB-JY-sXJ"/>
+                                            <constraint firstAttribute="width" constant="22" id="feg-bg-HqL"/>
+                                        </constraints>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOD-C3-u6X">
                                         <rect key="frame" x="22" y="80.5" width="341" height="45"/>
                                         <connections>
@@ -1196,9 +1203,11 @@
                                     <constraint firstAttribute="bottom" secondItem="OiM-RP-z4T" secondAttribute="bottom" id="Epj-8p-MyG"/>
                                     <constraint firstItem="SOD-C3-u6X" firstAttribute="width" secondItem="DFi-e7-Csh" secondAttribute="width" id="FHw-92-Jy9"/>
                                     <constraint firstItem="6if-OO-gG5" firstAttribute="height" secondItem="jUV-Xk-2SS" secondAttribute="height" id="HPg-hg-yIG"/>
+                                    <constraint firstItem="5H3-ut-D3x" firstAttribute="centerY" secondItem="DFi-e7-Csh" secondAttribute="centerY" id="Hio-rX-m1C"/>
                                     <constraint firstItem="SOD-C3-u6X" firstAttribute="centerX" secondItem="DFi-e7-Csh" secondAttribute="centerX" id="Ifo-2R-LjG"/>
                                     <constraint firstItem="6if-OO-gG5" firstAttribute="leading" secondItem="jUV-Xk-2SS" secondAttribute="leading" id="KJJ-dC-9c3"/>
                                     <constraint firstItem="tar-Vj-KNf" firstAttribute="centerX" secondItem="B6p-Hd-LND" secondAttribute="centerX" id="MdB-71-0zQ"/>
+                                    <constraint firstItem="5H3-ut-D3x" firstAttribute="leading" secondItem="B6p-Hd-LND" secondAttribute="leading" constant="32" id="Shr-50-HUF"/>
                                     <constraint firstItem="BoO-Ew-Vg9" firstAttribute="centerY" secondItem="tar-Vj-KNf" secondAttribute="centerY" id="SrH-Oz-VfE"/>
                                     <constraint firstItem="jUV-Xk-2SS" firstAttribute="bottom" secondItem="tar-Vj-KNf" secondAttribute="bottom" id="UvI-Ob-D46"/>
                                     <constraint firstAttribute="trailing" secondItem="DFi-e7-Csh" secondAttribute="trailing" constant="22" id="W4O-uN-wXS"/>
@@ -14414,6 +14423,7 @@ AAt8KQALfC4AAAAAAAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAt8MA
         <image name="moreButton" width="48" height="12"/>
         <image name="moreCarrot" width="18" height="12"/>
         <image name="profileSmile" width="22" height="22"/>
+        <image name="search" width="16" height="16"/>
         <image name="send" width="16" height="16"/>
         <image name="toUserArrow" width="10" height="17"/>
         <image name="topEmoji" width="80" height="81"/>
