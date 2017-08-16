@@ -254,11 +254,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
             
         case .recent:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else { return ChatTableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "recentCell", for: indexPath) as? RecentChatTableViewCell else { return RecentChatTableViewCell() }
             
             let chat = self.chats[indexPath.row]
             cell.chat = chat
-            cell.chatRankLabel.text = "\(indexPath.row + 1)"
             
             let customSelectedView = UIView()
             customSelectedView.backgroundColor = Colors.primaryLightGray
@@ -370,30 +369,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let trendingAction = UIAlertAction(title: "Trending", style: .default) { (_) in
             self.feedType = .trending
+            self.navBarChatFilterLabel.text = "Trending"
             completion()
         }
         let followingAction = UIAlertAction(title: "Following", style: .default) { (_) in
             self.feedType = .following
+            self.navBarChatFilterLabel.text = "Following"
             completion()
         }
         let recentAction = UIAlertAction(title: "Recent", style: .default) { (_) in
             self.feedType = .recent
+            self.navBarChatFilterLabel.text = "Recent"
             completion()
         }
-        let featuredAction = UIAlertAction(title: "Featured", style: .default) { (_) in
-            self.feedType = .featured
-            completion()
-        }
+//        let featuredAction = UIAlertAction(title: "Featured", style: .default) { (_) in
+//            self.feedType = .featured
+//            completion()
+//        }
         alertController.addAction(trendingAction)
         alertController.addAction(followingAction)
         alertController.addAction(recentAction)
-        alertController.addAction(featuredAction)
+//        alertController.addAction(featuredAction)
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true) {
-            self.navBarChatFilterLabel.text = "\(self.feedType)"
+            // do anything when controller is presented
         }
-        
     }
 }
 
