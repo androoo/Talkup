@@ -40,6 +40,20 @@ class ChatController {
         }
     }
     
+    var trendingChats = [Chat]() {
+        didSet {
+            
+        }
+    }
+    
+    var recentChats = [Chat]() {
+        didSet {
+            
+        }
+    }
+    
+    
+    
     var unreadMessages: [Message] = []
     
     var messages: [Message] {
@@ -65,7 +79,7 @@ class ChatController {
         
     }
     
-    //MARK: - Following stuff
+    //MARK: - Set Chats
     
     
     func populateFollowingChats() {
@@ -90,12 +104,18 @@ class ChatController {
                             followingChats.append(chat)
                             
                         }
-                        
-                        
                     }
                 }
             }
         }
+    }
+    
+    func popupateRecentChats() {
+        
+        fetchChatsByCreation { (chats) in
+            self.recentChats = chats
+        }
+        
     }
     
     
@@ -173,6 +193,24 @@ func fetchChatOwnersFor(chats: [Chat], completion: @escaping () -> Void) {
 
 
 //MARK: - CK Methods
+    
+    func fetchChatsByCreation(completion: @escaping ([Chat]) -> Void) {
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: Constants.chattypeKey, predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                NSLog(error.localizedDescription)
+            }
+            
+            guard let records = records else { completion([]); return }
+            
+            let chats = records.flatMap({Chat(cloudKitRecord: $0)})
+            
+            completion(chats)
+            
+        }
+    }
 
     func createChatWith(chatTopic: String, owner: User, firstMessage: String, isDirectChat: Bool, completion: ((Chat) -> Void)?) {
     
@@ -354,7 +392,7 @@ func performFullSync(completion: @escaping (() -> Void) = { _ in }) {
             self.fetchChatOwnersFor(chats: self.chats, completion: {
                 
                 self.populateFollowingChats()
-                
+                self.popupateRecentChats()
                 // fetch messages for following chats
                 
                 let chatsFollowed = ChatController.shared.followingChats

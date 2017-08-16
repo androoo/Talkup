@@ -123,21 +123,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cw9-sM-mOi">
-                                                    <rect key="frame" x="8" y="20.5" width="24" height="24"/>
+                                                    <rect key="frame" x="24" y="20.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="0TG-cw-nPC"/>
                                                         <constraint firstAttribute="width" constant="24" id="txI-V5-dDP"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nph-lk-5ju">
-                                                    <rect key="frame" x="40" y="22" width="42" height="21"/>
+                                                    <rect key="frame" x="56" y="22" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Cw9-sM-mOi" firstAttribute="leading" secondItem="oEc-22-bVQ" secondAttribute="leadingMargin" id="RNq-rg-EiH"/>
+                                                <constraint firstItem="Cw9-sM-mOi" firstAttribute="leading" secondItem="oEc-22-bVQ" secondAttribute="leadingMargin" constant="16" id="RNq-rg-EiH"/>
                                                 <constraint firstItem="Cw9-sM-mOi" firstAttribute="centerY" secondItem="oEc-22-bVQ" secondAttribute="centerY" id="agP-vo-j38"/>
                                                 <constraint firstItem="nph-lk-5ju" firstAttribute="centerY" secondItem="Cw9-sM-mOi" secondAttribute="centerY" id="d3f-QY-i50"/>
                                                 <constraint firstItem="nph-lk-5ju" firstAttribute="leading" secondItem="Cw9-sM-mOi" secondAttribute="trailing" constant="8" id="htH-fQ-P7G"/>

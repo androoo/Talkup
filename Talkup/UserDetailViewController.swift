@@ -121,6 +121,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.backgroundColor = .white
         navBarBgView.backgroundColor = .white
         navBarBottomSep.backgroundColor = Colors.primaryLightGray
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
     }
 

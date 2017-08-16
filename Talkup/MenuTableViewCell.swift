@@ -22,7 +22,17 @@ class MenuTableViewCell: UITableViewCell {
     @IBOutlet weak var menuItemNameLabel: UILabel!
     
     func updateViews() {
+        
         menuItemNameLabel.text = itemName
+        menuItemIconImageView.alpha = 0.35
+        
+        if itemName == "My Profile" {
+            menuItemIconImageView.image = UIImage(named: "profile")
+        } else if itemName == "My Topics" {
+            menuItemIconImageView.image = UIImage(named: "chat")
+        } else if itemName == "Help" {
+            menuItemIconImageView.image = UIImage(named: "helpSmile")
+        }
     }
 
 }

@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case .following:
             return ChatController.shared.followingChats
         case .recent:
-            return ChatController.shared.chats
+            return ChatController.shared.recentChats
         case .featured:
             return ChatController.shared.chats
         }
