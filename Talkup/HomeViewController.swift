@@ -64,6 +64,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var talkUpSearchTextField: UITextField!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var searchIconImageView: UIImageView!
 
 
     //MARK: - Outlets
@@ -510,6 +511,7 @@ extension HomeViewController {
         let openAmount = self.headerHeightConstraint.constant - self.minHeaderHeight
         let percentage = openAmount / range
         self.talkUpSearchTextField.alpha = percentage
+        self.searchIconImageView.alpha = percentage
     }
     
 }

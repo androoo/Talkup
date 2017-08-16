@@ -11,7 +11,7 @@ import UIKit
 
 class SearchbarAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration = 0.3
+    let duration = 0.4
     var presenting = true
     var originFrame = CGRect.zero
     

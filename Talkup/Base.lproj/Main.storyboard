@@ -1317,6 +1317,7 @@
                         <outlet property="mainSearchTrailingConstraint" destination="W4O-uN-wXS" id="dKa-Mk-VGV"/>
                         <outlet property="navBarChatFilterLabel" destination="Gjl-0q-39N" id="1JC-uC-kKj"/>
                         <outlet property="navBarElementsTopConstraint" destination="bcr-mo-jhI" id="cKC-DC-Q7D"/>
+                        <outlet property="searchIconImageView" destination="5H3-ut-D3x" id="tMk-0I-aJB"/>
                         <outlet property="tableView" destination="nyw-UT-Cw1" id="RkY-mE-cq0"/>
                         <outlet property="tableViewBG" destination="fH8-mv-QcO" id="6EY-wF-nve"/>
                         <outlet property="talkUpSearchTextField" destination="DFi-e7-Csh" id="Qbi-YW-ai8"/>
