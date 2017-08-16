@@ -1168,6 +1168,30 @@
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6p-Hd-LND">
                                 <rect key="frame" x="-5" y="42" width="385" height="145"/>
                                 <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-e7-Csh" customClass="SearchCustomTextField" customModule="Talkup" customModuleProvider="target">
+                                        <rect key="frame" x="22" y="81" width="341" height="45"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="tintColor" red="0.43921568630000002" green="0.015686274510000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Mid-Ze-B2Z"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="5H3-ut-D3x">
+                                        <rect key="frame" x="32" y="92" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="DLB-JY-sXJ"/>
+                                            <constraint firstAttribute="width" constant="22" id="feg-bg-HqL"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOD-C3-u6X">
+                                        <rect key="frame" x="22" y="81" width="341" height="45"/>
+                                        <connections>
+                                            <segue destination="4r7-NB-Dqb" kind="presentation" identifier="toSearchResults" id="ooz-3S-99X"/>
+                                        </connections>
+                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OiM-RP-z4T">
                                         <rect key="frame" x="0.0" y="144" width="385" height="1"/>
                                         <constraints>
@@ -1229,30 +1253,6 @@
                                             <action selector="filterButtonTapped:" destination="Q4K-Y1-ARG" eventType="touchUpInside" id="5rG-jU-Od7"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFi-e7-Csh" customClass="SearchCustomTextField" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="22" y="81" width="341" height="45"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <color key="tintColor" red="0.43921568630000002" green="0.015686274510000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="Mid-Ze-B2Z"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="5H3-ut-D3x">
-                                        <rect key="frame" x="32" y="92.5" width="22" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="DLB-JY-sXJ"/>
-                                            <constraint firstAttribute="width" constant="22" id="feg-bg-HqL"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOD-C3-u6X">
-                                        <rect key="frame" x="22" y="80.5" width="341" height="45"/>
-                                        <connections>
-                                            <segue destination="4r7-NB-Dqb" kind="presentation" identifier="toSearchResults" id="ooz-3S-99X"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1311,6 +1311,7 @@
                     <connections>
                         <outlet property="addChatIconImageView" destination="jUV-Xk-2SS" id="rNE-IN-WeC"/>
                         <outlet property="currentUserHeaderImageView" destination="ZaH-OO-Djp" id="Ypy-zA-I31"/>
+                        <outlet property="headerHeightConstraint" destination="CuI-OJ-1kq" id="WTs-HZ-n8y"/>
                         <outlet property="mainNavBottomSep" destination="OiM-RP-z4T" id="pSm-gb-97j"/>
                         <outlet property="mainSearchToNavBottomConstraint" destination="8Xf-B3-Q2G" id="LM0-Xw-OVh"/>
                         <outlet property="mainSearchTrailingConstraint" destination="W4O-uN-wXS" id="dKa-Mk-VGV"/>
