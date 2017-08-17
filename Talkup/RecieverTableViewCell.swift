@@ -152,7 +152,8 @@ class RecieverTableViewCell: UITableViewCell {
         guard let message = message,
             let username = message.owner?.userName else { return }
         
-        let time = message.timeSinceCreation(from: message.timestamp, to: Date())
+        let dateFormatter = DateFormatter()
+        let timeSince = dateFormatter.timeSince(from: message.timestamp as NSDate, numericDates: true)
       
         if message.text.containsOnlyEmoji {
             messageBackground.isHidden = true
@@ -162,7 +163,7 @@ class RecieverTableViewCell: UITableViewCell {
         messageScoreLabel.text = ""
         chatMessageLabel.text = message.text
         buttonVoteCountLabel.text = "\(message.score)"
-        timestampLabel.text = "\(time)"
+        timestampLabel.text = "\(timeSince)"
         usernameButton.setTitle("\(username)", for: .normal)
         usernameButton.tintColor = Colors.primaryDarkGray
         

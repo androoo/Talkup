@@ -24,7 +24,9 @@ extension CloudKitSyncable {
     
     var cloudKitReference: CKReference? {
         
-        guard let recordID = cloudKitRecordID else { return nil }
+        guard let recordID = cloudKitRecordID else {
+            return nil
+        }
         
         return CKReference(recordID: recordID, action: .none)
     }

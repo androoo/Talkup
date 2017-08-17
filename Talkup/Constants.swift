@@ -38,6 +38,7 @@ struct Constants {
     static let usersKey = "users"
     static let messagesKey = "messages"
     static let chatReferenceKey = "chatReference"
+    static let chatTimestampKey = "chatTimestamp"
     static let chatCreatorKey = "creator"
     static let isDirectKey = "isDirect"
     static let unreadMessages = "unreadChat"

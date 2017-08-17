@@ -207,8 +207,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // need to make sure none of these are empty and decide what to load first
-        
         switch feedType {
         case .following:
             return ChatController.shared.followingChats.count
@@ -279,12 +277,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
             
         }
-        
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return 96
     }
     
@@ -351,7 +347,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func updateViews() {
-        
         
         topNavBarBackgroundView.backgroundColor = Colors.navbarGray
         talkUpSearchTextField.backgroundColor = Colors.buttonBorderGray
@@ -514,7 +509,6 @@ extension HomeViewController {
         self.talkUpSearchTextField.alpha = percentage
         self.searchIconImageView.alpha = percentage
     }
-    
 }
 
 

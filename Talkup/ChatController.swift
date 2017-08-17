@@ -195,6 +195,7 @@ func fetchChatOwnersFor(chats: [Chat], completion: @escaping () -> Void) {
 //MARK: - CK Methods
     
     func fetchChatsByCreation(completion: @escaping ([Chat]) -> Void) {
+        
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: Constants.chattypeKey, predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -206,8 +207,9 @@ func fetchChatOwnersFor(chats: [Chat], completion: @escaping () -> Void) {
             guard let records = records else { completion([]); return }
             
             let chats = records.flatMap({Chat(cloudKitRecord: $0)})
+            let sortedChats = chats.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedDescending}
             
-            completion(chats)
+            completion(sortedChats)
             
         }
     }

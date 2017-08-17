@@ -29,16 +29,19 @@ class RecentChatTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        guard let chat = chat else { return }
+        guard let chat = chat,
+            let user = chat.creator else { return }
+        
+        let dateFormatter = DateFormatter()
+        let timeSince = dateFormatter.timeSince(from: chat.timestamp as NSDate, numericDates: true)
         
         chatTitleLabel.text = chat.topic
-//        createdByUserImageView.image = user.photo
+        createdByUserImageView.image = user.photo
         createdByUserImageView.layer.cornerRadius = createdByUserImageView.layer.frame.width / 2
         createdByUserImageView.layer.masksToBounds = true
-//        creatorInfoLabel.text = user.userName
-        datelabel.text = "4m ago"
+        creatorInfoLabel.text = user.userName
+        datelabel.text = timeSince
         datelabel.textColor = Colors.primaryBgPurple
         
     }
-
 }

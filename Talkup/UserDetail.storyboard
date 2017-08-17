@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SEz-gY-cCx">
-                                <rect key="frame" x="0.0" y="-2" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="42" width="375" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jD4-xe-uLC">
                                         <rect key="frame" x="48" y="33" width="279" height="0.0"/>
@@ -93,7 +93,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AwR-IN-zaP">
-                                <rect key="frame" x="0.0" y="70" width="375" height="930"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="886"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="userHeaderCell" rowHeight="365" id="xnC-22-zIi" customClass="UserHeaderTableViewCell" customModule="Talkup" customModuleProvider="target">
@@ -539,6 +539,7 @@
                             <constraint firstAttribute="trailing" secondItem="AwR-IN-zaP" secondAttribute="trailing" id="vWo-74-zZu"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="woT-dT-pHq"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
@@ -636,7 +637,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4588" y="-299.10044977511245"/>
+            <point key="canvasLocation" x="5527.1999999999998" y="-299.55022488755623"/>
         </scene>
     </scenes>
     <resources>

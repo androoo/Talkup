@@ -19,6 +19,7 @@ class Chat: CloudKitSyncable {
     var isDirectChat: Bool
     var topic: String
     var score: Int?
+    var timestamp: Date
     var messages: [Message]
     
     // local property
@@ -38,24 +39,27 @@ class Chat: CloudKitSyncable {
     
     //MARK: - CloudKitSyncable
     
-    init(creator: User? = nil, creatorReference: CKReference, isDirectChat: Bool, topic: String, score: Int? = 0, messages: [Message] = []) {
+    init(creator: User? = nil, creatorReference: CKReference, isDirectChat: Bool, topic: String, score: Int? = 0, timestamp: Date = Date(), messages: [Message] = []) {
         self.creator = creator
         self.creatorReference = creatorReference
         self.isDirectChat = isDirectChat
         self.topic = topic
         self.score = score
+        self.timestamp = timestamp
         self.messages = messages
     }
     
     required init?(cloudKitRecord: CKRecord) {
         guard let creatorReference = cloudKitRecord[Constants.chatCreatorKey] as? CKReference,
             let isDirect = cloudKitRecord[Constants.isDirectKey] as? Bool,
-            let topic = cloudKitRecord[Constants.chatKey] as? String else { return nil }
+            let topic = cloudKitRecord[Constants.chatKey] as? String,
+            let timestamp = cloudKitRecord.creationDate else { return nil }
 
         self.creatorReference = creatorReference
         self.isDirectChat = isDirect
         self.topic = topic
         self.cloudKitRecordID = cloudKitRecord.recordID
+        self.timestamp = timestamp
         self.messages = []
     }
     
@@ -77,8 +81,10 @@ extension CKRecord {
         
         self[Constants.chatKey] = chat.topic as CKRecordValue?
         self[Constants.isDirectKey] = chat.isDirectChat as CKRecordValue
+        self[Constants.chatTimestampKey] = chat.timestamp as CKRecordValue?
         self[Constants.chatReferenceKey] = chat.chatReference
         self[Constants.chatCreatorKey] = chat.creatorReference
     }
 }
+
 
