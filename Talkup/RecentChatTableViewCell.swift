@@ -30,7 +30,9 @@ class RecentChatTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let chat = chat,
-            let user = chat.creator else { return }
+            let user = chat.creator else {
+                return
+        }
         
         let dateFormatter = DateFormatter()
         let timeSince = dateFormatter.timeSince(from: chat.timestamp as NSDate, numericDates: true)

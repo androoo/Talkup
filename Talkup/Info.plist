@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>16</string>
+	<string>17</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -26,6 +26,10 @@
 	<string>App wants to access your photos </string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App accesses your photos to use on your profile only</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gotham-Black.otf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -48,10 +52,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Gotham-Black.otf</string>
 	</array>
 </dict>
 </plist>

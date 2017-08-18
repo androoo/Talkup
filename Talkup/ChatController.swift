@@ -34,25 +34,23 @@ class ChatController {
         }
     }
     
-    var followingChats = [Chat]() {
-        didSet {
-            
-        }
-    }
-    
     var trendingChats = [Chat]() {
         didSet {
             
         }
     }
     
-    var recentChats = [Chat]() {
+    var followingChats = [Chat]() {
         didSet {
             
         }
     }
     
     
+    var recentChats = [Chat]() {
+        didSet {
+        }
+    }
     
     var unreadMessages: [Message] = []
     
@@ -68,8 +66,6 @@ class ChatController {
         guard UserController.shared.currentUser != nil else { return }
         
 //        performFullSync()
-        
-        
         
         subscribeToNewChats { (success, error) in
             if success {
@@ -113,9 +109,39 @@ class ChatController {
     func popupateRecentChats() {
         
         fetchChatsByCreation { (chats) in
-            self.recentChats = chats
+            
+            self.fetchChatOwnersFor(chats: chats, completion: { 
+                
+                self.recentChats = chats
+            })
+            
         }
+    }
+    
+    func populateTrendingChats() {
         
+        fetchChatsByCreation { (chats) in
+            
+            self.fetchChatOwnersFor(chats: chats, completion: {
+                self.trendingChats = chats
+            })
+            
+//            for (index, chat) in chats.enumerated() {
+//                
+//                MessageController.shared.fetchMessagesIn(chat: chat, completion: {
+//                    
+//                    if chat.messages.count >= 5 {
+//                        let item = self.trendingChats.remove(at: index)
+//                        self.trendingChats.insert(item, at: 0)
+//                    } else if chat.messages.count > 1 && chat.messages.count < 5 {
+//                        let item = self.trendingChats.remove(at: index)
+//                        self.trendingChats.insert(item, at: 1)
+//                    }
+//                    
+//                })
+//            }
+            
+        }
     }
     
     
@@ -382,11 +408,6 @@ func checkSubscriptionTo(messagesForChat chat: Chat, completion: @escaping ((_ s
 
 func performFullSync(completion: @escaping (() -> Void) = { _ in }) {
     
-    //        guard !isSyncing else {
-    //            completion()
-    //            return
-    //        }
-    
     isSyncing = true
     
     pushChangesToCloudKit { (success) in
@@ -395,7 +416,7 @@ func performFullSync(completion: @escaping (() -> Void) = { _ in }) {
                 
                 self.populateFollowingChats()
                 self.popupateRecentChats()
-                // fetch messages for following chats
+                self.populateTrendingChats()
                 
                 let chatsFollowed = ChatController.shared.followingChats
                 
@@ -411,8 +432,8 @@ func performFullSync(completion: @escaping (() -> Void) = { _ in }) {
                 self.isSyncing = false
                 NotificationCenter.default.post(name: Notification.Name("syncingComplete"), object: nil)
                 completion()
+                
             })
-            
         }
     }
 }
@@ -467,7 +488,6 @@ func fetchFollowingChats(_ subscriptionID: String, completion: ((_ subscription:
         
         completion?(subscription, error)
     }
-    
 }
     
 

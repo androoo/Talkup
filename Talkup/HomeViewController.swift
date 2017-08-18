@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var chats: [Chat] {
         switch feedType {
         case .trending:
-            return ChatController.shared.chats
+            return ChatController.shared.trendingChats
         case .following:
             return ChatController.shared.followingChats
         case .recent:
@@ -104,6 +104,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let currenctUser = UserController.shared.currentUser else { return }
         
         setupSearchController()
+        
         ChatController.shared.fetchDirectChat(forUser: currenctUser) { (chat) in
             UserController.shared.currentUserDirectChat = chat
         }
@@ -164,6 +165,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Search Controller
     
     func setupSearchController() {
+        
         let resultsController = UIStoryboard(name: "SearchResults", bundle: nil).instantiateViewController(withIdentifier: "MainSearchResults")
         searchController = UISearchController(searchResultsController: resultsController)
         searchController.searchResultsUpdater = self
@@ -211,7 +213,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case .following:
             return ChatController.shared.followingChats.count
         case .trending:
-            return ChatController.shared.chats.count
+            return ChatController.shared.trendingChats.count
         case .recent:
             return ChatController.shared.chats.count
         case .featured:
@@ -412,8 +414,6 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
 }
 
 extension HomeViewController {
-    
-    
     
     //MARK: - Navigation bar animation
     

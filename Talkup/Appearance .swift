@@ -379,7 +379,7 @@ extension DateFormatter {
             result = "\(components.year!)y"
         } else if components.year! >= 1 {
             if numericDates {
-                result = "1 year ago"
+                result = "1y"
             } else {
                 result = "Last year"
             }
@@ -387,7 +387,7 @@ extension DateFormatter {
             result = "\(components.month!)m"
         } else if components.month! >= 1 {
             if numericDates {
-                result = "1 month ago"
+                result = "1m"
             } else {
                 result = "Last month"
             }
@@ -395,7 +395,7 @@ extension DateFormatter {
             result = "\(components.weekOfYear!)w"
         } else if components.weekOfYear! >= 1 {
             if numericDates {
-                result = "1 week ago"
+                result = "1w"
             } else {
                 result = "Last week"
             }
@@ -403,7 +403,7 @@ extension DateFormatter {
             result = "\(components.day!)d"
         } else if components.day! >= 1 {
             if numericDates {
-                result = "1 day ago"
+                result = "1d"
             } else {
                 result = "Yesterday"
             }
@@ -411,7 +411,7 @@ extension DateFormatter {
             result = "\(components.hour!)h"
         } else if components.hour! >= 1 {
             if numericDates {
-                result = "1 hour ago"
+                result = "1h"
             } else {
                 result = "An hour ago"
             }
@@ -419,7 +419,7 @@ extension DateFormatter {
             result = "\(components.minute!)m"
         } else if components.minute! >= 1 {
             if numericDates {
-                result = "1 minute ago"
+                result = "1m"
             } else {
                 result = "A minute ago"
             }

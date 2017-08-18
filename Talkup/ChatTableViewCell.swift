@@ -39,7 +39,9 @@ class ChatTableViewCell: UITableViewCell {
     
     private func updateViews() {
         guard let chat = chat,
-            let creator = chat.creator else { return }
+            let creator = chat.creator else {
+                return
+        }
 
         
         chatTopicLabel.text = chat.topic

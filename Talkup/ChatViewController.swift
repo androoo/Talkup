@@ -73,10 +73,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             group.enter()
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
                 
-                //check to see if any messages need to be hidden
                 self.hideBlockedMessages()
-                
                 group.leave()
+                
             }
             group.leave()
         }
