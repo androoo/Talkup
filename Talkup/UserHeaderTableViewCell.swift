@@ -33,12 +33,12 @@ class UserHeaderTableViewCell: UITableViewCell {
     //MARK: - UI Actions 
     
     @IBAction func followButtonTapped(_ sender: Any) {
+        
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
+        
     }
-    
-    
     
     //MARK: - Methods 
     
@@ -50,6 +50,7 @@ class UserHeaderTableViewCell: UITableViewCell {
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width / 2
         userAvatarImageView.layer.masksToBounds = true 
         headerViewBottomSep.backgroundColor = Colors.primaryLightGray
+        headerBgView.backgroundColor = Colors.primaryLightGray
     }
     
 

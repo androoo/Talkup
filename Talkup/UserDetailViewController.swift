@@ -122,7 +122,6 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         navBarBgView.backgroundColor = .white
         navBarBottomSep.backgroundColor = Colors.primaryLightGray
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
     }
 
     //MARK: - View Helpers
@@ -344,6 +343,16 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func reportAbuse(_ sender: RecieverTableViewCell) {
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEditProfile" {
+            guard let destination = segue.destination as? EditProfileViewController else { return }
+            destination.user = self.user
+        } else if segue.identifier == "toTopicsList" {
+            guard let destination = segue.destination as? ChatTopicsListViewController else { return }
+            destination.user = self.user
+        }
     }
     
 }
