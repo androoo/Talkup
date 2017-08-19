@@ -18,7 +18,20 @@ class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITab
     
     var user: User?
 
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        dismiss(animated: true) { 
+            
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navbarView: UIView!
+    @IBOutlet weak var navbarTitleLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateViews()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let chats = user?.chats.count else { return 1 }
@@ -45,6 +58,9 @@ class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITab
     
     func updateViews() {
         guard let user = user, isViewLoaded else { return }
+        
+        navbarView.backgroundColor = Colors.navbarGray
+        
         UserController.shared.fetchMessagesBy(user: user) { 
             DispatchQueue.main.async {
                 self.tableView.reloadData()

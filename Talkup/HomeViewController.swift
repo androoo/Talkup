@@ -320,6 +320,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
             }
             
+        } else if segue.identifier == "toRecentDetail" {
+            
+            if let detailViewController = segue.destination as? ChatViewController,
+                let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+                
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
+                
+                let chat = ChatController.shared.chats[selectedIndexPath.row]
+                chat.isDismisable = false
+                detailViewController.chat = chat
+                
+            }
+            
         } else if segue.identifier == "slideMenu" {
             guard UserController.shared.currentUser != nil
                 else { return }

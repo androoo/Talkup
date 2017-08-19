@@ -25,7 +25,9 @@ class TopicCellTableViewCell: UITableViewCell {
     @IBOutlet weak var creatorImageView: UIImageView!
     
     func updateViews() {
-        
+        topicNameLabel.text = chat?.topic
+        usernameLabel.text = user?.userName
+        creatorImageView.image = user?.photo
     }
     
 }
