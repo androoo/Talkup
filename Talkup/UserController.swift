@@ -77,6 +77,28 @@ class UserController {
         
     }
     
+    // update user
+    
+    func updateCurrentUser(username: String, email: String, photo: UIImage, completion: @escaping (User?) -> Void) {
+        
+        guard let currentUser = currentUser else { return }
+        
+        guard let data = UIImageJPEGRepresentation(photo, 0.8) else { return }
+        
+        currentUser.userName = username
+        currentUser.email = email
+        currentUser.photoData = data
+        
+        let currentUserRecord = CKRecord(user: currentUser)
+        
+        cloudKitManager.publicDatabase.save(currentUserRecord) { (record, error) in
+            if let error = error { print(error.localizedDescription) }
+            self.currentUser = currentUser
+            completion(currentUser)
+        }
+        
+    }
+    
     // Add blocked users
     
     func addBlockedUser(Foruser user: User, blockedUser: User, completion: @escaping () -> Void = {_ in}) {
@@ -112,6 +134,8 @@ class UserController {
             }
         }
     }
+    
+    
     
     // Follow Chat
     
@@ -171,10 +195,6 @@ class UserController {
                 print(error.localizedDescription)
             }
         
-            DispatchQueue.main.async {
-                // do something with results 
-                print(cursor)
-            }
             
         })
         
@@ -192,7 +212,7 @@ class UserController {
             // handle error
             // take results and add each username to array
         }
-        
+        completion()
     }
     
     

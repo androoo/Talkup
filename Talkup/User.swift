@@ -14,8 +14,8 @@ class User: CloudKitSyncable {
     
     //MARK: - Properties
     
-    let userName: String
-    let email: String
+    var userName: String
+    var email: String
     var chats: [Chat]
     var messages: [Message]
     var directMessages: [Message]
@@ -24,7 +24,7 @@ class User: CloudKitSyncable {
     var defaultUserReference: CKReference
     var cloudKitRecordID: CKRecordID?
     var users: [User]
-    let photoData: Data?
+    var photoData: Data?
     var photo: UIImage? {
         guard let photoData = self.photoData else { return nil }
         return UIImage(data: photoData)

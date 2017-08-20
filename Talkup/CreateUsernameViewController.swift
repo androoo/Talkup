@@ -25,10 +25,9 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.navigationBar.tintColor = .white
+        
         UserController.shared.fetchAllUsernames {
-            
         }
         
     }
@@ -41,6 +40,7 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
         usernameTextfield.delegate = self
         registerForKeyboardNotifications()
         registerForTextFieldLengthNotification()
+        
     }
     
     //MARK: - Handle Keyboard
@@ -137,7 +137,6 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
 }
 
 
