@@ -33,6 +33,11 @@ class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITab
         updateViews()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let chats = user?.chats.count else { return 1 }
         return chats

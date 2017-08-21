@@ -8,23 +8,29 @@
 
 import UIKit
 
-class EditProfileViewController: UIViewController, UITextFieldDelegate {
+class EditProfileViewController: UIViewController, UITextFieldDelegate, EditPhotoViewControllerDelegate {
 
+    //MARK: - Properties
+    
     let limitLength = 15
     var username: String?
-    
     var image: UIImage?
     
     var user: User? {
+        
         didSet {
             if !isViewLoaded{
                 loadView()
             }
             updateViews()
         }
+        
     }
     
+    //MARK: - UI Actions 
+    
     @IBAction func exitButtonTapped(_ sender: Any) {
+        
         dismiss(animated: true) { 
             
         }
@@ -34,7 +40,9 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         
         guard let username = self.username,
             let email = emailTextField.text,
-            let image = self.image else { return }
+            let image = self.image else {
+                return
+        }
         
         UserController.shared.updateCurrentUser(username: username, email: email, photo: image) { (user) in
             
@@ -44,22 +52,30 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    
+    //MARK: - View lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         UserController.shared.fetchAllUsernames {
             
         }
+        performSegue(withIdentifier: "editPhoto", sender: self)
+        usernameTextField.delegate = self
+        usernameTextField.text = user?.userName
         
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
         usernameTextField.delegate = self
         usernameTextField.text = user?.userName
         
     }    
+    
+    
+    //MARK: - UITextField Delegates
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -89,18 +105,22 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         guard let user = user else { return }
         usernameTextField.text = self.username
         emailTextField.text = user.email
+        view.backgroundColor = Colors.primaryLightGray
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "editPhoto" {
             let embededViewController = segue.destination as? EditPhotoViewController
             embededViewController?.delegate = self 
         }
     }
-}
-
-extension EditProfileViewController: EditPhotoViewControllerDelegate {
+    
+    
+    //MARK: - Photo delegate 
+    
     func editPhotoViewControllerSelected(_ image: UIImage) {
         self.image = image
     }
 }
+

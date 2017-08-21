@@ -6,15 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
+            timestampString = "524971208.097601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,43 +26,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954648.786307"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "EditProfileViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
+            timestampString = "524971208.097601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/EditProfileViewController.swift"
+            timestampString = "524971208.097601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/EditProfileViewController.swift"
+            timestampString = "524971208.097601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954648.786307"
+            timestampString = "524971208.097601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "EditProfileViewController"
-            landmarkType = "3">
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,29 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954648.786307"
+            timestampString = "524971208.097601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "EditProfileViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954648.786307"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "EditProfileViewController"
-            landmarkType = "3">
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -134,31 +118,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Talkup.EditPhotoViewController.delegate.getter : weak Swift.Optional&lt;Talkup.EditPhotoViewControllerDelegate&gt;"
+                  symbolName = "Talkup.EditPhotoViewController.delegate.getter : Swift.Optional&lt;Talkup.EditPhotoViewControllerDelegate&gt;"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
-                  timestampString = "524954692.908946"
+                  timestampString = "524972055.602931"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
                   endingLineNumber = "20"
-                  offsetFromSymbolStart = "54">
+                  offsetFromSymbolStart = "181">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Talkup.EditPhotoViewController.delegate.setter : weak Swift.Optional&lt;Talkup.EditPhotoViewControllerDelegate&gt;"
+                  symbolName = "Talkup.EditPhotoViewController.delegate.setter : Swift.Optional&lt;Talkup.EditPhotoViewControllerDelegate&gt;"
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
-                  timestampString = "524954692.910718"
+                  timestampString = "524972055.605057"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
                   endingLineNumber = "20"
-                  offsetFromSymbolStart = "61">
+                  offsetFromSymbolStart = "522">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -168,12 +152,12 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
-                  timestampString = "524954692.912515"
+                  timestampString = "524972055.607036"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
                   endingLineNumber = "20"
-                  offsetFromSymbolStart = "84">
+                  offsetFromSymbolStart = "106">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -183,12 +167,12 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
-                  timestampString = "524954692.914296"
+                  timestampString = "524972055.609052"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
                   endingLineNumber = "20"
-                  offsetFromSymbolStart = "43">
+                  offsetFromSymbolStart = "67">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -216,7 +200,7 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
-                  timestampString = "524954692.920201"
+                  timestampString = "524972055.615717"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -231,7 +215,7 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
-                  timestampString = "524954692.922001"
+                  timestampString = "524972055.61788"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -246,12 +230,12 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
-                  timestampString = "524954692.923946"
+                  timestampString = "524972055.619859"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
                   endingLineNumber = "22"
-                  offsetFromSymbolStart = "192">
+                  offsetFromSymbolStart = "341">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -261,12 +245,12 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
-                  timestampString = "524954692.925823"
+                  timestampString = "524972055.621927"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
                   endingLineNumber = "22"
-                  offsetFromSymbolStart = "113">
+                  offsetFromSymbolStart = "247">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -278,27 +262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
+            timestampString = "524971208.097601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "editPhotoViewControllerSelected(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -310,12 +278,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
+            timestampString = "524971208.097601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/EditProfileViewController.swift"
+            timestampString = "524971208.097601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/EditProfileViewController.swift"
+            timestampString = "524971208.097601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/EditProfileViewController.swift"
+            timestampString = "524971208.097601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
-            landmarkName = "prepare(for:sender:)"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -325,14 +341,184 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
+            filePath = "Talkup/EditPhotoViewController.swift"
+            timestampString = "524967694.874265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "EditPhotoViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.__deallocating_deinit"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.644665"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Talkup.EditPhotoViewController"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.64647"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Talkup.EditPhotoViewController"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.648247"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Talkup.EditPhotoViewController&gt;"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.65028"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Talkup.EditPhotoViewController&gt;"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.652106"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "67">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/EditPhotoViewController.swift"
+            timestampString = "524967724.059977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "EditPhotoViewControllerDelegate"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.__deallocating_deinit"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.65864"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Talkup.EditPhotoViewController"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.660384"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Talkup.EditPhotoViewController"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.662099"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Talkup.EditPhotoViewController&gt;"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.665018"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditPhotoViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Talkup.EditPhotoViewController&gt;"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditPhotoViewController.swift"
+                  timestampString = "524972055.666976"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "67">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -342,59 +528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
+            timestampString = "524971466.758026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "updateViews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "updateViews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "EditProfileViewController"
-            landmarkType = "4">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "editPhotoViewControllerSelected(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -406,13 +544,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
+            timestampString = "524972053.580041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "saveButtonTapped(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditProfileViewController.saveButtonTapped (Any) -&gt; ()"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditProfileViewController.swift"
+                  timestampString = "524972053.898291"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "806">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.EditProfileViewController.(saveButtonTapped (Any) -&gt; ()).(closure #1)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/EditProfileViewController.swift"
+                  timestampString = "524972053.901328"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -422,12 +592,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/EditProfileViewController.swift"
-            timestampString = "524954692.762005"
+            timestampString = "524972056.280705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "saveButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

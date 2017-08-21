@@ -113,7 +113,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+        
         tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -122,6 +122,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         navBarBgView.backgroundColor = .white
         navBarBottomSep.backgroundColor = Colors.primaryLightGray
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
     }
 
     //MARK: - View Helpers

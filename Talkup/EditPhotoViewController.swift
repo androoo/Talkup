@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol EditPhotoViewControllerDelegate: class {
+protocol EditPhotoViewControllerDelegate {
     func editPhotoViewControllerSelected(_ image: UIImage)
 }
 
@@ -17,7 +17,7 @@ class EditPhotoViewController: UIViewController, UIImagePickerControllerDelegate
     
     //MARK: - Properties 
     
-    weak var delegate: EditPhotoViewControllerDelegate?
+    var delegate: EditPhotoViewControllerDelegate?
     
     @IBOutlet weak var userPhotoImageView: UIImageView!
 

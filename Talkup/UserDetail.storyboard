@@ -939,6 +939,10 @@
         <scene sceneID="q1Z-tO-xsJ">
             <objects>
                 <viewController id="yJy-gA-HDX" customClass="EditPhotoViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0W8-Cm-Zlg"/>
+                        <viewControllerLayoutGuide type="bottom" id="fCk-af-oOl"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2A6-wg-bLr">
                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -948,6 +952,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJw-n5-ds4">
                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <state key="normal" title="add"/>
                                 <connections>
                                     <action selector="AddPhotoButtonTapped:" destination="yJy-gA-HDX" eventType="touchUpInside" id="o0u-Ly-oHo"/>
                                 </connections>
