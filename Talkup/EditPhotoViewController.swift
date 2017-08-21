@@ -55,8 +55,7 @@ class EditPhotoViewController: UIViewController, UIImagePickerControllerDelegate
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             delegate?.editPhotoViewControllerSelected(image)
             userPhotoImageView.image = image
+            
         }
-        
     }
-    
 }

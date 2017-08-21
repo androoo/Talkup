@@ -58,7 +58,14 @@ class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "toChatFromTopics" {
+            guard let destination = segue.destination as? ChatViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let chat = user?.chats[indexPath.row]
+            chat?.isDismisable = true
+            destination.chat = chats?[indexPath.row]
+        }
     }
     
     func updateViews() {

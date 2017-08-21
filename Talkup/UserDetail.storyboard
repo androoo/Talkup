@@ -691,7 +691,7 @@
         <!--Chat Topics List View Controller-->
         <scene sceneID="6XC-4h-hMk">
             <objects>
-                <viewController id="bhD-V7-779" customClass="ChatTopicsListViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopicsListViewController" id="bhD-V7-779" customClass="ChatTopicsListViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UO3-tD-3HU"/>
                         <viewControllerLayoutGuide type="bottom" id="2aH-hg-a3M"/>
@@ -794,6 +794,7 @@
                                             <outlet property="creatorImageView" destination="LiZ-Js-xkN" id="8oD-Sb-OXL"/>
                                             <outlet property="topicNameLabel" destination="Lm9-ga-Aqg" id="fzm-yq-N6L"/>
                                             <outlet property="usernameLabel" destination="PJe-Xl-3wv" id="cbv-cA-LZZ"/>
+                                            <segue destination="sFf-3S-Iab" kind="show" identifier="toChatFromTopics" id="Jkg-au-eJU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -977,6 +978,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7i0-cw-OBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7411" y="399"/>
+        </scene>
+        <!--ChatViewController-->
+        <scene sceneID="T2p-dh-hbm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ChatViewController" id="sFf-3S-Iab" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIP-vc-8Vc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7244" y="875"/>
         </scene>
     </scenes>
     <resources>

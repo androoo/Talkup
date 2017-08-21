@@ -39,14 +39,18 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, EditPhot
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         guard let username = self.username,
-            let email = emailTextField.text,
             let image = self.image else {
                 return
         }
         
-        UserController.shared.updateCurrentUser(username: username, email: email, photo: image) { (user) in
-            
+//        UserController.shared.updateCurrentUser(username: username, photo: image, completion: { (user) in
+//            self.updateViews()
+//        })
+        
+        UserController.shared.updateUserOperation(userName: username, photo: image) { (user) in
+            self.updateViews()
         }
+        
     }
     
     @IBOutlet weak var usernameTextField: UITextField!
@@ -106,13 +110,15 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, EditPhot
         usernameTextField.text = self.username
         emailTextField.text = user.email
         view.backgroundColor = Colors.primaryLightGray
+        self.image = user.photo
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "editPhoto" {
             let embededViewController = segue.destination as? EditPhotoViewController
-            embededViewController?.delegate = self 
+            embededViewController?.delegate = self
+            
         }
     }
     

@@ -79,22 +79,37 @@ class UserController {
     
     // update user
     
-    func updateCurrentUser(username: String, email: String, photo: UIImage, completion: @escaping (User?) -> Void) {
+    func updateUserOperation(userName: String, photo: UIImage, completion: @escaping (User?) -> Void) {
+     
+        guard let userRecord = currentUser?.cloudKitRecordID else { return }
         
-        guard let currentUser = currentUser else { return }
-        
-        guard let data = UIImageJPEGRepresentation(photo, 0.8) else { return }
-        
-        currentUser.userName = username
-        currentUser.email = email
-        currentUser.photoData = data
-        
-        let currentUserRecord = CKRecord(user: currentUser)
-        
-        cloudKitManager.publicDatabase.save(currentUserRecord) { (record, error) in
-            if let error = error { print(error.localizedDescription) }
-            self.currentUser = currentUser
-            completion(currentUser)
+        cloudKitManager.publicDatabase.fetch(withRecordID: userRecord) { (record, error) in
+            
+            if let recordToSave = record {
+                
+                // Modify the record values here 
+                
+                guard let data = UIImageJPEGRepresentation(photo, 0.8) else { return }
+                
+                recordToSave.setValue(userName, forKey: Constants.usernameKey)
+//                recordToSave.setValue(data, forKey: Constants.photoDataKey)
+                
+                let modifyRecords = CKModifyRecordsOperation(recordsToSave: [recordToSave], recordIDsToDelete: nil)
+                modifyRecords.savePolicy = CKRecordSavePolicy.allKeys
+                modifyRecords.qualityOfService = QualityOfService.userInitiated
+                modifyRecords.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+                
+                    if error == nil {
+                        print("Modified")
+                    } else {
+                        print(error?.localizedDescription)
+                    }
+                }
+                self.cloudKitManager.publicDatabase.add(modifyRecords)
+            } else {
+                print(error.debugDescription)
+            }
+            
         }
         
     }
