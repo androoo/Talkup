@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController, UINavigationControllerDelegate {
     
     //MARK: - Properties
     var username: String?
@@ -16,6 +16,8 @@ class CreateAccountViewController: UIViewController {
     var image: UIImage?
     var accessCode: String?
     
+    lazy var customTransitionDelegate = CustomPushTransitionController()
+    var createdUser: User?
     
     //MARK: - Outlets
     
@@ -33,11 +35,13 @@ class CreateAccountViewController: UIViewController {
             let accessCode = accessCode,
             let image = image ?? UIImage(named: "defaultUser") else { emptyFieldsAlert(); return }
         
+        
         UserController.shared.createUserWith(username: username, email: email, image: image, accessCode: accessCode) { (user) in
+            
             
             guard let createdUser = user else { return }
             
-            UserController.shared.currentUser = createdUser
+            self.createdUser = createdUser
             
             ChatController.shared.createChatWith(chatTopic: username, owner: createdUser, firstMessage: "Hi everyone 👋", isDirectChat: true, completion: { (_) in
                 
@@ -48,7 +52,6 @@ class CreateAccountViewController: UIViewController {
                     }
                     
                 })
-                
             })
         }
     }
@@ -76,4 +79,27 @@ class CreateAccountViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "finishedOnboarding" {
+            
+            guard let destinationViewController = segue.destination as? HomeViewController,
+                let user = self.createdUser else { return }
+            
+            UserController.shared.currentUser = user
+            
+            destinationViewController.transitioningDelegate = customTransitionDelegate
+            destinationViewController.modalPresentationStyle = .custom
+            
+        }
+    }
+    
 }
+
+
+
+
+
+
+
+

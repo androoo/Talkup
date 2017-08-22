@@ -42,7 +42,7 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/SearchResultsController.swift"
-                  timestampString = "525128067.127211"
+                  timestampString = "525136369.311741"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "156"
@@ -57,7 +57,7 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/SearchResultsController.swift"
-                  timestampString = "525128067.129802"
+                  timestampString = "525136369.314429"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "156"
@@ -249,22 +249,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatViewController.swift"
-            timestampString = "525114195.061839"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "544"
-            endingLineNumber = "544"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Talkup/UserDetailViewController.swift"
             timestampString = "525114198.66204"
             startingColumnNumber = "9223372036854775807"
@@ -282,7 +266,7 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserDetailViewController.swift"
-                  timestampString = "525128067.16036"
+                  timestampString = "525136369.341951"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -297,7 +281,7 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserDetailViewController.swift"
-                  timestampString = "525128067.162189"
+                  timestampString = "525136369.34393"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -312,7 +296,7 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserDetailViewController.swift"
-                  timestampString = "525128067.164202"
+                  timestampString = "525136369.34596"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -327,7 +311,7 @@
                   moduleName = "Talkup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserDetailViewController.swift"
-                  timestampString = "525128067.166037"
+                  timestampString = "525136369.347775"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -349,6 +333,38 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
             endingLineNumber = "155"
+            landmarkName = "updateViews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/ChatViewController.swift"
+            timestampString = "525135340.633895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "updateViews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/ChatViewController.swift"
+            timestampString = "525135462.546771"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "updateViews()"
             landmarkType = "7">
          </BreakpointContent>

@@ -23,12 +23,13 @@ class FilterHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var topBottomBorderImageView: UIImageView!
     
     var delegate: filterHeaderDelegate?
+    var isLive: Bool? = true
     
     //MARK: - UI Actions
     
-    
     @IBAction func nowButtonWasTapped(_ sender: Any) {
         delegate?.nowSortButtonClicked(selected: true, filterHeader: self)
+        isLive = true
         nowLabel.textColor = Colors.flatYellow
         topLabel.textColor = Colors.primaryDarkGray
         nowBottomBorderImageView.backgroundColor = Colors.flatYellow
@@ -37,6 +38,7 @@ class FilterHeaderTableViewCell: UITableViewCell {
     
     @IBAction func topButtonWasTapped(_ sender: Any) {
         delegate?.topSortButtonClicked()
+        isLive = false
         topLabel.textColor = Colors.greenBlue
         nowLabel.textColor = Colors.primaryDarkGray
         topBottomBorderImageView.backgroundColor = Colors.greenBlue
@@ -46,10 +48,17 @@ class FilterHeaderTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        nowBottomBorderImageView.backgroundColor = Colors.alertOrange
-        topBottomBorderImageView.backgroundColor = Colors.primaryLightGray
-        
-        nowLabel.textColor = Colors.flatYellow
+        if self.isLive! {
+            nowBottomBorderImageView.backgroundColor = Colors.alertOrange
+            topBottomBorderImageView.backgroundColor = Colors.primaryLightGray
+            nowLabel.textColor = Colors.flatYellow
+            topLabel.textColor = Colors.primaryLightGray
+        } else {
+            nowBottomBorderImageView.backgroundColor = Colors.primaryLightGray
+            topBottomBorderImageView.backgroundColor = Colors.greenBlue
+            topLabel.textColor = Colors.greenBlue
+            nowLabel.textColor = Colors.primaryLightGray
+        }
         
     }
 

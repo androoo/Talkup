@@ -25,7 +25,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var chat: Chat? {
         didSet {
-            updateViews()
+//            updateViews()
         }
     }
     
@@ -37,7 +37,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     lazy var customTransitioningDelegate = CustomPushTransitionController()
     var heroChatCell: ChatHeaderTableViewCell?
+    
     var messageSortSelection: MessageSort = .live
+    
     var timeOfLastVisit: Date?
     
     
@@ -54,16 +56,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         switch messageSortSelection {
         case .live:
-            
             return chat!.filteredMessages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
         case .top:
-            
             return chat!.filteredMessages.sorted { return $0.score > $1.score }
             
         }
     }
     
     private func updateViews() {
+        
         guard let chat = chat, isViewLoaded else { return }
         
         let group = DispatchGroup()
@@ -104,7 +105,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateViews()
+//        updateViews()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,7 +125,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputTextField.delegate = self
         updateViews()
         customize()
-        
         
         guard let chat = chat, isViewLoaded else { return }
         title = "\(chat.topic)"
@@ -159,6 +160,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func chatMessagesChanged(_ notification: Notification) {
 
         tableView.reloadData()
+        
     }
     
     // MARK: - Table view data source
@@ -417,13 +419,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Filter Header Delegate 
     
     func nowSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
-        // filter messages to now
         messageSortSelection = .live
         updateViews()
     }
     
     func topSortButtonClicked() {
-        // filter messages to top
         messageSortSelection = .top
         updateViews()
     }
