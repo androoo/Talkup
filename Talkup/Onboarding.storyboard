@@ -137,7 +137,7 @@
                                     <constraint firstAttribute="height" constant="50" id="mNg-Cf-KOn"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter access code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Eb-fN-94z">
@@ -172,6 +172,7 @@
                     </view>
                     <connections>
                         <outlet property="accessCodeTextField" destination="vsM-xU-Btb" id="NkH-Az-JHB"/>
+                        <outlet property="accessCodeTextFieldCenterConstraint" destination="ixg-C1-YSu" id="hl6-7R-eta"/>
                         <outlet property="accessCodeWarningLabel" destination="aS0-Cx-s03" id="owN-5m-sIP"/>
                         <outlet property="buttonsStackView" destination="kIg-VS-Q7i" id="ivF-bS-k9J"/>
                         <outlet property="continueButton" destination="TJ1-tP-V9x" id="P07-0s-RhJ"/>
@@ -200,22 +201,20 @@
                                     <constraint firstAttribute="height" constant="50" id="Xkb-A3-iaq"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dNW-fc-djq">
-                                <rect key="frame" x="111" y="267" width="153.5" height="19.5"/>
+                                <rect key="frame" x="102.5" y="265" width="171" height="21.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick your" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNs-Q6-e1S">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="74.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8F-pG-2Va">
-                                        <rect key="frame" x="71" y="0.0" width="82.5" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="78.5" y="0.0" width="92.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -235,7 +234,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your username must be: unique, less than 15 characters, not contain spaces or capital letters." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRS-xo-WAA">
-                                <rect key="frame" x="24" y="380.5" width="327" height="57.5"/>
+                                <rect key="frame" x="24" y="374.5" width="327" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username tooltip" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wun-Rs-ruE">
+                                <rect key="frame" x="125" y="374.5" width="125.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -247,13 +252,15 @@
                             <constraint firstItem="VRS-xo-WAA" firstAttribute="leading" secondItem="kZH-IC-n62" secondAttribute="leadingMargin" constant="8" id="9d2-k8-pIH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="f4u-qF-11x" secondAttribute="trailing" id="Ekm-ms-EF2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VRS-xo-WAA" secondAttribute="trailing" constant="8" id="GH3-FJ-l4d"/>
+                            <constraint firstItem="wun-Rs-ruE" firstAttribute="top" secondItem="NUc-ib-HQO" secondAttribute="bottom" constant="16" id="a6k-4O-VIe"/>
                             <constraint firstItem="NUc-ib-HQO" firstAttribute="centerY" secondItem="kZH-IC-n62" secondAttribute="centerY" id="cBn-Zc-RZQ"/>
                             <constraint firstItem="NUc-ib-HQO" firstAttribute="top" secondItem="dNW-fc-djq" secondAttribute="bottom" constant="22" id="ch4-55-Jd8"/>
                             <constraint firstItem="f4u-qF-11x" firstAttribute="leading" secondItem="kZH-IC-n62" secondAttribute="leadingMargin" id="dSO-Oz-Uuy"/>
+                            <constraint firstItem="wun-Rs-ruE" firstAttribute="centerX" secondItem="kZH-IC-n62" secondAttribute="centerX" id="dhI-BR-AEM"/>
                             <constraint firstItem="NUc-ib-HQO" firstAttribute="leading" secondItem="kZH-IC-n62" secondAttribute="leadingMargin" id="lXp-gi-Ugz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NUc-ib-HQO" secondAttribute="trailing" id="q13-ad-h7i"/>
                             <constraint firstItem="jR1-WP-SCp" firstAttribute="top" secondItem="f4u-qF-11x" secondAttribute="bottom" constant="22" id="srG-o3-LEC"/>
-                            <constraint firstItem="VRS-xo-WAA" firstAttribute="top" secondItem="NUc-ib-HQO" secondAttribute="bottom" constant="22" id="w9B-Mx-srV"/>
+                            <constraint firstItem="VRS-xo-WAA" firstAttribute="top" secondItem="NUc-ib-HQO" secondAttribute="bottom" constant="16" id="w9B-Mx-srV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -261,6 +268,8 @@
                         <outlet property="titleSubtext" destination="DNs-Q6-e1S" id="Zmr-Th-LsL"/>
                         <outlet property="titleUsernameLabel" destination="w8F-pG-2Va" id="5bD-MX-rBc"/>
                         <outlet property="usernameTextfield" destination="NUc-ib-HQO" id="cJL-aM-pse"/>
+                        <outlet property="usernameTooltip" destination="wun-Rs-ruE" id="MPC-7i-Qde"/>
+                        <outlet property="usernameWelcome" destination="VRS-xo-WAA" id="ERF-9q-hL3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sgj-W5-Hb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -285,22 +294,20 @@
                                     <constraint firstAttribute="height" constant="50" id="fEw-Yx-Cdw"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BvQ-8X-yzj">
-                                <rect key="frame" x="91.5" y="267" width="192" height="19.5"/>
+                                <rect key="frame" x="81" y="265" width="213.5" height="21.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF6-TU-dPi">
-                                        <rect key="frame" x="0.0" y="0.0" width="74.5" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email address." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lv9-Uu-2de">
-                                        <rect key="frame" x="78.5" y="0.0" width="113.5" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="87" y="0.0" width="126.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -341,6 +348,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="xoc-H6-6Wo" id="HLl-1h-dCN"/>
                         <outlet property="continueButtonTapped" destination="xoc-H6-6Wo" id="h52-hF-cKV"/>
                         <outlet property="emailTextField" destination="Ecw-N5-PBL" id="b0r-sf-wWy"/>
                         <outlet property="invalidEmailWarningLabel" destination="ALt-zr-CN9" id="loV-ql-xdT"/>
@@ -350,13 +358,13 @@
             </objects>
             <point key="canvasLocation" x="3389.5999999999999" y="-181.25937031484258"/>
         </scene>
-        <!--Main-->
+        <!--HomeViewController-->
         <scene sceneID="NfC-AH-T9t">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="MainNav" storyboardName="Main" id="eA7-3d-SzA" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="MainNav" storyboardName="Main" referencedIdentifier="HomeViewController" id="eA7-3d-SzA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRk-qU-X9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4738" y="-182"/>
+            <point key="canvasLocation" x="4830" y="-182"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="EmR-F9-xxl">
@@ -400,7 +408,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createAccountButtonTapped:" destination="nCQ-sb-1xq" eventType="touchUpInside" id="waN-ex-DrM"/>
-                                    <segue destination="eA7-3d-SzA" kind="show" id="Gr9-Gx-f7P"/>
+                                    <segue destination="eA7-3d-SzA" kind="show" identifier="finishedOnboarding" id="Gr9-Gx-f7P"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's go!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oam-4x-bLV">
@@ -596,7 +604,7 @@
         <!--Launch View Controller-->
         <scene sceneID="0Kh-8n-C2x">
             <objects>
-                <viewController id="woR-NM-gBC" customClass="LaunchViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="launchScreen" id="woR-NM-gBC" customClass="LaunchViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OJ5-gh-6cQ"/>
                         <viewControllerLayoutGuide type="bottom" id="DAW-ie-VvE"/>

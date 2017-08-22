@@ -16,10 +16,13 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var titleUsernameLabel: UILabel!
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var usernameWelcome: UILabel!
+    @IBOutlet weak var usernameTooltip: UILabel!
     
     var accessCode: String?
     var username: String?
     let limitLength = 15
+    let allUsernames = UserController.shared.allUsernames ?? ["andrew"]
     
     //MARK: - View lifecycle
     
@@ -27,6 +30,7 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
 //        self.navigationController?.navigationBar.tintColor = .white
         
+        continueButton.isEnabled = false
         UserController.shared.fetchAllUsernames {
         }
         
@@ -35,9 +39,19 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        usernameTooltip.isHidden = true 
+        
+        continueButton.backgroundColor = Colors.bubbleGray
         continueButton.layer.cornerRadius = 8.0
         continueButton.layer.masksToBounds = true
+        continueButton.setTitleColor(Colors.primaryDarkGray, for: .normal)
+        
         usernameTextfield.delegate = self
+        usernameTextfield.layer.borderWidth = 2.0
+        usernameTextfield.layer.borderColor = Colors.primaryLightGray.cgColor
+        usernameTextfield.layer.cornerRadius = 8.0
+        usernameTextfield.textColor = Colors.conPurpleDark
+        
         registerForKeyboardNotifications()
         registerForTextFieldLengthNotification()
         
@@ -46,6 +60,7 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Handle Keyboard
     
     func registerForTextFieldLengthNotification() {
+        
     }
     
     func registerForKeyboardNotifications() {
@@ -81,13 +96,29 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Text Field Delegate 
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.usernameWelcome.isHidden = true
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+//        let allUsernames = UserController.shared.allUsernames
+        
+        if (allUsernames.contains(self.username!)) {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        guard let enteredUsername = textField.text,
-           let allUsernames = UserController.shared.allUsernames else { return false }
+        guard let enteredUsername = textField.text else { return false }
         
-        if allUsernames.contains(enteredUsername) {
-            // handle username taken
+//        let allUsernames = UserController.shared.allUsernames
+        
+        if (allUsernames.contains(enteredUsername)) {
+            
         } else {
             performSegue(withIdentifier: "toAddUserPhoto", sender: self)
         }
@@ -99,6 +130,9 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
         
         // protect that text exists, and get that last character 
         guard let text = textField.text else { return true }
+        
+//        let allUsernames = UserController.shared.allUsernames
+        
         let newString = NSString(string: text).replacingCharacters(in: range, with: string)
         
         // define invalid char set
@@ -115,6 +149,26 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
         let newLength = newString.characters.count + string.characters.count - range.length
         
         self.username = newString
+        
+        if (allUsernames.contains(newString)) {
+            
+            usernameTooltip.isHidden = false
+            usernameTooltip.textColor = Colors.hotRed
+            usernameTooltip.text = "Username is taken :("
+            continueButton.isEnabled = false
+            continueButton.backgroundColor = Colors.bubbleGray
+            continueButton.setTitleColor(Colors.primaryDark, for: .normal)
+            
+        } else {
+            
+            usernameTooltip.isHidden = false
+            usernameTooltip.textColor = Colors.emeraldGreen
+            usernameTooltip.text = "Username is available!"
+            continueButton.isEnabled = true
+            continueButton.backgroundColor = Colors.conPurpleDark
+            continueButton.setTitleColor(.white, for: .normal)
+            
+        }
         
         return newLength <= limitLength
         

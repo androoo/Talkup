@@ -35,19 +35,20 @@ class CreateAccountViewController: UIViewController {
         
         UserController.shared.createUserWith(username: username, email: email, image: image, accessCode: accessCode) { (user) in
             
-            //send to convo TVC
-            DispatchQueue.main.async {
-                
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainNav") else { return }
-                self.present(vc, animated: false, completion: nil)
-                
-            }
-            // can create user direct chat channel here 
-            
             guard let createdUser = user else { return }
             
-            ChatController.shared.createChatWith(chatTopic: username, owner: createdUser, firstMessage: "hi", isDirectChat: true, completion: { (_) in
-                // whatever
+            UserController.shared.currentUser = createdUser
+            
+            ChatController.shared.createChatWith(chatTopic: username, owner: createdUser, firstMessage: "Hi everyone 👋", isDirectChat: true, completion: { (_) in
+                
+                ChatController.shared.performFullSync(completion: {
+                    
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "finishedOnboarding", sender: self)
+                    }
+                    
+                })
+                
             })
         }
     }

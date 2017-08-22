@@ -23,6 +23,7 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate, MFMailCom
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var accessCodeWarningLabel: UILabel!
+    @IBOutlet weak var accessCodeTextFieldCenterConstraint: NSLayoutConstraint!
     
     //MARK: - View Lifecycle
     

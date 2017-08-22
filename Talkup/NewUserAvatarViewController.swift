@@ -36,7 +36,7 @@ class NewUserAvatarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.tintColor = Colors.primaryBgPurple
+//        self.navigationController?.navigationBar.tintColor = Colors.primaryBgPurple
     }
     
     override func viewDidLoad() {

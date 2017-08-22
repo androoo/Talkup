@@ -20,6 +20,7 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var continueButtonTapped: UIButton!
     @IBOutlet weak var invalidEmailWarningLabel: UILabel!
+    @IBOutlet weak var continueButton: UIButton!
     
     //MARK: - UI Actions
     
@@ -30,7 +31,8 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.tintColor = .white
+        continueButton.isEnabled = false
+//        self.navigationController?.navigationBar.tintColor = .white
     }
     
     //MARK: - View lifecycle 
@@ -38,9 +40,19 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        continueButtonTapped.layer.cornerRadius = 8.0
-        continueButtonTapped.layer.masksToBounds = true
+        invalidEmailWarningLabel.isHidden = true
+        
+        continueButton.backgroundColor = Colors.bubbleGray
+        continueButton.layer.cornerRadius = 8.0
+        continueButton.layer.masksToBounds = true
+        continueButton.setTitleColor(Colors.primaryDarkGray, for: .normal)
+        
         emailTextField.delegate = self
+        emailTextField.layer.borderWidth = 2.0
+        emailTextField.layer.borderColor = Colors.primaryLightGray.cgColor
+        emailTextField.layer.cornerRadius = 8.0
+        emailTextField.textColor = Colors.conPurpleDark
+        
         registerForKeyboardNotifications()
         invalidEmailWarningLabel.isHidden = true
         
@@ -80,6 +92,14 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Text Field Delegate
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
         // check that text field is a valid email address
@@ -104,6 +124,8 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
         
         guard let text = textField.text else { return true }
         let newString = NSString(string: text).replacingCharacters(in: range, with: string)
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         
         // define invalid char set
         var invalidCharSet = NSCharacterSet.whitespacesAndNewlines
@@ -115,7 +137,22 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         
-        self.email = newString
+        if emailTest.evaluate(with: textField.text) == false {
+            invalidEmailWarningLabel.isHidden = false
+            invalidEmailWarningLabel.textColor = Colors.hotRed
+            continueButton.isEnabled = false
+            invalidEmailWarningLabel.text = "please enter a valid email address"
+            continueButton.backgroundColor = Colors.bubbleGray
+            continueButton.setTitleColor(Colors.primaryDark, for: .normal)
+        } else {
+            invalidEmailWarningLabel.isHidden = false
+            invalidEmailWarningLabel.textColor = Colors.emeraldGreen
+            invalidEmailWarningLabel.text = "Thanks, we won't abuse it ;)"
+            continueButton.isEnabled = true
+            continueButton.backgroundColor = Colors.conPurpleDark
+            continueButton.setTitleColor(.white, for: .normal)
+            self.email = newString
+        }
         
         return true
         
