@@ -26,12 +26,12 @@ extension CustomPushTransitionController: UIViewControllerTransitioningDelegate 
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        return CustomTransitionAnimator(presenting: true)
+        return CustomTransitionAnimator(presenting: true, navbarHeight: 0)
         
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CustomTransitionAnimator(presenting: false)
+        return CustomTransitionAnimator(presenting: false, navbarHeight: 0)
     }
     
 }

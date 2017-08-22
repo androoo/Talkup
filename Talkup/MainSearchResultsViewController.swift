@@ -219,33 +219,6 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     }
 }
 
-/*
- 
- override func prepareForSegue(segue: UIStoryboardSegue, sender __unused: AnyObject) {
- 
- if (segue.identifier! == "presentDetail") {
- 
- var indexPath = self!.tableView.indexPathForSelectedRow()!
- var object = self!.objects[indexPath.row]
- var controller = (segue.destinationViewController.topViewController! as! DetailViewController)
- 
- controller.detailItem = object
- controller.navigationItem.leftBarButtonItem! = self!.splitViewController!.displayModeButtonItem()
- controller.navigationItem.leftItemsSupplementBackButton = true
- 
- var navigationController = segue.destinationViewController
- var items = navigationController.navigationBar.items()
- var navigationItem = UINavigationItem(title: "Back")
- items.insert(navigationItem, atIndex: 0)
- navigationController.navigationBar.items = items
- 
- navigationController.transitioningDelegate! = (navigationController.delegate! as! UIViewControllerTransitioningDelegate)
- navigationController.modalPresentationStyle = UIModalPresentationCustom
- }
- }
- 
- 
- */
 
 
 

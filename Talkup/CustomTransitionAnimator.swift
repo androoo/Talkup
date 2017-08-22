@@ -11,9 +11,11 @@ import UIKit
 class CustomTransitionAnimator: NSObject {
     
     var presenting: Bool
+    var navbarHeight: Int
     
-    init(presenting: Bool) {
+    init(presenting: Bool, navbarHeight: Int) {
         self.presenting = presenting
+        self.navbarHeight = navbarHeight
         super.init()
     }
 }
@@ -46,7 +48,7 @@ extension CustomTransitionAnimator: UIViewControllerAnimatedTransitioning {
         var navigationBarInitialFrame = modalInitialFrame
         
         // need to set this height depending on if I want the navbar to be present in the presenting VC
-        navigationBarInitialFrame.size.height = 0
+        navigationBarInitialFrame.size.height = CGFloat(navbarHeight)
         
         let navigationBarSnapshot = presentingViewController?.view.resizableSnapshotView(from: navigationBarInitialFrame, afterScreenUpdates: true, withCapInsets: UIEdgeInsets.zero)
         

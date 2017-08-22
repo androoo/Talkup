@@ -25,7 +25,7 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintColor = .white
+//        self.navigationController?.navigationBar.tintColor = .white
         
         UserController.shared.fetchAllUsernames {
         }

@@ -26,9 +26,9 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var chatsCountLabel: UILabel!
     @IBOutlet weak var messagesCountLabel: UILabel!
-
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    lazy var customTransitioningDelegate = CustomPushTransitionController()
     
     //MARK: - TableView Datasource/Delegate
     
@@ -80,15 +80,16 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 backItem.title = ""
                 navigationItem.backBarButtonItem = backItem
                 
-//                detailViewController.transitioningDelegate = customPushTransitioningDelegate
-//                detailViewController.modalPresentationStyle = .custom
-//                customPushTransitioningDelegate.direction = .right
+                let navigationController = segue.destination
                 
                 let chat = UserController.shared.currentUserDirectChat
                 chat?.isDismisable = true
                 detailViewController.chat = chat
                 detailViewController.user = UserController.shared.currentUser
-                detailViewController.isDirectChat = true 
+                detailViewController.isDirectChat = true
+                
+                navigationController.transitioningDelegate = customTransitioningDelegate
+                navigationController.modalPresentationStyle = .custom
             }
         }
     }

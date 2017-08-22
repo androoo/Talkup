@@ -7,27 +7,22 @@
 //
 
 import UIKit
+import MessageUI
 
-class AccessCodeViewController: UIViewController, UITextFieldDelegate {
+class AccessCodeViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     
     //MARK: - Properties 
     
     var enteredCode: String?
     
     @IBOutlet weak var scrollView: UIScrollView!
-    var accessCodes: [String] = ["test1234", "a"]
+    var accessCodes: [String] = ["test1234", "a", "devmtn", "talkupTest"]
     
     @IBOutlet weak var accessCodeTextField: UITextField!
     @IBOutlet weak var requestCodeButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var accessCodeWarningLabel: UILabel!
-    
-    
-    //MARK: - UI Actions 
-    
-    
-    
     
     //MARK: - View Lifecycle
     
@@ -39,20 +34,30 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestCodeButton.layer.borderColor = UIColor.white.cgColor
+        
+        
+        requestCodeButton.layer.borderColor = Colors.conPurpleDark.cgColor
         requestCodeButton.layer.borderWidth = 1
         requestCodeButton.layer.cornerRadius = 6.0
         requestCodeButton.layer.masksToBounds = true
+        requestCodeButton.setTitleColor(Colors.conPurpleDark, for: .normal)
+        
+        continueButton.isEnabled = false
         continueButton.layer.cornerRadius = 8.0
         continueButton.layer.masksToBounds = true
-        continueButton.backgroundColor = .white
-        accessCodeTextField.delegate = self
+        continueButton.backgroundColor = Colors.bubbleGray
+        continueButton.setTitleColor(Colors.primaryDark, for: .normal)
+        
         accessCodeWarningLabel.isHidden = true
-        accessCodeTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+        
+        accessCodeTextField.delegate = self
+        accessCodeTextField.layer.borderWidth = 2.0
+        accessCodeTextField.layer.borderColor = Colors.primaryLightGray.cgColor
+        accessCodeTextField.layer.cornerRadius = 8.0
         accessCodeTextField.textColor = Colors.conPurpleDark
-        continueButton.isEnabled = false
-        continueButton.backgroundColor = UIColor(white: 1.0, alpha: 0.15)
-        continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
+        
+        
+        
         registerForKeyboardNotifications()
         registerForValidTextField()
     }
@@ -62,6 +67,10 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func continueButtonTapped(_ sender: Any) {
         
         
+    }
+    
+    @IBAction func requestCodeButtonTapped(_ sender: Any) {
+        self.requestCode()
     }
     
     
@@ -120,13 +129,10 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        accessCodeWarningLabel.textColor = Colors.deepPurple
-        
-        continueButton.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
-        continueButton.setTitleColor(Colors.conPurpleDark, for: .normal)
-        
-        accessCodeTextField.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
-        accessCodeTextField.textColor = Colors.conPurpleDark
+        accessCodeTextField.layer.borderColor = Colors.conPurpleDark.cgColor
+        accessCodeTextField.layer.borderWidth = 2
+        accessCodeTextField.layer.cornerRadius = 8.0
+        accessCodeTextField.textColor = Colors.primaryDark
         
     }
     
@@ -151,8 +157,10 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if (accessCodeTextField.text?.isEmpty)! {
             return false
+        } else if (!accessCodes.contains(self.enteredCode!)) {
+            return false
         } else {
-            return true
+            return true 
         }
     }
     
@@ -180,6 +188,21 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     
         self.enteredCode = newString
         
+        if (accessCodes.contains(newString)) {
+            accessCodeWarningLabel.isHidden = false
+            accessCodeWarningLabel.textColor = Colors.emeraldGreen
+            accessCodeWarningLabel.text = "Yay! that'll work."
+            continueButton.backgroundColor = Colors.conPurpleDark
+            continueButton.setTitleColor(.white, for: .normal)
+            
+        } else {
+            accessCodeWarningLabel.isHidden = false
+            accessCodeWarningLabel.textColor = Colors.hotRed
+            accessCodeWarningLabel.text = "Bummer, that's not correct."
+            continueButton.backgroundColor = Colors.bubbleGray
+            continueButton.setTitleColor(Colors.primaryDark, for: .normal)
+        }
+        
         return true
         
     }
@@ -188,8 +211,15 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
         
         let alertController = UIAlertController(title: "Request Access", message: "Send us your email address to request access", preferredStyle: .alert)
         let sendAction = UIAlertAction(title: "Send", style: .default) { (_) in
-            print("send email")
+            
+            if !MFMailComposeViewController.canSendMail() {
+                print("Mail services are not available")
+                return
+            }
+            
+            self.sendEmail()
         }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(sendAction)
         alertController.addAction(cancelAction)
@@ -198,6 +228,7 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
@@ -206,6 +237,30 @@ class AccessCodeViewController: UIViewController, UITextFieldDelegate {
             let destination = segue.destination as? CreateUsernameViewController
             destination?.accessCode = enteredCode
         }
+    }
+    
+    func updateViews() {
+        
+    }
+    
+    //MARK: - Mail Helpers
+    
+    func sendEmail() {
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        // Configure the fields of the interface.
+        composeVC.setToRecipients(["andrew@and.studio"])
+        composeVC.setSubject("Talkup Access Code Please :)")
+        composeVC.setMessageBody("Hello. I'd like to give Talkup a try!", isHTML: false)
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController,
+                               didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        // Check the result or perform other tasks.
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
     }
     
 }

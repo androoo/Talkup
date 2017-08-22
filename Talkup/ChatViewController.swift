@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate, ChatHeaderDelegate {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate, ChatHeaderDelegate, UINavigationControllerDelegate {
 
     //MARK: - Outlets
     
@@ -35,6 +35,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    lazy var customTransitioningDelegate = CustomPushTransitionController()
     var heroChatCell: ChatHeaderTableViewCell?
     var messageSortSelection: MessageSort = .live
     var timeOfLastVisit: Date?
@@ -543,6 +544,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 destinationViewController.user = user
                 destinationViewController.chat = directChat
                 destinationViewController.isDirectChat = false
+                
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
+                
+                let navigationController = segue.destination
+                navigationController.transitioningDelegate = customTransitioningDelegate
+                navigationController.modalPresentationStyle = .custom
+                
             }
         }
     }
@@ -550,8 +560,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func usernameClicked(user: User) {
         
         self.user = user
-        
         self.performSegue(withIdentifier: "toUserDetail", sender: nil)
+        
     }
 }
+
+
 

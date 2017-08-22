@@ -139,8 +139,6 @@ class RecieverTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         
-        
-        
         messageToCustomize.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
         messageBg.layer.cornerRadius = 15
         messageBg.clipsToBounds = true
