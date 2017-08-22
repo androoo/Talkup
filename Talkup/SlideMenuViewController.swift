@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     //MARK: - Properties
     
@@ -17,6 +17,9 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         "My Topics",
         "Help"
     ]
+    
+    //VC transitions
+//    lazy var customPushTransitioningDelegate = CustomPushTransitionCotroller()
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -76,6 +79,10 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 let backItem = UIBarButtonItem()
                 backItem.title = ""
                 navigationItem.backBarButtonItem = backItem
+                
+//                detailViewController.transitioningDelegate = customPushTransitioningDelegate
+//                detailViewController.modalPresentationStyle = .custom
+//                customPushTransitioningDelegate.direction = .right
                 
                 let chat = UserController.shared.currentUserDirectChat
                 chat?.isDismisable = true

@@ -78,6 +78,9 @@
 		5AF6A5A71F47945D00271671 /* ChatTopicsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5A61F47945D00271671 /* ChatTopicsListViewController.swift */; };
 		5AF6A5A91F4794A900271671 /* TopicCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5A81F4794A900271671 /* TopicCellTableViewCell.swift */; };
 		5AF6A5AB1F49F17100271671 /* EditPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5AA1F49F17100271671 /* EditPhotoViewController.swift */; };
+		5AF6A5AE1F4B6E8000271671 /* CustomPushTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5AD1F4B6E8000271671 /* CustomPushTransitionController.swift */; };
+		5AF6A5B01F4B6F1700271671 /* CustomTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5AF1F4B6F1700271671 /* CustomTransitionController.swift */; };
+		5AF6A5B21F4B6FBC00271671 /* CustomTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5B11F4B6FBC00271671 /* CustomTransitionAnimator.swift */; };
 		5AFEED861F1A5A3800E50422 /* NavDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED851F1A5A3800E50422 /* NavDelegate.swift */; };
 		5AFEED8B1F1D92A500E50422 /* SlideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */; };
 		5AFEED8D1F1D94DE00E50422 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */; };
@@ -181,6 +184,9 @@
 		5AF6A5A61F47945D00271671 /* ChatTopicsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTopicsListViewController.swift; sourceTree = "<group>"; };
 		5AF6A5A81F4794A900271671 /* TopicCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCellTableViewCell.swift; sourceTree = "<group>"; };
 		5AF6A5AA1F49F17100271671 /* EditPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhotoViewController.swift; sourceTree = "<group>"; };
+		5AF6A5AD1F4B6E8000271671 /* CustomPushTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPushTransitionController.swift; sourceTree = "<group>"; };
+		5AF6A5AF1F4B6F1700271671 /* CustomTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransitionController.swift; sourceTree = "<group>"; };
+		5AF6A5B11F4B6FBC00271671 /* CustomTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransitionAnimator.swift; sourceTree = "<group>"; };
 		5AFEED851F1A5A3800E50422 /* NavDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavDelegate.swift; sourceTree = "<group>"; };
 		5AFEED8A1F1D92A500E50422 /* SlideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SlideMenu.storyboard; sourceTree = "<group>"; };
 		5AFEED8C1F1D94DE00E50422 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
@@ -221,13 +227,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A07FC421F410BE0004C7B4E /* Search Transition */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Search Transition";
-			sourceTree = "<group>";
-		};
 		5A35A24A1E76FDC500162A20 = {
 			isa = PBXGroup;
 			children = (
@@ -258,7 +257,7 @@
 				5A446B1F1E997249000AC705 /* User Views */,
 				5A35A26D1E76FF6200162A20 /* Cell Views */,
 				5A35A26E1E76FF6800162A20 /* View Controllers */,
-				5A07FC421F410BE0004C7B4E /* Search Transition */,
+				5AF6A5AC1F4B6DAA00271671 /* Custom Push Segue */,
 				5AFEED901F1E4ECE00E50422 /* SlideTransition */,
 				5ADD34ED1F16961C0039322E /* Main Search */,
 				5A8B7D851EBB985C00CCEFAD /* CustomSearch */,
@@ -487,6 +486,16 @@
 			name = "Main Search";
 			sourceTree = "<group>";
 		};
+		5AF6A5AC1F4B6DAA00271671 /* Custom Push Segue */ = {
+			isa = PBXGroup;
+			children = (
+				5AF6A5AD1F4B6E8000271671 /* CustomPushTransitionController.swift */,
+				5AF6A5AF1F4B6F1700271671 /* CustomTransitionController.swift */,
+				5AF6A5B11F4B6FBC00271671 /* CustomTransitionAnimator.swift */,
+			);
+			name = "Custom Push Segue";
+			sourceTree = "<group>";
+		};
 		5AFEED901F1E4ECE00E50422 /* SlideTransition */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +651,7 @@
 				5A7467DA1F0C59E100BAF86D /* ChatHeaderTableViewCell.swift in Sources */,
 				5A446B211E9972FC000AC705 /* ChatItemTableViewCell.swift in Sources */,
 				5A446B251E9974C0000AC705 /* LabelTableViewCell.swift in Sources */,
+				5AF6A5AE1F4B6E8000271671 /* CustomPushTransitionController.swift in Sources */,
 				5A14676E1E82DF8200F7E3EA /* PhotoSelectViewController.swift in Sources */,
 				5AB1223F1F199FC400B4D02D /* SearchTransitionAnimator.swift in Sources */,
 				5AF6A5AB1F49F17100271671 /* EditPhotoViewController.swift in Sources */,
@@ -662,6 +672,7 @@
 				5A0347BA1E86D4BE0080CAD9 /* Appearance .swift in Sources */,
 				5A405E5A1F33985300C10F15 /* MainNavigationController.swift in Sources */,
 				5AAC94B11E95275C009155FE /* FirstChatTableViewCell.swift in Sources */,
+				5AF6A5B21F4B6FBC00271671 /* CustomTransitionAnimator.swift in Sources */,
 				5AFEED861F1A5A3800E50422 /* NavDelegate.swift in Sources */,
 				5AF6A5A91F4794A900271671 /* TopicCellTableViewCell.swift in Sources */,
 				5AFEED8D1F1D94DE00E50422 /* SlideMenuViewController.swift in Sources */,
@@ -669,6 +680,7 @@
 				5AAC94B71E959FCB009155FE /* LastTableViewCell.swift in Sources */,
 				5A1467681E82021100F7E3EA /* SenderTableViewCell.swift in Sources */,
 				5A5A800A1F2B743700E4CA04 /* NewUserAvatarViewController.swift in Sources */,
+				5AF6A5B01F4B6F1700271671 /* CustomTransitionController.swift in Sources */,
 				5AB122321F1927F100B4D02D /* FadeInController.swift in Sources */,
 				5A8F7AAB1E7C504200C4E566 /* ChatTableViewCell.swift in Sources */,
 				5A5A80061F2A96F400E4CA04 /* AccessCodeViewController.swift in Sources */,

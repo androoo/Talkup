@@ -34,10 +34,11 @@ class SlideMenuController: UIPresentationController {
     }
     
     init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: PresentationDirection) {
+        
         self.direction = direction
         
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-        
+       
         setupDimmingView()
     }
     

@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6E-bU-lpm">
-                                <rect key="frame" x="0.0" y="-22" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="42" width="375" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWN-R1-60p">
                                         <rect key="frame" x="48" y="33" width="279" height="0.0"/>
@@ -206,7 +206,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-EP-6Q8">
-                                <rect key="frame" x="0.0" y="50" width="375" height="950"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="886"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="365" id="ORw-FU-r1K" customClass="ChatHeaderTableViewCell" customModule="Talkup" customModuleProvider="target">
@@ -827,7 +827,7 @@
                 <viewControllerPlaceholder storyboardName="SlideMenu" referencedIdentifier="slideMenu" id="L3l-l5-Yw8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Quc-RB-2Za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3641" y="-840"/>
+            <point key="canvasLocation" x="3623" y="-818"/>
         </scene>
         <!--Talkup-->
         <scene sceneID="5G9-er-5fu">
@@ -1335,7 +1335,7 @@
             <objects>
                 <navigationController storyboardIdentifier="newChatNav" automaticallyAdjustsScrollViewInsets="NO" id="iuj-Yi-uUb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QaF-sM-KxC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QaF-sM-KxC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.4392156862745098" green="0.015686274509803921" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
@@ -1355,7 +1355,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bD8-4O-gtx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EYI-Ca-Jhb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EYI-Ca-Jhb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1621,7 +1621,7 @@
             <objects>
                 <navigationController restorationIdentifier="MainNavigationController" storyboardIdentifier="MainNavigationController" title="mainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="vHR-j6-vCf" customClass="MainNavigationController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3yE-wK-jrV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3yE-wK-jrV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -14424,6 +14424,6 @@ AAt8KQALfC4AAAAAAAAEAQAAAAAAAABBAAAAAAAAAAAAAAAAAAt8MA
         <image name="whiteBack" width="30" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gfY-Tn-lAG"/>
+        <segue reference="xlZ-ee-MrH"/>
     </inferredMetricsTieBreakers>
 </document>

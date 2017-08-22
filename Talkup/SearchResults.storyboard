@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLm-AT-4kR">
-                                <rect key="frame" x="0.0" y="-2" width="375" height="145"/>
+                                <rect key="frame" x="0.0" y="42" width="375" height="145"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Talkup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-Ay-9F7" customClass="SearchCustomTextField" customModule="Talkup" customModuleProvider="target">
                                         <rect key="frame" x="18" y="30" width="273" height="45"/>
@@ -188,7 +188,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZD5-7h-UC3">
-                                <rect key="frame" x="0.0" y="143" width="375" height="524"/>
+                                <rect key="frame" x="0.0" y="187" width="375" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="mainResultsCell" rowHeight="78" id="qSW-Ud-vWK" customClass="SearchResultTableViewCell" customModule="Talkup" customModuleProvider="target">
@@ -255,7 +255,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tmh-Oh-XcY">
-                                <rect key="frame" x="0.0" y="143" width="375" height="524"/>
+                                <rect key="frame" x="0.0" y="187" width="375" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>

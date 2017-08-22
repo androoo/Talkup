@@ -341,15 +341,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if let destinationViewController = segue.destination as? SlideMenuViewController {
                 
+//                let targetController = destinationViewController.topViewController as? SlideMenuViewController
+                
                 destinationViewController.transitioningDelegate = slideInMenuTransitioningDelegate
                 destinationViewController.modalPresentationStyle = .custom
                 slideInMenuTransitioningDelegate.direction = .left
+                
             }
             
         } else if segue.identifier == "toSearchResults" {
             
             if let destinationViewController = segue.destination as? MainSearchResultsViewController {
                 
+//                let nav = UINavigationController(rootViewController: destinationViewController)
+//                present(nav, animated: true, completion: nil)
                 destinationViewController.transitioningDelegate = self
                 
             }

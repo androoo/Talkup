@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainSearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, MainSearchControllerDelegate, UIViewControllerTransitioningDelegate, UITextFieldDelegate {
+class MainSearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, MainSearchControllerDelegate, UIViewControllerTransitioningDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     
     //MARK: - Properties 
     
@@ -34,7 +34,7 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
     var delegate: MainSearchControllerDelegate?
     var mainSearchController: MainSearchController!
     var searchController: UISearchController?
-    
+    lazy var customTransitioningDelegate = CustomPushTransitionController()
     var searchTerm: String?
     
     //MARK: - View Lifecycle
@@ -195,23 +195,57 @@ class MainSearchResultsViewController: UIViewController, UITableViewDataSource, 
             self.resultsArray = filteredPosts
             self.resultsTableView.reloadData()
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "fromSearchToChat" {
+            
             guard let destination = segue.destination as? ChatViewController,
                 let indexPath = resultsTableView.indexPathForSelectedRow,
                 let chat = resultsArray[indexPath.row] as? Chat else { return }
             
-            
-            destination.navigationController?.navigationBar.isHidden = true
             chat.isDismisable = true
             destination.chat = chat
             
+            let navigationController = segue.destination
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
+            
+            navigationController.transitioningDelegate = customTransitioningDelegate
+            navigationController.modalPresentationStyle = .custom
         }
     }
 }
+
+/*
+ 
+ override func prepareForSegue(segue: UIStoryboardSegue, sender __unused: AnyObject) {
+ 
+ if (segue.identifier! == "presentDetail") {
+ 
+ var indexPath = self!.tableView.indexPathForSelectedRow()!
+ var object = self!.objects[indexPath.row]
+ var controller = (segue.destinationViewController.topViewController! as! DetailViewController)
+ 
+ controller.detailItem = object
+ controller.navigationItem.leftBarButtonItem! = self!.splitViewController!.displayModeButtonItem()
+ controller.navigationItem.leftItemsSupplementBackButton = true
+ 
+ var navigationController = segue.destinationViewController
+ var items = navigationController.navigationBar.items()
+ var navigationItem = UINavigationItem(title: "Back")
+ items.insert(navigationItem, atIndex: 0)
+ navigationController.navigationBar.items = items
+ 
+ navigationController.transitioningDelegate! = (navigationController.delegate! as! UIViewControllerTransitioningDelegate)
+ navigationController.modalPresentationStyle = UIModalPresentationCustom
+ }
+ }
+ 
+ 
+ */
 
 
 
