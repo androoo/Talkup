@@ -64,6 +64,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    private func setup() {
+        
+        guard let chat = chat else { return }
+        
+        ChatController.shared.checkSubscriptionTo(chat: chat) { (subscription) in
+            if subscription {
+                self.followButton = .active
+                
+            } else {
+                self.followButton = .resting
+            }
+        }
+    }
+    
     private func updateViews() {
         
         guard let chat = chat, isViewLoaded else { return }
@@ -88,15 +102,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
-        ChatController.shared.checkSubscriptionTo(chat: chat) { (subscription) in
-            if subscription {
-                self.followButton = .pressed
-                
-            } else {
-                self.followButton = .notPressed
-            }
-        }
-        
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
@@ -106,7 +111,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        updateViews()
+        setup()
         
     }
     
@@ -442,12 +447,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         ChatController.shared.followMessagesIn(chat: chat)
         
-        if followButton == .pressed {
+        if followButton == .active {
             // remove chat from followed list
-            followButton = .notPressed
+            followButton = .resting
         } else {
             UserController.shared.followChat(Foruser: user, chat: chat)
-            followButton = .pressed
+            followButton = .active
         }
         
         ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (_, _, _) in

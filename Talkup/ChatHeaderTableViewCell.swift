@@ -33,49 +33,38 @@ class ChatHeaderTableViewCell: UITableViewCell {
     
     var chat: Chat? {
         didSet {
-            updateViews()
+            
         }
     }
     
     var following: FollowingButton? {
         didSet {
-            
-            checkFollowing()
-            
+            updateViews()
+            followButtonAppearance()
         }
     }
-    
-    func checkFollowing() {
-        
-        guard let chat = chat else { return }
-        
-        ChatController.shared.checkSubscriptionTo(chat: chat) { (subscription) in
-            if subscription {
-                self.following = .pressed
-                
-            } else {
-                self.following = .notPressed
-            }
-            
-            DispatchQueue.main.async {
-                self.followButtonAppearance()
-            }
-        }
-    }
+
     
     func followButtonAppearance() {
-        if following == .pressed {
+        if following == .active {
             followButton.backgroundColor = Colors.followingGreen
             followButton.setTitle("Following", for: .normal)
-//            followButton.titleLabel?.text = "Following"
             followButton.titleLabel?.textColor = .white
+            followButton.setTitleColor(.white, for: .normal)
             followButton.layer.borderWidth = 0
+            followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+            followButton.layer.masksToBounds = true
+            followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
         } else {
             followButton.backgroundColor = nil
             followButton.layer.borderColor = Colors.followingGreen.cgColor
             followButton.layer.borderWidth = 2
             followButton.tintColor = Colors.followingGreen
             followButton.setTitle("Follow", for: .normal)
+            followButton.setTitleColor(Colors.followingGreen, for: .normal)
+            followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+            followButton.layer.masksToBounds = true
+            followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
         }
     }
     
@@ -87,17 +76,40 @@ class ChatHeaderTableViewCell: UITableViewCell {
     
     @IBAction func followButtonTapped(_ sender: Any) {
         
-        if followButton.titleLabel?.text == "Follow" {
-            delegate?.followButtonPressed(self)
-            followButton.backgroundColor = Colors.followingGreen
-            followButton.setTitle("Following", for: .selected)
-            followButton.layer.borderWidth = 0
-        } else {
-            followButton.backgroundColor = nil
-            followButton.layer.borderColor = Colors.followingGreen.cgColor
-            followButton.layer.borderWidth = 2
-            followButton.tintColor = Colors.followingGreen
-            followButton.setTitle("Follow", for: .normal)
+        delegate?.followButtonPressed(self)
+        
+        if let following = following {
+            
+            switch following{
+            case .active:
+                
+                followButton.backgroundColor = nil
+                followButton.layer.borderColor = Colors.followingGreen.cgColor
+                followButton.layer.borderWidth = 2
+                followButton.tintColor = Colors.followingGreen
+                followButton.setTitle("Follow", for: .normal)
+                followButton.setTitleColor(Colors.followingGreen, for: .normal)
+                followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+                followButton.layer.masksToBounds = true
+                followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
+                
+               return
+                
+            case .resting:
+                
+                followButton.backgroundColor = Colors.followingGreen
+                followButton.setTitle("Following", for: .normal)
+                followButton.titleLabel?.textColor = .white
+                followButton.setTitleColor(.white, for: .normal)
+                followButton.layer.borderWidth = 0
+                followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+                followButton.layer.masksToBounds = true
+                followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
+                
+                return 
+                
+            }
+            
         }
         
     }
@@ -118,15 +130,6 @@ class ChatHeaderTableViewCell: UITableViewCell {
         membersLabel.textColor = Colors.primaryDarkGray
         votesLabel.textColor = Colors.primaryDarkGray
         creatorTopSepImageView.backgroundColor = Colors.primaryLightGray
-        
-        followButton.layer.borderColor = Colors.followingGreen.cgColor
-        followButton.layer.borderWidth = 2
-        followButton.tintColor = Colors.followingGreen
-        followButton.layer.cornerRadius = followButton.layer.frame.height / 2
-        followButton.layer.masksToBounds = true
-        followButton.setTitle("Follow", for: .normal)
-        followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
-        
 
         
     }
