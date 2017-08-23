@@ -27,6 +27,10 @@ class UserHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var headerBgView: UIView!
     @IBOutlet weak var headerViewBottomSep: UIImageView!
     
+    @IBOutlet weak var userCreatedChatsCountLabel: UILabel!
+    @IBOutlet weak var chatsLabel: UILabel!
+    @IBOutlet weak var chatsCountTopSep: UIImageView!
+    
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var followButton: RoundedCornerButton!
     
@@ -51,6 +55,19 @@ class UserHeaderTableViewCell: UITableViewCell {
         userAvatarImageView.layer.masksToBounds = true 
         headerViewBottomSep.backgroundColor = Colors.primaryLightGray
         headerBgView.backgroundColor = Colors.primaryLightGray
+        
+        chatsCountTopSep.backgroundColor = .clear
+        chatsLabel.textColor = Colors.primaryDarkGray
+        userCreatedChatsCountLabel.text = "\(user.chats.count)"
+        
+        editButton.backgroundColor = nil
+        editButton.layer.borderColor = Colors.primaryDarkGray.cgColor
+        editButton.layer.borderWidth = 2
+        editButton.setTitleColor(Colors.primaryDarkGray, for: .normal)
+        editButton.setTitle("Edit Profile", for: .normal)
+        editButton.layer.cornerRadius = editButton.layer.frame.height / 2
+        editButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
+        
     }
     
 

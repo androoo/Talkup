@@ -43,7 +43,7 @@ class RecentChatTableViewCell: UITableViewCell {
         createdByUserImageView.layer.masksToBounds = true
         creatorInfoLabel.text = user.userName
         datelabel.text = timeSince
-        datelabel.textColor = Colors.primaryDark
+        datelabel.textColor = Colors.recievedMessagePrimary
         
     }
 }

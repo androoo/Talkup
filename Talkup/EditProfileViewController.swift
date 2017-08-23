@@ -30,7 +30,11 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var navBarBottomSep: UIImageView!
     @IBOutlet weak var edtiViewTopSep: UIImageView!
     @IBOutlet weak var editViewBottomSep: UIImageView!
+    @IBOutlet weak var usernameFieldBottomSep: UIImageView!
+    @IBOutlet weak var usernameWarningLabel: UILabel!
     
+    @IBOutlet weak var usernameWarningIcon: UIImageView!
+    @IBOutlet weak var usernameWarningView: UIView!
     @IBOutlet weak var textEditBgView: UIView!
     //MARK: - UI Actions
     
@@ -79,6 +83,8 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UIImageP
         navBarBottomSep.backgroundColor = Colors.primaryDarkGray
         editViewBottomSep.backgroundColor = Colors.primaryDarkGray
         edtiViewTopSep.backgroundColor = Colors.primaryDarkGray
+        usernameWarningLabel.isHidden = true
+        usernameFieldBottomSep.backgroundColor = Colors.primaryLightGray
         
         usernameTextField.text = user?.userName
         

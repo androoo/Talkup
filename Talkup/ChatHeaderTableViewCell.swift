@@ -27,7 +27,11 @@ class ChatHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var headerViewBgView: UIView!
     @IBOutlet weak var headerViewTopContstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var creatorUsernameLabel: UILabel!
     @IBOutlet weak var creatorTopSepImageView: UIImageView!
+    
+    @IBOutlet weak var userOneImageView: UIImageView!
+    @IBOutlet weak var userTwoImageView: UIImageView!
     
     var delegate: ChatHeaderDelegate?
     
@@ -116,21 +120,30 @@ class ChatHeaderTableViewCell: UITableViewCell {
     
     func updateViews() {
         
+        guard let chat = chat,
+            let user = chat.creator else { return }
+        
         headerViewBgView.backgroundColor = .white 
         
         chatTitleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 48)
         chatTitleLabel.textColor = Colors.primaryDark
-        chatTitleLabel.text = chat?.topic
+        chatTitleLabel.text = chat.topic
         creatorButton.tintColor = Colors.primaryDark
-        creatorAvatarImageView.image = chat?.creator?.photo
+        creatorAvatarImageView.image = chat.creator?.photo
         creatorAvatarImageView.layer.cornerRadius = creatorAvatarImageView.layer.frame.width / 2
-        creatorAvatarImageView.clipsToBounds = true 
-        creatorButton.setTitle(chat?.creator?.userName, for: .normal)
+        creatorAvatarImageView.clipsToBounds = true
         separatorImageView.backgroundColor = Colors.bubbleGray
         membersLabel.textColor = Colors.primaryDarkGray
         votesLabel.textColor = Colors.primaryDarkGray
         creatorTopSepImageView.backgroundColor = Colors.primaryLightGray
 
+        creatorUsernameLabel.text = user.userName
+        creatorAvatarImageView.image = user.photo
+        creatorTopSepImageView.backgroundColor = .clear
+        creatorAvatarImageView.layer.cornerRadius = creatorAvatarImageView.layer.frame.height / 2
+        
+        votesLabel.text = "messages"
+        membersLabel.text = "\(chat.messages.count)"
         
     }
 

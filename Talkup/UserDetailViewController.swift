@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate, ChatHeaderDelegate {
+class UserDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate, ChatHeaderDelegate, UINavigationControllerDelegate {
     
     //MARK: - Properties
     
@@ -24,6 +24,8 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var user: User?
     var isDirectChat: Bool? = false
     var messageSortSelection: MessageSort = .live
+    
+    lazy var customTransitioningDelegate = CustomPushTransitionController() 
     
     var messages: [Message] {
         
@@ -119,9 +121,10 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.navigationController?.navigationBar.isHidden = true
         tableView.backgroundColor = .white
-        navBarBgView.backgroundColor = .white
+        navBarBgView.backgroundColor = .clear
         navBarBottomSep.backgroundColor = Colors.primaryLightGray
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
         
     }
 
@@ -351,8 +354,17 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             guard let destination = segue.destination as? EditProfileViewController else { return }
             destination.user = self.user
         } else if segue.identifier == "toTopicsList" {
+            
             guard let destination = segue.destination as? ChatTopicsListViewController else { return }
             destination.user = self.user
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
+            
+            let navigationController = segue.destination
+            navigationController.transitioningDelegate = customTransitioningDelegate
+            navigationController.modalPresentationStyle = .custom
         }
     }
     
