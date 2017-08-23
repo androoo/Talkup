@@ -54,7 +54,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var messages: [Message] {
         
-        switch messageSortSelection {
+        switch MessageController.shared.messagesFilterState {
+            
         case .live:
             return chat!.filteredMessages.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
         case .top:
@@ -420,11 +421,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func nowSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
         messageSortSelection = .live
+        MessageController.shared.messagesFilterState = .live
+        filterHeader.isLive = true
         updateViews()
     }
     
-    func topSortButtonClicked() {
+    func topSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
         messageSortSelection = .top
+        MessageController.shared.messagesFilterState = .top
+        filterHeader.isLive = false 
         updateViews()
     }
     

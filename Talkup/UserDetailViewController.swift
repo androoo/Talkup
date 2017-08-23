@@ -328,7 +328,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    func topSortButtonClicked() {
+    func topSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
         
     }
     

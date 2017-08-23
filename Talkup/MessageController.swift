@@ -9,8 +9,6 @@
 import Foundation
 import CloudKit
 
-
-
 class MessageController {
     
     //MARK: - Properties
@@ -18,6 +16,7 @@ class MessageController {
     let cloudKitManager: CloudKitManager
 
     static let shared = MessageController()
+    var messagesFilterState: MessageSort = .live 
     
     //MARK: - Initializers
     

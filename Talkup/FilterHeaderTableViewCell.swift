@@ -10,7 +10,7 @@ import UIKit
 
 protocol filterHeaderDelegate {
     func nowSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell)
-    func topSortButtonClicked() 
+    func topSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell)
 }
 
 class FilterHeaderTableViewCell: UITableViewCell {
@@ -23,7 +23,8 @@ class FilterHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var topBottomBorderImageView: UIImageView!
     
     var delegate: filterHeaderDelegate?
-    var isLive: Bool? = true
+    var isLive: Bool?
+    var filterState: MessageSort? 
     
     //MARK: - UI Actions
     
@@ -37,7 +38,7 @@ class FilterHeaderTableViewCell: UITableViewCell {
     }
     
     @IBAction func topButtonWasTapped(_ sender: Any) {
-        delegate?.topSortButtonClicked()
+        delegate?.topSortButtonClicked(selected: true, filterHeader: self)
         isLive = false
         topLabel.textColor = Colors.greenBlue
         nowLabel.textColor = Colors.primaryDarkGray
@@ -48,7 +49,7 @@ class FilterHeaderTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        if self.isLive! {
+        if MessageController.shared.messagesFilterState == .live  {
             nowBottomBorderImageView.backgroundColor = Colors.alertOrange
             topBottomBorderImageView.backgroundColor = Colors.primaryLightGray
             nowLabel.textColor = Colors.flatYellow
