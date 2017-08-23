@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate, UISearchResultsUpdating {
     
     //MARK: - Properties
@@ -33,9 +32,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var feedType: FeedFilter = .trending
     
     var chats: [Chat] {
+        
         switch feedType {
         case .trending:
-            return ChatController.shared.trendingChats
+            return ChatController.shared.chats
         case .following:
             return ChatController.shared.followingChats
         case .recent:
@@ -197,6 +197,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func postsChanged(_ notification: Notification) {
         tableView.reloadData()
+        
     }
     
     
@@ -215,7 +216,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case .trending:
             return ChatController.shared.trendingChats.count
         case .recent:
-            return ChatController.shared.chats.count
+            return ChatController.shared.recentChats.count
         case .featured:
             return ChatController.shared.chats.count
         }
@@ -387,16 +388,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let trendingAction = UIAlertAction(title: "Trending", style: .default) { (_) in
             self.feedType = .trending
             self.navBarChatFilterLabel.text = "Trending"
+            self.tableView.reloadData()
             completion()
         }
         let followingAction = UIAlertAction(title: "Following", style: .default) { (_) in
             self.feedType = .following
             self.navBarChatFilterLabel.text = "Following"
+            self.tableView.reloadData()
             completion()
         }
         let recentAction = UIAlertAction(title: "Recent", style: .default) { (_) in
             self.feedType = .recent
             self.navBarChatFilterLabel.text = "Recent"
+            self.tableView.reloadData()
             completion()
         }
 //        let featuredAction = UIAlertAction(title: "Featured", style: .default) { (_) in

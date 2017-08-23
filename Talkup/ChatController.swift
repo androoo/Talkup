@@ -42,13 +42,20 @@ class ChatController {
     
     var followingChats = [Chat]() {
         didSet {
-            
+            DispatchQueue.main.async {
+                let nc = NotificationCenter.default
+                nc.post(name: ChatController.ChatsDidChangeNotification, object: self)
+            }
         }
     }
     
     
     var recentChats = [Chat]() {
         didSet {
+            DispatchQueue.main.async {
+                let nc = NotificationCenter.default
+                nc.post(name: ChatController.ChatsDidChangeNotification, object: self)
+            }
         }
     }
     
@@ -113,8 +120,8 @@ class ChatController {
             self.fetchChatOwnersFor(chats: chats, completion: { 
                 
                 self.recentChats = chats
+                
             })
-            
         }
     }
     

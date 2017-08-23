@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfileViewController: UIViewController, UITextFieldDelegate, EditPhotoViewControllerDelegate {
+class EditProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate {
 
     //MARK: - Properties
     
@@ -17,23 +17,29 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, EditPhot
     var image: UIImage?
     
     var user: User? {
-        
         didSet {
             if !isViewLoaded{
                 loadView()
             }
             updateViews()
         }
-        
     }
     
-    //MARK: - UI Actions 
+    @IBOutlet weak var userAvatarImageView: UIImageView!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var navBarBottomSep: UIImageView!
+    @IBOutlet weak var edtiViewTopSep: UIImageView!
+    @IBOutlet weak var editViewBottomSep: UIImageView!
+    
+    @IBOutlet weak var textEditBgView: UIView!
+    //MARK: - UI Actions
     
     @IBAction func exitButtonTapped(_ sender: Any) {
         
-        dismiss(animated: true) { 
+        dismiss(animated: true) {
             
         }
+        
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -43,18 +49,11 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, EditPhot
                 return
         }
         
-//        UserController.shared.updateCurrentUser(username: username, photo: image, completion: { (user) in
-//            self.updateViews()
-//        })
-        
         UserController.shared.updateUserOperation(userName: username, photo: image) { (user) in
             self.updateViews()
         }
         
     }
-    
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
     
     
     //MARK: - View lifecycle
@@ -65,18 +64,77 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, EditPhot
         UserController.shared.fetchAllUsernames {
             
         }
-        performSegue(withIdentifier: "editPhoto", sender: self)
-        usernameTextField.delegate = self
-        usernameTextField.text = user?.userName
         
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.isHidden = true
         
         usernameTextField.delegate = self
         usernameTextField.text = user?.userName
+        view.backgroundColor = Colors.primaryLightGray
+        textEditBgView.backgroundColor = .white
+        navBarBottomSep.backgroundColor = Colors.primaryDarkGray
+        editViewBottomSep.backgroundColor = Colors.primaryDarkGray
+        edtiViewTopSep.backgroundColor = Colors.primaryDarkGray
         
-    }    
+        usernameTextField.text = user?.userName
+        
+    }
+    
+    
+    //MARK: - Photo Selector Delegate
+    
+    @IBAction func photoButtonTapped(_ sender: Any) {
+        
+        let imagePicker = UIImagePickerController()
+        
+        let alert = UIAlertController(title: "Select Photo Location", message: nil, preferredStyle: .actionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_) in
+                imagePicker.sourceType = .photoLibrary
+                self.present(imagePicker, animated: true, completion: nil)
+            }))
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            }))
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        /// chcek if you can return edited image that user choose it if user already edit it(crop it), return it as image
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            
+            /// if user update it and already got it , just return it to 'self.imgView.image'
+            self.image = editedImage
+            
+            /// else if you could't find the edited image that means user select original image same is it without editing .
+        } else if let orginalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            /// if user update it and already got it , just return it to 'self.imgView.image'.
+            self.image = orginalImage
+        }
+        else { print ("error") }
+        
+        /// if the request successfully done just dismiss
+        
+        picker.dismiss(animated: true, completion: nil)
+        updateViews()
+    }
     
     
     //MARK: - UITextField Delegates
@@ -105,28 +163,15 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, EditPhot
         return newLength <= limitLength
     }
     
+    
+    //MARK: - Helper Methods 
+    
     func updateViews() {
         guard let user = user else { return }
         usernameTextField.text = self.username
-        emailTextField.text = user.email
         view.backgroundColor = Colors.primaryLightGray
         self.image = user.photo
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "editPhoto" {
-            let embededViewController = segue.destination as? EditPhotoViewController
-            embededViewController?.delegate = self
-            
-        }
-    }
-    
-    
-    //MARK: - Photo delegate 
-    
-    func editPhotoViewControllerSelected(_ image: UIImage) {
-        self.image = image
-    }
 }
 

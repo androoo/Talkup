@@ -77,7 +77,6 @@
 		5AF6A5A51F477D3300271671 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5A41F477D3300271671 /* EditProfileViewController.swift */; };
 		5AF6A5A71F47945D00271671 /* ChatTopicsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5A61F47945D00271671 /* ChatTopicsListViewController.swift */; };
 		5AF6A5A91F4794A900271671 /* TopicCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5A81F4794A900271671 /* TopicCellTableViewCell.swift */; };
-		5AF6A5AB1F49F17100271671 /* EditPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5AA1F49F17100271671 /* EditPhotoViewController.swift */; };
 		5AF6A5AE1F4B6E8000271671 /* CustomPushTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5AD1F4B6E8000271671 /* CustomPushTransitionController.swift */; };
 		5AF6A5B01F4B6F1700271671 /* CustomTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5AF1F4B6F1700271671 /* CustomTransitionController.swift */; };
 		5AF6A5B21F4B6FBC00271671 /* CustomTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A5B11F4B6FBC00271671 /* CustomTransitionAnimator.swift */; };
@@ -183,7 +182,6 @@
 		5AF6A5A41F477D3300271671 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		5AF6A5A61F47945D00271671 /* ChatTopicsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTopicsListViewController.swift; sourceTree = "<group>"; };
 		5AF6A5A81F4794A900271671 /* TopicCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCellTableViewCell.swift; sourceTree = "<group>"; };
-		5AF6A5AA1F49F17100271671 /* EditPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhotoViewController.swift; sourceTree = "<group>"; };
 		5AF6A5AD1F4B6E8000271671 /* CustomPushTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPushTransitionController.swift; sourceTree = "<group>"; };
 		5AF6A5AF1F4B6F1700271671 /* CustomTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransitionController.swift; sourceTree = "<group>"; };
 		5AF6A5B11F4B6FBC00271671 /* CustomTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -431,7 +429,6 @@
 				5A14676F1E82E00200F7E3EA /* AddEmailViewController.swift */,
 				5A5A800B1F31350700E4CA04 /* CreateAccountViewController.swift */,
 				5A14676D1E82DF8200F7E3EA /* PhotoSelectViewController.swift */,
-				5AF6A5AA1F49F17100271671 /* EditPhotoViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -654,7 +651,6 @@
 				5AF6A5AE1F4B6E8000271671 /* CustomPushTransitionController.swift in Sources */,
 				5A14676E1E82DF8200F7E3EA /* PhotoSelectViewController.swift in Sources */,
 				5AB1223F1F199FC400B4D02D /* SearchTransitionAnimator.swift in Sources */,
-				5AF6A5AB1F49F17100271671 /* EditPhotoViewController.swift in Sources */,
 				5A8D59121E9289AE007F107A /* ProfileViewController.swift in Sources */,
 				5A35A2931E78329A00162A20 /* WelcomeViewController.swift in Sources */,
 				5A8D59101E928618007F107A /* PageViewController.swift in Sources */,

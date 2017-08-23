@@ -71,9 +71,14 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate, SearchRes
             let owner = UserController.shared.currentUser
             else { return }
         
-        ChatController.shared.createChatWith(chatTopic: topicText, owner: owner, firstMessage: message, isDirectChat: false) { (_) in
+        ChatController.shared.createChatWith(chatTopic: topicText, owner: owner, firstMessage: message, isDirectChat: false) { (chat) in
             
-            self.dismiss(animated: true, completion: nil)
+            UserController.shared.followChat(Foruser: owner, chat: chat, completion: {
+                
+                ChatController.shared.chats.append(chat)
+                
+                self.dismiss(animated: true, completion: nil)
+            })
             
         }
     }

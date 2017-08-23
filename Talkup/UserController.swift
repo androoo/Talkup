@@ -156,6 +156,8 @@ class UserController {
     
     func followChat(Foruser user: User, chat: Chat, completion: @escaping () -> Void = {_ in}) {
         
+        let chatObject = chat
+        
         guard let userID = user.cloudKitRecordID,
             let chat = chat.cloudKitRecordID else { return }
         
@@ -173,6 +175,9 @@ class UserController {
                 } else {
                     user.following?.append(reference)
                 }
+                
+                // add chat to local array 
+                ChatController.shared.followingChats.append(chatObject)
                 
                 guard let followingChatReferences = user.following else { return }
                 record.setValue(followingChatReferences, forKey: Constants.followingReferenceKey)
@@ -205,10 +210,20 @@ class UserController {
                 let reference = CKReference(recordID: chat, action: .none)
                 guard let following = user.following else { return }
                 
+                // removes chat from record to update on cloudkit
+                
                 for (index, chatRef) in following.enumerated() {
                     if chatRef.recordID == reference.recordID {
                         user.following?.remove(at: index)
                         record.setValue(user.following, forKey: Constants.followingReferenceKey)
+                    }
+                }
+                
+                // removes chat locally from followingarray for immediate updates
+                
+                for (index, item) in ChatController.shared.followingChats.enumerated() {
+                    if chat == item.cloudKitRecordID {
+                        ChatController.shared.followingChats.remove(at: index)
                     }
                 }
                 

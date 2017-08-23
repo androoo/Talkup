@@ -112,6 +112,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillAppear(animated)
         
         setup()
+        tableView.reloadData()
         
     }
     
@@ -159,7 +160,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         chat?.unreadMessages = []
         
-        // TODO: - check following chats to remove or add any new ones
         
     }
     
