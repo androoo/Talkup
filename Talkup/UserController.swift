@@ -181,10 +181,50 @@ class UserController {
                         print("\(error)")
                         completion()
                     } else {
-                        print("following chat succes")
+                        print("following chat's CKRef added to following CKRefList")
                         completion()
                     }
                 })
+            }
+        }
+    }
+    
+    func unFollowChat(forUser user: User, chat: Chat, completion: @escaping () -> Void = {_ in}) {
+        
+        guard let userID = user.cloudKitRecordID,
+            let chat = chat.cloudKitRecordID else { return }
+        
+        cloudKitManager.fetchRecord(withID: userID) { (record, error) in
+            
+            if let error = error {
+                print("\(error)")
+                completion()
+                
+            } else if let record = record {
+                
+                let reference = CKReference(recordID: chat, action: .none)
+                guard let following = user.following else { return }
+                
+                for (index, chatRef) in following.enumerated() {
+                    if chatRef.recordID == reference.recordID {
+                        user.following?.remove(at: index)
+                        record.setValue(user.following, forKey: Constants.followingReferenceKey)
+                    }
+                }
+                
+                let modifyRecords = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+                modifyRecords.savePolicy = CKRecordSavePolicy.allKeys
+                modifyRecords.qualityOfService = QualityOfService.userInitiated
+                modifyRecords.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+                    
+                    if error == nil {
+                        print("Chat CKRef removed from User Following List")
+                    } else {
+                        print(error?.localizedDescription)
+                    }
+                }
+                self.cloudKitManager.publicDatabase.add(modifyRecords)
+                
             }
         }
     }

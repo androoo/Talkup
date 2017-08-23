@@ -159,6 +159,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         chat?.unreadMessages = []
         
+        // TODO: - check following chats to remove or add any new ones
+        
     }
     
     // MARK: Notifications
@@ -445,21 +447,30 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let chat = chat,
             let user = UserController.shared.currentUser else { return }
         
-        ChatController.shared.followMessagesIn(chat: chat)
+//        ChatController.shared.followMessagesIn(chat: chat)
         
         if followButton == .active {
-            // remove chat from followed list
+            
+            UserController.shared.unFollowChat(forUser: user, chat: chat)
+            
             followButton = .resting
         } else {
+            
             UserController.shared.followChat(Foruser: user, chat: chat)
+            
             followButton = .active
+            
         }
         
-        ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (_, _, _) in
-            
-            DispatchQueue.main.async {
-                self.updateViews()
+        ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (success, subscribed, error) in
+
+            if let error = error {
+                print(error.localizedDescription)
             }
+            
+            print(success)
+            print(subscribed)
+            
         }
     }
     
