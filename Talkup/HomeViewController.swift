@@ -277,9 +277,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             customSelectedView.backgroundColor = Colors.primaryLightGray
             cell.selectedBackgroundView = customSelectedView
             
+            
             return cell
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
@@ -305,6 +310,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let chat = ChatController.shared.chats[selectedIndexPath.row]
                 chat.isDismisable = false
                 detailViewController.chat = chat
+                
             }
         } else if segue.identifier == "toFollowingDetail" {
             
