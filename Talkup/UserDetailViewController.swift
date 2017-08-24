@@ -24,6 +24,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var user: User?
     var isDirectChat: Bool? = false
     var messageSortSelection: MessageSort = .live
+    var followingButton: FollowingButton?
     
     lazy var customTransitioningDelegate = CustomPushTransitionController() 
     
@@ -123,6 +124,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateViews()
+        setup()
     }
     
     override func viewDidLoad() {
@@ -170,6 +172,20 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         currentUserChatBarImage.layer.cornerRadius = currentUserChatBarImage.frame.width / 2
         currentUserChatBarImage.layer.masksToBounds = true 
         
+    }
+    
+    private func setup() {
+        
+        guard let chat = chat else { return }
+        
+        ChatController.shared.checkSubscriptionTo(chat: chat) { (subscription) in
+            if subscription {
+                self.followingButton = .active
+                
+            } else {
+                self.followingButton = .resting
+            }
+        }
     }
     
     //MARK: - InputBar Setup
@@ -260,10 +276,12 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.editButton.isHidden = false
             } else {
                 cell.followButton.isHidden = false
-                cell.editButton.isHidden = true 
+                cell.editButton.isHidden = true
+                cell.following = followingButton
             }
             
             cell.user = self.user
+            cell.delegate = self 
             
             return cell
             
@@ -333,18 +351,53 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // Chat header delegate 
     
-    func followButtonPressed(_ sender: ChatHeaderTableViewCell) {
+    func followButtonPressed() {
+        
+        guard let chat = chat,
+            let user = UserController.shared.currentUser else { return }
+        
+        //        ChatController.shared.followMessagesIn(chat: chat)
+        
+        if followingButton == .active {
+            
+            UserController.shared.unFollowChat(forUser: user, chat: chat)
+            
+            followingButton = .resting
+        } else {
+            
+            UserController.shared.followChat(Foruser: user, chat: chat)
+            
+            followingButton = .active
+            
+        }
+        
+        ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (success, subscribed, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            print(success)
+            print(subscribed)
+            
+        }
         
     }
     
     // Filter Header Delegate 
     
     func nowSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
-        
+        messageSortSelection = .live
+        MessageController.shared.messagesFilterState = .live
+        filterHeader.isLive = true
+        updateViews()
     }
     
     func topSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
-        
+        messageSortSelection = .top
+        MessageController.shared.messagesFilterState = .top
+        filterHeader.isLive = false
+        updateViews()
     }
     
     // Recienver Cell Delegate 

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChatHeaderDelegate {
-    func followButtonPressed(_ sender: ChatHeaderTableViewCell)
+    func followButtonPressed()
 }
 
 
@@ -80,7 +80,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
     
     @IBAction func followButtonTapped(_ sender: Any) {
         
-        delegate?.followButtonPressed(self)
+        delegate?.followButtonPressed()
         
         if let following = following {
             

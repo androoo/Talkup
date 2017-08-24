@@ -12,9 +12,18 @@ class UserHeaderTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
+    var delegate: ChatHeaderDelegate?
+    
     var user: User? {
         didSet {
             updateViews()
+        }
+    }
+    
+    var following: FollowingButton? {
+        didSet {
+            updateViews()
+            followButtonAppearance()
         }
     }
     
@@ -38,6 +47,41 @@ class UserHeaderTableViewCell: UITableViewCell {
     
     @IBAction func followButtonTapped(_ sender: Any) {
         
+        delegate?.followButtonPressed()
+        
+        if let following = following {
+            
+            switch following{
+            case .active:
+                
+                followButton.backgroundColor = nil
+                followButton.layer.borderColor = Colors.followingGreen.cgColor
+                followButton.layer.borderWidth = 2
+                followButton.tintColor = Colors.followingGreen
+                followButton.setTitle("Follow", for: .normal)
+                followButton.setTitleColor(Colors.followingGreen, for: .normal)
+                followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+                followButton.layer.masksToBounds = true
+                followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
+                
+                return
+                
+            case .resting:
+                
+                followButton.backgroundColor = Colors.followingGreen
+                followButton.setTitle("Following", for: .normal)
+                followButton.titleLabel?.textColor = .white
+                followButton.setTitleColor(.white, for: .normal)
+                followButton.layer.borderWidth = 0
+                followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+                followButton.layer.masksToBounds = true
+                followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
+                
+                return
+                
+            }
+            
+        }
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -45,6 +89,29 @@ class UserHeaderTableViewCell: UITableViewCell {
     }
     
     //MARK: - Methods 
+    
+    func followButtonAppearance() {
+        if following == .active {
+            followButton.backgroundColor = Colors.followingGreen
+            followButton.setTitle("Following", for: .normal)
+            followButton.titleLabel?.textColor = .white
+            followButton.setTitleColor(.white, for: .normal)
+            followButton.layer.borderWidth = 0
+            followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+            followButton.layer.masksToBounds = true
+            followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
+        } else {
+            followButton.backgroundColor = nil
+            followButton.layer.borderColor = Colors.followingGreen.cgColor
+            followButton.layer.borderWidth = 2
+            followButton.tintColor = Colors.followingGreen
+            followButton.setTitle("Follow", for: .normal)
+            followButton.setTitleColor(Colors.followingGreen, for: .normal)
+            followButton.layer.cornerRadius = followButton.layer.frame.height / 2
+            followButton.layer.masksToBounds = true
+            followButton.titleEdgeInsets = UIEdgeInsetsMake(4.0, 16.0, 4.0, 16.0)
+        }
+    }
     
     func updateViews() {
         guard let user = user else { return }

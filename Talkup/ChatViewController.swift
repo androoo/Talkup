@@ -465,7 +465,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - Chat Header Delegate 
     
-    func followButtonPressed(_ sender: ChatHeaderTableViewCell) {
+    func followButtonPressed() {
         
         guard let chat = chat,
             let user = UserController.shared.currentUser else { return }
