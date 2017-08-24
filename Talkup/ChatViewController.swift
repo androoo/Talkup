@@ -547,23 +547,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // send the user to the User Detail
     
     var user: User?
+    var directChat: Chat?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toUserDetail" {
-            guard let user = self.user
+            guard let user = self.user,
+                let chat = self.directChat
                 else { return }
-            
-            var directChat: Chat?
-            
-            ChatController.shared.fetchDirectChat(forUser: user, completion: { (chat) in
-                directChat = chat
-            })
             
             if let destinationViewController = segue.destination as? UserDetailViewController {
                 
                 destinationViewController.user = user
-                destinationViewController.chat = directChat
+                destinationViewController.chat = chat
                 destinationViewController.isDirectChat = false
                 
                 let backItem = UIBarButtonItem()
@@ -580,8 +576,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func usernameClicked(user: User) {
         
-        self.user = user
-        self.performSegue(withIdentifier: "toUserDetail", sender: nil)
+        ChatController.shared.fetchDirectChat(forUser: user, completion: { (chat) in
+            self.directChat = chat
+            self.user = user
+            self.performSegue(withIdentifier: "toUserDetail", sender: nil)
+        })
         
     }
 }
