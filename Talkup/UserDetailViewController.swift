@@ -390,6 +390,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         messageSortSelection = .live
         MessageController.shared.messagesFilterState = .live
         filterHeader.isLive = true
+        scrollToLastRow()
         updateViews()
     }
     
@@ -397,7 +398,18 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         messageSortSelection = .top
         MessageController.shared.messagesFilterState = .top
         filterHeader.isLive = false
+        scrollToFirstRow()
         updateViews()
+    }
+    
+    func scrollToLastRow() {
+        let indexPath = IndexPath(row: self.messages.count-1, section: 1)
+        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    
+    func scrollToFirstRow() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
     // Recienver Cell Delegate 
