@@ -59,15 +59,15 @@
                                     <constraint firstAttribute="height" constant="250" id="XXm-HK-WYm"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-fB-8Aj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-fB-8Aj">
                                 <rect key="frame" x="0.0" y="250" width="375" height="417"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="64" id="1Kq-Yg-BW1" customClass="MenuTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuProfileCell" rowHeight="64" id="1Kq-Yg-BW1" customClass="MenuProfileTableViewCell" customModule="Talkup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Kq-Yg-BW1" id="oEc-22-bVQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cw9-sM-mOi">
@@ -95,6 +95,73 @@
                                             <outlet property="menuItemIconImageView" destination="Cw9-sM-mOi" id="Fh7-MV-Nw5"/>
                                             <outlet property="menuItemNameLabel" destination="nph-lk-5ju" id="4Yz-eJ-QCT"/>
                                             <segue destination="w7k-9a-KZy" kind="show" identifier="toMyProfile" id="Yva-A0-hYf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuTopicsCell" rowHeight="64" id="uOh-kp-T8g" customClass="MenuTopicsTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uOh-kp-T8g" id="lNd-30-s2Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Fa-7Z-Y4d">
+                                                    <rect key="frame" x="24" y="20.5" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="FxT-qr-LXw"/>
+                                                        <constraint firstAttribute="width" constant="24" id="tiW-2t-67g"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSE-li-yB0">
+                                                    <rect key="frame" x="56" y="22" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dSE-li-yB0" firstAttribute="leading" secondItem="8Fa-7Z-Y4d" secondAttribute="trailing" constant="8" id="Rku-oz-DmG"/>
+                                                <constraint firstItem="dSE-li-yB0" firstAttribute="centerY" secondItem="8Fa-7Z-Y4d" secondAttribute="centerY" id="i93-u6-S2p"/>
+                                                <constraint firstItem="8Fa-7Z-Y4d" firstAttribute="centerY" secondItem="lNd-30-s2Z" secondAttribute="centerY" id="m9C-x1-3Cy"/>
+                                                <constraint firstItem="8Fa-7Z-Y4d" firstAttribute="leading" secondItem="lNd-30-s2Z" secondAttribute="leadingMargin" constant="16" id="wVg-0B-Pbk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="menuItemIconImageView" destination="8Fa-7Z-Y4d" id="CaF-rl-jPP"/>
+                                            <outlet property="menuItemNameLabel" destination="dSE-li-yB0" id="hRs-gi-eaC"/>
+                                            <segue destination="0xn-jx-xfj" kind="show" identifier="toMyTopics" id="1P4-hl-phu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuHelpCell" rowHeight="64" id="2FM-ZV-xiy" customClass="MenuHelpTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="156" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FM-ZV-xiy" id="KWx-aV-y6h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dIt-5T-j5V">
+                                                    <rect key="frame" x="24" y="20.5" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="24" id="Koj-eZ-E3V"/>
+                                                        <constraint firstAttribute="height" constant="24" id="ZnC-jO-rSf"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86M-x1-MSi">
+                                                    <rect key="frame" x="56" y="22" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="86M-x1-MSi" firstAttribute="centerY" secondItem="dIt-5T-j5V" secondAttribute="centerY" id="Pqg-6j-mFZ"/>
+                                                <constraint firstItem="dIt-5T-j5V" firstAttribute="centerY" secondItem="KWx-aV-y6h" secondAttribute="centerY" id="efc-kz-Ytg"/>
+                                                <constraint firstItem="dIt-5T-j5V" firstAttribute="leading" secondItem="KWx-aV-y6h" secondAttribute="leadingMargin" constant="16" id="lfu-u2-PV4"/>
+                                                <constraint firstItem="86M-x1-MSi" firstAttribute="leading" secondItem="dIt-5T-j5V" secondAttribute="trailing" constant="8" id="mrE-Tm-wcb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="menuItemIconImageView" destination="dIt-5T-j5V" id="1AQ-1h-OM7"/>
+                                            <outlet property="menuItemNameLabel" destination="86M-x1-MSi" id="009-Et-EeK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -141,14 +208,14 @@
                 <viewControllerPlaceholder storyboardName="UserDetail" referencedIdentifier="TopicsListViewController" id="0xn-jx-xfj" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrX-HL-dWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="192"/>
+            <point key="canvasLocation" x="1594" y="144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p4P-Hh-W5t">
             <objects>
                 <navigationController storyboardIdentifier="slideMenuNav" automaticallyAdjustsScrollViewInsets="NO" id="iN9-Bi-c6T" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kcb-ul-HyJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kcb-ul-HyJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

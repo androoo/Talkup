@@ -8,18 +8,11 @@
 
 import UIKit
 
-class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
+class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, MenuDelegate {
     
     //MARK: - Properties
     
-    var menuItems: [String] = [
-        "My Profile",
-        "My Topics",
-        "Help"
-    ]
-    
-    //VC transitions
-//    lazy var customPushTransitioningDelegate = CustomPushTransitionCotroller()
+    //    lazy var customPushTransitioningDelegate = CustomPushTransitionCotroller()
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -31,24 +24,50 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: - TableView Datasource/Delegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItems.count
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as? MenuTableViewCell else { return MenuTableViewCell() }
         
-        cell.itemName = menuItems[indexPath.row]
+        switch indexPath.row {
+            
+        case 0:
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuProfileCell", for: indexPath) as? MenuProfileTableViewCell else { return MenuProfileTableViewCell() }
+        
+        cell.title = "Profile"
+        cell.delegate = self
         
         return cell
+            
+        case 1:
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuTopicsCell", for: indexPath) as? MenuTopicsTableViewCell else { return MenuTopicsTableViewCell() }
+        
+        cell.title = "Chats"
+        cell.delegate = self
+        
+        return cell
+            
+        case 2:
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuHelpCell", for: indexPath) as? MenuHelpTableViewCell else { return MenuHelpTableViewCell() }
+        
+        cell.title = "Help"
+        cell.delegate = self 
+        
+        return cell
+            
+        default: return UITableViewCell()
+            
+        }
     }
     
     
     //MARK: - View Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         guard let user = UserController.shared.currentUser else { return }
         
         userImageView.image = user.photo
@@ -62,16 +81,15 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-    // need to check which menu item clicked
-    // need to send the user to the page too
+        // need to check which menu item clicked
+        // need to send the user to the page too
         
         if segue.identifier == "toMyProfile" {
             
-            if let detailViewController = segue.destination as? UserDetailViewController,
-                let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+            if let detailViewController = segue.destination as? UserDetailViewController {
                 
                 let backItem = UIBarButtonItem()
                 backItem.title = ""
@@ -88,6 +106,25 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 navigationController.transitioningDelegate = customTransitioningDelegate
                 navigationController.modalPresentationStyle = .custom
             }
+        } else if segue.identifier == "toMyTopics" {
+            
+            if let detailViewController = segue.destination as? ChatTopicsListViewController {
+                
+                
+                
+            }
         }
     }
+    
+    func selectedRow(index: Int) {
+        if (index == 0) {
+            self.performSegue(withIdentifier: "toMyProfile", sender: self)
+        } else if (index == 1) {
+            print(2)
+        } else {
+            print(3)
+        }
+        
+    }
+    
 }
