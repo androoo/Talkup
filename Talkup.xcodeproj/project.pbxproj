@@ -67,7 +67,6 @@
 		5ACBE52D1F2119330049FAE0 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ACBE52C1F2119330049FAE0 /* Onboarding.storyboard */; };
 		5ADD34E81F0EEB4D0039322E /* DebugButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34E71F0EEB4D0039322E /* DebugButton.swift */; };
 		5ADD34EA1F13ED4C0039322E /* MessageItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */; };
-		5ADD34EC1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */; };
 		5ADD34EF1F1697320039322E /* MainSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34EE1F1697320039322E /* MainSearchBar.swift */; };
 		5ADD34F11F16B35F0039322E /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34F01F16B35F0039322E /* SearchResultTableViewCell.swift */; };
 		5ADD34F31F16B7350039322E /* MainSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD34F21F16B7350039322E /* MainSearchResultsViewController.swift */; };
@@ -172,7 +171,6 @@
 		5ACBE52C1F2119330049FAE0 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		5ADD34E71F0EEB4D0039322E /* DebugButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugButton.swift; sourceTree = "<group>"; };
 		5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItemCollectionViewCell.swift; sourceTree = "<group>"; };
-		5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentMessageCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		5ADD34EE1F1697320039322E /* MainSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSearchBar.swift; sourceTree = "<group>"; };
 		5ADD34F01F16B35F0039322E /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		5ADD34F21F16B7350039322E /* MainSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 				5A7467D91F0C59E100BAF86D /* ChatHeaderTableViewCell.swift */,
 				5AEDF1A51F0DB67100DDE503 /* FilterHeaderTableViewCell.swift */,
 				5ADD34E91F13ED4C0039322E /* MessageItemCollectionViewCell.swift */,
-				5ADD34EB1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift */,
 				5AFEED8E1F1D986D00E50422 /* MenuTableViewCell.swift */,
 				5A8CA14F1F3A2168000D8D39 /* UserHeaderTableViewCell.swift */,
 				5AF6A5A21F44AB6500271671 /* RecentChatTableViewCell.swift */,
@@ -691,7 +688,6 @@
 				5ADD34EA1F13ED4C0039322E /* MessageItemCollectionViewCell.swift in Sources */,
 				5A35A27E1E772E1E00162A20 /* CloudKitManager.swift in Sources */,
 				5AFEED921F1E4F0F00E50422 /* SlideMenuTransitionController.swift in Sources */,
-				5ADD34EC1F14716C0039322E /* RecentMessageCollectionTableViewCell.swift in Sources */,
 				5AAC94871E9304B9009155FE /* ChatViewController.swift in Sources */,
 				5ADD34F31F16B7350039322E /* MainSearchResultsViewController.swift in Sources */,
 				5A35A2911E77539500162A20 /* NewMessageViewController.swift in Sources */,

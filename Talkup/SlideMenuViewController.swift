@@ -24,8 +24,6 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var chatsCountLabel: UILabel!
-    @IBOutlet weak var messagesCountLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     lazy var customTransitioningDelegate = CustomPushTransitionController()
@@ -61,7 +59,6 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         userNameLabel.text = user.email
         userNameLabel.textColor = Colors.primaryDarkGray
         
-        chatsCountLabel.text = "\(user.chats.count)"
         
     }
     

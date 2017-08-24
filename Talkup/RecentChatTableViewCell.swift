@@ -22,8 +22,13 @@ class RecentChatTableViewCell: UITableViewCell {
     
     @IBOutlet weak var createdByUserImageView: UIImageView!
     @IBOutlet weak var chatTitleLabel: UILabel!
+    
     @IBOutlet weak var creatorInfoLabel: UILabel!
     @IBOutlet weak var datelabel: UILabel!
+    
+    @IBOutlet weak var byLabel: UILabel!
+    @IBOutlet weak var agoLabel: UILabel!
+    
     
     //MARK: - Methods 
     
@@ -43,7 +48,11 @@ class RecentChatTableViewCell: UITableViewCell {
         createdByUserImageView.layer.masksToBounds = true
         creatorInfoLabel.text = user.userName
         datelabel.text = timeSince
-        datelabel.textColor = Colors.recievedMessagePrimary
+        
+        datelabel.textColor = Colors.primaryDarkGray
+        creatorInfoLabel.textColor = Colors.primaryDarkGray
+        byLabel.textColor = Colors.primaryDarkGray
+        agoLabel.textColor = Colors.primaryDarkGray
         
     }
 }

@@ -44,6 +44,29 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //MARK: - UIActions
+    
+    @IBAction func moreButtonTapped(_ sender: Any) {
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
+            // share stuff
+        }
+        
+        let reportAction = UIAlertAction(title: "Report", style: .default) { (_) in
+            // report abuse
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(shareAction)
+        alertController.addAction(reportAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
 
     @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
         guard inputTextField.text != "" else { sendMessageButtonTapped.isEnabled = false; return }
@@ -485,11 +508,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let reportAbuse = UIAlertAction(title: "Report", style: .default) { (action) in
-            print("report abuse")
+        let reportAbuse = UIAlertAction(title: "Report Abuse", style: .default) { (action) in
+            // send abuse email
         }
         
-        let blockUser = UIAlertAction(title: "Block", style: .destructive) { (action) in
+        let blockUser = UIAlertAction(title: "Block User", style: .destructive) { (action) in
             
             guard let userName = message.owner?.userName else { return }
             
@@ -577,9 +600,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func usernameClicked(user: User) {
         
         ChatController.shared.fetchDirectChat(forUser: user, completion: { (chat) in
-            self.directChat = chat
-            self.user = user
-            self.performSegue(withIdentifier: "toUserDetail", sender: nil)
+            
+            DispatchQueue.main.async {
+                self.directChat = chat
+                self.user = user
+                self.performSegue(withIdentifier: "toUserDetail", sender: nil)
+            }
         })
         
     }

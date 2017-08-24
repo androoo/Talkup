@@ -93,16 +93,28 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func navBarMoreButtonTapped(_ sender: Any) {
-        if chat?.isDismisable == true {
-            chat?.isDismisable = false
-            
-            performSegue(withIdentifier: "unwindToHome", sender: self)
-            
-        } else {
-            
-            _ = navigationController?.popViewController(animated: true)
-            
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
+            // share stuff
         }
+        
+        let blockUser = UIAlertAction(title: "Block User", style: .default) { (_) in
+            // block user
+        }
+        
+        let reportAction = UIAlertAction(title: "Report", style: .default) { (_) in
+            // report abuse
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(shareAction)
+        alertController.addAction(reportAction)
+        alertController.addAction(blockUser)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     
