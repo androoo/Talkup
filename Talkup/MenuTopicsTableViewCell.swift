@@ -33,7 +33,7 @@ class MenuTopicsTableViewCell: UITableViewCell {
         menuItemNameLabel.text = title
         menuItemIconImageView.alpha = 0.35
         
-        menuItemIconImageView.image = UIImage(named: "profile")
+        menuItemIconImageView.image = UIImage(named: "chat")
         
     }
 

@@ -35,7 +35,7 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         case 0:
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuProfileCell", for: indexPath) as? MenuProfileTableViewCell else { return MenuProfileTableViewCell() }
         
-        cell.title = "Profile"
+        cell.title = "My Profile"
         cell.delegate = self
         
         return cell
@@ -43,7 +43,7 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         case 1:
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuTopicsCell", for: indexPath) as? MenuTopicsTableViewCell else { return MenuTopicsTableViewCell() }
         
-        cell.title = "Chats"
+        cell.title = "My Chats"
         cell.delegate = self
         
         return cell
@@ -105,12 +105,21 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 navigationController.transitioningDelegate = customTransitioningDelegate
                 navigationController.modalPresentationStyle = .custom
+                
             }
         } else if segue.identifier == "toMyTopics" {
             
             if let detailViewController = segue.destination as? ChatTopicsListViewController {
                 
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
                 
+                detailViewController.user = UserController.shared.currentUser
+                
+                let navigationController = segue.destination
+                navigationController.transitioningDelegate = customTransitioningDelegate
+                navigationController.modalPresentationStyle = .custom
                 
             }
         }
@@ -120,7 +129,7 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         if (index == 0) {
             self.performSegue(withIdentifier: "toMyProfile", sender: self)
         } else if (index == 1) {
-            print(2)
+            self.performSegue(withIdentifier: "toMyTopics", sender: self)
         } else {
             print(3)
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     var chats: [Chat]? {
         didSet {
@@ -17,6 +17,8 @@ class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     var user: User?
+    
+    lazy var customTransitioningDelegate = CustomPushTransitionController()
 
     @IBAction func dismissButtonTapped(_ sender: Any) {
         dismiss(animated: true) { 
@@ -62,9 +64,18 @@ class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITab
             guard let destination = segue.destination as? ChatViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
+            
             let chat = user?.chats[indexPath.row]
             chat?.isDismisable = true
-            destination.chat = chats?[indexPath.row]
+            destination.chat = chat
+            
+            let navigationController = segue.destination
+            navigationController.transitioningDelegate = customTransitioningDelegate
+            navigationController.modalPresentationStyle = .custom
+            
         }
     }
     

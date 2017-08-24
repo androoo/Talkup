@@ -28,6 +28,11 @@ class TopicCellTableViewCell: UITableViewCell {
         topicNameLabel.text = chat?.topic
         usernameLabel.text = user?.userName
         creatorImageView.image = user?.photo
+        
+        creatorImageView.layer.cornerRadius = creatorImageView.layer.frame.width / 2
+        creatorImageView.layer.masksToBounds = true
+        usernameLabel.textColor = Colors.primaryLightGray
+        
     }
     
 }
