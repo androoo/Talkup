@@ -22,6 +22,7 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate, SearchRes
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendMessageButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addButton: UIButton!
     
     override var inputAccessoryView: UIView? {
         get {
@@ -49,7 +50,12 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate, SearchRes
     //MARK: - UI Actions
     
     @IBAction func newChatButtonTapped(_ sender: Any) {
-        createChat()
+        sendMessageButton.isEnabled = false
+        DispatchQueue.main.async {
+            
+            self.createChat()
+        }
+        
     }
     
     
@@ -75,11 +81,15 @@ class NewMessageViewController: UIViewController, UITextFieldDelegate, SearchRes
             
             UserController.shared.followChat(Foruser: owner, chat: chat, completion: {
                 
-                ChatController.shared.chats.append(chat)
-                
-                self.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    
+                    ChatController.shared.chats.append(chat)
+                    ChatController.shared.recentChats.insert(chat, at: 0)
+                    self.sendMessageButton.isEnabled = true
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }
             })
-            
         }
     }
     

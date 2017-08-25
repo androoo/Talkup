@@ -42,6 +42,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var timeOfLastVisit: Date?
     
+    // refresh stored property
+    
+    lazy var refreshControl: UIRefreshControl = {
+        
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        refreshControl.tintColor = Colors.conPurpleDark
+        
+        return refreshControl
+        
+    }()
     
     //MARK: - UIActions
     
@@ -146,6 +159,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.addSubview(self.refreshControl)
         self.navigationController?.navigationBar.isHidden = true
         tableView.backgroundColor = .white
         navBarViewBgView.backgroundColor = .white
@@ -339,8 +353,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 
                 self.tableView.reloadData()
+                
+                self.scrollToLastRow()
+                
             }
         }
+        
         inputTextField.text = nil
         inputTextField.resignFirstResponder()
     }
@@ -625,4 +643,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 }
 
 
+//MARK: - Pull to refresh
+
+extension ChatViewController {
+    
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        guard let chat = chat else { return }
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+        print("refresh chats and messages")
+        
+    }
+    
+}
 

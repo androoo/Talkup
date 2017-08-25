@@ -43,15 +43,18 @@ class CreateAccountViewController: UIViewController, UINavigationControllerDeleg
             
             self.createdUser = createdUser
             
-            ChatController.shared.createChatWith(chatTopic: username, owner: createdUser, firstMessage: "Hi everyone 👋", isDirectChat: true, completion: { (_) in
+            ChatController.shared.createChatWith(chatTopic: username, owner: createdUser, firstMessage: "Hi everyone 👋", isDirectChat: true, completion: { (chat) in
                 
-                ChatController.shared.performFullSync(completion: {
-                    
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "finishedOnboarding", sender: self)
-                    }
-                    
-                })
+//                ChatController.shared.performFullSync(completion: {
+//                    
+//                    DispatchQueue.main.async {
+//                        self.performSegue(withIdentifier: "finishedOnboarding", sender: self)
+//                    }
+//                    
+//                })
+                UserController.shared.followChat(Foruser: createdUser, chat: chat)
+                self.performSegue(withIdentifier: "finishedOnboarding", sender: self)
+                
             })
         }
     }
@@ -83,17 +86,16 @@ class CreateAccountViewController: UIViewController, UINavigationControllerDeleg
         
         if segue.identifier == "finishedOnboarding" {
             
-            guard let destinationViewController = segue.destination as? HomeViewController,
-                let user = self.createdUser else { return }
+            guard let destinationViewController = segue.destination as? LaunchMainViewController else { return }
             
-            UserController.shared.currentUser = user
-            
-            destinationViewController.transitioningDelegate = customTransitionDelegate
-            destinationViewController.modalPresentationStyle = .custom
+                destinationViewController.user = self.createdUser
+//            UserController.shared.currentUser = user
+//            
+//            destinationViewController.transitioningDelegate = customTransitionDelegate
+//            destinationViewController.modalPresentationStyle = .custom
             
         }
     }
-    
 }
 
 

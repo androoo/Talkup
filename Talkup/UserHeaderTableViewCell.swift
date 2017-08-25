@@ -117,6 +117,7 @@ class UserHeaderTableViewCell: UITableViewCell {
         guard let user = user else { return }
         
         userNameLabel.text = user.userName
+        userNameLabel.font = UIFont(name: "ArialRoundedMTBold", size: 48)
         userAvatarImageView.image = user.photo
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width / 2
         userAvatarImageView.layer.masksToBounds = true 

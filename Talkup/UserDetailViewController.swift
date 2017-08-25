@@ -42,6 +42,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func backBarButtontapped(_ sender: Any) {
+        
     }
     
     let barHeight: CGFloat = 65
@@ -155,7 +156,6 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             group.enter()
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages) {
                 
-                //check to see if any messages need to be hidden
                 self.hideBlockedMessages()
                 
                 group.leave()

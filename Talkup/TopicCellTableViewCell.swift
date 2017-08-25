@@ -31,7 +31,7 @@ class TopicCellTableViewCell: UITableViewCell {
         
         creatorImageView.layer.cornerRadius = creatorImageView.layer.frame.width / 2
         creatorImageView.layer.masksToBounds = true
-        usernameLabel.textColor = Colors.primaryLightGray
+        usernameLabel.textColor = Colors.primaryDarkGray
         
     }
     

@@ -37,12 +37,16 @@ class FollowingChatTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let chat = chat,
-           let newestMessage = chat.messages.last else { return }
+           let newestMessage = chat.messages.first else { return }
+        
+        if let author = newestMessage.owner {
+            chatCreatorLabel.text = "\(author.userName):  \(newestMessage.text)"
+        }
         
         creatorImageView.image = chat.creator?.photo
         chatTitleLabel.text = chat.topic
         
-        chatCreatorLabel.text = "\(newestMessage.owner?.userName):  \(newestMessage.text)"
+        
         
         
         creatorImageView.layer.cornerRadius = creatorImageView.frame.width / 2

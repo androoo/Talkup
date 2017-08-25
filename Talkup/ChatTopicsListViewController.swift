@@ -71,6 +71,7 @@ class ChatTopicsListViewController: UIViewController, UITableViewDelegate, UITab
             let chat = user?.chats[indexPath.row]
             chat?.isDismisable = true
             destination.chat = chat
+            destination.user = user
             
             let navigationController = segue.destination
             navigationController.transitioningDelegate = customTransitioningDelegate

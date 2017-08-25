@@ -47,6 +47,8 @@ class ChatHeaderTableViewCell: UITableViewCell {
             followButtonAppearance()
         }
     }
+    
+    var user: User? = UserController.shared.currentUser
 
     
     func followButtonAppearance() {
@@ -121,7 +123,9 @@ class ChatHeaderTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let chat = chat,
-            let user = chat.creator else { return }
+            let user = chat.creator else {
+                return
+        }
         
         headerViewBgView.backgroundColor = .white 
         

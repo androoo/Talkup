@@ -111,6 +111,13 @@ class ChatController {
                 }
             }
         }
+        
+        for chat in followingChats {
+            MessageController.shared.fetchMessageOwnersFor(messages: chat.messages, completion: { 
+                print("message owners fetched")
+            })
+        }
+        
     }
     
     func popupateRecentChats() {
@@ -289,6 +296,7 @@ func fetchChatOwnersFor(chats: [Chat], completion: @escaping () -> Void) {
                     NSLog("Unable to save comment subscription: \(error)")
                 }
                 chat.messages.append(message)
+
                 completion?(chat)
             }
         }

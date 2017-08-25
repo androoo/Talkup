@@ -364,7 +364,39 @@
                 <viewControllerPlaceholder storyboardIdentifier="MainNav" storyboardName="Main" referencedIdentifier="HomeViewController" id="eA7-3d-SzA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRk-qU-X9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4830" y="-182"/>
+            <point key="canvasLocation" x="5617" y="-182"/>
+        </scene>
+        <!--Launch Main View Controller-->
+        <scene sceneID="3T6-ym-dPy">
+            <objects>
+                <viewController id="iLh-4K-tFx" customClass="LaunchMainViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MUr-wP-XGc"/>
+                        <viewControllerLayoutGuide type="bottom" id="V20-Kd-5c1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tRe-au-mJl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLoading" translatesAutoresizingMaskIntoConstraints="NO" id="8XE-O4-WQ9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8XE-O4-WQ9" firstAttribute="top" secondItem="MUr-wP-XGc" secondAttribute="bottom" constant="-64" id="Oq5-Xf-d8t"/>
+                            <constraint firstAttribute="trailing" secondItem="8XE-O4-WQ9" secondAttribute="trailing" id="UXV-Us-XVw"/>
+                            <constraint firstItem="V20-Kd-5c1" firstAttribute="top" secondItem="8XE-O4-WQ9" secondAttribute="bottom" id="Vo8-Wu-jY7"/>
+                            <constraint firstItem="8XE-O4-WQ9" firstAttribute="leading" secondItem="tRe-au-mJl" secondAttribute="leading" id="a3T-MU-1GE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="eA7-3d-SzA" kind="show" identifier="loadmain" id="uGQ-Bm-bGa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YHX-a7-i8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4965" y="-179"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="EmR-F9-xxl">
@@ -403,12 +435,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nB8-WI-DD5"/>
                                 </constraints>
-                                <state key="normal" title="Create Account">
+                                <state key="normal" title="Sign up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="createAccountButtonTapped:" destination="nCQ-sb-1xq" eventType="touchUpInside" id="waN-ex-DrM"/>
-                                    <segue destination="eA7-3d-SzA" kind="show" identifier="finishedOnboarding" id="Gr9-Gx-f7P"/>
+                                    <segue destination="iLh-4K-tFx" kind="show" identifier="finishedOnboarding" id="dqa-EG-1dj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's go!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oam-4x-bLV">

@@ -53,12 +53,12 @@ class FilterHeaderTableViewCell: UITableViewCell {
             nowBottomBorderImageView.backgroundColor = Colors.alertOrange
             topBottomBorderImageView.backgroundColor = Colors.primaryLightGray
             nowLabel.textColor = Colors.flatYellow
-            topLabel.textColor = Colors.primaryLightGray
+            topLabel.textColor = Colors.primaryDarkGray
         } else {
             nowBottomBorderImageView.backgroundColor = Colors.primaryLightGray
             topBottomBorderImageView.backgroundColor = Colors.greenBlue
             topLabel.textColor = Colors.greenBlue
-            nowLabel.textColor = Colors.primaryLightGray
+            nowLabel.textColor = Colors.primaryDarkGray
         }
         
     }

@@ -45,6 +45,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // refresh stored property 
+    
+    lazy var refreshControl: UIRefreshControl = {
+        
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        refreshControl.tintColor = Colors.conPurpleDark
+        
+        return refreshControl
+        
+    }()
+    
     //VC transitions
     let slideAnimator = SearchTransitionAnimator()
     let customNavigationAnimationController = SearchTransitionAnimator()
@@ -103,6 +117,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         guard let currenctUser = UserController.shared.currentUser else { return }
         
+        self.tableView.addSubview(self.refreshControl)
         setupSearchController()
         
         ChatController.shared.fetchDirectChat(forUser: currenctUser) { (chat) in
@@ -336,7 +351,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 backItem.title = ""
                 navigationItem.backBarButtonItem = backItem
                 
-                let chat = ChatController.shared.chats[selectedIndexPath.row]
+                let chat = ChatController.shared.recentChats[selectedIndexPath.row]
                 chat.isDismisable = false
                 detailViewController.chat = chat
                 
@@ -539,6 +554,27 @@ extension HomeViewController {
         self.talkUpSearchTextField.alpha = percentage
         self.searchIconImageView.alpha = percentage
     }
+}
+
+
+//MARK: - Pull to refresh 
+
+extension HomeViewController {
+    
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        print("refresh chats and messages")
+        
+        ChatController.shared.popupateRecentChats()
+        ChatController.shared.popupateRecentChats()
+        ChatController.shared.populateFollowingChats()
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+        
+    }
+    
 }
 
 
