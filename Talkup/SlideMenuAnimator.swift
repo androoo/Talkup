@@ -31,20 +31,34 @@ extension SlideMenuAnimator: UIViewControllerAnimatedTransitioning {
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
-        let key = isPresentation ? UITransitionContextViewControllerKey.to : UITransitionContextViewControllerKey.from
+        // I only animate one VC depening on if im presenting or not, so i need ot add animation for the other one
+        let mainKey = isPresentation ? UITransitionContextViewControllerKey.to : UITransitionContextViewControllerKey.from
         
-        let controller = transitionContext.viewController(forKey: key)!
+        // opposite view for the VC
+        let secondaryKey = !isPresentation ? UITransitionContextViewControllerKey.to : UITransitionContextViewControllerKey.from
+        
+        
+        let menuController = transitionContext.viewController(forKey: mainKey)!
+        let fromController = (transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)) as? UINavigationController
+        
+        let originalController = fromController?.viewControllers.first!
         
         if isPresentation {
-            transitionContext.containerView.addSubview(controller.view)
+            transitionContext.containerView.addSubview(menuController.view)
+//            transitionContext.containerView.addSubview((originalController?.view)!)
         }
         
-        let presentedFrame = transitionContext.finalFrame(for: controller)
+        var presentedFrame = transitionContext.finalFrame(for: menuController)
         var dismissedFrame = presentedFrame
+        
+        var originalFrame = transitionContext.initialFrame(for: originalController!)
+        
+//        var oldFrame = transitionContext.initialFrame(for: dismissedController)
         
         switch direction {
         case .left:
             dismissedFrame.origin.x = -presentedFrame.width
+            originalFrame.origin.x = presentedFrame.width
         case .right:
             dismissedFrame.origin.x = transitionContext.containerView.frame.size.width
         case .top:
@@ -53,14 +67,20 @@ extension SlideMenuAnimator: UIViewControllerAnimatedTransitioning {
             dismissedFrame.origin.y = transitionContext.containerView.frame.size.height
         }
         
+        //depending on presentatoin, intial frame is either
         let initialFrame = isPresentation ? dismissedFrame : presentedFrame
-        let finalFrame = isPresentation ? presentedFrame : dismissedFrame
+        var finalFrame = isPresentation ? presentedFrame : dismissedFrame
         
         let animationDuration = transitionDuration(using: transitionContext)
-        controller.view.frame = initialFrame
         
-        UIView.animate(withDuration: animationDuration, animations: { 
-            controller.view.frame = finalFrame
+        menuController.view.frame = initialFrame
+        originalController?.view.frame.origin.x = isPresentation ? originalFrame.origin.x : finalFrame.origin.x
+        
+        UIView.animate(withDuration: animationDuration, animations: {
+            
+            menuController.view.frame = finalFrame
+            originalController?.view.frame.origin.x = finalFrame.width
+            
         }) { (finished) in
             transitionContext.completeTransition(finished)
         }

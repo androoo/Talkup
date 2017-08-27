@@ -29,7 +29,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var mainSearchToNavBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainSearchTrailingConstraint: NSLayoutConstraint!
     
-    var feedType: FeedFilter = .trending
+    
+    
+    var feedType: FeedFilter = ChatController.shared.followingChats.count > 0 ? .following : .recent {
+        didSet {
+            if feedType == .following {
+                navBarChatFilterLabel.text = "Following"
+            } else if feedType == .recent {
+                navBarChatFilterLabel.text = "Recent"
+            }
+        }
+    }
     
     var chats: [Chat] {
         

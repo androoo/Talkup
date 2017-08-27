@@ -105,7 +105,8 @@ class ChatController {
                         if !alreadyFollowingChats.contains(chatRecordName) {
                             
                             followingChats.append(chat)
-                            
+                            followingChats = followingChats.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedDescending}
+                            newMessagesCheck()
                         }
                     }
                 }
@@ -114,7 +115,7 @@ class ChatController {
         
         for chat in followingChats {
             MessageController.shared.fetchMessageOwnersFor(messages: chat.messages, completion: { 
-                print("message owners fetched")
+                
             })
         }
         
@@ -168,7 +169,7 @@ class ChatController {
         
         // then we match the chat name's and check if any of their child messages were created after the last visit.
         
-        for chat in followingChats {
+        for (index, chat) in followingChats.enumerated() {
             for chatLog in chatLastVisitLog {
                 if chatLog.key == chat.cloudKitRecordID?.recordName {
                     for message in chat.messages {
@@ -177,6 +178,8 @@ class ChatController {
                         if messageCreationStamp > chatLog.value {
                             unreadMessages.append(message)
                             chat.unreadMessages.append(message)
+                            followingChats.remove(at: index)
+                            followingChats.insert(chat, at: 0)
                         }
                         
                     }

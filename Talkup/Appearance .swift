@@ -81,6 +81,8 @@ struct Colors {
     
     static let followingGreen = UIColor.init(red: 56.0 / 255.0, green: 221.0 / 255.0, blue: 139.0 / 255.0, alpha: 1.0)
     
+    static let simBgGray = UIColor.init(red: 243.0 / 255.0, green: 245.0 / 255.0, blue: 248.0 / 255.0, alpha: 1.0)
+    
 }
 
 //MARK: - Gradients 

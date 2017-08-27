@@ -17,6 +17,8 @@ class FilterHeaderTableViewCell: UITableViewCell {
     
     //MARK: - Properties 
     
+    @IBOutlet weak var topBgView: UIView!
+    @IBOutlet weak var nowBgView: UIView!
     @IBOutlet weak var nowLabel: UILabel!
     @IBOutlet weak var nowBottomBorderImageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
@@ -48,6 +50,9 @@ class FilterHeaderTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        nowBgView.backgroundColor = Colors.primaryLightGray
+        topBgView.backgroundColor = Colors.primaryLightGray
         
         if MessageController.shared.messagesFilterState == .live  {
             nowBottomBorderImageView.backgroundColor = Colors.alertOrange

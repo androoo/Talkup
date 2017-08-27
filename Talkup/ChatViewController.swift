@@ -162,7 +162,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.addSubview(self.refreshControl)
         self.navigationController?.navigationBar.isHidden = true
         tableView.backgroundColor = .white
-        navBarViewBgView.backgroundColor = .white
+        navBarViewBgView.backgroundColor = Colors.navbarGray
         mainNavBottomSep.backgroundColor = Colors.primaryLightGray
         
         guard let name = chat?.topic else { return }
@@ -349,11 +349,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         guard let owner = UserController.shared.currentUser else { return }
         
+        sendMessageButtonTapped.isEnabled = false
+        
         ChatController.shared.addMessage(byUser: owner, toChat: chat, messageText: messageText) { (_) in
             DispatchQueue.main.async {
                 
                 self.tableView.reloadData()
-                
+                self.sendMessageButtonTapped.isEnabled = true
                 self.scrollToLastRow()
                 
             }
