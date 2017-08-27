@@ -87,7 +87,7 @@ class SlideMenuController: UIPresentationController {
                        withParentContainerSize parentSize: CGSize) -> CGSize {
         switch direction {
         case .left, .right:
-            return CGSize(width: parentSize.width*(2.0/3.0), height: parentSize.height)
+            return CGSize(width: parentSize.width-94.0, height: parentSize.height)
         case .bottom, .top:
             return CGSize(width: parentSize.width, height: parentSize.height*(2.0/3.0))
         }
@@ -99,7 +99,7 @@ private extension SlideMenuController {
     func setupDimmingView() {
         dimmingView = UIView()
         dimmingView.translatesAutoresizingMaskIntoConstraints = false
-        dimmingView.backgroundColor = UIColor.init(red: 193/255.0, green: 201/255.0, blue: 219/255.0, alpha: 0.5)
+        dimmingView.backgroundColor = UIColor.init(red: 193/255.0, green: 201/255.0, blue: 219/255.0, alpha: 0.65)
         dimmingView.alpha = 0.0
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         dimmingView.addGestureRecognizer(recognizer)

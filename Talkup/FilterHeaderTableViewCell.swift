@@ -51,8 +51,8 @@ class FilterHeaderTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        nowBgView.backgroundColor = Colors.primaryLightGray
-        topBgView.backgroundColor = Colors.primaryLightGray
+//        nowBgView.backgroundColor = Colors.primaryLightGray
+//        topBgView.backgroundColor = Colors.primaryLightGray
         
         if MessageController.shared.messagesFilterState == .live  {
             nowBottomBorderImageView.backgroundColor = Colors.alertOrange

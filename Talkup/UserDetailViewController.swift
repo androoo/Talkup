@@ -171,7 +171,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         currentUserChatBarImage.image = self.user?.photo
         currentUserChatBarImage.layer.cornerRadius = currentUserChatBarImage.frame.width / 2
         currentUserChatBarImage.layer.masksToBounds = true 
-        
+        navBarBgView.backgroundColor = .white
     }
     
     private func setup() {

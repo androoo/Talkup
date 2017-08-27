@@ -23,9 +23,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-FB-kVh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Jp-KH-zau">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Jp-KH-zau">
                                         <rect key="frame" x="22" y="48" width="86" height="86"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="86" id="b1c-BI-pTd"/>
@@ -56,29 +56,29 @@
                                     <constraint firstItem="4Jp-KH-zau" firstAttribute="top" secondItem="3eb-FB-kVh" secondAttribute="top" constant="48" id="Edo-Ok-eZ5"/>
                                     <constraint firstItem="xFR-5L-Ywz" firstAttribute="leading" secondItem="4Jp-KH-zau" secondAttribute="leading" id="Kvi-FQ-IJA"/>
                                     <constraint firstItem="4Jp-KH-zau" firstAttribute="leading" secondItem="3eb-FB-kVh" secondAttribute="leading" constant="22" id="XCQ-md-WyD"/>
-                                    <constraint firstAttribute="height" constant="250" id="XXm-HK-WYm"/>
+                                    <constraint firstAttribute="height" constant="220" id="XXm-HK-WYm"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-fB-8Aj">
-                                <rect key="frame" x="0.0" y="250" width="375" height="417"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="447"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuProfileCell" rowHeight="64" id="1Kq-Yg-BW1" customClass="MenuProfileTableViewCell" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="64"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuProfileCell" rowHeight="45" id="1Kq-Yg-BW1" customClass="MenuProfileTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Kq-Yg-BW1" id="oEc-22-bVQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cw9-sM-mOi">
-                                                    <rect key="frame" x="24" y="20.5" width="24" height="24"/>
+                                                    <rect key="frame" x="24" y="10.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="0TG-cw-nPC"/>
                                                         <constraint firstAttribute="width" constant="24" id="txI-V5-dDP"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nph-lk-5ju">
-                                                    <rect key="frame" x="56" y="22" width="42" height="21"/>
+                                                    <rect key="frame" x="56" y="12" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -97,22 +97,22 @@
                                             <segue destination="w7k-9a-KZy" kind="show" identifier="toMyProfile" id="Yva-A0-hYf"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuTopicsCell" rowHeight="64" id="uOh-kp-T8g" customClass="MenuTopicsTableViewCell" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="64"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuTopicsCell" rowHeight="45" id="uOh-kp-T8g" customClass="MenuTopicsTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="73" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uOh-kp-T8g" id="lNd-30-s2Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Fa-7Z-Y4d">
-                                                    <rect key="frame" x="24" y="20.5" width="24" height="24"/>
+                                                    <rect key="frame" x="24" y="10.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="FxT-qr-LXw"/>
                                                         <constraint firstAttribute="width" constant="24" id="tiW-2t-67g"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSE-li-yB0">
-                                                    <rect key="frame" x="56" y="22" width="42" height="21"/>
+                                                    <rect key="frame" x="56" y="12" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -131,22 +131,22 @@
                                             <segue destination="0xn-jx-xfj" kind="show" identifier="toMyTopics" id="1P4-hl-phu"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuHelpCell" rowHeight="64" id="2FM-ZV-xiy" customClass="MenuHelpTableViewCell" customModule="Talkup" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="156" width="375" height="64"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuHelpCell" rowHeight="45" id="2FM-ZV-xiy" customClass="MenuHelpTableViewCell" customModule="Talkup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="118" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FM-ZV-xiy" id="KWx-aV-y6h">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dIt-5T-j5V">
-                                                    <rect key="frame" x="24" y="20.5" width="24" height="24"/>
+                                                    <rect key="frame" x="24" y="10.5" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="Koj-eZ-E3V"/>
                                                         <constraint firstAttribute="height" constant="24" id="ZnC-jO-rSf"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86M-x1-MSi">
-                                                    <rect key="frame" x="56" y="22" width="42" height="21"/>
+                                                    <rect key="frame" x="56" y="12" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

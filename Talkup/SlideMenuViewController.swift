@@ -62,6 +62,10 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
+    }
+    
     
     //MARK: - View Lifecycle
     
@@ -77,7 +81,7 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         nameLabel.textColor = Colors.primaryDark
         userNameLabel.text = user.email
         userNameLabel.textColor = Colors.primaryDarkGray
-        
+        nameLabel.font = UIFont(name: "ArialRoundedMTBold", size: 36)
         
     }
     

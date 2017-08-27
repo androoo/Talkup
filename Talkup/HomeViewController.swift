@@ -28,6 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var navBarElementsTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainSearchToNavBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainSearchTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainNavFilterIcon: UIImageView!
     
     
     
@@ -419,18 +420,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let trendingAction = UIAlertAction(title: "Trending", style: .default) { (_) in
             self.feedType = .trending
             self.navBarChatFilterLabel.text = "Trending"
+            self.mainNavFilterIcon.image = nil
             self.tableView.reloadData()
             completion()
         }
         let followingAction = UIAlertAction(title: "Following", style: .default) { (_) in
             self.feedType = .following
             self.navBarChatFilterLabel.text = "Following"
+            self.mainNavFilterIcon.image = nil
             self.tableView.reloadData()
             completion()
         }
         let recentAction = UIAlertAction(title: "Recent", style: .default) { (_) in
             self.feedType = .recent
             self.navBarChatFilterLabel.text = "Recent"
+            self.mainNavFilterIcon.image = nil
             self.tableView.reloadData()
             completion()
         }
