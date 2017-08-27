@@ -65,6 +65,7 @@ extension CustomTransitionAnimator: UIViewControllerAnimatedTransitioning {
         let animationDuration = transitionDuration(using: transitionContext)
         
         if presenting {
+            
             modalInitialFrame.origin.x += modalInitialFrame.width
             navigationBarFinalFrame.origin.x -= navigationBarFinalFrame.width
             contentFinalFrame.origin.x -= contentFinalFrame.width / 3.0
@@ -74,12 +75,14 @@ extension CustomTransitionAnimator: UIViewControllerAnimatedTransitioning {
             containerView.insertSubview(navigationBarSnapshot!, aboveSubview: (presentingViewController?.view)!)
             
         } else {
+            
             modalFinalFrame.origin.x += modalFinalFrame.width
             navigationBarInitialFrame.origin.x -= navigationBarInitialFrame.width
             contentInitialFrame.origin.x -= contentInitialFrame.width / 3.0
             
             containerView.insertSubview(navigationBarSnapshot!, aboveSubview: (presentedViewController?.view)!)
             containerView.insertSubview(contentSnapshot!, belowSubview: (presentedViewController?.view)!)
+            
         }
         
         presentedViewController?.view.frame = modalInitialFrame

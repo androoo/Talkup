@@ -23,6 +23,7 @@ class SlideMenuController: UIPresentationController {
         
         //2
         switch direction {
+            
         case .right:
             frame.origin.x = containerView!.frame.width*(1.0/3.0)
         case .bottom:
@@ -30,6 +31,7 @@ class SlideMenuController: UIPresentationController {
         default:
             frame.origin = .zero
         }
+        
         return frame
     }
     
