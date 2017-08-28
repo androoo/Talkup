@@ -87,7 +87,7 @@ class SlideMenuController: UIPresentationController {
                        withParentContainerSize parentSize: CGSize) -> CGSize {
         switch direction {
         case .left, .right:
-            return CGSize(width: parentSize.width-94.0, height: parentSize.height)
+            return CGSize(width: parentSize.width-80.0, height: parentSize.height)
         case .bottom, .top:
             return CGSize(width: parentSize.width, height: parentSize.height*(2.0/3.0))
         }
