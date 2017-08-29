@@ -21,6 +21,7 @@ class User: CloudKitSyncable {
     var directMessages: [Message]
     var following: [CKReference]?
     var unreadMessages: [Message]?
+    var unreadReferences: [CKReference]?
     var blocked: [CKReference]?
     var defaultUserReference: CKReference
     var cloudKitRecordID: CKRecordID?
@@ -34,7 +35,7 @@ class User: CloudKitSyncable {
     var accessCode: String?
     
     
-    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], directMessages: [Message] = [], following: [CKReference] = [], blocked: [CKReference] = [], users: [User] = [], defaultUserReference: CKReference, authorized: Bool = false, accessCode: String? = nil) {
+    init(userName: String, email: String, photoData: Data?, chats: [Chat] = [], messages: [Message] = [], directMessages: [Message] = [], following: [CKReference] = [], unread: [CKReference] = [], blocked: [CKReference] = [], users: [User] = [], defaultUserReference: CKReference, authorized: Bool = false, accessCode: String? = nil) {
         self.userName = userName
         self.email = email
         self.photoData = photoData
@@ -42,6 +43,7 @@ class User: CloudKitSyncable {
         self.messages = messages
         self.directMessages = directMessages
         self.following = following
+        self.unreadReferences = unread
         self.blocked = blocked
         self.users = users
         self.defaultUserReference = defaultUserReference
@@ -64,6 +66,7 @@ class User: CloudKitSyncable {
         
         let photoData = try? Data(contentsOf: photoAsset.fileURL)
         self.init(userName: userName, email: email, photoData: photoData, defaultUserReference: defaultUserRef, authorized: authorized, accessCode: accessCode)
+        self.unreadReferences = cloudKitRecord[Constants.unreadMessagesReferenceKey] as? [CKReference] ?? []
         self.following = cloudKitRecord[Constants.followingReferenceKey] as? [CKReference] ?? []
         self.blocked = cloudKitRecord[Constants.blockedReferenceKey] as? [CKReference] ?? []
         self.defaultUserReference = defaultUserRef
@@ -100,10 +103,12 @@ extension CKRecord {
         self[Constants.userReferenceKey] = user.defaultUserReference
         
         guard let blocked = user.blocked,
-            let following = user.following else { return }
+            let following = user.following,
+            let unread = user.unreadReferences else { return }
         
         self.setValue(following, forKey: Constants.followingReferenceKey)
         self.setValue(blocked, forKey: Constants.blockedReferenceKey)
+        self.setValue(unread, forKey: Constants.unreadMessagesReferenceKey)
     }
 }
 

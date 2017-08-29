@@ -26,6 +26,7 @@ struct Constants {
     static let userEmailKey = "email"
     static let userReferenceKey = "userReference"
     static let followingReferenceKey = "followingReference"
+    static let unreadMessagesReferenceKey = "unreadReference"
     static let blockedReferenceKey = "blockedReference"
     static let unreadKey = "unread"
     static let authorized = "authorized"

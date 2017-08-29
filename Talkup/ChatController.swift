@@ -208,18 +208,17 @@ class ChatController {
     
     func badgeUnreadMessage(forUser user: User, andChat chat: Chat, withMessage message: Message) {
         
-        // anytime a new message is created
         fetchFollowersFor(chat: chat) { (users) in
             
             guard let users = users else { return }
             
             for user in users {
+                // adds the message to the User's local property
                 user.unreadMessages?.append(message)
+                UserController.shared.addUnreadMessage(toUser: user, message: message)
             }
             
         }
-        // find all users who follow parent chat
-        // add unread message to users unread property
         
     }
     

@@ -150,6 +150,42 @@ class UserController {
         }
     }
     
+    // add unread message CKRef 
+    
+    func addUnreadMessage(toUser user: User, message: Message, completion: @escaping () -> Void = {_ in}) {
+        
+        guard let userID = user.cloudKitRecordID,
+            let unreadMessage = message.cloudKitRecordID else { return }
+        
+        cloudKitManager.fetchRecord(withID: userID) { (record, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion()
+            } else if let record = record {
+                
+                let reference = CKReference(recordID: unreadMessage, action: .none)
+                
+                if user.unreadReferences == nil {
+                    user.unreadReferences = [reference]
+                } else {
+                    user.unreadReferences?.append(reference)
+                }
+                
+                guard let unreadMessageReferences = user.unreadReferences else { return }
+                
+                record.setValue(unreadMessageReferences, forKey: Constants.unreadMessagesReferenceKey)
+                self.cloudKitManager.saveRecord(record, completion: { (record, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        completion()
+                    } else {
+                        print("adding unread message success")
+                        completion() 
+                    }
+                })
+            }
+        }
+    }
     
     
     // Follow Chat
