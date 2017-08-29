@@ -106,7 +106,7 @@ class ChatController {
                             
                             followingChats.append(chat)
                             followingChats = followingChats.sorted { return $0.timestamp.compare($1.timestamp as Date) == .orderedDescending}
-                            newMessagesCheck()
+                            
                         }
                     }
                 }
@@ -118,7 +118,6 @@ class ChatController {
                 
             })
         }
-        
     }
     
     func popupateRecentChats() {
@@ -165,43 +164,18 @@ class ChatController {
     
     func newMessagesCheck() {
         
-        loadFromUserDefaults()
-        
-        // then we match the chat name's and check if any of their child messages were created after the last visit.
+        guard let currentUser = UserController.shared.currentUser else { return }
         
         for (index, chat) in followingChats.enumerated() {
-            for chatLog in chatLastVisitLog {
-                if chatLog.key == chat.cloudKitRecordID?.recordName {
-                    for message in chat.messages {
-                        let messageCreationStamp = ChatController.shared.createTimeStamp(theDate: message.timestamp)
-                        
-                        if messageCreationStamp > chatLog.value {
-                            unreadMessages.append(message)
-                            chat.unreadMessages.append(message)
-                            followingChats.remove(at: index)
-                            followingChats.insert(chat, at: 0)
-                        }
-                        
-                    }
-                }
-            }
-        }
-    }
-    
-    func loadFromUserDefaults() {
-        let userDefaults = UserDefaults.standard
-        var chatsVisitLog = [String:String]()
-        
-        for chat in chats {
-            guard let recordName = chat.cloudKitRecordID?.recordName else { return }
             
-            let chatsLastVisit = userDefaults.object(forKey: recordName)
-            if let date = chatsLastVisit {
-                let chatTimestamp = "\(ChatController.shared.createTimeStamp(theDate: date as! Date))"
-                chatsVisitLog[recordName] = chatTimestamp
+            for message in currentUser.unreadMessages! {
+            
+                if message.chatReference == chat.chatReference {
+                    chat.unreadMessages.append(message)
+                }
+                
             }
         }
-        chatLastVisitLog = chatsVisitLog
     }
     
     // Process new unread message
@@ -217,9 +191,7 @@ class ChatController {
                 user.unreadMessages?.append(message)
                 UserController.shared.addUnreadMessage(toUser: user, message: message)
             }
-            
         }
-        
     }
     
     
@@ -252,6 +224,8 @@ class ChatController {
             }
         }
     }
+    
+    
     
     func fetchFollowersFor(chat: Chat, completion: @escaping ([User]?) -> Void) {
         
@@ -484,7 +458,6 @@ class ChatController {
                     MessageController.shared.fetchMessagesIn(chats: chatsFollowed, completion: {
                         // this populates the followed chat's messages. We need to see if any messages are new.
                         
-                        self.newMessagesCheck()
                         
                     })
                     
@@ -610,6 +583,9 @@ class ChatController {
             }
         }
     }
+    
+
+    
     
     func checkSubscriptionTo(chat: Chat, completion: @escaping ((_ subscribed: Bool) -> Void ) = { _ in }) {
         

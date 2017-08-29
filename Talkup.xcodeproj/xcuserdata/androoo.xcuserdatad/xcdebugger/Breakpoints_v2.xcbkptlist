@@ -10,61 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/ChatController.swift"
-            timestampString = "525710789.420617"
+            timestampString = "525720760.842244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "badgeUnreadMessage(forUser:andChat:withMessage:)"
+            startingLineNumber = "564"
+            endingLineNumber = "564"
+            landmarkName = "fetchFollowingChatsForUser(user:completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatController.swift"
-            timestampString = "525710789.420617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "badgeUnreadMessage(forUser:andChat:withMessage:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Talkup.ChatController.badgeUnreadMessage (forUser : Talkup.User, andChat : Talkup.Chat, withMessage : Talkup.Message) -&gt; ()"
-                  moduleName = "Talkup"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatController.swift"
-                  timestampString = "525709041.056771"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "212"
-                  endingLineNumber = "212"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Talkup.ChatController.(badgeUnreadMessage (forUser : Talkup.User, andChat : Talkup.Chat, withMessage : Talkup.Message) -&gt; ()).(closure #1)"
-                  moduleName = "Talkup"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatController.swift"
-                  timestampString = "525709041.059563"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "214"
-                  endingLineNumber = "214"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

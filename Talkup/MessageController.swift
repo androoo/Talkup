@@ -85,6 +85,26 @@ class MessageController {
         }
     }
     
+    func fetchNewMessages(messages: [CKReference], completion: @escaping () -> Void) {
+        let messageReferences = messages
+        let predicate = NSPredicate(format: "recordID IN %@", messageReferences)
+        let query = CKQuery(recordType: Constants.messagetypeKey, predicate: predicate)
+        cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion()
+            } else {
+                guard let records = records else { completion(); return }
+                let messages = records.flatMap({Message(cloudKitRecord: $0)})
+                UserController.shared.currentUser?.unreadMessages = messages
+                ChatController.shared.newMessagesCheck()
+                completion()
+            }
+        }
+    }
+    
+    
+    
     
     // Set Message Owner
     

@@ -123,10 +123,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
     @IBAction func profileButtonTapped(_ sender: Any) { }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let currenctUser = UserController.shared.currentUser else { return }
+        guard let currenctUser = UserController.shared.currentUser,
+        let unreadMessages = UserController.shared.currentUser?.unreadReferences else { return }
+        
+        MessageController.shared.fetchNewMessages(messages: unreadMessages, completion: {
+            
+        })
         
         self.tableView.addSubview(self.refreshControl)
         setupSearchController()
@@ -138,6 +148,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchTransition.dismissCompletion = {
             self.tableView.isHidden = false
         }
+        
+        guard let unreads = currenctUser.unreadReferences else { return }
+        
         
         navigationController?.navigationBar.isHidden = true
         
