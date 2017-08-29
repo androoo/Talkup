@@ -351,9 +351,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         sendMessageButtonTapped.isEnabled = false
         
-        ChatController.shared.addMessage(byUser: owner, toChat: chat, messageText: messageText) { (_) in
+        ChatController.shared.addMessage(byUser: owner, toChat: chat, messageText: messageText) { (message) in
             DispatchQueue.main.async {
                 
+                ChatController.shared.badgeUnreadMessage(forUser: owner, andChat: chat, withMessage: message)
                 self.tableView.reloadData()
                 self.sendMessageButtonTapped.isEnabled = true
                 self.scrollToLastRow()

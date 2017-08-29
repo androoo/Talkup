@@ -20,6 +20,7 @@ class User: CloudKitSyncable {
     var messages: [Message]
     var directMessages: [Message]
     var following: [CKReference]?
+    var unreadMessages: [Message]?
     var blocked: [CKReference]?
     var defaultUserReference: CKReference
     var cloudKitRecordID: CKRecordID?

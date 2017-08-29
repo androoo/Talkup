@@ -46,9 +46,6 @@ class FollowingChatTableViewCell: UITableViewCell {
         creatorImageView.image = chat.creator?.photo
         chatTitleLabel.text = chat.topic
         
-        
-        
-        
         creatorImageView.layer.cornerRadius = creatorImageView.frame.width / 2
         creatorImageView.clipsToBounds = true
         

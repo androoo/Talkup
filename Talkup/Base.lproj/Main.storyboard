@@ -1286,14 +1286,14 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" highlightedImage="profileSmile" translatesAutoresizingMaskIntoConstraints="NO" id="ZaH-OO-Djp">
-                                        <rect key="frame" x="18" y="26" width="45" height="45"/>
+                                        <rect key="frame" x="18" y="33.5" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="0wW-IF-V2b"/>
-                                            <constraint firstAttribute="height" constant="45" id="STf-wc-7E9"/>
+                                            <constraint firstAttribute="width" constant="30" id="0wW-IF-V2b"/>
+                                            <constraint firstAttribute="height" constant="30" id="STf-wc-7E9"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXI-yd-EAI">
-                                        <rect key="frame" x="14" y="22" width="53" height="53"/>
+                                        <rect key="frame" x="14" y="29.5" width="38" height="38"/>
                                         <connections>
                                             <action selector="profileButtonTapped:" destination="Q4K-Y1-ARG" eventType="touchUpInside" id="Mah-B3-T2g"/>
                                             <segue destination="L3l-l5-Yw8" kind="presentation" identifier="slideMenu" id="sLS-K5-lfJ"/>
