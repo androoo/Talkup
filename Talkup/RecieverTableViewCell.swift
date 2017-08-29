@@ -27,6 +27,12 @@ class RecieverTableViewCell: UITableViewCell {
         }
     }
     
+    var unread: Bool? = false {
+        didSet {
+            messageUnreadAppearance()
+        }
+    }
+    
     var voteButtonState: VoteButtonState?
     
     //MARK: - Delegate
@@ -35,6 +41,9 @@ class RecieverTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var unreadMessageIndicatorLabel: UILabel!
+    @IBOutlet weak var unreadSepLeft: UIImageView!
+    @IBOutlet weak var unreadSepRight: UIImageView!
     
     @IBOutlet weak var chatMessageLabel: UITextView!
     @IBOutlet weak var messageBackground: UIImageView!
@@ -143,6 +152,22 @@ class RecieverTableViewCell: UITableViewCell {
         messageBg.layer.cornerRadius = 15
         messageBg.clipsToBounds = true
         
+    }
+    
+    private func messageUnreadAppearance() {
+        if unread == false {
+            unreadMessageIndicatorLabel.isHidden = true
+            unreadSepLeft.isHidden = true
+            unreadSepRight.isHidden = true
+        } else {
+            unreadMessageIndicatorLabel.isHidden = false
+            unreadSepLeft.isHidden = false
+            unreadSepRight.isHidden = false
+            unreadMessageIndicatorLabel.text = "New"
+            unreadMessageIndicatorLabel.textColor = Colors.badgeOrange
+            unreadSepRight.backgroundColor = Colors.badgeOrange
+            unreadSepLeft.backgroundColor = Colors.badgeOrange
+        }
     }
     
     private func updateViews() {

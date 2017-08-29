@@ -187,6 +187,51 @@ class UserController {
         }
     }
     
+    func removeUnreadMessage(fromUser user: User, message: Message, completion: @escaping () -> Void = {_ in}) {
+        
+        guard let userID = user.cloudKitRecordID,
+            let unreadMessage = message.cloudKitRecordID else { return }
+        
+        cloudKitManager.fetchRecord(withID: userID) { (record, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                completion()
+            }
+            
+            else if let record = record {
+                let reference = CKReference(recordID: unreadMessage, action: .none)
+                guard let unreadMessages = user.unreadReferences else { return }
+                
+                for (index, message) in unreadMessages.enumerated() {
+                    if message.recordID == reference {
+                        user.unreadReferences?.remove(at: index)
+                        record.setValue(user.unreadReferences, forKey: Constants.unreadMessagesReferenceKey)
+                    }
+                }
+                
+                for (index, message) in (user.unreadMessages?.enumerated())! {
+                    if unreadMessage == message.cloudKitRecordID {
+                        user.unreadMessages?.remove(at: index)
+                    }
+                }
+                
+                let modifyRecords = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+                modifyRecords.savePolicy = CKRecordSavePolicy.allKeys
+                modifyRecords.qualityOfService = QualityOfService.userInitiated
+                modifyRecords.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+                    
+                    if error == nil {
+                        print("Unread Message CKRef removed from User Unread List")
+                    } else {
+                        print(error?.localizedDescription)
+                    }
+                }
+                self.cloudKitManager.publicDatabase.add(modifyRecords)
+            }
+        }
+    }
+    
     
     // Follow Chat
     

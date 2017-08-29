@@ -22,7 +22,6 @@ class ChatController {
     static let shared = ChatController()
     
     let cloudKitManager: CloudKitManager
-    var currentUser: User?
     var isSyncing: Bool = false
     
     var chats = [Chat]() {

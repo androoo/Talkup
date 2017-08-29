@@ -350,6 +350,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 chat.isDismisable = false
                 detailViewController.chat = chat
                 
+                
             }
         } else if segue.identifier == "toFollowingDetail" {
             

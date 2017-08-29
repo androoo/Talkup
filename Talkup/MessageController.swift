@@ -171,7 +171,6 @@ class MessageController {
 
         let record = CKRecord(message: message)
         
-        
             cloudKitManager.modifyRecords([record], perRecordCompletion: nil) { (records, error) in
                 if let error = error {
                     print(error.localizedDescription)

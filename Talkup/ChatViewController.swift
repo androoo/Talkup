@@ -159,13 +159,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let name = chat?.topic else { return }
+        
         self.tableView.addSubview(self.refreshControl)
         self.navigationController?.navigationBar.isHidden = true
         tableView.backgroundColor = .white
         navBarViewBgView.backgroundColor = Colors.navbarGray
         mainNavBottomSep.backgroundColor = Colors.primaryLightGray
         
-        guard let name = chat?.topic else { return }
         inputTextField.delegate = self
         updateViews()
         customize()
@@ -179,24 +180,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        
     }
     
-    // set timeOfLastVisit property to now
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         //set value of current date to key of chat's recordID.recordName in user defaults
         
-        guard let recordName = chat?.cloudKitRecordID?.recordName else { return }
+        guard let recordName = chat?.cloudKitRecordID?.recordName,
+         let user = UserController.shared.currentUser else { return }
         
-        let defaults = UserDefaults.standard
-
-        defaults.set(Date(), forKey: "\(recordName)")
+        guard let message = chat?.unreadMessages.first else { return }
         
         chat?.unreadMessages = []
-        
+        UserController.shared.removeUnreadMessage(fromUser: user, message: message)
         
     }
     
@@ -283,7 +281,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         default:
             
-            
             let message = messages[indexPath.row]
             
             guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
@@ -303,8 +300,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 cell.backgroundColor = .clear
                 
+                
                 cell.delegate = self
                 cell.message = message
+                
+                for item in (chat?.unreadMessages)! {
+                    if item.cloudKitRecordID == message.cloudKitRecordID {
+                        cell.unread = true
+                    }
+                }
                 
                 return cell
                 
@@ -567,7 +571,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             confirmAlertController.addAction(confirmAction)
             confirmAlertController.addAction(cancelAction)
             self.present(confirmAlertController, animated: true, completion: nil)
-            
             
         }
         

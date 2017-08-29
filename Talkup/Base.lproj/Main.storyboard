@@ -622,18 +622,44 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nim-w2-3Ze">
+                                                    <rect key="frame" x="169.5" y="0.0" width="36" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="INh-Y4-Imo">
+                                                    <rect key="frame" x="16" y="8" width="146" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="ypv-lW-ww4"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kEv-HG-jfF">
+                                                    <rect key="frame" x="213.5" y="8" width="153.5" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="qhF-l1-kqf"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="OVU-rg-lpJ" firstAttribute="height" secondItem="dsC-AP-loH" secondAttribute="height" constant="12" id="37d-hN-Bme"/>
                                                 <constraint firstItem="Px1-E6-mxH" firstAttribute="leading" secondItem="qDu-D1-OLf" secondAttribute="leading" id="E2T-bM-tkY"/>
+                                                <constraint firstItem="kEv-HG-jfF" firstAttribute="centerY" secondItem="nim-w2-3Ze" secondAttribute="centerY" id="Jb3-Mh-754"/>
+                                                <constraint firstItem="INh-Y4-Imo" firstAttribute="centerY" secondItem="nim-w2-3Ze" secondAttribute="centerY" id="LbB-gf-9XH"/>
                                                 <constraint firstItem="OVU-rg-lpJ" firstAttribute="bottom" secondItem="qDu-D1-OLf" secondAttribute="bottom" id="OzH-AK-qAw"/>
+                                                <constraint firstItem="nim-w2-3Ze" firstAttribute="centerX" secondItem="UJJ-qm-m9g" secondAttribute="centerX" id="QK3-7H-J3I"/>
+                                                <constraint firstItem="nim-w2-3Ze" firstAttribute="top" secondItem="UJJ-qm-m9g" secondAttribute="top" id="SmM-02-CMg"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Px1-E6-mxH" secondAttribute="bottom" id="TBS-W4-7Ad"/>
                                                 <constraint firstItem="OVU-rg-lpJ" firstAttribute="width" secondItem="dsC-AP-loH" secondAttribute="width" constant="10" id="Zvm-Qw-uQo"/>
                                                 <constraint firstItem="OVU-rg-lpJ" firstAttribute="centerY" secondItem="dsC-AP-loH" secondAttribute="centerY" id="aJT-5S-16e"/>
+                                                <constraint firstItem="nim-w2-3Ze" firstAttribute="leading" secondItem="INh-Y4-Imo" secondAttribute="trailing" constant="8" id="buA-kX-MAJ"/>
                                                 <constraint firstItem="qDu-D1-OLf" firstAttribute="bottom" secondItem="Px1-E6-mxH" secondAttribute="top" constant="-6" id="gQ8-d9-LPu"/>
                                                 <constraint firstItem="OVU-rg-lpJ" firstAttribute="leading" secondItem="qDu-D1-OLf" secondAttribute="trailing" constant="8" id="gWU-qX-wm8"/>
                                                 <constraint firstItem="OVU-rg-lpJ" firstAttribute="centerX" secondItem="dsC-AP-loH" secondAttribute="centerX" id="hoY-J9-YNz"/>
+                                                <constraint firstItem="kEv-HG-jfF" firstAttribute="leading" secondItem="nim-w2-3Ze" secondAttribute="trailing" constant="8" id="qRx-9S-er4"/>
+                                                <constraint firstAttribute="trailing" secondItem="kEv-HG-jfF" secondAttribute="trailing" constant="8" id="rT2-OF-aW4"/>
                                                 <constraint firstItem="qDu-D1-OLf" firstAttribute="leading" secondItem="UJJ-qm-m9g" secondAttribute="leadingMargin" constant="8" id="t7K-2n-8CH"/>
+                                                <constraint firstItem="INh-Y4-Imo" firstAttribute="leading" secondItem="UJJ-qm-m9g" secondAttribute="leadingMargin" constant="8" id="tuy-HS-hzQ"/>
                                                 <constraint firstItem="dsC-AP-loH" firstAttribute="top" secondItem="UJJ-qm-m9g" secondAttribute="topMargin" constant="13" id="yeV-jr-x1X"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -645,6 +671,9 @@
                                             <outlet property="messageBackground" destination="OVU-rg-lpJ" id="Dv4-i2-J5p"/>
                                             <outlet property="messageScoreLabel" destination="2Vp-G4-b6C" id="uzo-k0-uNu"/>
                                             <outlet property="timestampLabel" destination="qIs-IH-EIu" id="8um-iB-uni"/>
+                                            <outlet property="unreadMessageIndicatorLabel" destination="nim-w2-3Ze" id="anH-d4-pv8"/>
+                                            <outlet property="unreadSepLeft" destination="INh-Y4-Imo" id="aJj-z4-R0h"/>
+                                            <outlet property="unreadSepRight" destination="kEv-HG-jfF" id="VUx-C5-xtQ"/>
                                             <outlet property="userActionsButton" destination="x4h-HS-Psy" id="5CC-wD-UKW"/>
                                             <outlet property="userAvatarImageView" destination="5fU-F6-tPU" id="OPh-nG-0F6"/>
                                             <outlet property="usernameButton" destination="qUc-Vd-52h" id="Pqf-bJ-ba9"/>
