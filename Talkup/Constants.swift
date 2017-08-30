@@ -17,6 +17,7 @@ struct Constants {
     static let toHome = "toHome"
     static let toProfile = "toProfile"
     static let toChatDetail = "toChatDetail"
+    static let toUserDetail = "toUserDetail"
         
     //MARK: - User Keys
     
@@ -55,6 +56,14 @@ struct Constants {
     static let textKey = "text"
     static let blockedKey = "blocked"
     static let scoreKey = "score"
+    
+    
+    //MARK: - Custom Cell Types 
+    
+    static let chatFilterHeaderKey = "headerViewCell"
+    static let chatHeaderCellKey = "headerCell"
+    static let sentMessageKey = "senderCell"
+    static let recievedMessageKey = "recieverCell"
     
     
    

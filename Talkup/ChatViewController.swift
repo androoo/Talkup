@@ -9,8 +9,8 @@
 import UIKit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RecieverTableViewCellDelegate, filterHeaderDelegate, ChatHeaderDelegate, UINavigationControllerDelegate {
-
-    //MARK: - Outlets
+    
+    //MARK: - Navbar Outlets
     
     @IBOutlet weak var navBarViewBgView: UIView!
     @IBOutlet weak var sendMessageButtonTapped: UIButton!
@@ -18,14 +18,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var mainNavBottomSep: UIImageView!
     
     
-    //MARK: - Properties
+    //MARK: - Main Properties
     @IBOutlet var tableView: UITableView!
     
     var followButton: FollowingButton?
     
     var chat: Chat? {
         didSet {
-//            updateViews()
+            //TODO: - update specific elements
         }
     }
     
@@ -35,12 +35,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // custom VC Transition for username clicked
     lazy var customTransitioningDelegate = CustomPushTransitionController()
+    
+    // for scroll animating the top cell
     var heroChatCell: ChatHeaderTableViewCell?
     
     var messageSortSelection: MessageSort = .live
     
+    // stores time User last visited a chat to Userdefaults
     var timeOfLastVisit: Date?
+    
     
     // refresh stored property
     
@@ -56,20 +61,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }()
     
+    
     //MARK: - UIActions
     
     @IBAction func moreButtonTapped(_ sender: Any) {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
-            // TODO - share stuff
+            // TODO: - share stuff
         }
         
         let reportAction = UIAlertAction(title: "Report", style: .default) { (_) in
-            // TODO - report abuse
+            // TODO: - report abuse
         }
         
         alertController.addAction(cancelAction)
@@ -80,13 +84,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-
+    
     @IBAction func messageTextFieldEditingChanged(_ sender: Any) {
         guard inputTextField.text != "" else { sendMessageButtonTapped.isEnabled = false; return }
         sendMessageButtonTapped.isEnabled = true
-        
     }
     
+    
+    // sort messages depending on filter enum state
     
     var messages: [Message] {
         
@@ -99,6 +104,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
+    
+    
+    // setup core UI component elements outside of updateviews
     
     private func setup() {
         
@@ -121,6 +129,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let group = DispatchGroup()
         
         group.enter()
+        
+        // Populate messages inside of chat, set each message's owner, hide any blocked content
         
         MessageController.shared.fetchMessagesIn(chat: chat) {
             group.enter()
@@ -146,7 +156,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         setup()
         tableView.reloadData()
         
@@ -186,10 +196,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        //set value of current date to key of chat's recordID.recordName in user defaults
+        // set all messages to read
         
         guard let recordName = chat?.cloudKitRecordID?.recordName,
-         let user = UserController.shared.currentUser else { return }
+            let user = UserController.shared.currentUser else { return }
         
         guard let message = chat?.unreadMessages.first else { return }
         
@@ -201,16 +211,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: Notifications
     
     func chatMessagesChanged(_ notification: Notification) {
-
         tableView.reloadData()
-        
     }
     
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -222,7 +229,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // Animate chat bubble coming into view
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        // TODO: - there is a loading bug sometimes
         
         if indexPath.section != 0 {
             if tableView.isDragging {
@@ -235,7 +246,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    // Filter header stuff
+    // Chat Filter view for section header
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -243,7 +254,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             return nil
         default:
-            guard let header = tableView.dequeueReusableCell(withIdentifier: "headerViewCell") as? FilterHeaderTableViewCell else { return FilterHeaderTableViewCell() }
+            guard let header = tableView.dequeueReusableCell(withIdentifier: Constants.chatFilterHeaderKey) as? FilterHeaderTableViewCell else { return FilterHeaderTableViewCell() }
             
             header.delegate = self
             
@@ -262,14 +273,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    // set up the cells 
+    // set up the cells
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
+            
+        // Set up Title TV Cell
+            
         case 0:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as? ChatHeaderTableViewCell else { return ChatHeaderTableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.chatHeaderCellKey, for: indexPath) as? ChatHeaderTableViewCell else { return ChatHeaderTableViewCell() }
             
             cell.chat = chat
             cell.backgroundColor = Colors.primaryLightGray
@@ -279,6 +293,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             return cell
             
+        // Default falls to chat bubble type TV Cells
+            
         default:
             
             let message = messages[indexPath.row]
@@ -286,20 +302,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
             
             
+            // Check if message owner is currentUser
+            
             if owner.cloudKitRecordID == currentUser.cloudKitRecordID {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderCell", for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.sentMessageKey, for: indexPath) as? SenderTableViewCell else { return SenderTableViewCell() }
                 
                 cell.message = message
-                
                 cell.backgroundColor = .clear
                 
                 return cell
                 
+                
+            // Else it is a message from someone else
+                
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "recieverCell", for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.recievedMessageKey, for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
                 
                 cell.backgroundColor = .clear
-                
                 cell.delegate = self
                 cell.message = message
                 
@@ -341,7 +360,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.currentUserAvatarInputImageView.image = UserController.shared.currentUser?.photo
         self.currentUserAvatarInputImageView.layer.cornerRadius = currentUserAvatarInputImageView.layer.frame.width / 2
-        self.currentUserAvatarInputImageView.layer.masksToBounds = true 
+        self.currentUserAvatarInputImageView.layer.masksToBounds = true
     }
     
     
@@ -385,7 +404,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    //MARK: - Input bar container view 
+    //MARK: - Input bar container view
     
     // inputBar Properties
     @IBOutlet var inputBar: UIView!
@@ -405,6 +424,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     let barHeight: CGFloat = 65
+    
     
     //MARK: - Scrolling UX
     
@@ -473,7 +493,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         present(confirmAlertController, animated: true, completion: nil)
     }
     
-    //MARK: - Filter Header Delegate 
+    
+    //MARK: - Filter Header Delegate
     
     func nowSortButtonClicked(selected: Bool, filterHeader: FilterHeaderTableViewCell) {
         messageSortSelection = .live
@@ -502,30 +523,30 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
-    //MARK: - Chat Header Delegate 
+    
+    //MARK: - Chat Header Delegate
     
     func followButtonPressed() {
         
         guard let chat = chat,
             let user = UserController.shared.currentUser else { return }
         
-//        ChatController.shared.followMessagesIn(chat: chat)
+        //  ChatController.shared.followMessagesIn(chat: chat)
         
         if followButton == .active {
             
             UserController.shared.unFollowChat(forUser: user, chat: chat)
-            
             followButton = .resting
+            
         } else {
             
             UserController.shared.followChat(Foruser: user, chat: chat)
-            
             followButton = .active
             
         }
         
         ChatController.shared.toggleSubscriptionTo(chatNammed: chat) { (success, subscribed, error) in
-
+            
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -536,7 +557,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    //MARK: - Message Recieved Cell Delegate
+    
+    //MARK: - Recieved Message Cell Delegate
     
     func reportAbuse(_ sender: RecieverTableViewCell) {
         
@@ -585,6 +607,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    // Handle vote button tapped
+    
     func toggleVoteCount(_ sender: RecieverTableViewCell) {
         
         guard let message = sender.message else { return }
@@ -605,6 +629,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
     // send the user to the User Detail
     
     var user: User?
@@ -612,7 +637,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "toUserDetail" {
+        if segue.identifier == Constants.toUserDetail {
             guard let user = self.user,
                 let chat = self.directChat
                 else { return }
@@ -642,10 +667,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 self.directChat = chat
                 self.user = user
-                self.performSegue(withIdentifier: "toUserDetail", sender: nil)
+                self.performSegue(withIdentifier: Constants.toUserDetail, sender: nil)
             }
         })
-        
     }
 }
 
@@ -653,7 +677,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 //MARK: - Pull to refresh
 
 extension ChatViewController {
-    
     
     func handleRefresh(_ refreshControl: UIRefreshControl) {
         

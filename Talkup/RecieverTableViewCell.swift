@@ -8,7 +8,7 @@
 
 import UIKit
 
-//MARK: - Protocol
+//MARK: - Recieved Chat Protocol
 
 protocol RecieverTableViewCellDelegate {
     func toggleVoteCount(_ sender: RecieverTableViewCell)
@@ -19,7 +19,7 @@ protocol RecieverTableViewCellDelegate {
 
 class RecieverTableViewCell: UITableViewCell {
     
-    //MARK: - Properties
+    //MARK: - Main Properties
     
     var message: Message? {
         didSet {
@@ -27,7 +27,6 @@ class RecieverTableViewCell: UITableViewCell {
         }
     }
     
-    var firstUnread: Bool? = false
     var unread: Bool? = false {
         didSet {
             messageUnreadAppearance()
@@ -47,26 +46,20 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var unreadSepLeft: UIImageView!
     @IBOutlet weak var unreadSepRight: UIImageView!
     @IBOutlet weak var newMessageIndicatorTopConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var chatMessageLabel: UITextView!
     @IBOutlet weak var messageBackground: UIImageView!
-    
     @IBOutlet weak var messageScoreLabel: UILabel!
     @IBOutlet weak var userAvatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var usernameButton: UIButton!
-    
     @IBOutlet weak var flagIcon: UIButton!
-    
     @IBOutlet weak var voteButtonView: UIView!
-
     @IBOutlet weak var voteButton: UIButton!
     @IBOutlet weak var buttonVoteCountLabel: UILabel!
     @IBOutlet weak var buttonVoteArrow: UIImageView!
-    
     @IBOutlet weak var userActionsButton: UIButton!
-
+    
     @IBAction func userActionsButtonTapped(_ sender: Any) {
         delegate?.reportAbuse(self)
     }
@@ -95,7 +88,7 @@ class RecieverTableViewCell: UITableViewCell {
     
     func voteButtonAppearance() {
         
-        //toggle vote button appearance
+        // toggle vote button appearance
         
         if voteButtonState == .yesVote {
             
@@ -107,8 +100,7 @@ class RecieverTableViewCell: UITableViewCell {
             voteButton.layer.cornerRadius = voteButton.frame.width/2
             voteButton.layer.borderWidth = 1
             voteButton.layer.borderColor = Colors.greenBlue.cgColor
-            voteButton.clipsToBounds = true 
-            
+            voteButton.clipsToBounds = true
             buttonVoteCountLabel.textColor = .white
             buttonVoteArrow.image = UIImage(named: "upVoteWhite")
             
@@ -123,7 +115,6 @@ class RecieverTableViewCell: UITableViewCell {
             voteButton.layer.cornerRadius = voteButton.frame.width/2
             voteButton.layer.borderWidth = 1
             voteButton.layer.borderColor = Colors.bubbleGray.cgColor
-            
             buttonVoteArrow.image = UIImage(named: "upVoteBlack")
             buttonVoteCountLabel.textColor = .black
             
@@ -175,7 +166,6 @@ class RecieverTableViewCell: UITableViewCell {
             unreadMessageIndicatorLabel.textColor = Colors.badgeOrange
             unreadSepRight.backgroundColor = Colors.badgeOrange
             unreadSepLeft.backgroundColor = Colors.badgeOrange
-            firstUnread = false
             
         }
     }
@@ -188,6 +178,8 @@ class RecieverTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         let timeSince = dateFormatter.timeSince(from: message.timestamp as NSDate, numericDates: true)
       
+        //TODO: - This is broken
+        
         if message.text.containsOnlyEmoji {
             messageBackground.isHidden = true
             chatMessageLabel.font = UIFont(name: "Helvetica", size: 40)
@@ -207,12 +199,13 @@ class RecieverTableViewCell: UITableViewCell {
         userAvatarImageView.clipsToBounds = true
         
         messageBackground.backgroundColor = .clear
-        
         messageBackground.layer.borderWidth = 2
         messageBackground.layer.borderColor = Colors.bubbleGray.cgColor
-        
         messageBackground.layer.cornerRadius = 22
         chatMessageLabel.textColor = .black 
+        
+        
+        // check if message has been voted up, and set state of button
         
         MessageController.shared.checkSubscriptionTo(messageNamed: message) { (subscription) in
             
