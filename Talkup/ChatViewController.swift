@@ -205,6 +205,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         chat?.unreadMessages = []
         UserController.shared.removeUnreadMessage(fromUser: user, message: message)
+        chat?.unreadMessages.removeAll()
         
     }
     
@@ -327,9 +328,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                         cell.unread = true
                     }
                 }
-                
                 return cell
-                
             }
         }
     }
@@ -357,7 +356,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        self.tableView.estimatedRowHeight = self.barHeight
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
-        
         self.currentUserAvatarInputImageView.image = UserController.shared.currentUser?.photo
         self.currentUserAvatarInputImageView.layer.cornerRadius = currentUserAvatarInputImageView.layer.frame.width / 2
         self.currentUserAvatarInputImageView.layer.masksToBounds = true

@@ -159,7 +159,7 @@ class ChatController {
     
     
     
-    // compare message's creation date timestamp to user's userdefaults last visit to chat.
+    //TODO: - this might not be needed - compare message's creation date timestamp to user's userdefaults last visit to chat.
     
     func newMessagesCheck() {
         

@@ -215,6 +215,7 @@ class UserController {
                 for (index, message) in (user.unreadMessages?.enumerated())! {
                     if unreadMessage == message.cloudKitRecordID {
                         user.unreadMessages?.remove(at: index)
+                        
                     }
                 }
                 
