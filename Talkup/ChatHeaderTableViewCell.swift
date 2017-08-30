@@ -12,7 +12,6 @@ protocol ChatHeaderDelegate {
     func followButtonPressed()
 }
 
-
 class ChatHeaderTableViewCell: UITableViewCell {
     
     //MARK: - Properties 
@@ -51,7 +50,8 @@ class ChatHeaderTableViewCell: UITableViewCell {
     var user: User? = UserController.shared.currentUser
 
     
-    func followButtonAppearance() {
+    private func followButtonAppearance() {
+        
         if following == .active {
             followButton.backgroundColor = Colors.followingGreen
             followButton.setTitle("Following", for: .normal)
@@ -77,7 +77,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
     //MARK: - UI Actions
     
     @IBAction func creatorButtonTapped(_ sender: Any) {
-        
+        // TODO: - remove or reuse
     }
     
     @IBAction func followButtonTapped(_ sender: Any) {
@@ -115,9 +115,7 @@ class ChatHeaderTableViewCell: UITableViewCell {
                 return 
                 
             }
-            
         }
-        
     }
     
     func updateViews() {

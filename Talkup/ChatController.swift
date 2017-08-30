@@ -42,8 +42,10 @@ class ChatController {
     var followingChats = [Chat]() {
         didSet {
             DispatchQueue.main.async {
+                
                 let nc = NotificationCenter.default
                 nc.post(name: ChatController.ChatsDidChangeNotification, object: self)
+                
             }
         }
     }
@@ -58,6 +60,7 @@ class ChatController {
         }
     }
     
+    var messagesReadState: ReadState = .unread
     var unreadMessages: [Message] = []
     
     var messages: [Message] {
@@ -171,8 +174,8 @@ class ChatController {
             
                 if message.chatReference == chat.chatReference {
                     chat.unreadMessages.append(message)
+                    
                 }
-                
             }
         }
     }

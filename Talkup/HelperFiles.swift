@@ -55,4 +55,9 @@ enum MessageSort {
     case top
 }
 
+enum ReadState {
+    case read
+    case unread
+}
+
 

@@ -443,6 +443,7 @@
                                             <outlet property="flagIcon" destination="AYQ-zh-CWB" id="1wZ-LP-2Fc"/>
                                             <outlet property="messageBackground" destination="EGY-z8-v2t" id="O4Y-pb-jve"/>
                                             <outlet property="messageScoreLabel" destination="Bsl-EC-6Rr" id="Se5-RG-Tik"/>
+                                            <outlet property="newMessageIndicatorTopConstraint" destination="3Zk-5C-aVl" id="PsQ-4W-zGe"/>
                                             <outlet property="timestampLabel" destination="cf6-4b-NJR" id="fOE-4k-RfV"/>
                                             <outlet property="userActionsButton" destination="AYQ-zh-CWB" id="Jew-Iv-T3B"/>
                                             <outlet property="userAvatarImageView" destination="7Gw-Va-Arx" id="NqE-aY-Ig1"/>

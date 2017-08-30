@@ -190,6 +190,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 86
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        
     }
     
     
@@ -201,10 +202,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let recordName = chat?.cloudKitRecordID?.recordName,
             let user = UserController.shared.currentUser else { return }
         
-        guard let message = chat?.unreadMessages.first else { return }
+        guard let messages = chat?.unreadMessages else { return }
         
         chat?.unreadMessages = []
-        UserController.shared.removeUnreadMessage(fromUser: user, message: message)
+        UserController.shared.removeUnreadMessages(fromUser: user, message: messages)
         chat?.unreadMessages.removeAll()
         
     }
@@ -302,7 +303,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             guard let owner = message.owner, let currentUser = UserController.shared.currentUser else { return  UITableViewCell() }
             
-            
             // Check if message owner is currentUser
             
             if owner.cloudKitRecordID == currentUser.cloudKitRecordID {
@@ -317,6 +317,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             // Else it is a message from someone else
                 
             } else {
+                
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.recievedMessageKey, for: indexPath) as? RecieverTableViewCell else { return RecieverTableViewCell() }
                 
                 cell.backgroundColor = .clear
@@ -328,6 +329,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                         cell.unread = true
                     }
                 }
+                
                 return cell
             }
         }
@@ -682,7 +684,8 @@ extension ChatViewController {
         
         self.tableView.reloadData()
         refreshControl.endRefreshing()
-        print("refresh chats and messages")
+        chat.unreadMessages.removeAll()
+        
         
     }
     

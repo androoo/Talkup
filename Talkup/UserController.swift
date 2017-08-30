@@ -187,10 +187,14 @@ class UserController {
         }
     }
     
-    func removeUnreadMessage(fromUser user: User, message: Message, completion: @escaping () -> Void = {_ in}) {
+    
+    // TODO: - need to get rid of all the unread messages not just one
+    
+    func removeUnreadMessages(fromUser user: User, message: [Message], completion: @escaping () -> Void = {_ in}) {
         
-        guard let userID = user.cloudKitRecordID,
-            let unreadMessage = message.cloudKitRecordID else { return }
+        guard let userID = user.cloudKitRecordID else { return }
+        
+        let unreadMessages = message.flatMap({$0.cloudKitRecordID})
         
         cloudKitManager.fetchRecord(withID: userID) { (record, error) in
             
@@ -200,24 +204,30 @@ class UserController {
             }
             
             else if let record = record {
-                let reference = CKReference(recordID: unreadMessage, action: .none)
-                guard let unreadMessages = user.unreadReferences else { return }
                 
-                // remove unread from Persistence
-                for (index, message) in unreadMessages.enumerated() {
-                    if message.recordID == unreadMessage {
-                        user.unreadReferences?.remove(at: index)
-                        record.setValue(user.unreadReferences, forKey: Constants.unreadMessagesReferenceKey)
+                for unreadMessage in unreadMessages {
+                    
+                    let reference = CKReference(recordID: unreadMessage, action: .none)
+                    
+                    guard let unreadMessages = user.unreadReferences else { return }
+                    
+                    // remove unread from Persistence
+                    for (index, message) in unreadMessages.enumerated() {
+                        if message.recordID == unreadMessage {
+                            user.unreadReferences?.remove(at: index)
+                            record.setValue(user.unreadReferences, forKey: Constants.unreadMessagesReferenceKey)
+                        }
+                    }
+                    
+                    // remove from local store
+                    for (index, message) in (user.unreadMessages?.enumerated())! {
+                        if unreadMessage == message.cloudKitRecordID {
+                            user.unreadMessages?.remove(at: index)
+                            
+                        }
                     }
                 }
-                
-                // remove from local store
-                for (index, message) in (user.unreadMessages?.enumerated())! {
-                    if unreadMessage == message.cloudKitRecordID {
-                        user.unreadMessages?.remove(at: index)
-                        
-                    }
-                }
+
                 
                 let modifyRecords = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
                 modifyRecords.savePolicy = CKRecordSavePolicy.allKeys

@@ -33,6 +33,7 @@ class RecieverTableViewCell: UITableViewCell {
         }
     }
     
+    var hasReadSwitch: Bool? = false
     var voteButtonState: VoteButtonState?
     
     //MARK: - Delegate
@@ -146,28 +147,46 @@ class RecieverTableViewCell: UITableViewCell {
         
     }
     
+    
+    
     //TODO: - animate new message indicator hide
     
     private func messageUnreadAppearance() {
-        if unread == false {
+        
+        switch ChatController.shared.messagesReadState {
             
-            newMessageIndicatorTopConstraint.constant = 8
-            unreadMessageIndicatorLabel.isHidden = true
-            unreadSepLeft.isHidden = true
-            unreadSepRight.isHidden = true
+        case .read:
             
-        } else {
+            markRead()
+            return
             
-            newMessageIndicatorTopConstraint.constant = 24
-            unreadMessageIndicatorLabel.isHidden = false
-            unreadSepLeft.isHidden = false
-            unreadSepRight.isHidden = false
-            unreadMessageIndicatorLabel.text = "New"
-            unreadMessageIndicatorLabel.textColor = Colors.badgeOrange
-            unreadSepRight.backgroundColor = Colors.badgeOrange
-            unreadSepLeft.backgroundColor = Colors.badgeOrange
+        case .unread:
+            
+            markUnread()
+            return
             
         }
+    }
+    
+    private func markRead() {
+        newMessageIndicatorTopConstraint.constant = 8
+        unreadMessageIndicatorLabel.isHidden = true
+        unreadSepLeft.isHidden = true
+        unreadSepRight.isHidden = true
+        hasReadSwitch = true
+        
+    }
+    
+    private func markUnread() {
+        newMessageIndicatorTopConstraint.constant = 24
+        unreadMessageIndicatorLabel.isHidden = false
+        unreadSepLeft.isHidden = false
+        unreadSepRight.isHidden = false
+        unreadMessageIndicatorLabel.text = "new messages"
+        unreadMessageIndicatorLabel.textColor = Colors.badgeOrange.withAlphaComponent(0.65)
+        unreadSepRight.backgroundColor = Colors.badgeOrange.withAlphaComponent(0.65)
+        unreadSepLeft.backgroundColor = Colors.badgeOrange.withAlphaComponent(0.65)
+        ChatController.shared.messagesReadState = .read
     }
     
     private func updateViews() {
@@ -177,7 +196,7 @@ class RecieverTableViewCell: UITableViewCell {
         
         let dateFormatter = DateFormatter()
         let timeSince = dateFormatter.timeSince(from: message.timestamp as NSDate, numericDates: true)
-      
+        
         //TODO: - This is broken
         
         if message.text.containsOnlyEmoji {

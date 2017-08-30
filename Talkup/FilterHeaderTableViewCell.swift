@@ -64,8 +64,7 @@ class FilterHeaderTableViewCell: UITableViewCell {
             topBottomBorderImageView.backgroundColor = Colors.greenBlue
             topLabel.textColor = Colors.greenBlue
             nowLabel.textColor = Colors.primaryDarkGray
+            
         }
-        
     }
-
 }

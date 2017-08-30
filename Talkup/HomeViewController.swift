@@ -124,8 +124,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func profileButtonTapped(_ sender: Any) { }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -364,6 +366,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let chat = ChatController.shared.followingChats[selectedIndexPath.row]
                 chat.isDismisable = false
                 detailViewController.chat = chat
+                
+                if chat.unreadMessages.count > 0 {
+                    ChatController.shared.messagesReadState = .unread
+                } else {
+                    ChatController.shared.messagesReadState = .read
+                }
                 
             }
             

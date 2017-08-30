@@ -89,8 +89,11 @@ class MessageController {
         }
     }
     
+    //MARK: - TODO: - this fetches all the messages
+    
     func fetchNewMessages(messages: [CKReference], completion: @escaping () -> Void) {
         let messageReferences = messages
+        guard messageReferences.count > 0 else { return }
         let predicate = NSPredicate(format: "recordID IN %@", messageReferences)
         let query = CKQuery(recordType: Constants.messagetypeKey, predicate: predicate)
         cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
