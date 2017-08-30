@@ -46,8 +46,12 @@ class MessageController {
                 
                 // filter blocked messages
                 
-                chat.messages = messages
-                completion()
+                DispatchQueue.main.async {
+                    
+                    chat.messages = messages
+                    completion()
+                    
+                }
                 
             }
         }

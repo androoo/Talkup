@@ -203,13 +203,15 @@ class UserController {
                 let reference = CKReference(recordID: unreadMessage, action: .none)
                 guard let unreadMessages = user.unreadReferences else { return }
                 
+                // remove unread from Persistence
                 for (index, message) in unreadMessages.enumerated() {
-                    if message.recordID == reference {
+                    if message.recordID == unreadMessage {
                         user.unreadReferences?.remove(at: index)
                         record.setValue(user.unreadReferences, forKey: Constants.unreadMessagesReferenceKey)
                     }
                 }
                 
+                // remove from local store
                 for (index, message) in (user.unreadMessages?.enumerated())! {
                     if unreadMessage == message.cloudKitRecordID {
                         user.unreadMessages?.remove(at: index)

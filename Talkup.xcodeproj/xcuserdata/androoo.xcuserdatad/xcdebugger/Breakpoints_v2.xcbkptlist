@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/ChatViewController.swift"
-            timestampString = "525739389.639024"
+            timestampString = "525747515.68251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -25,30 +25,46 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/RecieverTableViewCell.swift"
-            timestampString = "525733971.257589"
+            filePath = "Talkup/ChatViewController.swift"
+            timestampString = "525747538.242379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "unread"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/RecieverTableViewCell.swift"
-            timestampString = "525733975.86812"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "messageUnreadAppearance()"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.ChatViewController.tableView (__ObjC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatViewController.swift"
+                  timestampString = "525747692.340385"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "219"
+                  endingLineNumber = "219"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.ChatViewController.tableView (__ObjC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatViewController.swift"
+                  timestampString = "525747692.343016"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "219"
+                  endingLineNumber = "219"
+                  offsetFromSymbolStart = "55">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -57,13 +73,61 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/RecieverTableViewCell.swift"
-            timestampString = "525733976.702206"
+            filePath = "Talkup/ChatViewController.swift"
+            timestampString = "525747538.91392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "messageUnreadAppearance()"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.ChatViewController.tableView (__ObjC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatViewController.swift"
+                  timestampString = "525748858.992436"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "73">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.ChatViewController.(tableView (__ObjC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int).(implicit closure #1)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatViewController.swift"
+                  timestampString = "525748858.995659"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "10">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/ChatViewController.swift"
+            timestampString = "525747592.098023"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,13 +138,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/ChatViewController.swift"
-            timestampString = "525738168.77052"
+            timestampString = "525747593.957916"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "viewDidDisappear(_:)"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.ChatViewController.tableView (__ObjC.UITableView, cellForRowAt : Foundation.IndexPath) -&gt; __ObjC.UITableViewCell"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatViewController.swift"
+                  timestampString = "525749328.824868"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "3129">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.ChatViewController.tableView (__ObjC.UITableView, cellForRowAt : Foundation.IndexPath) -&gt; __ObjC.UITableViewCell"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/ChatViewController.swift"
+                  timestampString = "525749328.827391"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "4014">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,13 +186,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/UserController.swift"
-            timestampString = "525738550.035352"
+            timestampString = "525748857.861539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "215"
             endingLineNumber = "215"
             landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.UserController.(removeUnreadMessage (fromUser : Talkup.User, message : Talkup.Message, completion : () -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserController.swift"
+                  timestampString = "525749328.838603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "2227">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.UserController.(removeUnreadMessage (fromUser : Talkup.User, message : Talkup.Message, completion : () -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserController.swift"
+                  timestampString = "525749328.840626"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "4290">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,23 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Talkup/UserController.swift"
-            timestampString = "525738551.277637"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Talkup/UserController.swift"
-            timestampString = "525738643.331288"
+            timestampString = "525748857.861539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "207"
@@ -137,14 +249,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatViewController.swift"
-            timestampString = "525739435.738447"
+            filePath = "Talkup/UserController.swift"
+            timestampString = "525748996.330502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "messages"
-            landmarkType = "24">
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -153,14 +265,158 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Talkup/ChatViewController.swift"
-            timestampString = "525739518.784896"
+            filePath = "Talkup/UserController.swift"
+            timestampString = "525748998.500629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/UserController.swift"
+            timestampString = "525749047.644887"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.UserController.removeUnreadMessage (fromUser : Talkup.User, message : Talkup.Message, completion : () -&gt; ()) -&gt; ()"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserController.swift"
+                  timestampString = "525749328.85739"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "161">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.UserController.(removeUnreadMessage (fromUser : Talkup.User, message : Talkup.Message, completion : () -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserController.swift"
+                  timestampString = "525749328.859307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/UserController.swift"
+            timestampString = "525749288.062384"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/UserController.swift"
+            timestampString = "525749392.701093"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/UserController.swift"
+            timestampString = "525749395.221039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Talkup/UserController.swift"
+            timestampString = "525749396.541377"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "removeUnreadMessage(fromUser:message:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.UserController.(removeUnreadMessage (fromUser : Talkup.User, message : Talkup.Message, completion : () -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserController.swift"
+                  timestampString = "525749396.546597"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "224"
+                  endingLineNumber = "224"
+                  offsetFromSymbolStart = "3714">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Talkup.UserController.(removeUnreadMessage (fromUser : Talkup.User, message : Talkup.Message, completion : () -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Talkup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewgierke/Development/Talkup/Talkup/UserController.swift"
+                  timestampString = "525749396.549606"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -27,6 +27,7 @@ class RecieverTableViewCell: UITableViewCell {
         }
     }
     
+    var firstUnread: Bool? = false
     var unread: Bool? = false {
         didSet {
             messageUnreadAppearance()
@@ -41,9 +42,11 @@ class RecieverTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
     
+    // new/unread message indicator
     @IBOutlet weak var unreadMessageIndicatorLabel: UILabel!
     @IBOutlet weak var unreadSepLeft: UIImageView!
     @IBOutlet weak var unreadSepRight: UIImageView!
+    @IBOutlet weak var newMessageIndicatorTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var chatMessageLabel: UITextView!
     @IBOutlet weak var messageBackground: UIImageView!
@@ -53,7 +56,6 @@ class RecieverTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var usernameButton: UIButton!
-    
     
     @IBOutlet weak var flagIcon: UIButton!
     
@@ -80,7 +82,6 @@ class RecieverTableViewCell: UITableViewCell {
         
         //update subscription and score to cloud
         delegate?.toggleVoteCount(self)
-        
         
     }
     
@@ -154,12 +155,19 @@ class RecieverTableViewCell: UITableViewCell {
         
     }
     
+    //TODO: - animate new message indicator hide
+    
     private func messageUnreadAppearance() {
         if unread == false {
+            
+            newMessageIndicatorTopConstraint.constant = 8
             unreadMessageIndicatorLabel.isHidden = true
             unreadSepLeft.isHidden = true
             unreadSepRight.isHidden = true
+            
         } else {
+            
+            newMessageIndicatorTopConstraint.constant = 24
             unreadMessageIndicatorLabel.isHidden = false
             unreadSepLeft.isHidden = false
             unreadSepRight.isHidden = false
@@ -167,6 +175,8 @@ class RecieverTableViewCell: UITableViewCell {
             unreadMessageIndicatorLabel.textColor = Colors.badgeOrange
             unreadSepRight.backgroundColor = Colors.badgeOrange
             unreadSepLeft.backgroundColor = Colors.badgeOrange
+            firstUnread = false
+            
         }
     }
     
@@ -183,13 +193,14 @@ class RecieverTableViewCell: UITableViewCell {
             chatMessageLabel.font = UIFont(name: "Helvetica", size: 40)
         }
         
+        newMessageIndicatorTopConstraint.constant = 8
+        
         messageScoreLabel.text = ""
         chatMessageLabel.text = message.text
         buttonVoteCountLabel.text = "\(message.score)"
         timestampLabel.text = "\(timeSince)"
         usernameButton.setTitle("\(username)", for: .normal)
         usernameButton.tintColor = Colors.primaryDarkGray
-        
         
         userAvatarImageView.image = message.owner?.photo
         userAvatarImageView.layer.cornerRadius = userAvatarImageView.frame.width/2

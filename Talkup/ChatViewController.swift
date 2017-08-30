@@ -65,11 +65,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
-            // share stuff
+            // TODO - share stuff
         }
         
         let reportAction = UIAlertAction(title: "Report", style: .default) { (_) in
-            // report abuse
+            // TODO - report abuse
         }
         
         alertController.addAction(cancelAction)
@@ -300,7 +300,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 cell.backgroundColor = .clear
                 
-                
                 cell.delegate = self
                 cell.message = message
                 
@@ -386,7 +385,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    //MARK: - Input bar container view 
     
+    // inputBar Properties
     @IBOutlet var inputBar: UIView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -429,7 +430,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // Remove Blocked Message
+    // Hide Blocked Message
     
     func hideBlockedMessages() {
         
@@ -463,7 +464,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let confirmAlertController = UIAlertController(title: "Block User?", message: "Are you suer you want to block this user?", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (action) in
-            // block action here
+            // TODO - block action here
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -561,7 +562,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     //remove blocked content is in update views
                     //set cell to hidden
-                    
+                    // TODO: - Animate message hide
                     self.updateViews()
                     
                 })
