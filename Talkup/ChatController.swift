@@ -192,6 +192,7 @@ class ChatController {
                 // adds the message to the User's local property
                 user.unreadMessages?.append(message)
                 UserController.shared.addUnreadMessage(toUser: user, message: message)
+                chat.unreadMessages.append(message)
             }
         }
     }

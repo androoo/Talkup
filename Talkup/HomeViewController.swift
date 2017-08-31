@@ -126,7 +126,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        tableView.reloadData()
         
     }
     
@@ -134,10 +133,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         guard let currenctUser = UserController.shared.currentUser,
-        let unreadMessages = UserController.shared.currentUser?.unreadReferences else { return }
+           let unreadMessages = UserController.shared.currentUser?.unreadReferences else { return }
         
         MessageController.shared.fetchNewMessages(messages: unreadMessages, completion: {
-            
+            self.tableView.reloadData()
         })
         
         self.tableView.addSubview(self.refreshControl)
@@ -152,7 +151,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         guard let unreads = currenctUser.unreadReferences else { return }
-        
         
         navigationController?.navigationBar.isHidden = true
         
@@ -348,6 +346,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 backItem.title = ""
                 navigationItem.backBarButtonItem = backItem
                 
+                MessageController.shared.messagesFilterState = .live
+                
                 let chat = ChatController.shared.chats[selectedIndexPath.row]
                 chat.isDismisable = false
                 detailViewController.chat = chat
@@ -366,6 +366,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let chat = ChatController.shared.followingChats[selectedIndexPath.row]
                 chat.isDismisable = false
                 detailViewController.chat = chat
+                
+                MessageController.shared.messagesFilterState = .live
                 
                 if chat.unreadMessages.count > 0 {
                     ChatController.shared.messagesReadState = .unread
@@ -597,14 +599,16 @@ extension HomeViewController {
 
 extension HomeViewController {
     
-    
     func handleRefresh(_ refreshControl: UIRefreshControl) {
         
         print("refresh chats and messages")
         
+        ChatController.shared.newMessagesCheck()
+        
         ChatController.shared.popupateRecentChats()
         ChatController.shared.popupateRecentChats()
         ChatController.shared.populateFollowingChats()
+        
         
         self.tableView.reloadData()
         refreshControl.endRefreshing()

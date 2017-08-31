@@ -41,6 +41,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
+    
+    // check for new messages everytime app is reopened 
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        
+        guard let unreadMessages = UserController.shared.currentUser?.unreadReferences else { return }
+        
+        MessageController.shared.fetchNewMessages(messages: unreadMessages, completion: {
+            DispatchQueue.main.async {
+                
+                ChatController.shared.newMessagesCheck()
+                
+            }
+        })
+        
+    }
 
 }
 

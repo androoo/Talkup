@@ -31,7 +31,9 @@ class LaunchViewController: UIViewController {
                     UserController.shared.currentUser = currentUser
                     
                     ChatController.shared.performFullSync(completion: {
+                        
                         self.performSegue(withIdentifier: Constants.toChats, sender: self)
+                        
                     })
                     
                 } else {

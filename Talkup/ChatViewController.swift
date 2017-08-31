@@ -686,8 +686,6 @@ extension ChatViewController {
         refreshControl.endRefreshing()
         chat.unreadMessages.removeAll()
         
-        
     }
-    
 }
 
