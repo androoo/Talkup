@@ -23,17 +23,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-FB-kVh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Jp-KH-zau">
-                                        <rect key="frame" x="22" y="30" width="106" height="106"/>
+                                        <rect key="frame" x="22" y="50" width="106" height="106"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="106" id="b1c-BI-pTd"/>
                                             <constraint firstAttribute="width" constant="106" id="hGo-6x-RH0"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xFR-5L-Ywz">
-                                        <rect key="frame" x="22" y="152" width="61" height="54.5"/>
+                                        <rect key="frame" x="22" y="172" width="61" height="54.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foP-dz-FY8">
                                                 <rect key="frame" x="0.0" y="0.0" width="61" height="29"/>
@@ -53,14 +53,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="xFR-5L-Ywz" firstAttribute="top" secondItem="4Jp-KH-zau" secondAttribute="bottom" constant="16" id="E43-Tr-GQf"/>
-                                    <constraint firstItem="4Jp-KH-zau" firstAttribute="top" secondItem="3eb-FB-kVh" secondAttribute="top" constant="30" id="Edo-Ok-eZ5"/>
+                                    <constraint firstItem="4Jp-KH-zau" firstAttribute="top" secondItem="3eb-FB-kVh" secondAttribute="top" constant="50" id="Edo-Ok-eZ5"/>
                                     <constraint firstItem="xFR-5L-Ywz" firstAttribute="leading" secondItem="4Jp-KH-zau" secondAttribute="leading" id="Kvi-FQ-IJA"/>
                                     <constraint firstItem="4Jp-KH-zau" firstAttribute="leading" secondItem="3eb-FB-kVh" secondAttribute="leading" constant="22" id="XCQ-md-WyD"/>
-                                    <constraint firstAttribute="height" constant="220" id="XXm-HK-WYm"/>
+                                    <constraint firstAttribute="height" constant="250" id="XXm-HK-WYm"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-fB-8Aj">
-                                <rect key="frame" x="0.0" y="220" width="375" height="447"/>
+                                <rect key="frame" x="0.0" y="250" width="375" height="417"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="menuProfileCell" rowHeight="45" id="1Kq-Yg-BW1" customClass="MenuProfileTableViewCell" customModule="Talkup" customModuleProvider="target">

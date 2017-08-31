@@ -106,7 +106,7 @@ extension CustomTransitionAnimator: UIViewControllerAnimatedTransitioning {
             
             presentedViewController?.view.layer.shadowOpacity = 0
             
-            let cancelled = transitionContext.transitionWasCancelled
+//            let cancelled = transitionContext.transitionWasCancelled
             
 //            if !cancelled {
 //                presentedViewController?.view.removeFromSuperview()

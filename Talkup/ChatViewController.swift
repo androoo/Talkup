@@ -632,35 +632,40 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // send the user to the User Detail
     
-    var user: User?
+    var user: User? 
     var directChat: Chat?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        print("now")
+        
         if segue.identifier == Constants.toUserDetail {
-            guard let user = self.user,
-                let chat = self.directChat
-                else { return }
+            
+            let navigationController = segue.destination
+            navigationController.transitioningDelegate = self.customTransitioningDelegate
+            navigationController.modalPresentationStyle = .custom
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
+           
+            guard let user = self.user else {
+                return
+            }
             
             if let destinationViewController = segue.destination as? UserDetailViewController {
-                
+                    
                 destinationViewController.user = user
                 destinationViewController.chat = chat
                 destinationViewController.isDirectChat = false
-                
-                let backItem = UIBarButtonItem()
-                backItem.title = ""
-                navigationItem.backBarButtonItem = backItem
-                
-                let navigationController = segue.destination
-                navigationController.transitioningDelegate = customTransitioningDelegate
-                navigationController.modalPresentationStyle = .custom
-                
+                     
             }
         }
     }
     
     func usernameClicked(user: User) {
+        
+        self.user = user
         
         ChatController.shared.fetchDirectChat(forUser: user, completion: { (chat) in
             
@@ -669,7 +674,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.user = user
                 self.performSegue(withIdentifier: Constants.toUserDetail, sender: nil)
             }
+            
         })
+        
     }
 }
 

@@ -99,14 +99,13 @@ class SlideMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 backItem.title = ""
                 navigationItem.backBarButtonItem = backItem
                 
-                let navigationController = segue.destination
-                
                 let chat = UserController.shared.currentUserDirectChat
                 chat?.isDismisable = true
                 detailViewController.chat = chat
                 detailViewController.user = UserController.shared.currentUser
                 detailViewController.isDirectChat = true
                 
+                let navigationController = segue.destination
                 navigationController.transitioningDelegate = customTransitioningDelegate
                 navigationController.modalPresentationStyle = .custom
                 

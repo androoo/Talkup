@@ -140,7 +140,6 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         navBarBottomSep.backgroundColor = Colors.primaryLightGray
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        
     }
 
     //MARK: - View Helpers
@@ -171,7 +170,6 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         currentUserChatBarImage.image = self.user?.photo
         currentUserChatBarImage.layer.cornerRadius = currentUserChatBarImage.frame.width / 2
         currentUserChatBarImage.layer.masksToBounds = true 
-        navBarBgView.backgroundColor = .white
     }
     
     private func setup() {
