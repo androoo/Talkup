@@ -101,6 +101,8 @@ class AddEmailViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
 
         // check that text field is a valid email address
         

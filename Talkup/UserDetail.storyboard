@@ -15,7 +15,7 @@
         <!--userDetail-->
         <scene sceneID="chZ-FM-OfE">
             <objects>
-                <viewController storyboardIdentifier="userDetail" title="userDetail" id="haj-Mf-2Vx" customClass="UserDetailViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userDetail" title="userDetail" automaticallyAdjustsScrollViewInsets="NO" id="haj-Mf-2Vx" customClass="UserDetailViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p64-1q-krL"/>
                         <viewControllerLayoutGuide type="bottom" id="Jmj-C8-iXj"/>

@@ -783,7 +783,7 @@
                         <outlet property="sendMessageButtonTapped" destination="fPB-W9-QX1" id="fCv-Ah-X7z"/>
                         <outlet property="tableView" destination="Xov-EP-6Q8" id="KYR-B0-arb"/>
                         <segue destination="JDY-hS-eKU" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="cEK-rE-TJW"/>
-                        <segue destination="e9f-U5-oBw" kind="presentation" identifier="toUserDetail" id="lTY-EC-svy"/>
+                        <segue destination="e9f-U5-oBw" kind="show" identifier="toUserDetail" id="lTY-EC-svy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNz-dV-QfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -905,7 +905,7 @@
             </objects>
             <point key="canvasLocation" x="3623" y="-818"/>
         </scene>
-        <!--Talkup-->
+        <!--Home View Controller-->
         <scene sceneID="5G9-er-5fu">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="Q4K-Y1-ARG" customClass="HomeViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
@@ -1430,9 +1430,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="uDO-8E-5AA" secondAttribute="trailing" constant="-20" id="wnK-mY-9ub"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Talkup" id="Zmf-aU-aHC">
-                        <barButtonItem key="rightBarButtonItem" image="TalkupBlackSolid1x" id="1xS-5y-76K"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Zmf-aU-aHC"/>
                     <connections>
                         <outlet property="addChatIconImageView" destination="jUV-Xk-2SS" id="rNE-IN-WeC"/>
                         <outlet property="currentUserHeaderImageView" destination="ZaH-OO-Djp" id="Ypy-zA-I31"/>
@@ -1975,7 +1973,6 @@
     <resources>
         <image name="Close" width="20" height="20"/>
         <image name="GrayBackArrow" width="30" height="24"/>
-        <image name="TalkupBlackSolid1x" width="23" height="22"/>
         <image name="addChat" width="18" height="18"/>
         <image name="addChatArrow" width="32" height="33"/>
         <image name="addPlus" width="22" height="22"/>

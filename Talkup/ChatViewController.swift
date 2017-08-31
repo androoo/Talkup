@@ -658,6 +658,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 destinationViewController.user = user
                 destinationViewController.chat = chat
                 destinationViewController.isDirectChat = false
+//                destinationViewController.chat?.isDismisable = true 
                      
             }
         }

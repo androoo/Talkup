@@ -113,7 +113,9 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        guard let enteredUsername = textField.text else { return false }
+        textField.resignFirstResponder()
+        
+        guard let enteredUsername = textField.text, !enteredUsername.isEmpty else { return false }
         
 //        let allUsernames = UserController.shared.allUsernames
         
@@ -129,7 +131,7 @@ class CreateUsernameViewController: UIViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // protect that text exists, and get that last character 
-        guard let text = textField.text else { return true }
+        guard let text = textField.text, !text.isEmpty else { return true }
         
 //        let allUsernames = UserController.shared.allUsernames
         

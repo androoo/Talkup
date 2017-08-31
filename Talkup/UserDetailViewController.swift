@@ -89,7 +89,6 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         } else {
             
             _ = navigationController?.popViewController(animated: true)
-            
         }
         
     }
