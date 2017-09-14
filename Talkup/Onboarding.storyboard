@@ -424,9 +424,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Talkup lets you talk about anything with everyone. Even your username is a topic!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4un-Mw-qIq">
-                                <rect key="frame" x="24" y="335" width="327" height="134"/>
+                                <rect key="frame" x="32" y="335" width="311" height="134"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bof-hn-Xjj">
@@ -443,23 +443,15 @@
                                     <segue destination="iLh-4K-tFx" kind="show" identifier="finishedOnboarding" id="dqa-EG-1dj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's go!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oam-4x-bLV">
-                                <rect key="frame" x="153" y="497" width="69" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="0.25490196079999999" green="0.0" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4un-Mw-qIq" firstAttribute="centerX" secondItem="bqp-e8-xFe" secondAttribute="centerX" id="4I6-6K-XbF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4un-Mw-qIq" secondAttribute="trailing" constant="8" id="4s7-Ml-Wai"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4un-Mw-qIq" secondAttribute="trailing" constant="16" id="4s7-Ml-Wai"/>
                             <constraint firstItem="tHK-G1-sBN" firstAttribute="centerX" secondItem="bqp-e8-xFe" secondAttribute="centerX" id="9PG-Md-4Bb"/>
-                            <constraint firstItem="Oam-4x-bLV" firstAttribute="top" secondItem="4un-Mw-qIq" secondAttribute="bottom" constant="28" id="BPp-S2-bIm"/>
                             <constraint firstItem="tHK-G1-sBN" firstAttribute="top" secondItem="e1Q-Jy-neV" secondAttribute="bottom" constant="16" id="BjO-Z7-Jux"/>
-                            <constraint firstItem="4un-Mw-qIq" firstAttribute="leading" secondItem="bqp-e8-xFe" secondAttribute="leadingMargin" constant="8" id="HTc-GW-grz"/>
+                            <constraint firstItem="4un-Mw-qIq" firstAttribute="leading" secondItem="bqp-e8-xFe" secondAttribute="leadingMargin" constant="16" id="HTc-GW-grz"/>
                             <constraint firstItem="e1Q-Jy-neV" firstAttribute="top" secondItem="GM3-0x-p8N" secondAttribute="bottom" constant="28" id="PQm-cu-wWp"/>
-                            <constraint firstItem="Oam-4x-bLV" firstAttribute="centerX" secondItem="bqp-e8-xFe" secondAttribute="centerX" id="ZRB-Zt-Shu"/>
                             <constraint firstItem="4un-Mw-qIq" firstAttribute="top" secondItem="tHK-G1-sBN" secondAttribute="bottom" constant="22" id="egv-6x-wGn"/>
                             <constraint firstItem="bof-hn-Xjj" firstAttribute="leading" secondItem="bqp-e8-xFe" secondAttribute="leadingMargin" id="fYb-A2-r0s"/>
                             <constraint firstItem="bof-hn-Xjj" firstAttribute="trailing" secondItem="bqp-e8-xFe" secondAttribute="trailingMargin" id="n0n-K8-Zkh"/>
@@ -619,7 +611,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uQg-x9-RnV" customClass="NavViewController" customModule="Talkup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="whiteBack" backIndicatorTransitionMaskImage="whiteBack" id="mcN-01-gmo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="whiteBack" backIndicatorTransitionMaskImage="whiteBack" id="mcN-01-gmo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.31372549020000001" green="0.1176470588" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>

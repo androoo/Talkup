@@ -38,7 +38,7 @@ class CloudKitManager {
             
             let predicate = NSPredicate(format: "userReference == %@", defaultUsersReference)
             
-            self.fetchRecordsWithType(Constants.usertypeKey, predicate: predicate, recordFetchedBlock: nil, completion: { (records, error) in
+            self.fetchRecordsWithType(Constants.usertypeKey, predicate: predicate, recordFetchedBlock: nil, completion: { [weak self] (records, error) in
                 
                 if let error = error { NSLog("couldn't fetch records with that predicate: \(error)"); completion(nil); return }
                 
@@ -54,7 +54,7 @@ class CloudKitManager {
     
     func fetchLoggedInUserRecord(_ completion: ((_ record: CKRecord?, _ error: Error? ) -> Void)?) {
         
-        CKContainer.default().fetchUserRecordID { (recordID, error) in
+        CKContainer.default().fetchUserRecordID { [weak self] (recordID, error) in
             
             if let error = error,
                 let completion = completion {
@@ -64,7 +64,7 @@ class CloudKitManager {
             if let recordID = recordID,
                 let completion = completion {
                 
-                self.fetchRecord(withID: recordID, completion: completion)
+                self?.fetchRecord(withID: recordID, completion: completion)
             }
         }
     }
@@ -77,10 +77,10 @@ class CloudKitManager {
         let operation = CKDiscoverUserIdentitiesOperation(userIdentityLookupInfos: [recordInfo])
         
         var userIdenties = [CKUserIdentity]()
-        operation.userIdentityDiscoveredBlock = { (userIdentity, _) in
+        operation.userIdentityDiscoveredBlock = { [weak self] (userIdentity, _) in
             userIdenties.append(userIdentity)
         }
-        operation.discoverUserIdentitiesCompletionBlock = { (error) in
+        operation.discoverUserIdentitiesCompletionBlock = { [weak self] (error) in
             if let error = error {
                 NSLog("Error getting username from record ID: \(error)")
                 completion(nil, nil)
@@ -118,7 +118,7 @@ class CloudKitManager {
     
     func fetchRecord(withID recordID: CKRecordID, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.fetch(withRecordID: recordID) { (record, error) in
+        publicDatabase.fetch(withRecordID: recordID) { [weak self] (record, error) in
             
             completion?(record, error)
         }
@@ -193,7 +193,7 @@ class CloudKitManager {
     
     func deleteRecordWithID(_ recordID: CKRecordID, completion: ((_ recordID: CKRecordID?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.delete(withRecordID: recordID) { (recordID, error) in
+        publicDatabase.delete(withRecordID: recordID) { [weak self] (recordID, error) in
             completion?(recordID, error)
         }
     }
@@ -218,7 +218,7 @@ class CloudKitManager {
     
     func saveRecord(_ record: CKRecord, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.save(record, completionHandler: { (record, error) in
+        publicDatabase.save(record, completionHandler: { [weak self] (record, error) in
             
             completion?(record, error)
         })
@@ -233,7 +233,7 @@ class CloudKitManager {
         
         operation.perRecordCompletionBlock = perRecordCompletion
         
-        operation.modifyRecordsCompletionBlock = { (records, recordIDs, error) -> Void in
+        operation.modifyRecordsCompletionBlock = { [weak self] (records, recordIDs, error) -> Void in
             (completion?(records, error))!
         }
         
@@ -353,16 +353,16 @@ class CloudKitManager {
     
     func requestDiscoverabilityPermission() {
         
-        CKContainer.default().status(forApplicationPermission: .userDiscoverability) { (permissionStatus, error) in
+        CKContainer.default().status(forApplicationPermission: .userDiscoverability) { [weak self] (permissionStatus, error) in
             
             if permissionStatus == .initialState {
-                CKContainer.default().requestApplicationPermission(.userDiscoverability, completionHandler: { (permissionStatus, error) in
+                CKContainer.default().requestApplicationPermission(.userDiscoverability, completionHandler: { [weak self] (permissionStatus, error) in
                     
-                    self.handleCloudKitPermissionStatus(permissionStatus, error: error)
+                    self?.handleCloudKitPermissionStatus(permissionStatus, error: error)
                 })
             } else {
                 
-                self.handleCloudKitPermissionStatus(permissionStatus, error: error)
+                self?.handleCloudKitPermissionStatus(permissionStatus, error: error)
             }
         }
     }

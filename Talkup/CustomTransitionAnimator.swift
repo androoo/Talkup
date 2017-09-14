@@ -13,6 +13,8 @@ class CustomTransitionAnimator: NSObject {
     var presenting: Bool
     var navbarHeight: Int
     
+    var dismissCompletion: (() -> Void)?
+    
     init(presenting: Bool, navbarHeight: Int) {
         self.presenting = presenting
         self.navbarHeight = navbarHeight
@@ -23,7 +25,7 @@ class CustomTransitionAnimator: NSObject {
 extension CustomTransitionAnimator: UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
+        return 0.3
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -105,12 +107,15 @@ extension CustomTransitionAnimator: UIViewControllerAnimatedTransitioning {
             contentSnapshot?.removeFromSuperview()
             
             presentedViewController?.view.layer.shadowOpacity = 0
+
             
 //            let cancelled = transitionContext.transitionWasCancelled
             
 //            if !cancelled {
 //                presentedViewController?.view.removeFromSuperview()
 //            }
+            
+            
             
             transitionContext.completeTransition(finished)
             

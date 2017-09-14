@@ -174,8 +174,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.addSubview(self.refreshControl)
         self.navigationController?.navigationBar.isHidden = true
         tableView.backgroundColor = .white
-        navBarViewBgView.backgroundColor = Colors.navbarGray
-        mainNavBottomSep.backgroundColor = Colors.primaryLightGray
+        navBarViewBgView.backgroundColor = .clear
+        mainNavBottomSep.backgroundColor = .clear
         
         inputTextField.delegate = self
         updateViews()
@@ -392,6 +392,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func backNavButtonTapped(_ sender: Any) {
         
         if chat?.isDismisable == true {
+            
             chat?.isDismisable = false
             
             performSegue(withIdentifier: "unwindToHome", sender: self)
@@ -637,12 +638,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        print("now")
-        
         if segue.identifier == Constants.toUserDetail {
             
             let navigationController = segue.destination
-            navigationController.transitioningDelegate = self.customTransitioningDelegate
+            navigationController.transitioningDelegate = customTransitioningDelegate
             navigationController.modalPresentationStyle = .custom
             
             let backItem = UIBarButtonItem()

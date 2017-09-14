@@ -11,6 +11,7 @@ import UIKit
 class SlideMenuController: UIPresentationController {
 
     //MARK: - Properties 
+    let navigationController = UINavigationController()
     fileprivate var dimmingView: UIView!
     private var direction: PresentationDirection
     

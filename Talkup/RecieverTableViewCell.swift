@@ -201,7 +201,10 @@ class RecieverTableViewCell: UITableViewCell {
         
         if message.text.containsOnlyEmoji {
             messageBackground.isHidden = true
-            chatMessageLabel.font = UIFont(name: "Helvetica", size: 40)
+            chatMessageLabel.font = UIFont(name: "Helvetica", size: 50)
+        } else {
+            messageBackground.isHidden = false
+            chatMessageLabel.font = UIFont(name: "Helvetica", size: 16)
         }
         
         newMessageIndicatorTopConstraint.constant = 8

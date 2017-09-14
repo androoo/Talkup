@@ -23,7 +23,7 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        cloudKitManager.fetchCurrentUser { (user) in
+        cloudKitManager.fetchCurrentUser { [weak self] (user) in
             
             DispatchQueue.main.async {
                 
@@ -32,12 +32,12 @@ class LaunchViewController: UIViewController {
                     
                     ChatController.shared.performFullSync(completion: {
                         
-                        self.performSegue(withIdentifier: Constants.toChats, sender: self)
+                        self?.performSegue(withIdentifier: Constants.toChats, sender: self)
                         
                     })
                     
                 } else {
-                    self.performSegue(withIdentifier: Constants.toWelcome, sender: self)
+                    self?.performSegue(withIdentifier: Constants.toWelcome, sender: self)
                 }
             }
         }

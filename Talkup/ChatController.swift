@@ -138,6 +138,17 @@ class ChatController {
         
         fetchChatsByCreation { (chats) in
             
+            //TODO: - trending algorithm
+            
+            // a value derived from votes / messages / users / timestamp
+            
+            // get date and return score 1 - 100
+            // get number of votes return score 1 - 100
+            // get total messages
+            // if average date of creation is < 2 days from today
+            
+            // compute all of it to return a score of like 1 - 100
+            
             self.fetchChatOwnersFor(chats: chats, completion: {
                 self.trendingChats = chats
             })
@@ -411,7 +422,7 @@ class ChatController {
             guard let record = record else { return }
             unsavedObjectsByRecord[record]?.cloudKitRecordID = record.recordID
             
-        }) { (records, error) in
+        }) { [weak self] (records, error) in
             
             let success = records != nil
             completion(success, error)
@@ -611,13 +622,13 @@ class ChatController {
             return
         }
         
-        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+        cloudKitManager.fetchSubscription(subscriptionID) { [weak self] (subscription, error) in
             
             if subscription != nil {
-                self.removeSubscriptionTo(chat: chat)
+                self?.removeSubscriptionTo(chat: chat)
                 
             } else {
-                self.subscribeToChatTopic(chat: chat)
+                self?.subscribeToChatTopic(chat: chat)
             }
         }
     }
@@ -637,7 +648,7 @@ class ChatController {
         
         subscription.notificationInfo = notificationInfo
         
-        cloudKitManager.subscribe(Constants.chattypeKey, predicate: predicate, subscriptionID: chatID.recordName, contentAvailable: true, options: .firesOnRecordCreation) { (_, _) in
+        cloudKitManager.subscribe(Constants.chattypeKey, predicate: predicate, subscriptionID: chatID.recordName, contentAvailable: true, options: .firesOnRecordCreation) { [weak self] (_, _) in
             
             print("successfull subscription to chat added")
             

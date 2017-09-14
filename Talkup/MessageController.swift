@@ -227,7 +227,7 @@ class MessageController {
             return
         }
         
-        cloudKitManager.unsubscribe(subscriptionID) { (subscriptionID, error) in
+        cloudKitManager.unsubscribe(subscriptionID) { [weak self] (subscriptionID, error) in
             let success = subscriptionID != nil && error == nil
             completion(success, error)
         }
@@ -242,16 +242,16 @@ class MessageController {
             return
         }
         
-        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+        cloudKitManager.fetchSubscription(subscriptionID) { [weak self] (subscription, error) in
             
             
             if subscription != nil {
-                self.removeSubscriptionTo(messageNamed: message) { (success, error) in
+                self?.removeSubscriptionTo(messageNamed: message) { [weak self] (success, error) in
                     message.score -= 1
                     completion(success, false, error)
                 }
             } else {
-                self.addSubscriptionTo(messageNamed: message, alertBody: "Someone commented on a message you voted for! 👍") { (success, error) in
+                self?.addSubscriptionTo(messageNamed: message, alertBody: "Someone commented on a message you voted for! 👍") { [weak self] (success, error) in
                     message.score += 1
                     completion(success, true, error)
                 }

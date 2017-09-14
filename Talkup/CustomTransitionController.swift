@@ -18,6 +18,7 @@ class CustomTransitionController: UIPresentationController {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         
         let panGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePan(gestureRecognizer:)))
+        
         navigationController.view.addGestureRecognizer(panGestureRecognizer)
     }
     

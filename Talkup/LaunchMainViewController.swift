@@ -33,10 +33,17 @@ class LaunchMainViewController: UIViewController {
                 if let currentUser = user {
                     UserController.shared.currentUser = currentUser
                     
-                    ChatController.shared.performFullSync(completion: {
-                        self.performSegue(withIdentifier: "loadmain", sender: self)
-                    })
-                    
+                    DispatchQueue.main.async {
+                        
+                        ChatController.shared.performFullSync(completion: {
+                            
+                            DispatchQueue.main.async {
+                                
+                                self.performSegue(withIdentifier: "loadmain", sender: self)
+                            
+                            }
+                        })
+                    }
                 }
             }
         }

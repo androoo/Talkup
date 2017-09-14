@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Request notification permissions
         let unc = UNUserNotificationCenter.current()
-        unc.requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
+        unc.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] (success, error) in
             if let error = error {
                 NSLog("Error requesting authorization for notifications: \(error)")
                 return

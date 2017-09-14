@@ -52,7 +52,10 @@ class SenderTableViewCell: UITableViewCell {
         
         if message.text.containsOnlyEmoji {
             chatBubbleBackgroundImageView.isHidden = true
-            chatTextView.font = UIFont(name: "Helvetica", size: 40)
+            chatTextView.font = UIFont(name: "Helvetica", size: 60)
+        } else {
+            chatBubbleBackgroundImageView.isHidden = false
+            chatTextView.font = UIFont(name: "Helvetica", size: 16)
         }
         
 //        ownerAvatarImageView.image = message.owner?.photo

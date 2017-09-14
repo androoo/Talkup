@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Search Bar stuff
     var searchBar: UISearchBar?
     var searchController: UISearchController!
+    
     @IBOutlet weak var navBarElementsTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainSearchToNavBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainSearchTrailingConstraint: NSLayoutConstraint!
@@ -75,6 +76,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let customNavigationAnimationController = SearchTransitionAnimator()
     lazy var slideInMenuTransitioningDelegate = SlideMenuTransitionController()
     let searchTransition = SearchbarAnimator()
+    
     
     @IBOutlet weak var addTalkUpIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var userIconTopConstraint: NSLayoutConstraint!
@@ -149,6 +151,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchTransition.dismissCompletion = {
             self.tableView.isHidden = false
         }
+        
         
         guard let unreads = currenctUser.unreadReferences else { return }
         
@@ -400,8 +403,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
 //                let targetController = destinationViewController.topViewController as? SlideMenuViewController
                 
-                destinationViewController.transitioningDelegate = slideInMenuTransitioningDelegate
-                destinationViewController.modalPresentationStyle = .custom
+                let navigationController = segue.destination
+                navigationController.transitioningDelegate = slideInMenuTransitioningDelegate
+                navigationController.modalPresentationStyle = .custom
+                
                 slideInMenuTransitioningDelegate.direction = .left
                 
             }
@@ -441,25 +446,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func toggleFilter(completion: @escaping () -> Void) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let trendingAction = UIAlertAction(title: "Trending", style: .default) { (_) in
-            self.feedType = .trending
-            self.navBarChatFilterLabel.text = "Trending"
-            self.mainNavFilterIcon.image = nil
-            self.tableView.reloadData()
+        let trendingAction = UIAlertAction(title: "Trending", style: .default) { [weak self] (_) in
+            self?.feedType = .trending
+            self?.navBarChatFilterLabel.text = "Trending"
+            self?.mainNavFilterIcon.image = nil
+            self?.tableView.reloadData()
             completion()
         }
-        let followingAction = UIAlertAction(title: "Following", style: .default) { (_) in
-            self.feedType = .following
-            self.navBarChatFilterLabel.text = "Following"
-            self.mainNavFilterIcon.image = nil
-            self.tableView.reloadData()
+        let followingAction = UIAlertAction(title: "Following", style: .default) { [weak self](_) in
+            self?.feedType = .following
+            self?.navBarChatFilterLabel.text = "Following"
+            self?.mainNavFilterIcon.image = nil
+            self?.tableView.reloadData()
             completion()
         }
-        let recentAction = UIAlertAction(title: "Recent", style: .default) { (_) in
-            self.feedType = .recent
-            self.navBarChatFilterLabel.text = "Recent"
-            self.mainNavFilterIcon.image = nil
-            self.tableView.reloadData()
+        let recentAction = UIAlertAction(title: "Recent", style: .default) { [weak self](_) in
+            self?.feedType = .recent
+            self?.navBarChatFilterLabel.text = "Recent"
+            self?.mainNavFilterIcon.image = nil
+            self?.tableView.reloadData()
             completion()
         }
 //        let featuredAction = UIAlertAction(title: "Featured", style: .default) { (_) in
